@@ -40,6 +40,7 @@ public:
 		printf("size params:%d\n", sizeof(params));
 		for(int i = 0; i < sizeof(params); ++i)
 		{
+			printf("params[%d]:%s\n", i, params[i]);
 			s << params[i];
 			if(i != sizeof(params) - 1)
 			{
