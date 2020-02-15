@@ -17,6 +17,7 @@ const int MAX_CMD_LEN = 128;
 
 
 static Help* help = new Help();
+static Login* login = new login();
 static my_cmd_t s_my_cmds[] = {
 	{
 		"help",
@@ -27,6 +28,11 @@ static my_cmd_t s_my_cmds[] = {
 		"?",
 		help,
 		"help user use cmd."
+	},
+	{
+		"login",
+		login,
+		"login server."
 	},
 	{
 		NULL,
