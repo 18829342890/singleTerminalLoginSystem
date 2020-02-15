@@ -95,7 +95,7 @@ int main()
 		const char* params[10] = {NULL};
 		for(int i = 1; i < cmd_params_v.size(); ++i)
 		{
-			params[i] = cmd_params_v[i].c_str();
+			params[i-1] = cmd_params_v[i].c_str();
 			printf("[%d]:%s\n", i, params[i]);
 		}
 
