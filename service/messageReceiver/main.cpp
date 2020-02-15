@@ -39,7 +39,7 @@ int main()
 		switch(readyFdCount = epoll_wait(epollFd, eventOuts, MAXEVENTS, TIMEOUT))
 		{
 		case 0:
-			LOG_INFO("epoll_wait timeout!");
+			//timeout
 			break;
 		case -1:
 			LOG_ERROR("epoll_wait failed! errno:%d, errmsg:%s", errno, strerror(errno));

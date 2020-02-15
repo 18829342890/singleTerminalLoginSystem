@@ -152,6 +152,15 @@ int MessageReceiver::dealWriteEvent(int fd, int epollFd, epoll_data_t data)
 	LOG_INFO("before free");
 	free(eventDataBuf);
 	LOG_INFO("end free");
+
+	//修改为读事件
+	ret = epollCtl(epollFd, EPOLL_CTL_MOD, fd, EPOLLIN);
+	if(ret < 0)
+	{
+		LOG_ERROR("epollCtl failed! errno:%d, errmsg:%s", errno, strerror(errno));
+		return -1;
+	}
+
 	return 0;
 }
 
@@ -159,7 +168,6 @@ int MessageReceiver::dealWriteEvent(int fd, int epollFd, epoll_data_t data)
 int MessageReceiver::dealClientMessage(int sendToClientFd, int code, char* message)
 {
 	LOG_INFO("sendToClientFd:%d, code:%d, message:%s", sendToClientFd, code, message);
-	printf("sendToClientFd:%d, code:%d, message:%s", sendToClientFd, code, message);
 	return 0;
 
 }
