@@ -3,6 +3,8 @@
 
 #include <stdio.h>
 
+const int MESSAGE_MAX_LEN = 10240;
+
 class ProcessCommandLineBase
 {
 
@@ -13,7 +15,7 @@ public:
 	/*
 	 * 处理命令的公共接口
 	 */
-	virtual int processCommandLine(const char* params[]){}
+	virtual int processCommandLine(int clientSocket, const char* params[]){}
 };
 
 

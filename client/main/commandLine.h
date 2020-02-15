@@ -46,7 +46,7 @@ ProcessCommandLineBase* getCmdImplClass(const char* cmd);
 const char* getCmdImplDesc(const char* cmd);
 
 //执行命令
-int processCmd(const char* cmd, const char* params[]);
+int processCmd(int clientSocket, const char* cmd, const char* params[]);
 
 
 

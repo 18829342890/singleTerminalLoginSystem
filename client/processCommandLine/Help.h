@@ -9,7 +9,7 @@ class Help : public ProcessCommandLineBase
 
 public:
 
-	virtual int processCommandLine(const char* params[])
+	virtual int processCommandLine(int clientSocket, const char* params[])
 	{
 		processHelp();
 		return 0;

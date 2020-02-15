@@ -3,11 +3,20 @@
 #include <vector>
 #include <string>
 #include <unistd.h>
+#include <sys/socket.h>
+#include <netinet/in.h>
+#include <arpa/inet.h>
+#include <sys/time.h>
+#include <errno.h>
 #include "commandLine.h"
 #include "Help.h"
 #include "logrecord.h"
 
 using namespace std;
+
+const int PORT = 8080;
+const char* IP = "127.0.0.1";
+
 
 static void str2vec(const std::string& src, std::vector<std::string>& vec,
                         const std::string seg = ",") 
@@ -32,10 +41,44 @@ static void str2vec(const std::string& src, std::vector<std::string>& vec,
     return;
 }
 
+static int getTcpSocket()
+{
+	int32_t ret = 0;
+    int skfd = -1;
+    struct sockaddr_in server;
+
+    //创建套接字
+    skfd = socket(AF_LOCAL, SOCK_STREAM, 0);
+    if (skfd < 0)
+    {
+        printf("socket create failed! ERROR: %s\n", strerror(errno));
+        return -1;
+    }
+
+    server.sin_family = AF_INET;
+    server.sin_addr.s_addr = inet_addr(IP);
+    server.sin_port = htons(PORT);
+
+    ret = connect(skfd, (struct sockaddr *)&server, sizeof(server));
+    if (ret < 0)
+    {
+        printf("connect failed! ERROR: %s\n", strerror(errno));
+        close(skfd);
+        return -1;
+    }
+
+    return skfd;
+}
+
 
 int main()
 {
 	char cmds[MAX_CMD_LEN] = {0};
+	int clientSocket = getTcpSocket();
+	if(clientSocket < 0)
+	{
+		return -1;
+	}
 
 	while(1)
 	{
@@ -61,12 +104,12 @@ int main()
 		{
 			Help help;
 			printf("command error! Please refer to the following introduction:\n");
-			help.processCommandLine(params);
+			help.processCommandLine(clientSocket, params);
 			continue;
 		}
 
 		//执行命令
-		processCmd(cmd, params);
+		processCmd(clientSocket, cmd, params);
 
 
 
