@@ -96,6 +96,7 @@ int main()
 		for(int i = 1; i < cmd_params_v.size(); ++i)
 		{
 			params[i] = cmd_params_v[i].c_str();
+			printf("[%d]:$s\n", i, params[i]);
 		}
 
 		//判断命令是否合法
