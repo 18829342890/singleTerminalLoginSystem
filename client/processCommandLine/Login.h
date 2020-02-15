@@ -11,7 +11,7 @@ public:
 	virtual int processCommandLine(int clientSocket, const char* params[])
 	{
 		string message = getJsonStringFromParams(params);
-		int ret = write(clientSocket, message, message.length());
+		int ret = write(clientSocket, message.c_str(), message.length());
 		if(ret < 0)
 		{
 			printf("write failed! ERROR: %s\n", strerror(errno));
@@ -49,7 +49,7 @@ public:
 		printf("s:%s\n", s.str().c_str());
 		return s.str();
 	}
-}
+};
 
 
 

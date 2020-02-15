@@ -4,6 +4,7 @@
 #include <stdio.h>
 #include <string>
 #include <sstream>
+#include <unistd.h>
 // #include "mylib/jsoncpp/include/json.h"
 // #include "mylib/jsoncpp/include/writer.h"
 
