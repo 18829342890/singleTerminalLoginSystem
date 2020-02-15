@@ -47,7 +47,7 @@ static int getTcpSocket()
     struct sockaddr_in server;
 
     //创建套接字
-    skfd = socket(AF_LOCAL, SOCK_STREAM, 0);
+    skfd = socket(AF_INET, SOCK_STREAM, 0);
     if (skfd < 0)
     {
         printf("socket create failed! ERROR: %s\n", strerror(errno));
