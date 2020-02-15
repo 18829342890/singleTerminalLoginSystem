@@ -2,6 +2,7 @@
 #define __I_PROCESS_COMMAND_LENE_H__
 
 #include <stdio.h>
+#include <string.h>
 #include <string>
 #include <sstream>
 #include <unistd.h>
