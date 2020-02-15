@@ -27,7 +27,7 @@ public:
 		}
 
 		buf[ret] = '\0';
-		printf("%s\n", buf);
+		printf("read message:%s\n", buf);
 
 		return 0;
 	}
@@ -37,6 +37,7 @@ public:
 	string getJsonStringFromParams(const char* params[])
 	{
 		std::stringstream s;
+		printf("size params:%d\n", sizeof(params));
 		for(int i = 0; i < sizeof(params); ++i)
 		{
 			s << params[i];
@@ -46,7 +47,7 @@ public:
 			}
 		}
 
-		printf("s:%s\n", s.str().c_str());
+		printf("send message:%s\n", s.str().c_str());
 		return s.str();
 	}
 };
