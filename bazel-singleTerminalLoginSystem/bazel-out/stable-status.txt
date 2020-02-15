@@ -1,0 +1,3 @@
+BUILD_EMBED_LABEL 
+BUILD_HOST bogon
+BUILD_USER tanxiaohui

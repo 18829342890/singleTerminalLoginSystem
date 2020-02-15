@@ -1,0 +1,7 @@
+[1mmylib_log/logrecord.c:108:5: [0m[0;1;35mwarning: [0m[1mimplicit declaration of function 'write' is invalid in C99 [-Wimplicit-function-declaration][0m
+    write(pf, str, strLen);
+[0;1;32m    ^
+[0m[1mmylib_log/logrecord.c:112:5: [0m[0;1;35mwarning: [0m[1mimplicit declaration of function 'close' is invalid in C99 [-Wimplicit-function-declaration][0m
+    close(pf);
+[0;1;32m    ^
+[0m2 warnings generated.

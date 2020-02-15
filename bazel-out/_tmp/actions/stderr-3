@@ -1,0 +1,6 @@
+In file included from client/main/main.cpp:6:
+In file included from client/main/commandLine.h:5:
+[1mclient/processCommandLine/ProcessCommandLineBase.h:16:55: [0m[0;1;35mwarning: [0m[1mcontrol reaches end of non-void function [-Wreturn-type][0m
+        virtual int processCommandLine(const char* params[]){}
+[0;1;32m                                                             ^
+[0m1 warning generated.
