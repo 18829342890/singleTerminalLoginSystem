@@ -1,4 +1,5 @@
 #include "messageReceiver.h"
+#include <errno.h>
 
 
 
@@ -23,7 +24,7 @@ int main()
 	}
 
 	//把listenSocket加到epoll监控的fd中
-	int ret = epollCtl(epollFd, EPOLL_CTL_ADD, listenSocket, EPOLLIN);
+	int ret = messageReceiver.epollCtl(epollFd, EPOLL_CTL_ADD, listenSocket, EPOLLIN);
 	if(ret < 0)
 	{
 		LOG_ERROR("epollCtl failed!");
@@ -47,7 +48,7 @@ int main()
 			for(int index = 0; index < readyFdCount; ++index)
 			{
 				int readyFd = eventOuts[index].data.fd;
-				if(readyFd == listenSocket && (ev_outs[index].events & EPOLLIN))
+				if(readyFd == listenSocket && (eventOuts[index].events & EPOLLIN))
 				{
 					//收到连接请求
 					LOG_INFO("receive connect request!");

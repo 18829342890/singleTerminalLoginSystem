@@ -1,6 +1,8 @@
 #include "messageReceiver.h"
 #include <errno.h>
 
+static const char* IP = "127.0.0.1";
+
 int MessageReceiver::createListenSock()
 {
 	int listenSocket = socket(AF_INET, SOCK_STREAM, 0);
@@ -20,7 +22,7 @@ int MessageReceiver::createListenSock()
 		return -1;
 	}
 
-	if(listen(listenSocket, BACKLOG) < 0)
+	if(listen(listenSocket, 64) < 0)
 	{
 		LOG_ERROR("listen failed! errno:%d, errmsg:%s", errno, strerror(errno));
 		return -1;
@@ -61,7 +63,7 @@ int MessageReceiver::epollCtl(int epollFd, int op, int fd, int events)
 int MessageReceiver::dealConnectRequest(int listenSocket, int epollFd)
 {
 	struct sockaddr_in client;
-	int addrlen = sizeof(client);
+	socklen_t addrlen = sizeof(client);
 
 	//accept
 	int linkedSocket = accept(listenSocket, (struct sockaddr*)&client, &addrlen);
@@ -71,12 +73,12 @@ int MessageReceiver::dealConnectRequest(int listenSocket, int epollFd)
 		return -1;
 	}
 
-	//设置为非阻塞
-	if (0 != socket_set_nonblock(linkedSocket))
-    {
-        cloud_logprint("socket_set_nonblock failed! ERROR: %s\n", strerror(errno));
-        goto err_clean;
-    }
+	// //设置为非阻塞
+	// if (0 != socket_set_nonblock(linkedSocket))
+ //    {
+ //        cloud_logprint("socket_set_nonblock failed! ERROR: %s\n", strerror(errno));
+ //        goto err_clean;
+ //    }
 
 	//把linkedSocket加入epoll监控
 	int ret = epollCtl(epollFd, EPOLL_CTL_ADD, linkedSocket, EPOLLIN);
@@ -102,8 +104,9 @@ int MessageReceiver::dealReadEvent(int fd, int epollFd)
 	if(ret < 0)
 	{
 		LOG_ERROR("read failed! ret:%d, errno:%d, errmsg:%s", ret, errno, strerror(errno));
+		const char* errmsg = "SYSTEM_ERROR: read system call failed!";
 		eventDataBuf->code = SYSTEM_ERROR;
-		eventDataBuf->message = "SYSTEM_ERROR: read system call failed!";
+		strcpy(eventDataBuf->message, errmsg);
 		return -1;
 	}
 	else if(0 == ret)

@@ -10,7 +10,8 @@ class Login : public ProcessCommandLineBase
 public:
 	virtual int processCommandLine(int clientSocket, const char* params[])
 	{
-		int ret = write(clientSocket, params[0], strlen(params[0]));
+		string message = getJsonStringFromParams(params);
+		int ret = write(clientSocket, message, message.length());
 		if(ret < 0)
 		{
 			printf("write failed! ERROR: %s\n", strerror(errno));
@@ -29,6 +30,24 @@ public:
 		printf("%s\n", buf);
 
 		return 0;
+	}
+
+
+	//lib问题 先不用json
+	string getJsonStringFromParams(const char* params[])
+	{
+		std::stringstream s;
+		for(int i = 0; i < sizeof(params); ++i)
+		{
+			s << params[i];
+			if(i != sizeof(params) - 1)
+			{
+				s << ",";
+			}
+		}
+
+		printf("s:%s\n", s.str().c_str());
+		return s.str();
 	}
 }
 

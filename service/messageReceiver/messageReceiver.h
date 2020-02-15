@@ -13,17 +13,16 @@
 
 #include "logrecord.h"
 
-const int PORT = 8080;
-const char* IP = "127.0.0.1";
-const int MAXEVENTS = 64;
-const int TIMEOUT = 5000;
-const int MAX_MESSAGE_LEN = 10240;
+static const int PORT = 8080;
+static const int MAXEVENTS = 64;
+static const int TIMEOUT = 5000;
+static const int MAX_MESSAGE_LEN = 10240;
 
 enum E_CODE
 {
 	SUCCESS = 0,
 	SYSTEM_ERROR = -1,
-}
+};
 
 typedef struct eventDataBuf
 {
@@ -43,7 +42,7 @@ public:
 	int dealReadEvent(int fd, int epollFd);
 	int dealWriteEvent(int fd, int epollFd, epoll_data_t data);
 	int dealClientMessage(int sendToClientFd, int code, char* message);
-}
+};
 
 
 

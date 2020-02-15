@@ -1,5 +1,5 @@
 #include "commandLine.h"
-#include "Help.h"
+#include "../processCommandLine/Help.h"
 #include <string.h>
 
 

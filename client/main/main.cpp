@@ -9,8 +9,7 @@
 #include <sys/time.h>
 #include <errno.h>
 #include "commandLine.h"
-#include "Help.h"
-#include "logrecord.h"
+#include "../processCommandLine/Help.h"
 
 using namespace std;
 

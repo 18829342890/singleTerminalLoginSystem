@@ -2,8 +2,8 @@
 #define __COMMAND_LINE_H__
 #include <stdbool.h>
 #include <stdio.h>
-#include "ProcessCommandLineBase.h"
-#include "Help.h"
+#include "../processCommandLine/ProcessCommandLineBase.h"
+#include "../processCommandLine/Help.h"
 
 typedef struct 
 {
