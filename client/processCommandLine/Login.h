@@ -37,10 +37,8 @@ public:
 	string getJsonStringFromParams(const char* params[])
 	{
 		std::stringstream s;
-		printf("size params:%d\n", sizeof(params));
 		for(int i = 0; params[i]; ++i)
 		{
-			printf("params[%d]:%s\n", i, params[i]);
 			s << params[i];
 			if(i != sizeof(params) - 1)
 			{

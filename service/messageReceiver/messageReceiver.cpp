@@ -149,7 +149,9 @@ int MessageReceiver::dealWriteEvent(int fd, int epollFd, epoll_data_t data)
 		return -1;
 	}
 
+	LOG_INFO("before free");
 	free(eventDataBuf);
+	LOG_INFO("end free");
 	return 0;
 }
 
@@ -158,6 +160,7 @@ int MessageReceiver::dealClientMessage(int sendToClientFd, int code, char* messa
 {
 	LOG_INFO("sendToClientFd:%d, code:%d, message:%s", sendToClientFd, code, message);
 	printf("sendToClientFd:%d, code:%d, message:%s", sendToClientFd, code, message);
+	return 0;
 
 }
 
