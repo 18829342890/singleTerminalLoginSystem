@@ -4,11 +4,11 @@ ROOT_PATH=$(shell pwd)
 INCLUDE += -I../singleTerminalLoginSystem/client/processCommandLine
 
 
-client:main.cpp commandLine.cpp 
+messageReceiverService:main.cpp messageReceiver.cpp logrecord.c
 	g++ -o $@ $^
 
 
 
 .PHONY:clean
 clean:
-	rm -rf client
+	rm -rf messageReceiverService

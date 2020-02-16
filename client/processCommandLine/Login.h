@@ -31,24 +31,7 @@ public:
 
 		return 0;
 	}
-
-
-	//lib问题 先不用json
-	string getJsonStringFromParams(const char* params[])
-	{
-		std::stringstream s;
-		for(int i = 0; params[i]; ++i)
-		{
-			s << params[i];
-			if(i != sizeof(params) - 1)
-			{
-				s << ",";
-			}
-		}
-
-		printf("send message:%s\n", s.str().c_str());
-		return s.str();
-	}
+	
 };
 
 

@@ -26,26 +26,25 @@ public:
 	 */
 	virtual int processCommandLine(int clientSocket, const char* params[]){}
 
-	//string getJsonStringFromParams(const char* params[]);
+	string getJsonStringFromParams(const char* params[])
+	{
+		std::stringstream s;
+		for(int i = 0; params[i]; ++i)
+		{
+			s << params[i];
+			if(i != sizeof(params) - 1)
+			{
+				s << ",";
+			}
+		}
+
+		printf("send message:%s\n", s.str().c_str());
+		return s.str();
+	}
 
 };
 
-// //lib问题 先不用json
-// string ProcessCommandLineBase::getJsonStringFromParams(const char* params[])
-// {
-// 	std::stringstream s;
-// 	for(int i = 0; i < sizeof(params); ++i)
-// 	{
-// 		s << params[i];
-// 		if(i != sizeof(params) - 1)
-// 		{
-// 			s << ",";
-// 		}
-// 	}
 
-// 	printf("s:%s\n", s.str().c_str());
-// 	return s.str();
-// }
 
 
 

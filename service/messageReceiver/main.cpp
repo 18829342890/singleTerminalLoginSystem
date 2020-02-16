@@ -22,6 +22,7 @@ int main()
 		LOG_ERROR("createEpollFd failed!");
 		return -1;
 	}
+	LOG_INFO("epollFd:%d", epollFd);
 
 	//把listenSocket加到epoll监控的fd中
 	int ret = messageReceiver.epollCtl(epollFd, EPOLL_CTL_ADD, listenSocket, EPOLLIN);

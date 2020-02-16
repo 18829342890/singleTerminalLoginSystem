@@ -81,6 +81,7 @@ int MessageReceiver::dealConnectRequest(int listenSocket, int epollFd)
  //    }
 
 	//把linkedSocket加入epoll监控
+	LOG_INFO("new linkedSocket:%d", linkedSocket);
 	int ret = epollCtl(epollFd, EPOLL_CTL_ADD, linkedSocket, EPOLLIN);
 	if(ret < 0)
 	{
@@ -112,9 +113,15 @@ int MessageReceiver::dealReadEvent(int fd, int epollFd)
 	else if(0 == ret)
 	{
 		//对端已关闭连接, 取消对该fd的监控,并释放资源
-		epollCtl(epollFd, EPOLL_CTL_DEL, fd, 0);
+		ret = epollCtl(epollFd, EPOLL_CTL_DEL, fd, 0);
+		if(ret < 0)
+		{
+			LOG_ERROR("epoll_ctl failed! ret:%d, errno:%d, errmsg:%s", ret, errno, strerror(errno));
+		}
+
 		close(fd);
 		free(eventDataBuf);
+		eventDataBuf = NULL;
 	}
 	else
 	{
@@ -126,19 +133,24 @@ int MessageReceiver::dealReadEvent(int fd, int epollFd)
 		struct epoll_event ev;
 		ev.events = EPOLLOUT;
 		ev.data.ptr = eventDataBuf;
-		epoll_ctl(epollFd, EPOLL_CTL_MOD, fd, &ev);
+		ret = epoll_ctl(epollFd, EPOLL_CTL_MOD, fd, &ev);
+		if(ret < 0)
+		{
+			LOG_ERROR("epoll_ctl failed! ret:%d, errno:%d, errmsg:%s", ret, errno, strerror(errno));
+		}
 	}
 
 	return 0;
 }
 
-int MessageReceiver::dealWriteEvent(int fd, int epollFd, epoll_data_t data)
+int MessageReceiver::dealWriteEvent(int readyFd, int epollFd, epoll_data_t data)
 {
 	//获取读取的数据
 	eventDataBuf_t* eventDataBuf = (eventDataBuf_t*)data.ptr;
 	int sendToClientFd = eventDataBuf->fd;
 	int code = eventDataBuf->code;
 	char* message = eventDataBuf->message;
+	LOG_INFO("readyFd:%d, sendToClientFd:%d", readyFd, sendToClientFd);
 
 	//处理客户端消息
 	int ret = dealClientMessage(sendToClientFd, code, message);
@@ -149,12 +161,12 @@ int MessageReceiver::dealWriteEvent(int fd, int epollFd, epoll_data_t data)
 		return -1;
 	}
 
-	LOG_INFO("before free");
+	//释放读取数据时malloc的资源
 	free(eventDataBuf);
-	LOG_INFO("end free");
+	eventDataBuf = NULL;
 
 	//修改为读事件
-	ret = epollCtl(epollFd, EPOLL_CTL_MOD, fd, EPOLLIN);
+	ret = epollCtl(epollFd, EPOLL_CTL_MOD, sendToClientFd, EPOLLIN);
 	if(ret < 0)
 	{
 		LOG_ERROR("epollCtl failed! errno:%d, errmsg:%s", errno, strerror(errno));
