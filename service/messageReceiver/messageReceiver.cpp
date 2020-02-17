@@ -1,4 +1,6 @@
 #include "messageReceiver.h"
+#include "register.h"
+#include "loginer.h"
 #include <errno.h>
 
 static const char* IP = "127.0.0.1";
@@ -179,7 +181,26 @@ int MessageReceiver::dealWriteEvent(int readyFd, int epollFd, epoll_data_t data)
 
 int MessageReceiver::dealClientMessage(int sendToClientFd, int code, char* message)
 {
-	LOG_INFO("sendToClientFd:%d, code:%d, message:%s", sendToClientFd, code, message);
+
+	SqlApi sqlApi;
+	sqlApi.connectMysql();
+
+	int dealCode = 0;
+	string msg;
+	// Register regist(sqlApi);
+	// regist.processRegist("txh", "pwd", dealCode, msg);
+
+	Loginer loginer(sqlApi);
+	loginer.processLogin("txh", "pwd", sendToClientFd, dealCode, msg);
+	LOG_INFO("sendToClientFd:%d, code:%d, message:%s", sendToClientFd, dealCode, msg.c_str());
+
+	int ret = write(sendToClientFd, msg.c_str(), msg.length());
+	if(ret < 0)
+	{
+		LOG_ERROR("write failed! errno:%d, errmsg:%s", errno, strerror(errno));
+		return -1;
+	}
+
 	return 0;
 
 }

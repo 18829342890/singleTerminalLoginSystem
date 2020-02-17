@@ -5,7 +5,7 @@ INCLUDE += -I../singleTerminalLoginSystem/client/processCommandLine
 
 
 client:main.cpp commandLine.cpp 
-	g++ -o $@ $^
+	g++ -o $@ $^ -lpthread
 
 
 

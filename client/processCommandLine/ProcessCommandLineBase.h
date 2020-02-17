@@ -37,8 +37,7 @@ public:
 				s << ",";
 			}
 		}
-
-		printf("send message:%s\n", s.str().c_str());
+		
 		return s.str();
 	}
 

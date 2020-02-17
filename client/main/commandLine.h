@@ -5,6 +5,7 @@
 #include "../processCommandLine/ProcessCommandLineBase.h"
 #include "../processCommandLine/Help.h"
 #include "../processCommandLine/Login.h"
+#include "../processCommandLine/Exiter.h"
 
 typedef struct 
 {
@@ -19,6 +20,7 @@ const int MAX_CMD_LEN = 128;
 
 static Help* help = new Help();
 static Login* login = new Login();
+static Exiter* exiter = new Exiter();
 static my_cmd_t s_my_cmds[] = {
 	{
 		"help",
@@ -34,6 +36,11 @@ static my_cmd_t s_my_cmds[] = {
 		"login",
 		login,
 		"login server."
+	},
+	{
+		"exit",
+		exiter,
+		"exit client."
 	},
 	{
 		NULL,

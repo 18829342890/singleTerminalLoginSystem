@@ -22,16 +22,14 @@ public:
 		ret = read(clientSocket, buf, sizeof(buf));
 		if(ret < 0)
 		{
-			printf("read failed! ERROR: %s\n", strerror(errno));
 			return -1;
 		}
 
 		buf[ret] = '\0';
-		printf("read message:%s\n", buf);
-
+		printf("%s\n", buf);
 		return 0;
 	}
-	
+
 };
 
 
