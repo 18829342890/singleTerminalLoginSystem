@@ -1,17 +1,18 @@
-#ifndef __LOGIN_H__
-#define __LOGIN_H__
-
+#ifndef __MY_LOGOUT_H__
+#define __MY_LOGOUT_H__
 
 #include "ProcessCommandLineBase.h"
-#include "cJSON.h"
-#include "Enum.h"
+#include <stdlib.h>
 
 
-class Login : public ProcessCommandLineBase
+class LogoutCmd : public ProcessCommandLineBase
 {
+
 public:
-	virtual int processCommandLine(int clientSocket, const char* params[])
+
+	int processCommandLine(int clientSocket, const char* params[])
 	{
+		//发送退出登录通知
 		string message;
 		int ret = getJsonStringFromParams(params, message);
 		if(ret < 0)
@@ -35,39 +36,35 @@ public:
 
 		buf[ret] = '\0';
 		printf("%s\n", buf);
+		
 		return 0;
 	}
 
-
-private:
 	int getJsonStringFromParams(const char* params[], string& message)
 	{
 		//判断是否合法
 		int i = 0;
 		for(; params[i]; ++i){}
 
-		if(i != 2)
+		if(i != 1)
 		{
-			printf("please input login username password!\n");
+			printf("please input exit username!\n");
 			return -1;
 		}
 
 		const char* userName = params[0];
-		const char* passWord = params[1];
 
 		//创建json
 		cJSON* root = cJSON_CreateObject();
 
 		//messageTyep
-		cJSON* messageType = cJSON_CreateNumber(LOGIN);
+		cJSON* messageType = cJSON_CreateNumber(LOGOUT);
 		cJSON_AddItemToObject(root, "messageType", messageType);
 
 		//message
 		cJSON* messageItem = cJSON_CreateObject();
 		cJSON* userNameItem = cJSON_CreateString(userName);
-		cJSON* passWordItem = cJSON_CreateString(passWord);
 		cJSON_AddItemToObject(messageItem, "userName", userNameItem);
-		cJSON_AddItemToObject(messageItem, "passWord", passWordItem);
 		cJSON_AddItemToObject(root, "message", messageItem);
 
 		//转化为string
@@ -80,6 +77,7 @@ private:
 	}
 
 };
+
 
 
 

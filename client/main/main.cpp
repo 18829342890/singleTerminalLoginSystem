@@ -13,7 +13,7 @@
 #include <signal.h>
 #include <stdlib.h>
 #include "commandLine.h"
-#include "../processCommandLine/Help.h"
+#include "Help.h"
 
 using namespace std;
 
@@ -90,7 +90,7 @@ static int getTcpSocket()
 static void* justRecvMessage(void* param)
 {
 	char message[MAX_MESSAGE_SIZE] = {0};
-	
+
 	while(1)
 	{
 		message[0] = '\0';

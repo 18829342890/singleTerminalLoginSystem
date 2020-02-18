@@ -1,5 +1,5 @@
-#ifndef __LOGIN_H__
-#define __LOGIN_H__
+#ifndef __REGIST_H__
+#define __REGIST_H__
 
 
 #include "ProcessCommandLineBase.h"
@@ -7,7 +7,7 @@
 #include "Enum.h"
 
 
-class Login : public ProcessCommandLineBase
+class RegistCmd : public ProcessCommandLineBase
 {
 public:
 	virtual int processCommandLine(int clientSocket, const char* params[])
@@ -48,7 +48,7 @@ private:
 
 		if(i != 2)
 		{
-			printf("please input login username password!\n");
+			printf("please input regist username password!\n");
 			return -1;
 		}
 
@@ -59,7 +59,7 @@ private:
 		cJSON* root = cJSON_CreateObject();
 
 		//messageTyep
-		cJSON* messageType = cJSON_CreateNumber(LOGIN);
+		cJSON* messageType = cJSON_CreateNumber(REGIST);
 		cJSON_AddItemToObject(root, "messageType", messageType);
 
 		//message
