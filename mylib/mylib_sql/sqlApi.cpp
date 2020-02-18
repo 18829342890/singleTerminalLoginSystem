@@ -4,7 +4,7 @@
 
 SqlApi::SqlApi()
 	:_mysql(NULL),
-	_host("dev.xiaoying.work"),    
+	_host("127.0.0.1"),    
 	_user("p2p_dev"),
 	_passwd("p2p_dev"),
 	_db("user"),
