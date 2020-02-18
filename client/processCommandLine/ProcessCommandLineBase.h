@@ -25,22 +25,6 @@ public:
 	 * 处理命令的公共接口
 	 */
 	virtual int processCommandLine(int clientSocket, const char* params[]){}
-
-	string getJsonStringFromParams(const char* params[])
-	{
-		std::stringstream s;
-		for(int i = 0; params[i]; ++i)
-		{
-			s << params[i];
-			if(i != sizeof(params) - 1)
-			{
-				s << ",";
-			}
-		}
-		
-		return s.str();
-	}
-
 };
 
 

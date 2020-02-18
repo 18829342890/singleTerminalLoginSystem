@@ -2,10 +2,12 @@
 #define __COMMAND_LINE_H__
 #include <stdbool.h>
 #include <stdio.h>
-#include "../processCommandLine/ProcessCommandLineBase.h"
-#include "../processCommandLine/Help.h"
-#include "../processCommandLine/Login.h"
-#include "../processCommandLine/Exiter.h"
+#include "ProcessCommandLineBase.h"
+#include "Help.h"
+#include "Login.h"
+#include "Exiter.h"
+#include "Regist.h"
+#include "Logout.h"
 
 typedef struct 
 {
@@ -20,7 +22,9 @@ const int MAX_CMD_LEN = 128;
 
 static Help* help = new Help();
 static Login* login = new Login();
+static LogoutCmd* logoutCmd = new LogoutCmd();
 static Exiter* exiter = new Exiter();
+static RegistCmd* registCmd = new RegistCmd();
 static my_cmd_t s_my_cmds[] = {
 	{
 		"help",
@@ -38,9 +42,19 @@ static my_cmd_t s_my_cmds[] = {
 		"login server."
 	},
 	{
+		"logout",
+		logoutCmd,
+		"logout user."
+	},
+	{
 		"exit",
 		exiter,
-		"exit client."
+		"logout then exit client."
+	},
+	{
+		"regist",
+		registCmd,
+		"user regist."
 	},
 	{
 		NULL,

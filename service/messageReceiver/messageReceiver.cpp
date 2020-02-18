@@ -1,200 +1,145 @@
 #include "messageReceiver.h"
-#include "register.h"
-#include "loginer.h"
+#include "cJSON.h"
+#include "Enum.h"
 #include <errno.h>
+#include <sstream>
+#include <assert.h>
+
+using namespace std;
 
 static const char* IP = "127.0.0.1";
+static const int MESSAGE_DISPATCHER_SERVICE_PORT = 8081;
+static const int MESSAGE_MAX_LEN = 10240;
 
-int MessageReceiver::createListenSock()
+MessageReceiver::MessageReceiver()
 {
-	int listenSocket = socket(AF_INET, SOCK_STREAM, 0);
-	if(listenSocket < 0)
-	{
-		LOG_ERROR("socket failed! errno:%d, errmsg:%s", errno, strerror(errno));
-		return -1;
-	}
-
-	struct sockaddr_in local;
-	local.sin_family = AF_INET;
-	local.sin_port = htons(PORT);
-	local.sin_addr.s_addr = inet_addr(IP);
-	if(bind(listenSocket, (struct sockaddr*)&local, sizeof(local)) < 0)
-	{
-		LOG_ERROR("bind failed! errno:%d, errmsg:%s", errno, strerror(errno));
-		return -1;
-	}
-
-	if(listen(listenSocket, 64) < 0)
-	{
-		LOG_ERROR("listen failed! errno:%d, errmsg:%s", errno, strerror(errno));
-		return -1;
-	}
-
-	return listenSocket;
+	_sendToMessageDispatcherServiceFd = 0;
 }
 
+MessageReceiver::~MessageReceiver()
+{}
 
-int MessageReceiver::createEpollFd()
+
+int MessageReceiver::connectTomessageDispatcherService(int epollFd)
 {
-	int epollFd = epoll_create(256);
-	if(epollFd < 0)
-	{
-		LOG_ERROR("epoll_create failed! errno:%d, errmsg:%s", errno, strerror(errno));
-		return -1;
-	}
-
-	return epollFd;
-}
-
-int MessageReceiver::epollCtl(int epollFd, int op, int fd, int events)
-{
-	struct epoll_event ev;
-	ev.events = events;
-	ev.data.fd = fd;
-
-	int ret = epoll_ctl(epollFd, op, fd, &ev);
+	//连接注册/登录服务
+	int socketFd = 0;
+	int ret = connectToService(IP, MESSAGE_DISPATCHER_SERVICE_PORT, socketFd);
 	if(ret < 0)
 	{
-		LOG_ERROR("epoll_ctl failed! errno:%d, errmsg:%s", errno, strerror(errno));
+		LOG_ERROR("connectToService failed!");
 		return -1;
 	}
 
+	ret = epollCtl(epollFd, EPOLL_CTL_ADD, socketFd, EPOLLIN);
+	if(ret < 0)
+	{
+		LOG_ERROR("epollCtl failed!");
+		return -1;
+	}
+
+	_sendToMessageDispatcherServiceFd = socketFd;
+	_fdName.insert(pair<int, string>(socketFd, "MESSAGE DISPATCHER SERVICE"));
 	return 0;
 }
-
-int MessageReceiver::dealConnectRequest(int listenSocket, int epollFd)
-{
-	struct sockaddr_in client;
-	socklen_t addrlen = sizeof(client);
-
-	//accept
-	int linkedSocket = accept(listenSocket, (struct sockaddr*)&client, &addrlen);
-	if(linkedSocket < 0)
-	{
-		LOG_ERROR("accept failed! errno:%d, errmsg:%s", errno, strerror(errno));
-		return -1;
-	}
-
-	// //设置为非阻塞
-	// if (0 != socket_set_nonblock(linkedSocket))
- //    {
- //        cloud_logprint("socket_set_nonblock failed! ERROR: %s\n", strerror(errno));
- //        goto err_clean;
- //    }
-
-	//把linkedSocket加入epoll监控
-	LOG_INFO("new linkedSocket:%d", linkedSocket);
-	int ret = epollCtl(epollFd, EPOLL_CTL_ADD, linkedSocket, EPOLLIN);
-	if(ret < 0)
-	{
-		LOG_ERROR("epollCtl failed! errno:%d, errmsg:%s", errno, strerror(errno));
-		return -1;
-	}
-
-	return 0;
-}
-
-int MessageReceiver::dealReadEvent(int fd, int epollFd)
-{
-	eventDataBuf_t* eventDataBuf = (eventDataBuf_t*)malloc(sizeof(eventDataBuf_t));
-	memset(eventDataBuf, '\0', sizeof(eventDataBuf_t));
-
-	//设置fd
-	eventDataBuf->fd = fd;
-
-	//读取数据
-	int ret = read(fd, eventDataBuf->message, sizeof(eventDataBuf->message));
-	if(ret < 0)
-	{
-		LOG_ERROR("read failed! ret:%d, errno:%d, errmsg:%s", ret, errno, strerror(errno));
-		const char* errmsg = "SYSTEM_ERROR: read system call failed!";
-		eventDataBuf->code = SYSTEM_ERROR;
-		strcpy(eventDataBuf->message, errmsg);
-		return -1;
-	}
-	else if(0 == ret)
-	{
-		//对端已关闭连接, 取消对该fd的监控,并释放资源
-		ret = epollCtl(epollFd, EPOLL_CTL_DEL, fd, 0);
-		if(ret < 0)
-		{
-			LOG_ERROR("epoll_ctl failed! ret:%d, errno:%d, errmsg:%s", ret, errno, strerror(errno));
-		}
-
-		close(fd);
-		free(eventDataBuf);
-		eventDataBuf = NULL;
-	}
-	else
-	{
-		eventDataBuf->code = SUCCESS;
-		eventDataBuf->message[ret] = '\0';
-		LOG_INFO("recv message:%s", eventDataBuf->message);
-
-		//修改为写事件，并把读取的数据传给写者
-		struct epoll_event ev;
-		ev.events = EPOLLOUT;
-		ev.data.ptr = eventDataBuf;
-		ret = epoll_ctl(epollFd, EPOLL_CTL_MOD, fd, &ev);
-		if(ret < 0)
-		{
-			LOG_ERROR("epoll_ctl failed! ret:%d, errno:%d, errmsg:%s", ret, errno, strerror(errno));
-		}
-	}
-
-	return 0;
-}
-
-int MessageReceiver::dealWriteEvent(int readyFd, int epollFd, epoll_data_t data)
-{
-	//获取读取的数据
-	eventDataBuf_t* eventDataBuf = (eventDataBuf_t*)data.ptr;
-	int sendToClientFd = eventDataBuf->fd;
-	int code = eventDataBuf->code;
-	char* message = eventDataBuf->message;
-	LOG_INFO("readyFd:%d, sendToClientFd:%d", readyFd, sendToClientFd);
-
-	//处理客户端消息
-	int ret = dealClientMessage(sendToClientFd, code, message);
-	if(ret < 0)
-	{
-		LOG_ERROR("dealClientMessage failed! ret:%d", ret);
-		free(eventDataBuf);
-		return -1;
-	}
-
-	//释放读取数据时malloc的资源
-	free(eventDataBuf);
-	eventDataBuf = NULL;
-
-	//修改为读事件
-	ret = epollCtl(epollFd, EPOLL_CTL_MOD, sendToClientFd, EPOLLIN);
-	if(ret < 0)
-	{
-		LOG_ERROR("epollCtl failed! errno:%d, errmsg:%s", errno, strerror(errno));
-		return -1;
-	}
-
-	return 0;
-}
-
 
 int MessageReceiver::dealClientMessage(int sendToClientFd, int code, char* message)
 {
+	string needSendMessage;
+	getNeedSendMessage(message, sendToClientFd, needSendMessage);
+	LOG_INFO("sendTo:%s, code:%d, needSendMessage:%s", getFdName(_sendToMessageDispatcherServiceFd), code, needSendMessage.c_str());
 
-	SqlApi sqlApi;
-	sqlApi.connectMysql();
+	//把信息发送给messageDispatcherService
+	int ret = write(_sendToMessageDispatcherServiceFd, needSendMessage.c_str(), needSendMessage.length());
+	if(ret < 0)
+	{
+		LOG_ERROR("write failed! errno:%d, errmsg:%s", errno, strerror(errno));
+		return -1;
+	}
 
-	int dealCode = 0;
-	string msg;
-	// Register regist(sqlApi);
-	// regist.processRegist("txh", "pwd", dealCode, msg);
+	//获取messageDispatcherService的响应
+	char response[MESSAGE_MAX_LEN] = {0};
+	ret = read(_sendToMessageDispatcherServiceFd, response, sizeof(response));
+	if(ret < 0)
+	{
+		LOG_ERROR("read failed! errno:%d, errmsg:%s", errno, strerror(errno));
+		return -1;
+	}
 
-	Loginer loginer(sqlApi);
-	loginer.processLogin("txh", "pwd", sendToClientFd, dealCode, msg);
-	LOG_INFO("sendToClientFd:%d, code:%d, message:%s", sendToClientFd, dealCode, msg.c_str());
+	//把响应发给客户端
+	response[ret] = '\0';
+	LOG_INFO("response:%s", response);
 
-	int ret = write(sendToClientFd, msg.c_str(), msg.length());
+	ret = dealServiceResponse(sendToClientFd, response);
+	if(ret < 0)
+	{
+		LOG_ERROR("dealServiceResponse failed!");
+		return -1;
+	}
+
+	return 0;
+}
+
+void MessageReceiver::getNeedSendMessage(const char* receivedMessage, int sendToClientFd, string& needSendMessage)
+{
+	cJSON* messageJson = cJSON_Parse(receivedMessage);
+
+	//添加extendInfo、msgType
+	cJSON* extendInfo = cJSON_CreateObject();
+	cJSON_AddNumberToObject(extendInfo, "clientFd", sendToClientFd);
+	cJSON_AddItemToObject(messageJson, "extendInfo", extendInfo);
+
+
+	//转化为string
+	std::stringstream ss;
+	ss << cJSON_PrintUnformatted(messageJson);
+	needSendMessage = ss.str();
+
+	cJSON_Delete(messageJson);
+	return;
+}
+
+int MessageReceiver::dealServiceResponse(int sendToClientFd, const char* response)
+{
+	cJSON* responseJson = cJSON_Parse(response);
+	cJSON* msgItem  = cJSON_GetObjectItem(responseJson, "msg");
+	cJSON* extendInfoItem  = cJSON_GetObjectItem(responseJson, "extendInfo");
+	if(msgItem == NULL || extendInfoItem == NULL)
+	{
+		LOG_ERROR("not found msg or extendInfo item from json! json:%s", cJSON_PrintUnformatted(responseJson));
+		return -1;
+	}
+
+	//获取对应服务的fd
+	assert(msgItem->type == cJSON_String);
+	assert(extendInfoItem->type == cJSON_Object);
+	cJSON* logoutFdItem  = cJSON_GetObjectItem(extendInfoItem, "logoutFd");
+	if(logoutFdItem == NULL)
+	{
+		LOG_ERROR("not found logoutFdItem item from json! json:%s", cJSON_PrintUnformatted(responseJson));
+		return -1;
+	}
+
+	assert(logoutFdItem->type == cJSON_Number);
+	string msg = msgItem->valuestring;
+	int logoutFd = logoutFdItem->valueint;
+
+	//通知已登录设备退出登录
+	if(logoutFd > 0)
+	{
+		string logoutString = "logout";//待改进，有loginer传出消息
+		LOG_INFO("sendTo:%s, message:%s", getFdName(logoutFd), logoutString.c_str());
+		int ret = write(logoutFd, logoutString.c_str(),  logoutString.length());
+		if(ret < 0)
+		{
+			LOG_ERROR("write failed! errno:%d, errmsg:%s", errno, strerror(errno));
+			return -1;
+		}
+	}
+	
+	//通知登录成功
+	LOG_INFO("sendTo:%s, message:%s", getFdName(sendToClientFd), msg.c_str());
+	int ret = write(sendToClientFd, msg.c_str(),  msg.length());
 	if(ret < 0)
 	{
 		LOG_ERROR("write failed! errno:%d, errmsg:%s", errno, strerror(errno));
@@ -202,7 +147,6 @@ int MessageReceiver::dealClientMessage(int sendToClientFd, int code, char* messa
 	}
 
 	return 0;
-
 }
 
 

@@ -1,22 +1,25 @@
 work_path = $(shell pwd)
 c_src = $(wildcard $(work_path)/../../mylib/cJSON/*.c $(work_path)/../../mylib/mylib_log/*.c)
-cpp_src = $(wildcard ./*.cpp)
+cpp_src = $(wildcard $(work_path)/../../mylib/mylib_daemon/*.cpp $(work_path)/../../mylib/mylib_sql/*.cpp ./*.cpp)
 c_objs = $(patsubst %.c,%.o,$(c_src))
 cpp_objs += $(patsubst %.cpp,%.o,$(cpp_src))
 
 objs += $(c_objs) $(cpp_objs)
 CC = gcc
 CXX = g++
-target=client	
+target=messageDispatcherService	
 CPPFLAGS =
-INCLUDE += -I${work_path}/../../mylib/cJSON \
+INCLUDE += -I/usr/include/mysql \
+           -I${work_path}/../../mylib/cJSON \
 		   -I${work_path}/../../mylib/mylib_log \
+		   -I${work_path}/../../mylib/mylib_sql \
 		   -I${work_path}/../../mylib/enum \
-		   -I${work_path}/../processCommandLine
+		   -I${work_path}/../../mylib/mylib_daemon
+
 CFLAGS = $(INCLUDE)
 CXXFLAGS += $(INCLUDE)
 CPPFLAGS += $(INCLUDE)
-LDFLAGS = -lpthread
+LDFLAGS = -L/usr/lib64/mysql -lmysqlclient -lz -lcrypt -lnsl -lm -lssl -lcrypto
 
 $(warning  $(c_src))
 $(warning  $(cpp_src))
