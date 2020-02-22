@@ -28,15 +28,17 @@ SqlApi::~SqlApi()
 
 int SqlApi::connectMysql()
 {
-	if ((_mysql = mysql_init(NULL)) == NULL)
+	LOG_INFO("1........");
+	if ((_mysql = mysql_init((MYSQL*)NULL)) == NULL)
 	{
 		LOG_ERROR("mysql_init failed! errno:%d, errmsg:%s",  mysql_errno(_mysql), mysql_error(_mysql));
 		return -1;
 	}
 
+	LOG_INFO("2........");
 	if( !mysql_real_connect(_mysql, _host.c_str(), _user.c_str(), _passwd.c_str(), _db.c_str(), _port, 0, 0))
 	{
-		LOG_ERROR("mysql_init failed! errno:%d, errmsg:%s",  mysql_errno(_mysql), mysql_error(_mysql));
+		LOG_ERROR("mysql_real_connect failed! errno:%d, errmsg:%s",  mysql_errno(_mysql), mysql_error(_mysql));
 		return -1;
 	}
 	

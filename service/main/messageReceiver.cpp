@@ -4,6 +4,7 @@
 #include "messageReceiver.h"
 #include "Enum.h"
 #include "register.h"
+#include "loginer.h"
 
 
 using namespace std;
@@ -22,25 +23,46 @@ MessageReceiver::~MessageReceiver()
 
 
 
-Status MessageReceiver::regist(ServerContext* context, const RegistRequest* request, RegistResponse* reply)
+Status MessageReceiver::regist(ServerContext* context, const RegistRequest* request, RegistResponse* response)
 {
 	int code = 0;
 	string message;
 	string userName = request->user_name();
 	string passWord = request->pass_word();
+	LOG_INFO("regist %s %s", userName.c_str(), passWord.c_str());
 	
 	Register myRegister(_sqlApi);
 	int ret = myRegister.processRegist(userName, passWord, code, message);
 	if(ret != 0)
 	{
-		LOG_ERROR("myRegister.processRegist failed! errcode:%d, errmsg:%s", code, message.c_str());
+		LOG_ERROR("processRegist failed! errcode:%d, errmsg:%s", code, message.c_str());
 	}
 
 
 	context->set_compression_algorithm(GRPC_COMPRESS_DEFLATE);
-    reply->set_message(message);
+    response->set_message(message);
     return Status::OK;
 }
+
+ Status MessageReceiver::login(ServerContext* context, const LoginRequest* request, LoginResponse* response)
+ {
+ 	int code = 0;
+	string message;
+	string userName = request->user_name();
+	string passWord = request->pass_word();
+
+	Loginer loginer(_sqlApi);
+	int logoutfd = 0;
+	int ret = loginer.processLogin(userName, passWord, 0, logoutfd, code, message);
+	if(ret != 0)
+	{
+		LOG_ERROR("processLogin failed! errcode:%d, errmsg:%s", code, message.c_str());
+	}
+
+	context->set_compression_algorithm(GRPC_COMPRESS_DEFLATE);
+    response->set_message(message);
+    return Status::OK;
+ }
 
 
 

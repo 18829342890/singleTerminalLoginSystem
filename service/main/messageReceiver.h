@@ -19,6 +19,8 @@ using grpc::Status;
 using proto::messageReceiver::messageReceiver;
 using proto::messageReceiver::RegistRequest;
 using proto::messageReceiver::RegistResponse;
+using proto::messageReceiver::LoginRequest;
+using proto::messageReceiver::LoginResponse;
 
 class MessageReceiver final : public messageReceiver::Service 
 {
@@ -30,7 +32,8 @@ public:
  //    void getNeedSendMessage(const char* receivedMessage, int sendToClientFd, std::string& needSendMessage);
  //    int dealServiceResponse(int sendToClientFd, const char* response);
 
-    Status regist(ServerContext* context, const RegistRequest* request, RegistResponse* reply);
+    Status regist(ServerContext* context, const RegistRequest* request, RegistResponse* response);
+    Status login(ServerContext* context, const LoginRequest* request, LoginResponse* response);
 
 private:
 	int _sendToMessageDispatcherServiceFd;

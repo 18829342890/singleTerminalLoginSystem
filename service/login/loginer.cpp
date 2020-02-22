@@ -14,11 +14,8 @@ Loginer::~Loginer()
 
 int Loginer::processLogin(const string& userName, const string& passWord, int sendToClientFd, int& logoutFd, int& code, string& msg)
 {
-	logoutFd = -1;
-	code = SUCCESS;
-	msg = "login success!";
-
 	//判断用户名和密码是否有效
+	logoutFd = -1;
 	bool isValid = false;
 	int ret = isValidUserNameAndPassWord(userName, passWord, isValid);
 	if(ret < 0)
@@ -80,7 +77,8 @@ int Loginer::processLogin(const string& userName, const string& passWord, int se
 		}
 	}
 
-	
+	code = SUCCESS;
+	msg = "login success!";
 	LOG_INFO("userName:%s, passWord:%s login success!", userName.c_str(), passWord.c_str());
 	return 0;
 }
