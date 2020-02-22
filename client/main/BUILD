@@ -1,4 +1,3 @@
-
 cc_library(
     name = "commandLine",
     srcs = ["commandLine.cpp"],
@@ -16,12 +15,11 @@ cc_binary (
 	srcs = ["main.cpp"],
 	copts = [
 		"-Iclient/processCommandLine/",
-		"-Imylib/mylib_log/",
 	],
 	deps = [
 		":commandLine",
 		"//client/processCommandLine:processCommandLineLib",
-		"//mylib/mylib_log:myLogLib"
+		"//protos/proto:person_cc_proto"
 	],
 
 )

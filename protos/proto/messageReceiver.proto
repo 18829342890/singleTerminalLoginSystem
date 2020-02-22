@@ -1,0 +1,72 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "singleTerminaLoginSystem.protos.messageReceiver";
+option java_outer_classname = "messageReceiverProto";
+option objc_class_prefix = "TXH";
+
+package proto.messageReceiver;
+
+
+service messageReceiver {
+  // regist
+  rpc regist (RegistRequest) returns (RegistResponse) {}
+
+  // login
+  rpc login (LoginRequest) returns (LoginResponse) {}
+
+  // logout
+  rpc logout (LogoutRequest) returns (LogoutResponse) {}
+}
+
+
+//***
+//@request RegistRequest
+//@response RegistResponse
+//@remark  用户注册
+//***
+message RegistRequest
+{
+	string user_name = 1;
+	string pass_word = 2;
+}
+
+message RegistResponse
+{
+	string message = 1;
+}
+
+
+//***
+//@request LoginRequest
+//@response LoginResponse
+//@remark  用户登录
+//***
+message LoginRequest
+{
+	string user_name = 1;
+	string pass_word = 2;
+}
+
+message LoginResponse
+{
+	string message = 1;
+}
+
+
+//***
+//@request LogoutRequest
+//@response LogoutResponse
+//@remark  退出登录
+//***
+message LogoutRequest
+{
+	string user_name = 1;
+}
+
+message LogoutResponse
+{
+	string message = 1;
+}
+
+

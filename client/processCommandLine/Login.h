@@ -3,38 +3,37 @@
 
 
 #include "ProcessCommandLineBase.h"
-#include "cJSON.h"
 #include "Enum.h"
 
 
 class Login : public ProcessCommandLineBase
 {
 public:
-	virtual int processCommandLine(int clientSocket, const char* params[])
+	virtual int processCommandLine(std::shared_ptr<messageReceiver::Stub> stub, const char* params[])
 	{
-		string message;
-		int ret = getJsonStringFromParams(params, message);
-		if(ret < 0)
-		{
-			return -1;
-		}
+		// string message;
+		// int ret = getJsonStringFromParams(params, message);
+		// if(ret < 0)
+		// {
+		// 	return -1;
+		// }
 
-		ret = write(clientSocket, message.c_str(), message.length());
-		if(ret < 0)
-		{
-			printf("write failed! ERROR: %s\n", strerror(errno));
-			return -1;
-		}
+		// ret = write(clientSocket, message.c_str(), message.length());
+		// if(ret < 0)
+		// {
+		// 	printf("write failed! ERROR: %s\n", strerror(errno));
+		// 	return -1;
+		// }
 
-		char buf[MESSAGE_MAX_LEN] = {0};
-		ret = read(clientSocket, buf, sizeof(buf));
-		if(ret < 0)
-		{
-			return -1;
-		}
+		// char buf[MESSAGE_MAX_LEN] = {0};
+		// ret = read(clientSocket, buf, sizeof(buf));
+		// if(ret < 0)
+		// {
+		// 	return -1;
+		// }
 
-		buf[ret] = '\0';
-		printf("%s\n", buf);
+		// buf[ret] = '\0';
+		// printf("%s\n", buf);
 		return 0;
 	}
 
@@ -55,28 +54,28 @@ private:
 		const char* userName = params[0];
 		const char* passWord = params[1];
 
-		//创建json
-		cJSON* root = cJSON_CreateObject();
+		// //创建json
+		// cJSON* root = cJSON_CreateObject();
 
-		//messageTyep
-		cJSON* messageType = cJSON_CreateNumber(LOGIN);
-		cJSON_AddItemToObject(root, "messageType", messageType);
+		// //messageTyep
+		// cJSON* messageType = cJSON_CreateNumber(LOGIN);
+		// cJSON_AddItemToObject(root, "messageType", messageType);
 
-		//message
-		cJSON* messageItem = cJSON_CreateObject();
-		cJSON* userNameItem = cJSON_CreateString(userName);
-		cJSON* passWordItem = cJSON_CreateString(passWord);
-		cJSON_AddItemToObject(messageItem, "userName", userNameItem);
-		cJSON_AddItemToObject(messageItem, "passWord", passWordItem);
-		cJSON_AddItemToObject(root, "message", messageItem);
+		// //message
+		// cJSON* messageItem = cJSON_CreateObject();
+		// cJSON* userNameItem = cJSON_CreateString(userName);
+		// cJSON* passWordItem = cJSON_CreateString(passWord);
+		// cJSON_AddItemToObject(messageItem, "userName", userNameItem);
+		// cJSON_AddItemToObject(messageItem, "passWord", passWordItem);
+		// cJSON_AddItemToObject(root, "message", messageItem);
 
-		//转化为string
-		std::stringstream ss;
-		ss << cJSON_PrintUnformatted(root);
-		message = ss.str();
+		// //转化为string
+		// std::stringstream ss;
+		// ss << cJSON_PrintUnformatted(root);
+		// message = ss.str();
 
-		cJSON_Delete(root);
-		return 0;
+		// cJSON_Delete(root);
+		// return 0;
 	}
 
 };
