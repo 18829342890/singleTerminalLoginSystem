@@ -4,14 +4,22 @@
 
 enum REGIST_LOGIN_CODE
 {
-	SUCCESS = 0,
-	SYSTEM_ERROR = -1,
-	DB_OP_FAILED = -2,
-	ALREADY_REGIST = -3,
-	ALREADY_LOGINED = -4,
-	USERNAME_OR_PASSWD_ERROR = -5,
+	SUCCESS                   = 0,
+	SYSTEM_ERROR              = -1,
+	DB_OP_FAILED              = -2,
+	ALREADY_REGIST            = -3,
+	ALREADY_LOGINED           = -4,
+	USERNAME_OR_PASSWD_ERROR  = -5,
+	USER_NOT_LOGINED          = -6,
 
 	
+};
+
+
+enum LOGOUT_REQ_TYPE
+{
+	USER_LOGOUT            = 1, //用户自己退出登录
+	ADMINISTRATOR_KICK_OUT = 2, //管理员踢出用户退出登录
 };
 
 

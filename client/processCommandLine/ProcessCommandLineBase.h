@@ -7,7 +7,7 @@
 #include <sstream>
 #include <unistd.h>
 #include <errno.h>
-#include <grpcpp/grpcpp.h>
+#include "grpcpp/grpcpp.h"
 #include "messageReceiver.grpc.pb.h"
 
 using namespace std;

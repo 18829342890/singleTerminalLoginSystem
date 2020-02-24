@@ -3,7 +3,13 @@
 #include "logrecord.h"
 #include <sstream>
 #include <assert.h>
+#include <grpcpp/grpcpp.h>
 
+
+using grpc::Server;
+using grpc::ServerBuilder;
+using grpc::ServerContext;
+using grpc::Status;
 
 Register::Register(SqlApi& sqlApi) 
 		: _sqlApi(sqlApi)

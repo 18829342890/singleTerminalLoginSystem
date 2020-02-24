@@ -3,10 +3,13 @@
 
 
 #include "ProcessCommandLineBase.h"
-#include "Enum.h"
+#include "encrypt.h"
 
 using proto::messageReceiver::LoginRequest;
 using proto::messageReceiver::LoginResponse;
+
+extern int isLogined;
+extern string userName;
 
 class Login : public ProcessCommandLineBase
 {
@@ -27,6 +30,8 @@ public:
 		if(status.ok())
 		{
 			cout << loginResponse.message() << endl;
+			isLogined = 1;
+			userName = loginRequest.user_name();
 			return 0;
 		}
 		else
@@ -34,7 +39,6 @@ public:
 			cout << "RPC failed! errcode:" << status.error_code() << ", errmsg:" << status.error_message() << endl;
 			return -1;
 		}
-		return 0;
 	}
 
 
@@ -50,10 +54,21 @@ private:
 			cout << "please input login username password!" << endl;
 			return -1;
 		}
+
+		string userName = params[0];
+		string passWord = params[1];
+
+		//加密passWord
+		char passWordEncrypted[1024] = {0};
+		if(base64_encode(passWord.c_str(), passWord.length(), passWordEncrypted) < 0)
+		{
+			cout << "base64_encode failed!" << endl;
+			return -1;
+		}
 		
 		//设置username、password
-		loginRequest.set_user_name(params[0]);
-		loginRequest.set_pass_word(params[1]);
+		loginRequest.set_user_name(userName);
+		loginRequest.set_pass_word(passWordEncrypted);
 		return 0;
 	}
 

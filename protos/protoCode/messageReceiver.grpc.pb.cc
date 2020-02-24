@@ -26,6 +26,8 @@ static const char* messageReceiver_method_names[] = {
   "/proto.messageReceiver.messageReceiver/regist",
   "/proto.messageReceiver.messageReceiver/login",
   "/proto.messageReceiver.messageReceiver/logout",
+  "/proto.messageReceiver.messageReceiver/noticeClientLogout",
+  "/proto.messageReceiver.messageReceiver/syncClientInfo",
 };
 
 std::unique_ptr< messageReceiver::Stub> messageReceiver::NewStub(const std::shared_ptr< ::grpc::ChannelInterface>& channel, const ::grpc::StubOptions& options) {
@@ -38,6 +40,8 @@ messageReceiver::Stub::Stub(const std::shared_ptr< ::grpc::ChannelInterface>& ch
   : channel_(channel), rpcmethod_regist_(messageReceiver_method_names[0], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
   , rpcmethod_login_(messageReceiver_method_names[1], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
   , rpcmethod_logout_(messageReceiver_method_names[2], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_noticeClientLogout_(messageReceiver_method_names[3], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_syncClientInfo_(messageReceiver_method_names[4], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
   {}
 
 ::grpc::Status messageReceiver::Stub::regist(::grpc::ClientContext* context, const ::proto::messageReceiver::RegistRequest& request, ::proto::messageReceiver::RegistResponse* response) {
@@ -124,6 +128,62 @@ void messageReceiver::Stub::experimental_async::logout(::grpc::ClientContext* co
   return ::grpc_impl::internal::ClientAsyncResponseReaderFactory< ::proto::messageReceiver::LogoutResponse>::Create(channel_.get(), cq, rpcmethod_logout_, context, request, false);
 }
 
+::grpc::Status messageReceiver::Stub::noticeClientLogout(::grpc::ClientContext* context, const ::proto::messageReceiver::NoticeClientLogoutRequest& request, ::proto::messageReceiver::NoticeClientLogoutResponse* response) {
+  return ::grpc::internal::BlockingUnaryCall(channel_.get(), rpcmethod_noticeClientLogout_, context, request, response);
+}
+
+void messageReceiver::Stub::experimental_async::noticeClientLogout(::grpc::ClientContext* context, const ::proto::messageReceiver::NoticeClientLogoutRequest* request, ::proto::messageReceiver::NoticeClientLogoutResponse* response, std::function<void(::grpc::Status)> f) {
+  ::grpc_impl::internal::CallbackUnaryCall(stub_->channel_.get(), stub_->rpcmethod_noticeClientLogout_, context, request, response, std::move(f));
+}
+
+void messageReceiver::Stub::experimental_async::noticeClientLogout(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::proto::messageReceiver::NoticeClientLogoutResponse* response, std::function<void(::grpc::Status)> f) {
+  ::grpc_impl::internal::CallbackUnaryCall(stub_->channel_.get(), stub_->rpcmethod_noticeClientLogout_, context, request, response, std::move(f));
+}
+
+void messageReceiver::Stub::experimental_async::noticeClientLogout(::grpc::ClientContext* context, const ::proto::messageReceiver::NoticeClientLogoutRequest* request, ::proto::messageReceiver::NoticeClientLogoutResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
+  ::grpc_impl::internal::ClientCallbackUnaryFactory::Create(stub_->channel_.get(), stub_->rpcmethod_noticeClientLogout_, context, request, response, reactor);
+}
+
+void messageReceiver::Stub::experimental_async::noticeClientLogout(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::proto::messageReceiver::NoticeClientLogoutResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
+  ::grpc_impl::internal::ClientCallbackUnaryFactory::Create(stub_->channel_.get(), stub_->rpcmethod_noticeClientLogout_, context, request, response, reactor);
+}
+
+::grpc::ClientAsyncResponseReader< ::proto::messageReceiver::NoticeClientLogoutResponse>* messageReceiver::Stub::AsyncnoticeClientLogoutRaw(::grpc::ClientContext* context, const ::proto::messageReceiver::NoticeClientLogoutRequest& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc_impl::internal::ClientAsyncResponseReaderFactory< ::proto::messageReceiver::NoticeClientLogoutResponse>::Create(channel_.get(), cq, rpcmethod_noticeClientLogout_, context, request, true);
+}
+
+::grpc::ClientAsyncResponseReader< ::proto::messageReceiver::NoticeClientLogoutResponse>* messageReceiver::Stub::PrepareAsyncnoticeClientLogoutRaw(::grpc::ClientContext* context, const ::proto::messageReceiver::NoticeClientLogoutRequest& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc_impl::internal::ClientAsyncResponseReaderFactory< ::proto::messageReceiver::NoticeClientLogoutResponse>::Create(channel_.get(), cq, rpcmethod_noticeClientLogout_, context, request, false);
+}
+
+::grpc::Status messageReceiver::Stub::syncClientInfo(::grpc::ClientContext* context, const ::proto::messageReceiver::SyncClientInfoRequest& request, ::proto::messageReceiver::SyncClientInfoResponse* response) {
+  return ::grpc::internal::BlockingUnaryCall(channel_.get(), rpcmethod_syncClientInfo_, context, request, response);
+}
+
+void messageReceiver::Stub::experimental_async::syncClientInfo(::grpc::ClientContext* context, const ::proto::messageReceiver::SyncClientInfoRequest* request, ::proto::messageReceiver::SyncClientInfoResponse* response, std::function<void(::grpc::Status)> f) {
+  ::grpc_impl::internal::CallbackUnaryCall(stub_->channel_.get(), stub_->rpcmethod_syncClientInfo_, context, request, response, std::move(f));
+}
+
+void messageReceiver::Stub::experimental_async::syncClientInfo(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::proto::messageReceiver::SyncClientInfoResponse* response, std::function<void(::grpc::Status)> f) {
+  ::grpc_impl::internal::CallbackUnaryCall(stub_->channel_.get(), stub_->rpcmethod_syncClientInfo_, context, request, response, std::move(f));
+}
+
+void messageReceiver::Stub::experimental_async::syncClientInfo(::grpc::ClientContext* context, const ::proto::messageReceiver::SyncClientInfoRequest* request, ::proto::messageReceiver::SyncClientInfoResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
+  ::grpc_impl::internal::ClientCallbackUnaryFactory::Create(stub_->channel_.get(), stub_->rpcmethod_syncClientInfo_, context, request, response, reactor);
+}
+
+void messageReceiver::Stub::experimental_async::syncClientInfo(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::proto::messageReceiver::SyncClientInfoResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
+  ::grpc_impl::internal::ClientCallbackUnaryFactory::Create(stub_->channel_.get(), stub_->rpcmethod_syncClientInfo_, context, request, response, reactor);
+}
+
+::grpc::ClientAsyncResponseReader< ::proto::messageReceiver::SyncClientInfoResponse>* messageReceiver::Stub::AsyncsyncClientInfoRaw(::grpc::ClientContext* context, const ::proto::messageReceiver::SyncClientInfoRequest& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc_impl::internal::ClientAsyncResponseReaderFactory< ::proto::messageReceiver::SyncClientInfoResponse>::Create(channel_.get(), cq, rpcmethod_syncClientInfo_, context, request, true);
+}
+
+::grpc::ClientAsyncResponseReader< ::proto::messageReceiver::SyncClientInfoResponse>* messageReceiver::Stub::PrepareAsyncsyncClientInfoRaw(::grpc::ClientContext* context, const ::proto::messageReceiver::SyncClientInfoRequest& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc_impl::internal::ClientAsyncResponseReaderFactory< ::proto::messageReceiver::SyncClientInfoResponse>::Create(channel_.get(), cq, rpcmethod_syncClientInfo_, context, request, false);
+}
+
 messageReceiver::Service::Service() {
   AddMethod(new ::grpc::internal::RpcServiceMethod(
       messageReceiver_method_names[0],
@@ -140,6 +200,16 @@ messageReceiver::Service::Service() {
       ::grpc::internal::RpcMethod::NORMAL_RPC,
       new ::grpc::internal::RpcMethodHandler< messageReceiver::Service, ::proto::messageReceiver::LogoutRequest, ::proto::messageReceiver::LogoutResponse>(
           std::mem_fn(&messageReceiver::Service::logout), this)));
+  AddMethod(new ::grpc::internal::RpcServiceMethod(
+      messageReceiver_method_names[3],
+      ::grpc::internal::RpcMethod::NORMAL_RPC,
+      new ::grpc::internal::RpcMethodHandler< messageReceiver::Service, ::proto::messageReceiver::NoticeClientLogoutRequest, ::proto::messageReceiver::NoticeClientLogoutResponse>(
+          std::mem_fn(&messageReceiver::Service::noticeClientLogout), this)));
+  AddMethod(new ::grpc::internal::RpcServiceMethod(
+      messageReceiver_method_names[4],
+      ::grpc::internal::RpcMethod::NORMAL_RPC,
+      new ::grpc::internal::RpcMethodHandler< messageReceiver::Service, ::proto::messageReceiver::SyncClientInfoRequest, ::proto::messageReceiver::SyncClientInfoResponse>(
+          std::mem_fn(&messageReceiver::Service::syncClientInfo), this)));
 }
 
 messageReceiver::Service::~Service() {
@@ -160,6 +230,20 @@ messageReceiver::Service::~Service() {
 }
 
 ::grpc::Status messageReceiver::Service::logout(::grpc::ServerContext* context, const ::proto::messageReceiver::LogoutRequest* request, ::proto::messageReceiver::LogoutResponse* response) {
+  (void) context;
+  (void) request;
+  (void) response;
+  return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+}
+
+::grpc::Status messageReceiver::Service::noticeClientLogout(::grpc::ServerContext* context, const ::proto::messageReceiver::NoticeClientLogoutRequest* request, ::proto::messageReceiver::NoticeClientLogoutResponse* response) {
+  (void) context;
+  (void) request;
+  (void) response;
+  return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+}
+
+::grpc::Status messageReceiver::Service::syncClientInfo(::grpc::ServerContext* context, const ::proto::messageReceiver::SyncClientInfoRequest* request, ::proto::messageReceiver::SyncClientInfoResponse* response) {
   (void) context;
   (void) request;
   (void) response;

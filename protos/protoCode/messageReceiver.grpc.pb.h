@@ -61,6 +61,21 @@ class messageReceiver final {
     std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::proto::messageReceiver::LogoutResponse>> PrepareAsynclogout(::grpc::ClientContext* context, const ::proto::messageReceiver::LogoutRequest& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::proto::messageReceiver::LogoutResponse>>(PrepareAsynclogoutRaw(context, request, cq));
     }
+    virtual ::grpc::Status noticeClientLogout(::grpc::ClientContext* context, const ::proto::messageReceiver::NoticeClientLogoutRequest& request, ::proto::messageReceiver::NoticeClientLogoutResponse* response) = 0;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::proto::messageReceiver::NoticeClientLogoutResponse>> AsyncnoticeClientLogout(::grpc::ClientContext* context, const ::proto::messageReceiver::NoticeClientLogoutRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::proto::messageReceiver::NoticeClientLogoutResponse>>(AsyncnoticeClientLogoutRaw(context, request, cq));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::proto::messageReceiver::NoticeClientLogoutResponse>> PrepareAsyncnoticeClientLogout(::grpc::ClientContext* context, const ::proto::messageReceiver::NoticeClientLogoutRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::proto::messageReceiver::NoticeClientLogoutResponse>>(PrepareAsyncnoticeClientLogoutRaw(context, request, cq));
+    }
+    // syncClientInfo
+    virtual ::grpc::Status syncClientInfo(::grpc::ClientContext* context, const ::proto::messageReceiver::SyncClientInfoRequest& request, ::proto::messageReceiver::SyncClientInfoResponse* response) = 0;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::proto::messageReceiver::SyncClientInfoResponse>> AsyncsyncClientInfo(::grpc::ClientContext* context, const ::proto::messageReceiver::SyncClientInfoRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::proto::messageReceiver::SyncClientInfoResponse>>(AsyncsyncClientInfoRaw(context, request, cq));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::proto::messageReceiver::SyncClientInfoResponse>> PrepareAsyncsyncClientInfo(::grpc::ClientContext* context, const ::proto::messageReceiver::SyncClientInfoRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::proto::messageReceiver::SyncClientInfoResponse>>(PrepareAsyncsyncClientInfoRaw(context, request, cq));
+    }
     class experimental_async_interface {
      public:
       virtual ~experimental_async_interface() {}
@@ -103,6 +118,31 @@ class messageReceiver final {
       #else
       virtual void logout(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::proto::messageReceiver::LogoutResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
       #endif
+      virtual void noticeClientLogout(::grpc::ClientContext* context, const ::proto::messageReceiver::NoticeClientLogoutRequest* request, ::proto::messageReceiver::NoticeClientLogoutResponse* response, std::function<void(::grpc::Status)>) = 0;
+      virtual void noticeClientLogout(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::proto::messageReceiver::NoticeClientLogoutResponse* response, std::function<void(::grpc::Status)>) = 0;
+      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+      virtual void noticeClientLogout(::grpc::ClientContext* context, const ::proto::messageReceiver::NoticeClientLogoutRequest* request, ::proto::messageReceiver::NoticeClientLogoutResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
+      #else
+      virtual void noticeClientLogout(::grpc::ClientContext* context, const ::proto::messageReceiver::NoticeClientLogoutRequest* request, ::proto::messageReceiver::NoticeClientLogoutResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
+      #endif
+      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+      virtual void noticeClientLogout(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::proto::messageReceiver::NoticeClientLogoutResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
+      #else
+      virtual void noticeClientLogout(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::proto::messageReceiver::NoticeClientLogoutResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
+      #endif
+      // syncClientInfo
+      virtual void syncClientInfo(::grpc::ClientContext* context, const ::proto::messageReceiver::SyncClientInfoRequest* request, ::proto::messageReceiver::SyncClientInfoResponse* response, std::function<void(::grpc::Status)>) = 0;
+      virtual void syncClientInfo(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::proto::messageReceiver::SyncClientInfoResponse* response, std::function<void(::grpc::Status)>) = 0;
+      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+      virtual void syncClientInfo(::grpc::ClientContext* context, const ::proto::messageReceiver::SyncClientInfoRequest* request, ::proto::messageReceiver::SyncClientInfoResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
+      #else
+      virtual void syncClientInfo(::grpc::ClientContext* context, const ::proto::messageReceiver::SyncClientInfoRequest* request, ::proto::messageReceiver::SyncClientInfoResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
+      #endif
+      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+      virtual void syncClientInfo(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::proto::messageReceiver::SyncClientInfoResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
+      #else
+      virtual void syncClientInfo(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::proto::messageReceiver::SyncClientInfoResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
+      #endif
     };
     #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
     typedef class experimental_async_interface async_interface;
@@ -118,6 +158,10 @@ class messageReceiver final {
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::proto::messageReceiver::LoginResponse>* PrepareAsyncloginRaw(::grpc::ClientContext* context, const ::proto::messageReceiver::LoginRequest& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::proto::messageReceiver::LogoutResponse>* AsynclogoutRaw(::grpc::ClientContext* context, const ::proto::messageReceiver::LogoutRequest& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::proto::messageReceiver::LogoutResponse>* PrepareAsynclogoutRaw(::grpc::ClientContext* context, const ::proto::messageReceiver::LogoutRequest& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::proto::messageReceiver::NoticeClientLogoutResponse>* AsyncnoticeClientLogoutRaw(::grpc::ClientContext* context, const ::proto::messageReceiver::NoticeClientLogoutRequest& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::proto::messageReceiver::NoticeClientLogoutResponse>* PrepareAsyncnoticeClientLogoutRaw(::grpc::ClientContext* context, const ::proto::messageReceiver::NoticeClientLogoutRequest& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::proto::messageReceiver::SyncClientInfoResponse>* AsyncsyncClientInfoRaw(::grpc::ClientContext* context, const ::proto::messageReceiver::SyncClientInfoRequest& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::proto::messageReceiver::SyncClientInfoResponse>* PrepareAsyncsyncClientInfoRaw(::grpc::ClientContext* context, const ::proto::messageReceiver::SyncClientInfoRequest& request, ::grpc::CompletionQueue* cq) = 0;
   };
   class Stub final : public StubInterface {
    public:
@@ -142,6 +186,20 @@ class messageReceiver final {
     }
     std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::proto::messageReceiver::LogoutResponse>> PrepareAsynclogout(::grpc::ClientContext* context, const ::proto::messageReceiver::LogoutRequest& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::proto::messageReceiver::LogoutResponse>>(PrepareAsynclogoutRaw(context, request, cq));
+    }
+    ::grpc::Status noticeClientLogout(::grpc::ClientContext* context, const ::proto::messageReceiver::NoticeClientLogoutRequest& request, ::proto::messageReceiver::NoticeClientLogoutResponse* response) override;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::proto::messageReceiver::NoticeClientLogoutResponse>> AsyncnoticeClientLogout(::grpc::ClientContext* context, const ::proto::messageReceiver::NoticeClientLogoutRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::proto::messageReceiver::NoticeClientLogoutResponse>>(AsyncnoticeClientLogoutRaw(context, request, cq));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::proto::messageReceiver::NoticeClientLogoutResponse>> PrepareAsyncnoticeClientLogout(::grpc::ClientContext* context, const ::proto::messageReceiver::NoticeClientLogoutRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::proto::messageReceiver::NoticeClientLogoutResponse>>(PrepareAsyncnoticeClientLogoutRaw(context, request, cq));
+    }
+    ::grpc::Status syncClientInfo(::grpc::ClientContext* context, const ::proto::messageReceiver::SyncClientInfoRequest& request, ::proto::messageReceiver::SyncClientInfoResponse* response) override;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::proto::messageReceiver::SyncClientInfoResponse>> AsyncsyncClientInfo(::grpc::ClientContext* context, const ::proto::messageReceiver::SyncClientInfoRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::proto::messageReceiver::SyncClientInfoResponse>>(AsyncsyncClientInfoRaw(context, request, cq));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::proto::messageReceiver::SyncClientInfoResponse>> PrepareAsyncsyncClientInfo(::grpc::ClientContext* context, const ::proto::messageReceiver::SyncClientInfoRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::proto::messageReceiver::SyncClientInfoResponse>>(PrepareAsyncsyncClientInfoRaw(context, request, cq));
     }
     class experimental_async final :
       public StubInterface::experimental_async_interface {
@@ -182,6 +240,30 @@ class messageReceiver final {
       #else
       void logout(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::proto::messageReceiver::LogoutResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
       #endif
+      void noticeClientLogout(::grpc::ClientContext* context, const ::proto::messageReceiver::NoticeClientLogoutRequest* request, ::proto::messageReceiver::NoticeClientLogoutResponse* response, std::function<void(::grpc::Status)>) override;
+      void noticeClientLogout(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::proto::messageReceiver::NoticeClientLogoutResponse* response, std::function<void(::grpc::Status)>) override;
+      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+      void noticeClientLogout(::grpc::ClientContext* context, const ::proto::messageReceiver::NoticeClientLogoutRequest* request, ::proto::messageReceiver::NoticeClientLogoutResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
+      #else
+      void noticeClientLogout(::grpc::ClientContext* context, const ::proto::messageReceiver::NoticeClientLogoutRequest* request, ::proto::messageReceiver::NoticeClientLogoutResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
+      #endif
+      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+      void noticeClientLogout(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::proto::messageReceiver::NoticeClientLogoutResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
+      #else
+      void noticeClientLogout(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::proto::messageReceiver::NoticeClientLogoutResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
+      #endif
+      void syncClientInfo(::grpc::ClientContext* context, const ::proto::messageReceiver::SyncClientInfoRequest* request, ::proto::messageReceiver::SyncClientInfoResponse* response, std::function<void(::grpc::Status)>) override;
+      void syncClientInfo(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::proto::messageReceiver::SyncClientInfoResponse* response, std::function<void(::grpc::Status)>) override;
+      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+      void syncClientInfo(::grpc::ClientContext* context, const ::proto::messageReceiver::SyncClientInfoRequest* request, ::proto::messageReceiver::SyncClientInfoResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
+      #else
+      void syncClientInfo(::grpc::ClientContext* context, const ::proto::messageReceiver::SyncClientInfoRequest* request, ::proto::messageReceiver::SyncClientInfoResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
+      #endif
+      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+      void syncClientInfo(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::proto::messageReceiver::SyncClientInfoResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
+      #else
+      void syncClientInfo(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::proto::messageReceiver::SyncClientInfoResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
+      #endif
      private:
       friend class Stub;
       explicit experimental_async(Stub* stub): stub_(stub) { }
@@ -199,9 +281,15 @@ class messageReceiver final {
     ::grpc::ClientAsyncResponseReader< ::proto::messageReceiver::LoginResponse>* PrepareAsyncloginRaw(::grpc::ClientContext* context, const ::proto::messageReceiver::LoginRequest& request, ::grpc::CompletionQueue* cq) override;
     ::grpc::ClientAsyncResponseReader< ::proto::messageReceiver::LogoutResponse>* AsynclogoutRaw(::grpc::ClientContext* context, const ::proto::messageReceiver::LogoutRequest& request, ::grpc::CompletionQueue* cq) override;
     ::grpc::ClientAsyncResponseReader< ::proto::messageReceiver::LogoutResponse>* PrepareAsynclogoutRaw(::grpc::ClientContext* context, const ::proto::messageReceiver::LogoutRequest& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::proto::messageReceiver::NoticeClientLogoutResponse>* AsyncnoticeClientLogoutRaw(::grpc::ClientContext* context, const ::proto::messageReceiver::NoticeClientLogoutRequest& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::proto::messageReceiver::NoticeClientLogoutResponse>* PrepareAsyncnoticeClientLogoutRaw(::grpc::ClientContext* context, const ::proto::messageReceiver::NoticeClientLogoutRequest& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::proto::messageReceiver::SyncClientInfoResponse>* AsyncsyncClientInfoRaw(::grpc::ClientContext* context, const ::proto::messageReceiver::SyncClientInfoRequest& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::proto::messageReceiver::SyncClientInfoResponse>* PrepareAsyncsyncClientInfoRaw(::grpc::ClientContext* context, const ::proto::messageReceiver::SyncClientInfoRequest& request, ::grpc::CompletionQueue* cq) override;
     const ::grpc::internal::RpcMethod rpcmethod_regist_;
     const ::grpc::internal::RpcMethod rpcmethod_login_;
     const ::grpc::internal::RpcMethod rpcmethod_logout_;
+    const ::grpc::internal::RpcMethod rpcmethod_noticeClientLogout_;
+    const ::grpc::internal::RpcMethod rpcmethod_syncClientInfo_;
   };
   static std::unique_ptr<Stub> NewStub(const std::shared_ptr< ::grpc::ChannelInterface>& channel, const ::grpc::StubOptions& options = ::grpc::StubOptions());
 
@@ -215,6 +303,9 @@ class messageReceiver final {
     virtual ::grpc::Status login(::grpc::ServerContext* context, const ::proto::messageReceiver::LoginRequest* request, ::proto::messageReceiver::LoginResponse* response);
     // logout
     virtual ::grpc::Status logout(::grpc::ServerContext* context, const ::proto::messageReceiver::LogoutRequest* request, ::proto::messageReceiver::LogoutResponse* response);
+    virtual ::grpc::Status noticeClientLogout(::grpc::ServerContext* context, const ::proto::messageReceiver::NoticeClientLogoutRequest* request, ::proto::messageReceiver::NoticeClientLogoutResponse* response);
+    // syncClientInfo
+    virtual ::grpc::Status syncClientInfo(::grpc::ServerContext* context, const ::proto::messageReceiver::SyncClientInfoRequest* request, ::proto::messageReceiver::SyncClientInfoResponse* response);
   };
   template <class BaseClass>
   class WithAsyncMethod_regist : public BaseClass {
@@ -276,7 +367,47 @@ class messageReceiver final {
       ::grpc::Service::RequestAsyncUnary(2, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
-  typedef WithAsyncMethod_regist<WithAsyncMethod_login<WithAsyncMethod_logout<Service > > > AsyncService;
+  template <class BaseClass>
+  class WithAsyncMethod_noticeClientLogout : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithAsyncMethod_noticeClientLogout() {
+      ::grpc::Service::MarkMethodAsync(3);
+    }
+    ~WithAsyncMethod_noticeClientLogout() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status noticeClientLogout(::grpc::ServerContext* /*context*/, const ::proto::messageReceiver::NoticeClientLogoutRequest* /*request*/, ::proto::messageReceiver::NoticeClientLogoutResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestnoticeClientLogout(::grpc::ServerContext* context, ::proto::messageReceiver::NoticeClientLogoutRequest* request, ::grpc::ServerAsyncResponseWriter< ::proto::messageReceiver::NoticeClientLogoutResponse>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(3, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
+  class WithAsyncMethod_syncClientInfo : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithAsyncMethod_syncClientInfo() {
+      ::grpc::Service::MarkMethodAsync(4);
+    }
+    ~WithAsyncMethod_syncClientInfo() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status syncClientInfo(::grpc::ServerContext* /*context*/, const ::proto::messageReceiver::SyncClientInfoRequest* /*request*/, ::proto::messageReceiver::SyncClientInfoResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestsyncClientInfo(::grpc::ServerContext* context, ::proto::messageReceiver::SyncClientInfoRequest* request, ::grpc::ServerAsyncResponseWriter< ::proto::messageReceiver::SyncClientInfoResponse>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(4, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  typedef WithAsyncMethod_regist<WithAsyncMethod_login<WithAsyncMethod_logout<WithAsyncMethod_noticeClientLogout<WithAsyncMethod_syncClientInfo<Service > > > > > AsyncService;
   template <class BaseClass>
   class ExperimentalWithCallbackMethod_regist : public BaseClass {
    private:
@@ -418,11 +549,105 @@ class messageReceiver final {
     #endif
       { return nullptr; }
   };
+  template <class BaseClass>
+  class ExperimentalWithCallbackMethod_noticeClientLogout : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    ExperimentalWithCallbackMethod_noticeClientLogout() {
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+      ::grpc::Service::
+    #else
+      ::grpc::Service::experimental().
+    #endif
+        MarkMethodCallback(3,
+          new ::grpc_impl::internal::CallbackUnaryHandler< ::proto::messageReceiver::NoticeClientLogoutRequest, ::proto::messageReceiver::NoticeClientLogoutResponse>(
+            [this](
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+                   ::grpc::CallbackServerContext*
+    #else
+                   ::grpc::experimental::CallbackServerContext*
+    #endif
+                     context, const ::proto::messageReceiver::NoticeClientLogoutRequest* request, ::proto::messageReceiver::NoticeClientLogoutResponse* response) { return this->noticeClientLogout(context, request, response); }));}
+    void SetMessageAllocatorFor_noticeClientLogout(
+        ::grpc::experimental::MessageAllocator< ::proto::messageReceiver::NoticeClientLogoutRequest, ::proto::messageReceiver::NoticeClientLogoutResponse>* allocator) {
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(3);
+    #else
+      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::experimental().GetHandler(3);
+    #endif
+      static_cast<::grpc_impl::internal::CallbackUnaryHandler< ::proto::messageReceiver::NoticeClientLogoutRequest, ::proto::messageReceiver::NoticeClientLogoutResponse>*>(handler)
+              ->SetMessageAllocator(allocator);
+    }
+    ~ExperimentalWithCallbackMethod_noticeClientLogout() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status noticeClientLogout(::grpc::ServerContext* /*context*/, const ::proto::messageReceiver::NoticeClientLogoutRequest* /*request*/, ::proto::messageReceiver::NoticeClientLogoutResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+    virtual ::grpc::ServerUnaryReactor* noticeClientLogout(
+      ::grpc::CallbackServerContext* /*context*/, const ::proto::messageReceiver::NoticeClientLogoutRequest* /*request*/, ::proto::messageReceiver::NoticeClientLogoutResponse* /*response*/)
+    #else
+    virtual ::grpc::experimental::ServerUnaryReactor* noticeClientLogout(
+      ::grpc::experimental::CallbackServerContext* /*context*/, const ::proto::messageReceiver::NoticeClientLogoutRequest* /*request*/, ::proto::messageReceiver::NoticeClientLogoutResponse* /*response*/)
+    #endif
+      { return nullptr; }
+  };
+  template <class BaseClass>
+  class ExperimentalWithCallbackMethod_syncClientInfo : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    ExperimentalWithCallbackMethod_syncClientInfo() {
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+      ::grpc::Service::
+    #else
+      ::grpc::Service::experimental().
+    #endif
+        MarkMethodCallback(4,
+          new ::grpc_impl::internal::CallbackUnaryHandler< ::proto::messageReceiver::SyncClientInfoRequest, ::proto::messageReceiver::SyncClientInfoResponse>(
+            [this](
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+                   ::grpc::CallbackServerContext*
+    #else
+                   ::grpc::experimental::CallbackServerContext*
+    #endif
+                     context, const ::proto::messageReceiver::SyncClientInfoRequest* request, ::proto::messageReceiver::SyncClientInfoResponse* response) { return this->syncClientInfo(context, request, response); }));}
+    void SetMessageAllocatorFor_syncClientInfo(
+        ::grpc::experimental::MessageAllocator< ::proto::messageReceiver::SyncClientInfoRequest, ::proto::messageReceiver::SyncClientInfoResponse>* allocator) {
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(4);
+    #else
+      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::experimental().GetHandler(4);
+    #endif
+      static_cast<::grpc_impl::internal::CallbackUnaryHandler< ::proto::messageReceiver::SyncClientInfoRequest, ::proto::messageReceiver::SyncClientInfoResponse>*>(handler)
+              ->SetMessageAllocator(allocator);
+    }
+    ~ExperimentalWithCallbackMethod_syncClientInfo() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status syncClientInfo(::grpc::ServerContext* /*context*/, const ::proto::messageReceiver::SyncClientInfoRequest* /*request*/, ::proto::messageReceiver::SyncClientInfoResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+    virtual ::grpc::ServerUnaryReactor* syncClientInfo(
+      ::grpc::CallbackServerContext* /*context*/, const ::proto::messageReceiver::SyncClientInfoRequest* /*request*/, ::proto::messageReceiver::SyncClientInfoResponse* /*response*/)
+    #else
+    virtual ::grpc::experimental::ServerUnaryReactor* syncClientInfo(
+      ::grpc::experimental::CallbackServerContext* /*context*/, const ::proto::messageReceiver::SyncClientInfoRequest* /*request*/, ::proto::messageReceiver::SyncClientInfoResponse* /*response*/)
+    #endif
+      { return nullptr; }
+  };
   #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-  typedef ExperimentalWithCallbackMethod_regist<ExperimentalWithCallbackMethod_login<ExperimentalWithCallbackMethod_logout<Service > > > CallbackService;
+  typedef ExperimentalWithCallbackMethod_regist<ExperimentalWithCallbackMethod_login<ExperimentalWithCallbackMethod_logout<ExperimentalWithCallbackMethod_noticeClientLogout<ExperimentalWithCallbackMethod_syncClientInfo<Service > > > > > CallbackService;
   #endif
 
-  typedef ExperimentalWithCallbackMethod_regist<ExperimentalWithCallbackMethod_login<ExperimentalWithCallbackMethod_logout<Service > > > ExperimentalCallbackService;
+  typedef ExperimentalWithCallbackMethod_regist<ExperimentalWithCallbackMethod_login<ExperimentalWithCallbackMethod_logout<ExperimentalWithCallbackMethod_noticeClientLogout<ExperimentalWithCallbackMethod_syncClientInfo<Service > > > > > ExperimentalCallbackService;
   template <class BaseClass>
   class WithGenericMethod_regist : public BaseClass {
    private:
@@ -470,6 +695,40 @@ class messageReceiver final {
     }
     // disable synchronous version of this method
     ::grpc::Status logout(::grpc::ServerContext* /*context*/, const ::proto::messageReceiver::LogoutRequest* /*request*/, ::proto::messageReceiver::LogoutResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+  };
+  template <class BaseClass>
+  class WithGenericMethod_noticeClientLogout : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithGenericMethod_noticeClientLogout() {
+      ::grpc::Service::MarkMethodGeneric(3);
+    }
+    ~WithGenericMethod_noticeClientLogout() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status noticeClientLogout(::grpc::ServerContext* /*context*/, const ::proto::messageReceiver::NoticeClientLogoutRequest* /*request*/, ::proto::messageReceiver::NoticeClientLogoutResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+  };
+  template <class BaseClass>
+  class WithGenericMethod_syncClientInfo : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithGenericMethod_syncClientInfo() {
+      ::grpc::Service::MarkMethodGeneric(4);
+    }
+    ~WithGenericMethod_syncClientInfo() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status syncClientInfo(::grpc::ServerContext* /*context*/, const ::proto::messageReceiver::SyncClientInfoRequest* /*request*/, ::proto::messageReceiver::SyncClientInfoResponse* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
@@ -532,6 +791,46 @@ class messageReceiver final {
     }
     void Requestlogout(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
       ::grpc::Service::RequestAsyncUnary(2, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
+  class WithRawMethod_noticeClientLogout : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithRawMethod_noticeClientLogout() {
+      ::grpc::Service::MarkMethodRaw(3);
+    }
+    ~WithRawMethod_noticeClientLogout() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status noticeClientLogout(::grpc::ServerContext* /*context*/, const ::proto::messageReceiver::NoticeClientLogoutRequest* /*request*/, ::proto::messageReceiver::NoticeClientLogoutResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestnoticeClientLogout(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(3, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
+  class WithRawMethod_syncClientInfo : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithRawMethod_syncClientInfo() {
+      ::grpc::Service::MarkMethodRaw(4);
+    }
+    ~WithRawMethod_syncClientInfo() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status syncClientInfo(::grpc::ServerContext* /*context*/, const ::proto::messageReceiver::SyncClientInfoRequest* /*request*/, ::proto::messageReceiver::SyncClientInfoResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestsyncClientInfo(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(4, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -649,6 +948,82 @@ class messageReceiver final {
       { return nullptr; }
   };
   template <class BaseClass>
+  class ExperimentalWithRawCallbackMethod_noticeClientLogout : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    ExperimentalWithRawCallbackMethod_noticeClientLogout() {
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+      ::grpc::Service::
+    #else
+      ::grpc::Service::experimental().
+    #endif
+        MarkMethodRawCallback(3,
+          new ::grpc_impl::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
+            [this](
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+                   ::grpc::CallbackServerContext*
+    #else
+                   ::grpc::experimental::CallbackServerContext*
+    #endif
+                     context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->noticeClientLogout(context, request, response); }));
+    }
+    ~ExperimentalWithRawCallbackMethod_noticeClientLogout() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status noticeClientLogout(::grpc::ServerContext* /*context*/, const ::proto::messageReceiver::NoticeClientLogoutRequest* /*request*/, ::proto::messageReceiver::NoticeClientLogoutResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+    virtual ::grpc::ServerUnaryReactor* noticeClientLogout(
+      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
+    #else
+    virtual ::grpc::experimental::ServerUnaryReactor* noticeClientLogout(
+      ::grpc::experimental::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
+    #endif
+      { return nullptr; }
+  };
+  template <class BaseClass>
+  class ExperimentalWithRawCallbackMethod_syncClientInfo : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    ExperimentalWithRawCallbackMethod_syncClientInfo() {
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+      ::grpc::Service::
+    #else
+      ::grpc::Service::experimental().
+    #endif
+        MarkMethodRawCallback(4,
+          new ::grpc_impl::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
+            [this](
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+                   ::grpc::CallbackServerContext*
+    #else
+                   ::grpc::experimental::CallbackServerContext*
+    #endif
+                     context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->syncClientInfo(context, request, response); }));
+    }
+    ~ExperimentalWithRawCallbackMethod_syncClientInfo() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status syncClientInfo(::grpc::ServerContext* /*context*/, const ::proto::messageReceiver::SyncClientInfoRequest* /*request*/, ::proto::messageReceiver::SyncClientInfoResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+    virtual ::grpc::ServerUnaryReactor* syncClientInfo(
+      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
+    #else
+    virtual ::grpc::experimental::ServerUnaryReactor* syncClientInfo(
+      ::grpc::experimental::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
+    #endif
+      { return nullptr; }
+  };
+  template <class BaseClass>
   class WithStreamedUnaryMethod_regist : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
@@ -708,9 +1083,49 @@ class messageReceiver final {
     // replace default version of method with streamed unary
     virtual ::grpc::Status Streamedlogout(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::proto::messageReceiver::LogoutRequest,::proto::messageReceiver::LogoutResponse>* server_unary_streamer) = 0;
   };
-  typedef WithStreamedUnaryMethod_regist<WithStreamedUnaryMethod_login<WithStreamedUnaryMethod_logout<Service > > > StreamedUnaryService;
+  template <class BaseClass>
+  class WithStreamedUnaryMethod_noticeClientLogout : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithStreamedUnaryMethod_noticeClientLogout() {
+      ::grpc::Service::MarkMethodStreamed(3,
+        new ::grpc::internal::StreamedUnaryHandler< ::proto::messageReceiver::NoticeClientLogoutRequest, ::proto::messageReceiver::NoticeClientLogoutResponse>(std::bind(&WithStreamedUnaryMethod_noticeClientLogout<BaseClass>::StreamednoticeClientLogout, this, std::placeholders::_1, std::placeholders::_2)));
+    }
+    ~WithStreamedUnaryMethod_noticeClientLogout() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable regular version of this method
+    ::grpc::Status noticeClientLogout(::grpc::ServerContext* /*context*/, const ::proto::messageReceiver::NoticeClientLogoutRequest* /*request*/, ::proto::messageReceiver::NoticeClientLogoutResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    // replace default version of method with streamed unary
+    virtual ::grpc::Status StreamednoticeClientLogout(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::proto::messageReceiver::NoticeClientLogoutRequest,::proto::messageReceiver::NoticeClientLogoutResponse>* server_unary_streamer) = 0;
+  };
+  template <class BaseClass>
+  class WithStreamedUnaryMethod_syncClientInfo : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithStreamedUnaryMethod_syncClientInfo() {
+      ::grpc::Service::MarkMethodStreamed(4,
+        new ::grpc::internal::StreamedUnaryHandler< ::proto::messageReceiver::SyncClientInfoRequest, ::proto::messageReceiver::SyncClientInfoResponse>(std::bind(&WithStreamedUnaryMethod_syncClientInfo<BaseClass>::StreamedsyncClientInfo, this, std::placeholders::_1, std::placeholders::_2)));
+    }
+    ~WithStreamedUnaryMethod_syncClientInfo() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable regular version of this method
+    ::grpc::Status syncClientInfo(::grpc::ServerContext* /*context*/, const ::proto::messageReceiver::SyncClientInfoRequest* /*request*/, ::proto::messageReceiver::SyncClientInfoResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    // replace default version of method with streamed unary
+    virtual ::grpc::Status StreamedsyncClientInfo(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::proto::messageReceiver::SyncClientInfoRequest,::proto::messageReceiver::SyncClientInfoResponse>* server_unary_streamer) = 0;
+  };
+  typedef WithStreamedUnaryMethod_regist<WithStreamedUnaryMethod_login<WithStreamedUnaryMethod_logout<WithStreamedUnaryMethod_noticeClientLogout<WithStreamedUnaryMethod_syncClientInfo<Service > > > > > StreamedUnaryService;
   typedef Service SplitStreamedService;
-  typedef WithStreamedUnaryMethod_regist<WithStreamedUnaryMethod_login<WithStreamedUnaryMethod_logout<Service > > > StreamedService;
+  typedef WithStreamedUnaryMethod_regist<WithStreamedUnaryMethod_login<WithStreamedUnaryMethod_logout<WithStreamedUnaryMethod_noticeClientLogout<WithStreamedUnaryMethod_syncClientInfo<Service > > > > > StreamedService;
 };
 
 }  // namespace messageReceiver

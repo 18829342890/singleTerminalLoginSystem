@@ -3,6 +3,18 @@
 #include "logrecord.h"
 #include <sstream>
 #include <assert.h>
+#include <grpcpp/grpcpp.h>
+#include "messageReceiver.pb.h"
+#include "messageReceiver.grpc.pb.h"
+
+using grpc::Channel;
+using grpc::ChannelArguments;
+using grpc::ClientContext;
+using grpc::Status;
+using grpc::ServerContext;
+using proto::messageReceiver::messageReceiver;
+using proto::messageReceiver::NoticeClientLogoutRequest;
+using proto::messageReceiver::NoticeClientLogoutResponse;
 
 
 Loginer::Loginer(SqlApi& sqlApi) 
@@ -12,10 +24,9 @@ Loginer::Loginer(SqlApi& sqlApi)
 Loginer::~Loginer()
 {}
 
-int Loginer::processLogin(const string& userName, const string& passWord, int sendToClientFd, int& logoutFd, int& code, string& msg)
+int Loginer::processLogin(const string& userName, const string& passWord, int& code, string& msg)
 {
 	//判断用户名和密码是否有效
-	logoutFd = -1;
 	bool isValid = false;
 	int ret = isValidUserNameAndPassWord(userName, passWord, isValid);
 	if(ret < 0)
@@ -35,12 +46,14 @@ int Loginer::processLogin(const string& userName, const string& passWord, int se
 	}
 
 	//判断是否已为登录状态
-	if( !isAlreadyLogined(userName) )
+	bool isAlreadyLogined = false;
+	ret = getIsAlreadyLogined(userName, isAlreadyLogined);
+	if(!isAlreadyLogined)
 	{
 		//登录
-		if(login(userName, passWord, sendToClientFd) != 0)
+		if(login(userName, passWord) != 0)
 		{
-			LOG_ERROR("login failed! userName:%s, passWord:%s, sendToClientFd:%d", userName.c_str(), passWord.c_str(), sendToClientFd);
+			LOG_ERROR("login failed! userName:%s, passWord:%s", userName.c_str(), passWord.c_str());
 			code = DB_OP_FAILED;
 			msg = "system error: insert data into DB failed!";
 			return -1;
@@ -50,29 +63,12 @@ int Loginer::processLogin(const string& userName, const string& passWord, int se
 	{
 		//其它已登录设备强制退出，然后登录该设备
 		LOG_INFO("userName already logined! Force other logged in devices to exit, and then log in to the device! userName:%s", userName.c_str());
-
-		//获取已登录设备对应的fd
-		unsigned long long fuiId = 0;
-		int alreadyLoginedClientFd = 0;
-		ret = getAlreadyLoginedClientFd(userName, alreadyLoginedClientFd, fuiId);
+		ret = noticeLoginedClientLogout(userName);
 		if(ret != 0)
 		{
-			LOG_ERROR("getAlreadyLoginedClientFd failed! userName:%s", userName.c_str());
+			LOG_ERROR("noticeLoginedClientLogout failed! userName:%s", userName.c_str());
 			code = SYSTEM_ERROR;
-			msg = "system error: Get already logined client fd failed!";
-			return -1;
-		}
-
-		//通知已登录设备退出登录
-		logoutFd = alreadyLoginedClientFd;
-
-		//设置已登录的记录为退出登录状态
-		ret = setLogoutStatusThenLogin(fuiId, userName, passWord, sendToClientFd);
-		if(ret != 0)
-		{
-			LOG_ERROR("setLogoutStatusThenLogin failed! userName:%s, FuiId:%d", userName.c_str(), fuiId);
-			code = SYSTEM_ERROR;
-			msg = "system error: update DB data failed!";
+			msg = "system error: notice other user logout failed!";
 			return -1;
 		}
 	}
@@ -83,7 +79,7 @@ int Loginer::processLogin(const string& userName, const string& passWord, int se
 	return 0;
 }
 
-int Loginer::processLogout(const string& userName, int& code, string& msg)
+int Loginer::processLogout(const string& userName, int logoutType, int& code, string& msg)
 {
 	std::stringstream ss;
 	ss << "select FuiId from user.t_user_login where FstrUserName = '" << userName << "' and FuiStatus = 1";
@@ -112,6 +108,19 @@ int Loginer::processLogout(const string& userName, int& code, string& msg)
 	}
 
 	//未退出登录，则退出登录
+	if(logoutType == ADMINISTRATOR_KICK_OUT)
+	{
+		//如果是管理员踢出用户，则通知客户端退出登录
+		ret = noticeLoginedClientLogout(userName);
+		if(ret != 0)
+		{
+			code = DB_OP_FAILED;
+			msg = "notice user logout failed!";
+			LOG_ERROR("noticeLoginedClientLogout failed!");
+			return -1;
+		}
+	}
+	
 	assert(mysqlResult.fieldsCount == 1);
 	int fuiId = strtoull(mysqlResult.mysqlRowVec[0][0], NULL, 0);
 
@@ -160,7 +169,7 @@ int Loginer::isValidUserNameAndPassWord(const string& userName, const string& pa
 	return 0;
 }
 
-bool Loginer::isAlreadyLogined(const string& userName)
+int Loginer::getIsAlreadyLogined(const string& userName, bool& isAlreadyLogined)
 {
 	std::stringstream ss;
 	ss << "select count(1) from user.t_user_login where FstrUserName = '" << userName << "' and FuiStatus = 1";
@@ -183,14 +192,17 @@ bool Loginer::isAlreadyLogined(const string& userName)
 	int count = strtoul(mysqlResult.mysqlRowVec[0][0], NULL, 0);
 	LOG_INFO("userName:%s, status =1 count:%d", userName.c_str(), count);
 
-	return count == 0 ? false : true;
+	isAlreadyLogined = count == 0 ? false : true;
+	return 0;
 }
 
-int Loginer::login(const string& userName, const string& passWord, int sendToClientFd)
+int Loginer::login(const string& userName, const string& passWord)
 {
 	std::stringstream ss;
-	ss << "insert into user.t_user_login (FstrUserName,FstrPassWord,FuiFd,FuiStatus,FuiCreateTime) values ('" 
-	   << userName << "', '" << passWord << "', " << sendToClientFd << ", 1, " << time(NULL) << ")";
+	ss << "insert into user.t_user_login (FstrUserName,FstrPassWord,FuiStatus,FuiCreateTime) values ('" 
+	   << userName << "', '" << passWord << "', 1, " << time(NULL) 
+	   << ") ON DUPLICATE KEY UPDATE FstrUserName = '" 
+	   << userName << "', FstrPassWord = '" << passWord << "', FuiStatus = 1";
 
 	if(_sqlApi.insert(ss.str()) != 0)
 	{
@@ -202,10 +214,10 @@ int Loginer::login(const string& userName, const string& passWord, int sendToCli
 }
 
 
-int Loginer::getAlreadyLoginedClientFd(const string& userName, int& sendToClientFd, unsigned long long& fuiId)
+int Loginer::getAlreadyLoginedClientInfo(const string& userName, string& ip, int& port)
 {
 	std::stringstream ss;
-	ss << "select FuiId,FuiFd from user.t_user_login where FstrUserName = '" << userName << "' and FuiStatus = 1";
+	ss << "select FstrIp,FuiPort from user.t_user_login where FstrUserName = '" << userName << "' and FuiStatus = 1";
 
 	//select
 	int ret = _sqlApi.select(ss.str());
@@ -222,44 +234,62 @@ int Loginer::getAlreadyLoginedClientFd(const string& userName, int& sendToClient
 	//获取fd
 	assert(mysqlResult.rowsCount == 1);
 	assert(mysqlResult.fieldsCount == 2);
-	int id = strtoull(mysqlResult.mysqlRowVec[0][0], NULL, 0);
-	int fd = strtoul(mysqlResult.mysqlRowVec[0][1], NULL, 0);
-	fuiId = id;
-	sendToClientFd = fd;
+	ip = mysqlResult.mysqlRowVec[0][0];
+	port = strtoul(mysqlResult.mysqlRowVec[0][1], NULL, 0);
 
-	LOG_INFO("userName:%s, FuiId:%d, send to client fd:%d", userName.c_str(), fuiId, fd);
+	LOG_INFO("userName:%s already logined, FstrIp:%s, port:%d", userName.c_str(), ip.c_str(), port);
 	return 0;
 }
 
-int Loginer::noticeLogout(int fd)
+int Loginer::noticeLoginedClientLogout(const string& userName)
 {
-	const char* message = "logout";
-	int ret = write(fd, message, strlen(message));
-	if(ret < 0)
-	{
-		LOG_ERROR("write failed! errno:%d, errmsg:%s", errno, strerror(errno));
-		return -1;
-	}
-
-	//TODO 等待响应
-	LOG_INFO("notice %d logout success!", fd);
-	return 0;
-}
-
-int Loginer::setLogoutStatusThenLogin(unsigned long long fuiId, const string& userName, const string& passWord, int sendToClientFd)
-{
-	//TODO  事务
-	std::stringstream ss;
-	ss << "update user.t_user_login set FuiStatus = 2 where FuiId = " << fuiId;
-
-	int ret = _sqlApi.update(ss.str());
+	//获取已登录设备的信息
+	int clientPort;
+	string clientIp;
+	int ret = getAlreadyLoginedClientInfo(userName, clientIp, clientPort);
 	if(ret != 0)
 	{
-		LOG_ERROR("update failed! update string:%s", ss.str().c_str());
+		LOG_ERROR("getAlreadyLoginedClientInfo failed! userName:%s", userName.c_str());
 		return -1;
 	}
 
-	return login(userName, passWord, sendToClientFd);
+	//通知退出登录
+	noticeLogout(clientIp, clientPort);
+	return 0;
+}
+
+int Loginer::noticeLogout(const string& clientIp, int clientPort)
+{
+	std::stringstream address;
+	address << clientIp << ":" << clientPort;
+
+	ChannelArguments channelArgs;
+	channelArgs.SetCompressionAlgorithm(GRPC_COMPRESS_GZIP);
+	std::shared_ptr<Channel> channel = grpc::CreateCustomChannel(address.str().c_str(), grpc::InsecureChannelCredentials(), channelArgs);
+	std::shared_ptr<messageReceiver::Stub> stub = messageReceiver::NewStub(channel);
+	if(!stub)
+	{
+		printf("connect to client failed! address:%s", address.str().c_str());
+		return -1;
+	}
+
+	NoticeClientLogoutRequest noticeClientLogoutRequest;
+	noticeClientLogoutRequest.set_message("该账号在另一台设备登录，退出当前登录!");
+
+	ClientContext context;
+	NoticeClientLogoutResponse noticeClientLogoutResponse;
+	context.set_compression_algorithm(GRPC_COMPRESS_DEFLATE);
+	Status status = stub->noticeClientLogout(&context, noticeClientLogoutRequest, &noticeClientLogoutResponse);
+	if(status.ok())
+	{
+		LOG_INFO("notice another client logout success.");
+		return 0;
+	}
+	else
+	{
+		LOG_ERROR("notice another client logout failed!");
+		return -1;
+	}
 }
 
 

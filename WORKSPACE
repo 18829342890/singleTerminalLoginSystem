@@ -1,6 +1,7 @@
 workspace(name = "com_github_cgrushko_proto_library")
 
 load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
+load("@bazel_tools//tools/build_defs/repo:git.bzl", "git_repository")
 
 # rules_cc defines rules for generating C++ code from Protocol Buffers.
 http_archive(
@@ -56,3 +57,65 @@ rules_java_toolchains()
 load("@rules_proto//proto:repositories.bzl", "rules_proto_dependencies", "rules_proto_toolchains")
 rules_proto_dependencies()
 rules_proto_toolchains()
+
+
+
+
+
+
+
+
+
+
+http_archive(
+    name = "build_stack_rules_proto",
+    urls = ["https://github.com/stackb/rules_proto/archive/4c2226458203a9653ae722245cc27e8b07c383f7.tar.gz"],
+    strip_prefix = "rules_proto-4c2226458203a9653ae722245cc27e8b07c383f7",
+)
+
+# CPP deps for proto compilation
+load("@build_stack_rules_proto//cpp:deps.bzl", "cpp_grpc_library")
+cpp_grpc_library()
+
+
+git_repository(
+        name = "com_github_grpc_grpc",
+        remote = "https://github.com/grpc/grpc",
+        commit = "bd0aa9a600a13cc988c6ebfd12deab8d1abcf171",
+)
+
+load("@com_github_grpc_grpc//bazel:grpc_deps.bzl", "grpc_deps")
+grpc_deps()
+
+
+
+
+
+
+
+local_repository(
+    name = "my_grpcpp_path",
+    path = "/usr/local/include/grpcpp",
+)
+
+
+new_local_repository(
+    name = "my_grpcpp",
+    path = "/usr/local/include/",
+    build_file = "BUILD.my-grpc",
+)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

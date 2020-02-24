@@ -47,7 +47,7 @@ struct TableStruct_messageReceiver_2eproto {
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
   static const ::PROTOBUF_NAMESPACE_ID::internal::AuxillaryParseTableField aux[]
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
-  static const ::PROTOBUF_NAMESPACE_ID::internal::ParseTable schema[6]
+  static const ::PROTOBUF_NAMESPACE_ID::internal::ParseTable schema[10]
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
   static const ::PROTOBUF_NAMESPACE_ID::internal::FieldMetadata field_metadata[];
   static const ::PROTOBUF_NAMESPACE_ID::internal::SerializationTable serialization_table[];
@@ -68,12 +68,24 @@ extern LogoutRequestDefaultTypeInternal _LogoutRequest_default_instance_;
 class LogoutResponse;
 class LogoutResponseDefaultTypeInternal;
 extern LogoutResponseDefaultTypeInternal _LogoutResponse_default_instance_;
+class NoticeClientLogoutRequest;
+class NoticeClientLogoutRequestDefaultTypeInternal;
+extern NoticeClientLogoutRequestDefaultTypeInternal _NoticeClientLogoutRequest_default_instance_;
+class NoticeClientLogoutResponse;
+class NoticeClientLogoutResponseDefaultTypeInternal;
+extern NoticeClientLogoutResponseDefaultTypeInternal _NoticeClientLogoutResponse_default_instance_;
 class RegistRequest;
 class RegistRequestDefaultTypeInternal;
 extern RegistRequestDefaultTypeInternal _RegistRequest_default_instance_;
 class RegistResponse;
 class RegistResponseDefaultTypeInternal;
 extern RegistResponseDefaultTypeInternal _RegistResponse_default_instance_;
+class SyncClientInfoRequest;
+class SyncClientInfoRequestDefaultTypeInternal;
+extern SyncClientInfoRequestDefaultTypeInternal _SyncClientInfoRequest_default_instance_;
+class SyncClientInfoResponse;
+class SyncClientInfoResponseDefaultTypeInternal;
+extern SyncClientInfoResponseDefaultTypeInternal _SyncClientInfoResponse_default_instance_;
 }  // namespace messageReceiver
 }  // namespace proto
 PROTOBUF_NAMESPACE_OPEN
@@ -81,8 +93,12 @@ template<> ::proto::messageReceiver::LoginRequest* Arena::CreateMaybeMessage<::p
 template<> ::proto::messageReceiver::LoginResponse* Arena::CreateMaybeMessage<::proto::messageReceiver::LoginResponse>(Arena*);
 template<> ::proto::messageReceiver::LogoutRequest* Arena::CreateMaybeMessage<::proto::messageReceiver::LogoutRequest>(Arena*);
 template<> ::proto::messageReceiver::LogoutResponse* Arena::CreateMaybeMessage<::proto::messageReceiver::LogoutResponse>(Arena*);
+template<> ::proto::messageReceiver::NoticeClientLogoutRequest* Arena::CreateMaybeMessage<::proto::messageReceiver::NoticeClientLogoutRequest>(Arena*);
+template<> ::proto::messageReceiver::NoticeClientLogoutResponse* Arena::CreateMaybeMessage<::proto::messageReceiver::NoticeClientLogoutResponse>(Arena*);
 template<> ::proto::messageReceiver::RegistRequest* Arena::CreateMaybeMessage<::proto::messageReceiver::RegistRequest>(Arena*);
 template<> ::proto::messageReceiver::RegistResponse* Arena::CreateMaybeMessage<::proto::messageReceiver::RegistResponse>(Arena*);
+template<> ::proto::messageReceiver::SyncClientInfoRequest* Arena::CreateMaybeMessage<::proto::messageReceiver::SyncClientInfoRequest>(Arena*);
+template<> ::proto::messageReceiver::SyncClientInfoResponse* Arena::CreateMaybeMessage<::proto::messageReceiver::SyncClientInfoResponse>(Arena*);
 PROTOBUF_NAMESPACE_CLOSE
 namespace proto {
 namespace messageReceiver {
@@ -772,6 +788,7 @@ class LogoutRequest :
 
   enum : int {
     kUserNameFieldNumber = 1,
+    kLogoutTypeFieldNumber = 2,
   };
   // string user_name = 1;
   void clear_user_name();
@@ -789,12 +806,22 @@ class LogoutRequest :
   std::string* _internal_mutable_user_name();
   public:
 
+  // int32 logout_type = 2;
+  void clear_logout_type();
+  ::PROTOBUF_NAMESPACE_ID::int32 logout_type() const;
+  void set_logout_type(::PROTOBUF_NAMESPACE_ID::int32 value);
+  private:
+  ::PROTOBUF_NAMESPACE_ID::int32 _internal_logout_type() const;
+  void _internal_set_logout_type(::PROTOBUF_NAMESPACE_ID::int32 value);
+  public:
+
   // @@protoc_insertion_point(class_scope:proto.messageReceiver.LogoutRequest)
  private:
   class _Internal;
 
   ::PROTOBUF_NAMESPACE_ID::internal::InternalMetadataWithArena _internal_metadata_;
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr user_name_;
+  ::PROTOBUF_NAMESPACE_ID::int32 logout_type_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_messageReceiver_2eproto;
 };
@@ -925,6 +952,575 @@ class LogoutResponse :
   public:
 
   // @@protoc_insertion_point(class_scope:proto.messageReceiver.LogoutResponse)
+ private:
+  class _Internal;
+
+  ::PROTOBUF_NAMESPACE_ID::internal::InternalMetadataWithArena _internal_metadata_;
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr message_;
+  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  friend struct ::TableStruct_messageReceiver_2eproto;
+};
+// -------------------------------------------------------------------
+
+class NoticeClientLogoutRequest :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:proto.messageReceiver.NoticeClientLogoutRequest) */ {
+ public:
+  NoticeClientLogoutRequest();
+  virtual ~NoticeClientLogoutRequest();
+
+  NoticeClientLogoutRequest(const NoticeClientLogoutRequest& from);
+  NoticeClientLogoutRequest(NoticeClientLogoutRequest&& from) noexcept
+    : NoticeClientLogoutRequest() {
+    *this = ::std::move(from);
+  }
+
+  inline NoticeClientLogoutRequest& operator=(const NoticeClientLogoutRequest& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline NoticeClientLogoutRequest& operator=(NoticeClientLogoutRequest&& from) noexcept {
+    if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
+      if (this != &from) InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return GetMetadataStatic().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return GetMetadataStatic().reflection;
+  }
+  static const NoticeClientLogoutRequest& default_instance();
+
+  static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
+  static inline const NoticeClientLogoutRequest* internal_default_instance() {
+    return reinterpret_cast<const NoticeClientLogoutRequest*>(
+               &_NoticeClientLogoutRequest_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    6;
+
+  friend void swap(NoticeClientLogoutRequest& a, NoticeClientLogoutRequest& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(NoticeClientLogoutRequest* other) {
+    if (other == this) return;
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  inline NoticeClientLogoutRequest* New() const final {
+    return CreateMaybeMessage<NoticeClientLogoutRequest>(nullptr);
+  }
+
+  NoticeClientLogoutRequest* New(::PROTOBUF_NAMESPACE_ID::Arena* arena) const final {
+    return CreateMaybeMessage<NoticeClientLogoutRequest>(arena);
+  }
+  void CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) final;
+  void MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) final;
+  void CopyFrom(const NoticeClientLogoutRequest& from);
+  void MergeFrom(const NoticeClientLogoutRequest& from);
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  ::PROTOBUF_NAMESPACE_ID::uint8* _InternalSerialize(
+      ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  inline void SharedCtor();
+  inline void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(NoticeClientLogoutRequest* other);
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "proto.messageReceiver.NoticeClientLogoutRequest";
+  }
+  private:
+  inline ::PROTOBUF_NAMESPACE_ID::Arena* GetArenaNoVirtual() const {
+    return nullptr;
+  }
+  inline void* MaybeArenaPtr() const {
+    return nullptr;
+  }
+  public:
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+  private:
+  static ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadataStatic() {
+    ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(&::descriptor_table_messageReceiver_2eproto);
+    return ::descriptor_table_messageReceiver_2eproto.file_level_metadata[kIndexInFileMessages];
+  }
+
+  public:
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kMessageFieldNumber = 1,
+  };
+  // string message = 1;
+  void clear_message();
+  const std::string& message() const;
+  void set_message(const std::string& value);
+  void set_message(std::string&& value);
+  void set_message(const char* value);
+  void set_message(const char* value, size_t size);
+  std::string* mutable_message();
+  std::string* release_message();
+  void set_allocated_message(std::string* message);
+  private:
+  const std::string& _internal_message() const;
+  void _internal_set_message(const std::string& value);
+  std::string* _internal_mutable_message();
+  public:
+
+  // @@protoc_insertion_point(class_scope:proto.messageReceiver.NoticeClientLogoutRequest)
+ private:
+  class _Internal;
+
+  ::PROTOBUF_NAMESPACE_ID::internal::InternalMetadataWithArena _internal_metadata_;
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr message_;
+  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  friend struct ::TableStruct_messageReceiver_2eproto;
+};
+// -------------------------------------------------------------------
+
+class NoticeClientLogoutResponse :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:proto.messageReceiver.NoticeClientLogoutResponse) */ {
+ public:
+  NoticeClientLogoutResponse();
+  virtual ~NoticeClientLogoutResponse();
+
+  NoticeClientLogoutResponse(const NoticeClientLogoutResponse& from);
+  NoticeClientLogoutResponse(NoticeClientLogoutResponse&& from) noexcept
+    : NoticeClientLogoutResponse() {
+    *this = ::std::move(from);
+  }
+
+  inline NoticeClientLogoutResponse& operator=(const NoticeClientLogoutResponse& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline NoticeClientLogoutResponse& operator=(NoticeClientLogoutResponse&& from) noexcept {
+    if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
+      if (this != &from) InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return GetMetadataStatic().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return GetMetadataStatic().reflection;
+  }
+  static const NoticeClientLogoutResponse& default_instance();
+
+  static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
+  static inline const NoticeClientLogoutResponse* internal_default_instance() {
+    return reinterpret_cast<const NoticeClientLogoutResponse*>(
+               &_NoticeClientLogoutResponse_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    7;
+
+  friend void swap(NoticeClientLogoutResponse& a, NoticeClientLogoutResponse& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(NoticeClientLogoutResponse* other) {
+    if (other == this) return;
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  inline NoticeClientLogoutResponse* New() const final {
+    return CreateMaybeMessage<NoticeClientLogoutResponse>(nullptr);
+  }
+
+  NoticeClientLogoutResponse* New(::PROTOBUF_NAMESPACE_ID::Arena* arena) const final {
+    return CreateMaybeMessage<NoticeClientLogoutResponse>(arena);
+  }
+  void CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) final;
+  void MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) final;
+  void CopyFrom(const NoticeClientLogoutResponse& from);
+  void MergeFrom(const NoticeClientLogoutResponse& from);
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  ::PROTOBUF_NAMESPACE_ID::uint8* _InternalSerialize(
+      ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  inline void SharedCtor();
+  inline void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(NoticeClientLogoutResponse* other);
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "proto.messageReceiver.NoticeClientLogoutResponse";
+  }
+  private:
+  inline ::PROTOBUF_NAMESPACE_ID::Arena* GetArenaNoVirtual() const {
+    return nullptr;
+  }
+  inline void* MaybeArenaPtr() const {
+    return nullptr;
+  }
+  public:
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+  private:
+  static ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadataStatic() {
+    ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(&::descriptor_table_messageReceiver_2eproto);
+    return ::descriptor_table_messageReceiver_2eproto.file_level_metadata[kIndexInFileMessages];
+  }
+
+  public:
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kMessageFieldNumber = 1,
+  };
+  // string message = 1;
+  void clear_message();
+  const std::string& message() const;
+  void set_message(const std::string& value);
+  void set_message(std::string&& value);
+  void set_message(const char* value);
+  void set_message(const char* value, size_t size);
+  std::string* mutable_message();
+  std::string* release_message();
+  void set_allocated_message(std::string* message);
+  private:
+  const std::string& _internal_message() const;
+  void _internal_set_message(const std::string& value);
+  std::string* _internal_mutable_message();
+  public:
+
+  // @@protoc_insertion_point(class_scope:proto.messageReceiver.NoticeClientLogoutResponse)
+ private:
+  class _Internal;
+
+  ::PROTOBUF_NAMESPACE_ID::internal::InternalMetadataWithArena _internal_metadata_;
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr message_;
+  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  friend struct ::TableStruct_messageReceiver_2eproto;
+};
+// -------------------------------------------------------------------
+
+class SyncClientInfoRequest :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:proto.messageReceiver.SyncClientInfoRequest) */ {
+ public:
+  SyncClientInfoRequest();
+  virtual ~SyncClientInfoRequest();
+
+  SyncClientInfoRequest(const SyncClientInfoRequest& from);
+  SyncClientInfoRequest(SyncClientInfoRequest&& from) noexcept
+    : SyncClientInfoRequest() {
+    *this = ::std::move(from);
+  }
+
+  inline SyncClientInfoRequest& operator=(const SyncClientInfoRequest& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline SyncClientInfoRequest& operator=(SyncClientInfoRequest&& from) noexcept {
+    if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
+      if (this != &from) InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return GetMetadataStatic().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return GetMetadataStatic().reflection;
+  }
+  static const SyncClientInfoRequest& default_instance();
+
+  static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
+  static inline const SyncClientInfoRequest* internal_default_instance() {
+    return reinterpret_cast<const SyncClientInfoRequest*>(
+               &_SyncClientInfoRequest_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    8;
+
+  friend void swap(SyncClientInfoRequest& a, SyncClientInfoRequest& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(SyncClientInfoRequest* other) {
+    if (other == this) return;
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  inline SyncClientInfoRequest* New() const final {
+    return CreateMaybeMessage<SyncClientInfoRequest>(nullptr);
+  }
+
+  SyncClientInfoRequest* New(::PROTOBUF_NAMESPACE_ID::Arena* arena) const final {
+    return CreateMaybeMessage<SyncClientInfoRequest>(arena);
+  }
+  void CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) final;
+  void MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) final;
+  void CopyFrom(const SyncClientInfoRequest& from);
+  void MergeFrom(const SyncClientInfoRequest& from);
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  ::PROTOBUF_NAMESPACE_ID::uint8* _InternalSerialize(
+      ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  inline void SharedCtor();
+  inline void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(SyncClientInfoRequest* other);
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "proto.messageReceiver.SyncClientInfoRequest";
+  }
+  private:
+  inline ::PROTOBUF_NAMESPACE_ID::Arena* GetArenaNoVirtual() const {
+    return nullptr;
+  }
+  inline void* MaybeArenaPtr() const {
+    return nullptr;
+  }
+  public:
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+  private:
+  static ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadataStatic() {
+    ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(&::descriptor_table_messageReceiver_2eproto);
+    return ::descriptor_table_messageReceiver_2eproto.file_level_metadata[kIndexInFileMessages];
+  }
+
+  public:
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kUserFieldNumber = 1,
+    kIpFieldNumber = 2,
+    kPortFieldNumber = 3,
+  };
+  // string user = 1;
+  void clear_user();
+  const std::string& user() const;
+  void set_user(const std::string& value);
+  void set_user(std::string&& value);
+  void set_user(const char* value);
+  void set_user(const char* value, size_t size);
+  std::string* mutable_user();
+  std::string* release_user();
+  void set_allocated_user(std::string* user);
+  private:
+  const std::string& _internal_user() const;
+  void _internal_set_user(const std::string& value);
+  std::string* _internal_mutable_user();
+  public:
+
+  // string ip = 2;
+  void clear_ip();
+  const std::string& ip() const;
+  void set_ip(const std::string& value);
+  void set_ip(std::string&& value);
+  void set_ip(const char* value);
+  void set_ip(const char* value, size_t size);
+  std::string* mutable_ip();
+  std::string* release_ip();
+  void set_allocated_ip(std::string* ip);
+  private:
+  const std::string& _internal_ip() const;
+  void _internal_set_ip(const std::string& value);
+  std::string* _internal_mutable_ip();
+  public:
+
+  // int32 port = 3;
+  void clear_port();
+  ::PROTOBUF_NAMESPACE_ID::int32 port() const;
+  void set_port(::PROTOBUF_NAMESPACE_ID::int32 value);
+  private:
+  ::PROTOBUF_NAMESPACE_ID::int32 _internal_port() const;
+  void _internal_set_port(::PROTOBUF_NAMESPACE_ID::int32 value);
+  public:
+
+  // @@protoc_insertion_point(class_scope:proto.messageReceiver.SyncClientInfoRequest)
+ private:
+  class _Internal;
+
+  ::PROTOBUF_NAMESPACE_ID::internal::InternalMetadataWithArena _internal_metadata_;
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr user_;
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr ip_;
+  ::PROTOBUF_NAMESPACE_ID::int32 port_;
+  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  friend struct ::TableStruct_messageReceiver_2eproto;
+};
+// -------------------------------------------------------------------
+
+class SyncClientInfoResponse :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:proto.messageReceiver.SyncClientInfoResponse) */ {
+ public:
+  SyncClientInfoResponse();
+  virtual ~SyncClientInfoResponse();
+
+  SyncClientInfoResponse(const SyncClientInfoResponse& from);
+  SyncClientInfoResponse(SyncClientInfoResponse&& from) noexcept
+    : SyncClientInfoResponse() {
+    *this = ::std::move(from);
+  }
+
+  inline SyncClientInfoResponse& operator=(const SyncClientInfoResponse& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline SyncClientInfoResponse& operator=(SyncClientInfoResponse&& from) noexcept {
+    if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
+      if (this != &from) InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return GetMetadataStatic().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return GetMetadataStatic().reflection;
+  }
+  static const SyncClientInfoResponse& default_instance();
+
+  static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
+  static inline const SyncClientInfoResponse* internal_default_instance() {
+    return reinterpret_cast<const SyncClientInfoResponse*>(
+               &_SyncClientInfoResponse_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    9;
+
+  friend void swap(SyncClientInfoResponse& a, SyncClientInfoResponse& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(SyncClientInfoResponse* other) {
+    if (other == this) return;
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  inline SyncClientInfoResponse* New() const final {
+    return CreateMaybeMessage<SyncClientInfoResponse>(nullptr);
+  }
+
+  SyncClientInfoResponse* New(::PROTOBUF_NAMESPACE_ID::Arena* arena) const final {
+    return CreateMaybeMessage<SyncClientInfoResponse>(arena);
+  }
+  void CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) final;
+  void MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) final;
+  void CopyFrom(const SyncClientInfoResponse& from);
+  void MergeFrom(const SyncClientInfoResponse& from);
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  ::PROTOBUF_NAMESPACE_ID::uint8* _InternalSerialize(
+      ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  inline void SharedCtor();
+  inline void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(SyncClientInfoResponse* other);
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "proto.messageReceiver.SyncClientInfoResponse";
+  }
+  private:
+  inline ::PROTOBUF_NAMESPACE_ID::Arena* GetArenaNoVirtual() const {
+    return nullptr;
+  }
+  inline void* MaybeArenaPtr() const {
+    return nullptr;
+  }
+  public:
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+  private:
+  static ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadataStatic() {
+    ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(&::descriptor_table_messageReceiver_2eproto);
+    return ::descriptor_table_messageReceiver_2eproto.file_level_metadata[kIndexInFileMessages];
+  }
+
+  public:
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kMessageFieldNumber = 1,
+  };
+  // string message = 1;
+  void clear_message();
+  const std::string& message() const;
+  void set_message(const std::string& value);
+  void set_message(std::string&& value);
+  void set_message(const char* value);
+  void set_message(const char* value, size_t size);
+  std::string* mutable_message();
+  std::string* release_message();
+  void set_allocated_message(std::string* message);
+  private:
+  const std::string& _internal_message() const;
+  void _internal_set_message(const std::string& value);
+  std::string* _internal_mutable_message();
+  public:
+
+  // @@protoc_insertion_point(class_scope:proto.messageReceiver.SyncClientInfoResponse)
  private:
   class _Internal;
 
@@ -1380,6 +1976,26 @@ inline void LogoutRequest::set_allocated_user_name(std::string* user_name) {
   // @@protoc_insertion_point(field_set_allocated:proto.messageReceiver.LogoutRequest.user_name)
 }
 
+// int32 logout_type = 2;
+inline void LogoutRequest::clear_logout_type() {
+  logout_type_ = 0;
+}
+inline ::PROTOBUF_NAMESPACE_ID::int32 LogoutRequest::_internal_logout_type() const {
+  return logout_type_;
+}
+inline ::PROTOBUF_NAMESPACE_ID::int32 LogoutRequest::logout_type() const {
+  // @@protoc_insertion_point(field_get:proto.messageReceiver.LogoutRequest.logout_type)
+  return _internal_logout_type();
+}
+inline void LogoutRequest::_internal_set_logout_type(::PROTOBUF_NAMESPACE_ID::int32 value) {
+  
+  logout_type_ = value;
+}
+inline void LogoutRequest::set_logout_type(::PROTOBUF_NAMESPACE_ID::int32 value) {
+  _internal_set_logout_type(value);
+  // @@protoc_insertion_point(field_set:proto.messageReceiver.LogoutRequest.logout_type)
+}
+
 // -------------------------------------------------------------------
 
 // LogoutResponse
@@ -1444,9 +2060,353 @@ inline void LogoutResponse::set_allocated_message(std::string* message) {
   // @@protoc_insertion_point(field_set_allocated:proto.messageReceiver.LogoutResponse.message)
 }
 
+// -------------------------------------------------------------------
+
+// NoticeClientLogoutRequest
+
+// string message = 1;
+inline void NoticeClientLogoutRequest::clear_message() {
+  message_.ClearToEmptyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+}
+inline const std::string& NoticeClientLogoutRequest::message() const {
+  // @@protoc_insertion_point(field_get:proto.messageReceiver.NoticeClientLogoutRequest.message)
+  return _internal_message();
+}
+inline void NoticeClientLogoutRequest::set_message(const std::string& value) {
+  _internal_set_message(value);
+  // @@protoc_insertion_point(field_set:proto.messageReceiver.NoticeClientLogoutRequest.message)
+}
+inline std::string* NoticeClientLogoutRequest::mutable_message() {
+  // @@protoc_insertion_point(field_mutable:proto.messageReceiver.NoticeClientLogoutRequest.message)
+  return _internal_mutable_message();
+}
+inline const std::string& NoticeClientLogoutRequest::_internal_message() const {
+  return message_.GetNoArena();
+}
+inline void NoticeClientLogoutRequest::_internal_set_message(const std::string& value) {
+  
+  message_.SetNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), value);
+}
+inline void NoticeClientLogoutRequest::set_message(std::string&& value) {
+  
+  message_.SetNoArena(
+    &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
+  // @@protoc_insertion_point(field_set_rvalue:proto.messageReceiver.NoticeClientLogoutRequest.message)
+}
+inline void NoticeClientLogoutRequest::set_message(const char* value) {
+  GOOGLE_DCHECK(value != nullptr);
+  
+  message_.SetNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:proto.messageReceiver.NoticeClientLogoutRequest.message)
+}
+inline void NoticeClientLogoutRequest::set_message(const char* value, size_t size) {
+  
+  message_.SetNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:proto.messageReceiver.NoticeClientLogoutRequest.message)
+}
+inline std::string* NoticeClientLogoutRequest::_internal_mutable_message() {
+  
+  return message_.MutableNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+}
+inline std::string* NoticeClientLogoutRequest::release_message() {
+  // @@protoc_insertion_point(field_release:proto.messageReceiver.NoticeClientLogoutRequest.message)
+  
+  return message_.ReleaseNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+}
+inline void NoticeClientLogoutRequest::set_allocated_message(std::string* message) {
+  if (message != nullptr) {
+    
+  } else {
+    
+  }
+  message_.SetAllocatedNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), message);
+  // @@protoc_insertion_point(field_set_allocated:proto.messageReceiver.NoticeClientLogoutRequest.message)
+}
+
+// -------------------------------------------------------------------
+
+// NoticeClientLogoutResponse
+
+// string message = 1;
+inline void NoticeClientLogoutResponse::clear_message() {
+  message_.ClearToEmptyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+}
+inline const std::string& NoticeClientLogoutResponse::message() const {
+  // @@protoc_insertion_point(field_get:proto.messageReceiver.NoticeClientLogoutResponse.message)
+  return _internal_message();
+}
+inline void NoticeClientLogoutResponse::set_message(const std::string& value) {
+  _internal_set_message(value);
+  // @@protoc_insertion_point(field_set:proto.messageReceiver.NoticeClientLogoutResponse.message)
+}
+inline std::string* NoticeClientLogoutResponse::mutable_message() {
+  // @@protoc_insertion_point(field_mutable:proto.messageReceiver.NoticeClientLogoutResponse.message)
+  return _internal_mutable_message();
+}
+inline const std::string& NoticeClientLogoutResponse::_internal_message() const {
+  return message_.GetNoArena();
+}
+inline void NoticeClientLogoutResponse::_internal_set_message(const std::string& value) {
+  
+  message_.SetNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), value);
+}
+inline void NoticeClientLogoutResponse::set_message(std::string&& value) {
+  
+  message_.SetNoArena(
+    &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
+  // @@protoc_insertion_point(field_set_rvalue:proto.messageReceiver.NoticeClientLogoutResponse.message)
+}
+inline void NoticeClientLogoutResponse::set_message(const char* value) {
+  GOOGLE_DCHECK(value != nullptr);
+  
+  message_.SetNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:proto.messageReceiver.NoticeClientLogoutResponse.message)
+}
+inline void NoticeClientLogoutResponse::set_message(const char* value, size_t size) {
+  
+  message_.SetNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:proto.messageReceiver.NoticeClientLogoutResponse.message)
+}
+inline std::string* NoticeClientLogoutResponse::_internal_mutable_message() {
+  
+  return message_.MutableNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+}
+inline std::string* NoticeClientLogoutResponse::release_message() {
+  // @@protoc_insertion_point(field_release:proto.messageReceiver.NoticeClientLogoutResponse.message)
+  
+  return message_.ReleaseNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+}
+inline void NoticeClientLogoutResponse::set_allocated_message(std::string* message) {
+  if (message != nullptr) {
+    
+  } else {
+    
+  }
+  message_.SetAllocatedNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), message);
+  // @@protoc_insertion_point(field_set_allocated:proto.messageReceiver.NoticeClientLogoutResponse.message)
+}
+
+// -------------------------------------------------------------------
+
+// SyncClientInfoRequest
+
+// string user = 1;
+inline void SyncClientInfoRequest::clear_user() {
+  user_.ClearToEmptyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+}
+inline const std::string& SyncClientInfoRequest::user() const {
+  // @@protoc_insertion_point(field_get:proto.messageReceiver.SyncClientInfoRequest.user)
+  return _internal_user();
+}
+inline void SyncClientInfoRequest::set_user(const std::string& value) {
+  _internal_set_user(value);
+  // @@protoc_insertion_point(field_set:proto.messageReceiver.SyncClientInfoRequest.user)
+}
+inline std::string* SyncClientInfoRequest::mutable_user() {
+  // @@protoc_insertion_point(field_mutable:proto.messageReceiver.SyncClientInfoRequest.user)
+  return _internal_mutable_user();
+}
+inline const std::string& SyncClientInfoRequest::_internal_user() const {
+  return user_.GetNoArena();
+}
+inline void SyncClientInfoRequest::_internal_set_user(const std::string& value) {
+  
+  user_.SetNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), value);
+}
+inline void SyncClientInfoRequest::set_user(std::string&& value) {
+  
+  user_.SetNoArena(
+    &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
+  // @@protoc_insertion_point(field_set_rvalue:proto.messageReceiver.SyncClientInfoRequest.user)
+}
+inline void SyncClientInfoRequest::set_user(const char* value) {
+  GOOGLE_DCHECK(value != nullptr);
+  
+  user_.SetNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:proto.messageReceiver.SyncClientInfoRequest.user)
+}
+inline void SyncClientInfoRequest::set_user(const char* value, size_t size) {
+  
+  user_.SetNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:proto.messageReceiver.SyncClientInfoRequest.user)
+}
+inline std::string* SyncClientInfoRequest::_internal_mutable_user() {
+  
+  return user_.MutableNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+}
+inline std::string* SyncClientInfoRequest::release_user() {
+  // @@protoc_insertion_point(field_release:proto.messageReceiver.SyncClientInfoRequest.user)
+  
+  return user_.ReleaseNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+}
+inline void SyncClientInfoRequest::set_allocated_user(std::string* user) {
+  if (user != nullptr) {
+    
+  } else {
+    
+  }
+  user_.SetAllocatedNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), user);
+  // @@protoc_insertion_point(field_set_allocated:proto.messageReceiver.SyncClientInfoRequest.user)
+}
+
+// string ip = 2;
+inline void SyncClientInfoRequest::clear_ip() {
+  ip_.ClearToEmptyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+}
+inline const std::string& SyncClientInfoRequest::ip() const {
+  // @@protoc_insertion_point(field_get:proto.messageReceiver.SyncClientInfoRequest.ip)
+  return _internal_ip();
+}
+inline void SyncClientInfoRequest::set_ip(const std::string& value) {
+  _internal_set_ip(value);
+  // @@protoc_insertion_point(field_set:proto.messageReceiver.SyncClientInfoRequest.ip)
+}
+inline std::string* SyncClientInfoRequest::mutable_ip() {
+  // @@protoc_insertion_point(field_mutable:proto.messageReceiver.SyncClientInfoRequest.ip)
+  return _internal_mutable_ip();
+}
+inline const std::string& SyncClientInfoRequest::_internal_ip() const {
+  return ip_.GetNoArena();
+}
+inline void SyncClientInfoRequest::_internal_set_ip(const std::string& value) {
+  
+  ip_.SetNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), value);
+}
+inline void SyncClientInfoRequest::set_ip(std::string&& value) {
+  
+  ip_.SetNoArena(
+    &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
+  // @@protoc_insertion_point(field_set_rvalue:proto.messageReceiver.SyncClientInfoRequest.ip)
+}
+inline void SyncClientInfoRequest::set_ip(const char* value) {
+  GOOGLE_DCHECK(value != nullptr);
+  
+  ip_.SetNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:proto.messageReceiver.SyncClientInfoRequest.ip)
+}
+inline void SyncClientInfoRequest::set_ip(const char* value, size_t size) {
+  
+  ip_.SetNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:proto.messageReceiver.SyncClientInfoRequest.ip)
+}
+inline std::string* SyncClientInfoRequest::_internal_mutable_ip() {
+  
+  return ip_.MutableNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+}
+inline std::string* SyncClientInfoRequest::release_ip() {
+  // @@protoc_insertion_point(field_release:proto.messageReceiver.SyncClientInfoRequest.ip)
+  
+  return ip_.ReleaseNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+}
+inline void SyncClientInfoRequest::set_allocated_ip(std::string* ip) {
+  if (ip != nullptr) {
+    
+  } else {
+    
+  }
+  ip_.SetAllocatedNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ip);
+  // @@protoc_insertion_point(field_set_allocated:proto.messageReceiver.SyncClientInfoRequest.ip)
+}
+
+// int32 port = 3;
+inline void SyncClientInfoRequest::clear_port() {
+  port_ = 0;
+}
+inline ::PROTOBUF_NAMESPACE_ID::int32 SyncClientInfoRequest::_internal_port() const {
+  return port_;
+}
+inline ::PROTOBUF_NAMESPACE_ID::int32 SyncClientInfoRequest::port() const {
+  // @@protoc_insertion_point(field_get:proto.messageReceiver.SyncClientInfoRequest.port)
+  return _internal_port();
+}
+inline void SyncClientInfoRequest::_internal_set_port(::PROTOBUF_NAMESPACE_ID::int32 value) {
+  
+  port_ = value;
+}
+inline void SyncClientInfoRequest::set_port(::PROTOBUF_NAMESPACE_ID::int32 value) {
+  _internal_set_port(value);
+  // @@protoc_insertion_point(field_set:proto.messageReceiver.SyncClientInfoRequest.port)
+}
+
+// -------------------------------------------------------------------
+
+// SyncClientInfoResponse
+
+// string message = 1;
+inline void SyncClientInfoResponse::clear_message() {
+  message_.ClearToEmptyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+}
+inline const std::string& SyncClientInfoResponse::message() const {
+  // @@protoc_insertion_point(field_get:proto.messageReceiver.SyncClientInfoResponse.message)
+  return _internal_message();
+}
+inline void SyncClientInfoResponse::set_message(const std::string& value) {
+  _internal_set_message(value);
+  // @@protoc_insertion_point(field_set:proto.messageReceiver.SyncClientInfoResponse.message)
+}
+inline std::string* SyncClientInfoResponse::mutable_message() {
+  // @@protoc_insertion_point(field_mutable:proto.messageReceiver.SyncClientInfoResponse.message)
+  return _internal_mutable_message();
+}
+inline const std::string& SyncClientInfoResponse::_internal_message() const {
+  return message_.GetNoArena();
+}
+inline void SyncClientInfoResponse::_internal_set_message(const std::string& value) {
+  
+  message_.SetNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), value);
+}
+inline void SyncClientInfoResponse::set_message(std::string&& value) {
+  
+  message_.SetNoArena(
+    &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
+  // @@protoc_insertion_point(field_set_rvalue:proto.messageReceiver.SyncClientInfoResponse.message)
+}
+inline void SyncClientInfoResponse::set_message(const char* value) {
+  GOOGLE_DCHECK(value != nullptr);
+  
+  message_.SetNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:proto.messageReceiver.SyncClientInfoResponse.message)
+}
+inline void SyncClientInfoResponse::set_message(const char* value, size_t size) {
+  
+  message_.SetNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:proto.messageReceiver.SyncClientInfoResponse.message)
+}
+inline std::string* SyncClientInfoResponse::_internal_mutable_message() {
+  
+  return message_.MutableNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+}
+inline std::string* SyncClientInfoResponse::release_message() {
+  // @@protoc_insertion_point(field_release:proto.messageReceiver.SyncClientInfoResponse.message)
+  
+  return message_.ReleaseNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+}
+inline void SyncClientInfoResponse::set_allocated_message(std::string* message) {
+  if (message != nullptr) {
+    
+  } else {
+    
+  }
+  message_.SetAllocatedNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), message);
+  // @@protoc_insertion_point(field_set_allocated:proto.messageReceiver.SyncClientInfoResponse.message)
+}
+
 #ifdef __GNUC__
   #pragma GCC diagnostic pop
 #endif  // __GNUC__
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
 // -------------------------------------------------------------------
 
 // -------------------------------------------------------------------

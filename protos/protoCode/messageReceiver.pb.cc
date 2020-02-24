@@ -40,6 +40,22 @@ class LogoutResponseDefaultTypeInternal {
  public:
   ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<LogoutResponse> _instance;
 } _LogoutResponse_default_instance_;
+class NoticeClientLogoutRequestDefaultTypeInternal {
+ public:
+  ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<NoticeClientLogoutRequest> _instance;
+} _NoticeClientLogoutRequest_default_instance_;
+class NoticeClientLogoutResponseDefaultTypeInternal {
+ public:
+  ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<NoticeClientLogoutResponse> _instance;
+} _NoticeClientLogoutResponse_default_instance_;
+class SyncClientInfoRequestDefaultTypeInternal {
+ public:
+  ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<SyncClientInfoRequest> _instance;
+} _SyncClientInfoRequest_default_instance_;
+class SyncClientInfoResponseDefaultTypeInternal {
+ public:
+  ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<SyncClientInfoResponse> _instance;
+} _SyncClientInfoResponse_default_instance_;
 }  // namespace messageReceiver
 }  // namespace proto
 static void InitDefaultsscc_info_LoginRequest_messageReceiver_2eproto() {
@@ -98,6 +114,34 @@ static void InitDefaultsscc_info_LogoutResponse_messageReceiver_2eproto() {
 ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_LogoutResponse_messageReceiver_2eproto =
     {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 0, 0, InitDefaultsscc_info_LogoutResponse_messageReceiver_2eproto}, {}};
 
+static void InitDefaultsscc_info_NoticeClientLogoutRequest_messageReceiver_2eproto() {
+  GOOGLE_PROTOBUF_VERIFY_VERSION;
+
+  {
+    void* ptr = &::proto::messageReceiver::_NoticeClientLogoutRequest_default_instance_;
+    new (ptr) ::proto::messageReceiver::NoticeClientLogoutRequest();
+    ::PROTOBUF_NAMESPACE_ID::internal::OnShutdownDestroyMessage(ptr);
+  }
+  ::proto::messageReceiver::NoticeClientLogoutRequest::InitAsDefaultInstance();
+}
+
+::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_NoticeClientLogoutRequest_messageReceiver_2eproto =
+    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 0, 0, InitDefaultsscc_info_NoticeClientLogoutRequest_messageReceiver_2eproto}, {}};
+
+static void InitDefaultsscc_info_NoticeClientLogoutResponse_messageReceiver_2eproto() {
+  GOOGLE_PROTOBUF_VERIFY_VERSION;
+
+  {
+    void* ptr = &::proto::messageReceiver::_NoticeClientLogoutResponse_default_instance_;
+    new (ptr) ::proto::messageReceiver::NoticeClientLogoutResponse();
+    ::PROTOBUF_NAMESPACE_ID::internal::OnShutdownDestroyMessage(ptr);
+  }
+  ::proto::messageReceiver::NoticeClientLogoutResponse::InitAsDefaultInstance();
+}
+
+::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_NoticeClientLogoutResponse_messageReceiver_2eproto =
+    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 0, 0, InitDefaultsscc_info_NoticeClientLogoutResponse_messageReceiver_2eproto}, {}};
+
 static void InitDefaultsscc_info_RegistRequest_messageReceiver_2eproto() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
@@ -126,7 +170,35 @@ static void InitDefaultsscc_info_RegistResponse_messageReceiver_2eproto() {
 ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_RegistResponse_messageReceiver_2eproto =
     {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 0, 0, InitDefaultsscc_info_RegistResponse_messageReceiver_2eproto}, {}};
 
-static ::PROTOBUF_NAMESPACE_ID::Metadata file_level_metadata_messageReceiver_2eproto[6];
+static void InitDefaultsscc_info_SyncClientInfoRequest_messageReceiver_2eproto() {
+  GOOGLE_PROTOBUF_VERIFY_VERSION;
+
+  {
+    void* ptr = &::proto::messageReceiver::_SyncClientInfoRequest_default_instance_;
+    new (ptr) ::proto::messageReceiver::SyncClientInfoRequest();
+    ::PROTOBUF_NAMESPACE_ID::internal::OnShutdownDestroyMessage(ptr);
+  }
+  ::proto::messageReceiver::SyncClientInfoRequest::InitAsDefaultInstance();
+}
+
+::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_SyncClientInfoRequest_messageReceiver_2eproto =
+    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 0, 0, InitDefaultsscc_info_SyncClientInfoRequest_messageReceiver_2eproto}, {}};
+
+static void InitDefaultsscc_info_SyncClientInfoResponse_messageReceiver_2eproto() {
+  GOOGLE_PROTOBUF_VERIFY_VERSION;
+
+  {
+    void* ptr = &::proto::messageReceiver::_SyncClientInfoResponse_default_instance_;
+    new (ptr) ::proto::messageReceiver::SyncClientInfoResponse();
+    ::PROTOBUF_NAMESPACE_ID::internal::OnShutdownDestroyMessage(ptr);
+  }
+  ::proto::messageReceiver::SyncClientInfoResponse::InitAsDefaultInstance();
+}
+
+::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_SyncClientInfoResponse_messageReceiver_2eproto =
+    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 0, 0, InitDefaultsscc_info_SyncClientInfoResponse_messageReceiver_2eproto}, {}};
+
+static ::PROTOBUF_NAMESPACE_ID::Metadata file_level_metadata_messageReceiver_2eproto[10];
 static constexpr ::PROTOBUF_NAMESPACE_ID::EnumDescriptor const** file_level_enum_descriptors_messageReceiver_2eproto = nullptr;
 static constexpr ::PROTOBUF_NAMESPACE_ID::ServiceDescriptor const** file_level_service_descriptors_messageReceiver_2eproto = nullptr;
 
@@ -163,12 +235,39 @@ const ::PROTOBUF_NAMESPACE_ID::uint32 TableStruct_messageReceiver_2eproto::offse
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   PROTOBUF_FIELD_OFFSET(::proto::messageReceiver::LogoutRequest, user_name_),
+  PROTOBUF_FIELD_OFFSET(::proto::messageReceiver::LogoutRequest, logout_type_),
   ~0u,  // no _has_bits_
   PROTOBUF_FIELD_OFFSET(::proto::messageReceiver::LogoutResponse, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   PROTOBUF_FIELD_OFFSET(::proto::messageReceiver::LogoutResponse, message_),
+  ~0u,  // no _has_bits_
+  PROTOBUF_FIELD_OFFSET(::proto::messageReceiver::NoticeClientLogoutRequest, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  PROTOBUF_FIELD_OFFSET(::proto::messageReceiver::NoticeClientLogoutRequest, message_),
+  ~0u,  // no _has_bits_
+  PROTOBUF_FIELD_OFFSET(::proto::messageReceiver::NoticeClientLogoutResponse, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  PROTOBUF_FIELD_OFFSET(::proto::messageReceiver::NoticeClientLogoutResponse, message_),
+  ~0u,  // no _has_bits_
+  PROTOBUF_FIELD_OFFSET(::proto::messageReceiver::SyncClientInfoRequest, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  PROTOBUF_FIELD_OFFSET(::proto::messageReceiver::SyncClientInfoRequest, user_),
+  PROTOBUF_FIELD_OFFSET(::proto::messageReceiver::SyncClientInfoRequest, ip_),
+  PROTOBUF_FIELD_OFFSET(::proto::messageReceiver::SyncClientInfoRequest, port_),
+  ~0u,  // no _has_bits_
+  PROTOBUF_FIELD_OFFSET(::proto::messageReceiver::SyncClientInfoResponse, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  PROTOBUF_FIELD_OFFSET(::proto::messageReceiver::SyncClientInfoResponse, message_),
 };
 static const ::PROTOBUF_NAMESPACE_ID::internal::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
   { 0, -1, sizeof(::proto::messageReceiver::RegistRequest)},
@@ -176,7 +275,11 @@ static const ::PROTOBUF_NAMESPACE_ID::internal::MigrationSchema schemas[] PROTOB
   { 13, -1, sizeof(::proto::messageReceiver::LoginRequest)},
   { 20, -1, sizeof(::proto::messageReceiver::LoginResponse)},
   { 26, -1, sizeof(::proto::messageReceiver::LogoutRequest)},
-  { 32, -1, sizeof(::proto::messageReceiver::LogoutResponse)},
+  { 33, -1, sizeof(::proto::messageReceiver::LogoutResponse)},
+  { 39, -1, sizeof(::proto::messageReceiver::NoticeClientLogoutRequest)},
+  { 45, -1, sizeof(::proto::messageReceiver::NoticeClientLogoutResponse)},
+  { 51, -1, sizeof(::proto::messageReceiver::SyncClientInfoRequest)},
+  { 59, -1, sizeof(::proto::messageReceiver::SyncClientInfoResponse)},
 };
 
 static ::PROTOBUF_NAMESPACE_ID::Message const * const file_default_instances[] = {
@@ -186,6 +289,10 @@ static ::PROTOBUF_NAMESPACE_ID::Message const * const file_default_instances[] =
   reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::proto::messageReceiver::_LoginResponse_default_instance_),
   reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::proto::messageReceiver::_LogoutRequest_default_instance_),
   reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::proto::messageReceiver::_LogoutResponse_default_instance_),
+  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::proto::messageReceiver::_NoticeClientLogoutRequest_default_instance_),
+  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::proto::messageReceiver::_NoticeClientLogoutResponse_default_instance_),
+  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::proto::messageReceiver::_SyncClientInfoRequest_default_instance_),
+  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::proto::messageReceiver::_SyncClientInfoResponse_default_instance_),
 };
 
 const char descriptor_table_protodef_messageReceiver_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) =
@@ -194,36 +301,52 @@ const char descriptor_table_protodef_messageReceiver_2eproto[] PROTOBUF_SECTION_
   "(\t\022\021\n\tpass_word\030\002 \001(\t\"!\n\016RegistResponse\022"
   "\017\n\007message\030\001 \001(\t\"4\n\014LoginRequest\022\021\n\tuser"
   "_name\030\001 \001(\t\022\021\n\tpass_word\030\002 \001(\t\" \n\rLoginR"
-  "esponse\022\017\n\007message\030\001 \001(\t\"\"\n\rLogoutReques"
-  "t\022\021\n\tuser_name\030\001 \001(\t\"!\n\016LogoutResponse\022\017"
-  "\n\007message\030\001 \001(\t2\231\002\n\017messageReceiver\022W\n\006r"
-  "egist\022$.proto.messageReceiver.RegistRequ"
-  "est\032%.proto.messageReceiver.RegistRespon"
-  "se\"\000\022T\n\005login\022#.proto.messageReceiver.Lo"
-  "ginRequest\032$.proto.messageReceiver.Login"
-  "Response\"\000\022W\n\006logout\022$.proto.messageRece"
-  "iver.LogoutRequest\032%.proto.messageReceiv"
-  "er.LogoutResponse\"\000BO\n/singleTerminaLogi"
-  "nSystem.protos.messageReceiverB\024messageR"
-  "eceiverProtoP\001\242\002\003TXHb\006proto3"
+  "esponse\022\017\n\007message\030\001 \001(\t\"7\n\rLogoutReques"
+  "t\022\021\n\tuser_name\030\001 \001(\t\022\023\n\013logout_type\030\002 \001("
+  "\005\"!\n\016LogoutResponse\022\017\n\007message\030\001 \001(\t\",\n\031"
+  "NoticeClientLogoutRequest\022\017\n\007message\030\001 \001"
+  "(\t\"-\n\032NoticeClientLogoutResponse\022\017\n\007mess"
+  "age\030\001 \001(\t\"\?\n\025SyncClientInfoRequest\022\014\n\004us"
+  "er\030\001 \001(\t\022\n\n\002ip\030\002 \001(\t\022\014\n\004port\030\003 \001(\005\")\n\026Sy"
+  "ncClientInfoResponse\022\017\n\007message\030\001 \001(\t2\207\004"
+  "\n\017messageReceiver\022W\n\006regist\022$.proto.mess"
+  "ageReceiver.RegistRequest\032%.proto.messag"
+  "eReceiver.RegistResponse\"\000\022T\n\005login\022#.pr"
+  "oto.messageReceiver.LoginRequest\032$.proto"
+  ".messageReceiver.LoginResponse\"\000\022W\n\006logo"
+  "ut\022$.proto.messageReceiver.LogoutRequest"
+  "\032%.proto.messageReceiver.LogoutResponse\""
+  "\000\022{\n\022noticeClientLogout\0220.proto.messageR"
+  "eceiver.NoticeClientLogoutRequest\0321.prot"
+  "o.messageReceiver.NoticeClientLogoutResp"
+  "onse\"\000\022o\n\016syncClientInfo\022,.proto.message"
+  "Receiver.SyncClientInfoRequest\032-.proto.m"
+  "essageReceiver.SyncClientInfoResponse\"\000B"
+  "O\n/singleTerminaLoginSystem.protos.messa"
+  "geReceiverB\024messageReceiverProtoP\001\242\002\003TXH"
+  "b\006proto3"
   ;
 static const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable*const descriptor_table_messageReceiver_2eproto_deps[1] = {
 };
-static ::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase*const descriptor_table_messageReceiver_2eproto_sccs[6] = {
+static ::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase*const descriptor_table_messageReceiver_2eproto_sccs[10] = {
   &scc_info_LoginRequest_messageReceiver_2eproto.base,
   &scc_info_LoginResponse_messageReceiver_2eproto.base,
   &scc_info_LogoutRequest_messageReceiver_2eproto.base,
   &scc_info_LogoutResponse_messageReceiver_2eproto.base,
+  &scc_info_NoticeClientLogoutRequest_messageReceiver_2eproto.base,
+  &scc_info_NoticeClientLogoutResponse_messageReceiver_2eproto.base,
   &scc_info_RegistRequest_messageReceiver_2eproto.base,
   &scc_info_RegistResponse_messageReceiver_2eproto.base,
+  &scc_info_SyncClientInfoRequest_messageReceiver_2eproto.base,
+  &scc_info_SyncClientInfoResponse_messageReceiver_2eproto.base,
 };
 static ::PROTOBUF_NAMESPACE_ID::internal::once_flag descriptor_table_messageReceiver_2eproto_once;
 static bool descriptor_table_messageReceiver_2eproto_initialized = false;
 const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_messageReceiver_2eproto = {
-  &descriptor_table_messageReceiver_2eproto_initialized, descriptor_table_protodef_messageReceiver_2eproto, "messageReceiver.proto", 668,
-  &descriptor_table_messageReceiver_2eproto_once, descriptor_table_messageReceiver_2eproto_sccs, descriptor_table_messageReceiver_2eproto_deps, 6, 0,
+  &descriptor_table_messageReceiver_2eproto_initialized, descriptor_table_protodef_messageReceiver_2eproto, "messageReceiver.proto", 1128,
+  &descriptor_table_messageReceiver_2eproto_once, descriptor_table_messageReceiver_2eproto_sccs, descriptor_table_messageReceiver_2eproto_deps, 10, 0,
   schemas, file_default_instances, TableStruct_messageReceiver_2eproto::offsets,
-  file_level_metadata_messageReceiver_2eproto, 6, file_level_enum_descriptors_messageReceiver_2eproto, file_level_service_descriptors_messageReceiver_2eproto,
+  file_level_metadata_messageReceiver_2eproto, 10, file_level_enum_descriptors_messageReceiver_2eproto, file_level_service_descriptors_messageReceiver_2eproto,
 };
 
 // Force running AddDescriptors() at dynamic initialization time.
@@ -1126,12 +1249,14 @@ LogoutRequest::LogoutRequest(const LogoutRequest& from)
   if (!from._internal_user_name().empty()) {
     user_name_.AssignWithDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from.user_name_);
   }
+  logout_type_ = from.logout_type_;
   // @@protoc_insertion_point(copy_constructor:proto.messageReceiver.LogoutRequest)
 }
 
 void LogoutRequest::SharedCtor() {
   ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&scc_info_LogoutRequest_messageReceiver_2eproto.base);
   user_name_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  logout_type_ = 0;
 }
 
 LogoutRequest::~LogoutRequest() {
@@ -1159,6 +1284,7 @@ void LogoutRequest::Clear() {
   (void) cached_has_bits;
 
   user_name_.ClearToEmptyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  logout_type_ = 0;
   _internal_metadata_.Clear();
 }
 
@@ -1175,6 +1301,13 @@ const char* LogoutRequest::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_
           auto str = _internal_mutable_user_name();
           ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
           CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "proto.messageReceiver.LogoutRequest.user_name"));
+          CHK_(ptr);
+        } else goto handle_unusual;
+        continue;
+      // int32 logout_type = 2;
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 16)) {
+          logout_type_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint(&ptr);
           CHK_(ptr);
         } else goto handle_unusual;
         continue;
@@ -1214,6 +1347,12 @@ failure:
         1, this->_internal_user_name(), target);
   }
 
+  // int32 logout_type = 2;
+  if (this->logout_type() != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(2, this->_internal_logout_type(), target);
+  }
+
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields(), target, stream);
@@ -1235,6 +1374,13 @@ size_t LogoutRequest::ByteSizeLong() const {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
         this->_internal_user_name());
+  }
+
+  // int32 logout_type = 2;
+  if (this->logout_type() != 0) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
+        this->_internal_logout_type());
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
@@ -1272,6 +1418,9 @@ void LogoutRequest::MergeFrom(const LogoutRequest& from) {
 
     user_name_.AssignWithDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from.user_name_);
   }
+  if (from.logout_type() != 0) {
+    _internal_set_logout_type(from._internal_logout_type());
+  }
 }
 
 void LogoutRequest::CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
@@ -1297,6 +1446,7 @@ void LogoutRequest::InternalSwap(LogoutRequest* other) {
   _internal_metadata_.Swap(&other->_internal_metadata_);
   user_name_.Swap(&other->user_name_, &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
     GetArenaNoVirtual());
+  swap(logout_type_, other->logout_type_);
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata LogoutRequest::GetMetadata() const {
@@ -1503,6 +1653,868 @@ void LogoutResponse::InternalSwap(LogoutResponse* other) {
 }
 
 
+// ===================================================================
+
+void NoticeClientLogoutRequest::InitAsDefaultInstance() {
+}
+class NoticeClientLogoutRequest::_Internal {
+ public:
+};
+
+NoticeClientLogoutRequest::NoticeClientLogoutRequest()
+  : ::PROTOBUF_NAMESPACE_ID::Message(), _internal_metadata_(nullptr) {
+  SharedCtor();
+  // @@protoc_insertion_point(constructor:proto.messageReceiver.NoticeClientLogoutRequest)
+}
+NoticeClientLogoutRequest::NoticeClientLogoutRequest(const NoticeClientLogoutRequest& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message(),
+      _internal_metadata_(nullptr) {
+  _internal_metadata_.MergeFrom(from._internal_metadata_);
+  message_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  if (!from._internal_message().empty()) {
+    message_.AssignWithDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from.message_);
+  }
+  // @@protoc_insertion_point(copy_constructor:proto.messageReceiver.NoticeClientLogoutRequest)
+}
+
+void NoticeClientLogoutRequest::SharedCtor() {
+  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&scc_info_NoticeClientLogoutRequest_messageReceiver_2eproto.base);
+  message_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+}
+
+NoticeClientLogoutRequest::~NoticeClientLogoutRequest() {
+  // @@protoc_insertion_point(destructor:proto.messageReceiver.NoticeClientLogoutRequest)
+  SharedDtor();
+}
+
+void NoticeClientLogoutRequest::SharedDtor() {
+  message_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+}
+
+void NoticeClientLogoutRequest::SetCachedSize(int size) const {
+  _cached_size_.Set(size);
+}
+const NoticeClientLogoutRequest& NoticeClientLogoutRequest::default_instance() {
+  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&::scc_info_NoticeClientLogoutRequest_messageReceiver_2eproto.base);
+  return *internal_default_instance();
+}
+
+
+void NoticeClientLogoutRequest::Clear() {
+// @@protoc_insertion_point(message_clear_start:proto.messageReceiver.NoticeClientLogoutRequest)
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  message_.ClearToEmptyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  _internal_metadata_.Clear();
+}
+
+const char* NoticeClientLogoutRequest::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  while (!ctx->Done(&ptr)) {
+    ::PROTOBUF_NAMESPACE_ID::uint32 tag;
+    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
+    CHK_(ptr);
+    switch (tag >> 3) {
+      // string message = 1;
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 10)) {
+          auto str = _internal_mutable_message();
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "proto.messageReceiver.NoticeClientLogoutRequest.message"));
+          CHK_(ptr);
+        } else goto handle_unusual;
+        continue;
+      default: {
+      handle_unusual:
+        if ((tag & 7) == 4 || tag == 0) {
+          ctx->SetLastTag(tag);
+          goto success;
+        }
+        ptr = UnknownFieldParse(tag, &_internal_metadata_, ptr, ctx);
+        CHK_(ptr != nullptr);
+        continue;
+      }
+    }  // switch
+  }  // while
+success:
+  return ptr;
+failure:
+  ptr = nullptr;
+  goto success;
+#undef CHK_
+}
+
+::PROTOBUF_NAMESPACE_ID::uint8* NoticeClientLogoutRequest::_InternalSerialize(
+    ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:proto.messageReceiver.NoticeClientLogoutRequest)
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // string message = 1;
+  if (this->message().size() > 0) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_message().data(), static_cast<int>(this->_internal_message().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "proto.messageReceiver.NoticeClientLogoutRequest.message");
+    target = stream->WriteStringMaybeAliased(
+        1, this->_internal_message(), target);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields(), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:proto.messageReceiver.NoticeClientLogoutRequest)
+  return target;
+}
+
+size_t NoticeClientLogoutRequest::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:proto.messageReceiver.NoticeClientLogoutRequest)
+  size_t total_size = 0;
+
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // string message = 1;
+  if (this->message().size() > 0) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_message());
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    return ::PROTOBUF_NAMESPACE_ID::internal::ComputeUnknownFieldsSize(
+        _internal_metadata_, total_size, &_cached_size_);
+  }
+  int cached_size = ::PROTOBUF_NAMESPACE_ID::internal::ToCachedSize(total_size);
+  SetCachedSize(cached_size);
+  return total_size;
+}
+
+void NoticeClientLogoutRequest::MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+// @@protoc_insertion_point(generalized_merge_from_start:proto.messageReceiver.NoticeClientLogoutRequest)
+  GOOGLE_DCHECK_NE(&from, this);
+  const NoticeClientLogoutRequest* source =
+      ::PROTOBUF_NAMESPACE_ID::DynamicCastToGenerated<NoticeClientLogoutRequest>(
+          &from);
+  if (source == nullptr) {
+  // @@protoc_insertion_point(generalized_merge_from_cast_fail:proto.messageReceiver.NoticeClientLogoutRequest)
+    ::PROTOBUF_NAMESPACE_ID::internal::ReflectionOps::Merge(from, this);
+  } else {
+  // @@protoc_insertion_point(generalized_merge_from_cast_success:proto.messageReceiver.NoticeClientLogoutRequest)
+    MergeFrom(*source);
+  }
+}
+
+void NoticeClientLogoutRequest::MergeFrom(const NoticeClientLogoutRequest& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:proto.messageReceiver.NoticeClientLogoutRequest)
+  GOOGLE_DCHECK_NE(&from, this);
+  _internal_metadata_.MergeFrom(from._internal_metadata_);
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if (from.message().size() > 0) {
+
+    message_.AssignWithDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from.message_);
+  }
+}
+
+void NoticeClientLogoutRequest::CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+// @@protoc_insertion_point(generalized_copy_from_start:proto.messageReceiver.NoticeClientLogoutRequest)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+void NoticeClientLogoutRequest::CopyFrom(const NoticeClientLogoutRequest& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:proto.messageReceiver.NoticeClientLogoutRequest)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool NoticeClientLogoutRequest::IsInitialized() const {
+  return true;
+}
+
+void NoticeClientLogoutRequest::InternalSwap(NoticeClientLogoutRequest* other) {
+  using std::swap;
+  _internal_metadata_.Swap(&other->_internal_metadata_);
+  message_.Swap(&other->message_, &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
+    GetArenaNoVirtual());
+}
+
+::PROTOBUF_NAMESPACE_ID::Metadata NoticeClientLogoutRequest::GetMetadata() const {
+  return GetMetadataStatic();
+}
+
+
+// ===================================================================
+
+void NoticeClientLogoutResponse::InitAsDefaultInstance() {
+}
+class NoticeClientLogoutResponse::_Internal {
+ public:
+};
+
+NoticeClientLogoutResponse::NoticeClientLogoutResponse()
+  : ::PROTOBUF_NAMESPACE_ID::Message(), _internal_metadata_(nullptr) {
+  SharedCtor();
+  // @@protoc_insertion_point(constructor:proto.messageReceiver.NoticeClientLogoutResponse)
+}
+NoticeClientLogoutResponse::NoticeClientLogoutResponse(const NoticeClientLogoutResponse& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message(),
+      _internal_metadata_(nullptr) {
+  _internal_metadata_.MergeFrom(from._internal_metadata_);
+  message_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  if (!from._internal_message().empty()) {
+    message_.AssignWithDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from.message_);
+  }
+  // @@protoc_insertion_point(copy_constructor:proto.messageReceiver.NoticeClientLogoutResponse)
+}
+
+void NoticeClientLogoutResponse::SharedCtor() {
+  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&scc_info_NoticeClientLogoutResponse_messageReceiver_2eproto.base);
+  message_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+}
+
+NoticeClientLogoutResponse::~NoticeClientLogoutResponse() {
+  // @@protoc_insertion_point(destructor:proto.messageReceiver.NoticeClientLogoutResponse)
+  SharedDtor();
+}
+
+void NoticeClientLogoutResponse::SharedDtor() {
+  message_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+}
+
+void NoticeClientLogoutResponse::SetCachedSize(int size) const {
+  _cached_size_.Set(size);
+}
+const NoticeClientLogoutResponse& NoticeClientLogoutResponse::default_instance() {
+  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&::scc_info_NoticeClientLogoutResponse_messageReceiver_2eproto.base);
+  return *internal_default_instance();
+}
+
+
+void NoticeClientLogoutResponse::Clear() {
+// @@protoc_insertion_point(message_clear_start:proto.messageReceiver.NoticeClientLogoutResponse)
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  message_.ClearToEmptyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  _internal_metadata_.Clear();
+}
+
+const char* NoticeClientLogoutResponse::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  while (!ctx->Done(&ptr)) {
+    ::PROTOBUF_NAMESPACE_ID::uint32 tag;
+    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
+    CHK_(ptr);
+    switch (tag >> 3) {
+      // string message = 1;
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 10)) {
+          auto str = _internal_mutable_message();
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "proto.messageReceiver.NoticeClientLogoutResponse.message"));
+          CHK_(ptr);
+        } else goto handle_unusual;
+        continue;
+      default: {
+      handle_unusual:
+        if ((tag & 7) == 4 || tag == 0) {
+          ctx->SetLastTag(tag);
+          goto success;
+        }
+        ptr = UnknownFieldParse(tag, &_internal_metadata_, ptr, ctx);
+        CHK_(ptr != nullptr);
+        continue;
+      }
+    }  // switch
+  }  // while
+success:
+  return ptr;
+failure:
+  ptr = nullptr;
+  goto success;
+#undef CHK_
+}
+
+::PROTOBUF_NAMESPACE_ID::uint8* NoticeClientLogoutResponse::_InternalSerialize(
+    ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:proto.messageReceiver.NoticeClientLogoutResponse)
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // string message = 1;
+  if (this->message().size() > 0) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_message().data(), static_cast<int>(this->_internal_message().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "proto.messageReceiver.NoticeClientLogoutResponse.message");
+    target = stream->WriteStringMaybeAliased(
+        1, this->_internal_message(), target);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields(), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:proto.messageReceiver.NoticeClientLogoutResponse)
+  return target;
+}
+
+size_t NoticeClientLogoutResponse::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:proto.messageReceiver.NoticeClientLogoutResponse)
+  size_t total_size = 0;
+
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // string message = 1;
+  if (this->message().size() > 0) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_message());
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    return ::PROTOBUF_NAMESPACE_ID::internal::ComputeUnknownFieldsSize(
+        _internal_metadata_, total_size, &_cached_size_);
+  }
+  int cached_size = ::PROTOBUF_NAMESPACE_ID::internal::ToCachedSize(total_size);
+  SetCachedSize(cached_size);
+  return total_size;
+}
+
+void NoticeClientLogoutResponse::MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+// @@protoc_insertion_point(generalized_merge_from_start:proto.messageReceiver.NoticeClientLogoutResponse)
+  GOOGLE_DCHECK_NE(&from, this);
+  const NoticeClientLogoutResponse* source =
+      ::PROTOBUF_NAMESPACE_ID::DynamicCastToGenerated<NoticeClientLogoutResponse>(
+          &from);
+  if (source == nullptr) {
+  // @@protoc_insertion_point(generalized_merge_from_cast_fail:proto.messageReceiver.NoticeClientLogoutResponse)
+    ::PROTOBUF_NAMESPACE_ID::internal::ReflectionOps::Merge(from, this);
+  } else {
+  // @@protoc_insertion_point(generalized_merge_from_cast_success:proto.messageReceiver.NoticeClientLogoutResponse)
+    MergeFrom(*source);
+  }
+}
+
+void NoticeClientLogoutResponse::MergeFrom(const NoticeClientLogoutResponse& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:proto.messageReceiver.NoticeClientLogoutResponse)
+  GOOGLE_DCHECK_NE(&from, this);
+  _internal_metadata_.MergeFrom(from._internal_metadata_);
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if (from.message().size() > 0) {
+
+    message_.AssignWithDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from.message_);
+  }
+}
+
+void NoticeClientLogoutResponse::CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+// @@protoc_insertion_point(generalized_copy_from_start:proto.messageReceiver.NoticeClientLogoutResponse)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+void NoticeClientLogoutResponse::CopyFrom(const NoticeClientLogoutResponse& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:proto.messageReceiver.NoticeClientLogoutResponse)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool NoticeClientLogoutResponse::IsInitialized() const {
+  return true;
+}
+
+void NoticeClientLogoutResponse::InternalSwap(NoticeClientLogoutResponse* other) {
+  using std::swap;
+  _internal_metadata_.Swap(&other->_internal_metadata_);
+  message_.Swap(&other->message_, &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
+    GetArenaNoVirtual());
+}
+
+::PROTOBUF_NAMESPACE_ID::Metadata NoticeClientLogoutResponse::GetMetadata() const {
+  return GetMetadataStatic();
+}
+
+
+// ===================================================================
+
+void SyncClientInfoRequest::InitAsDefaultInstance() {
+}
+class SyncClientInfoRequest::_Internal {
+ public:
+};
+
+SyncClientInfoRequest::SyncClientInfoRequest()
+  : ::PROTOBUF_NAMESPACE_ID::Message(), _internal_metadata_(nullptr) {
+  SharedCtor();
+  // @@protoc_insertion_point(constructor:proto.messageReceiver.SyncClientInfoRequest)
+}
+SyncClientInfoRequest::SyncClientInfoRequest(const SyncClientInfoRequest& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message(),
+      _internal_metadata_(nullptr) {
+  _internal_metadata_.MergeFrom(from._internal_metadata_);
+  user_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  if (!from._internal_user().empty()) {
+    user_.AssignWithDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from.user_);
+  }
+  ip_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  if (!from._internal_ip().empty()) {
+    ip_.AssignWithDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from.ip_);
+  }
+  port_ = from.port_;
+  // @@protoc_insertion_point(copy_constructor:proto.messageReceiver.SyncClientInfoRequest)
+}
+
+void SyncClientInfoRequest::SharedCtor() {
+  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&scc_info_SyncClientInfoRequest_messageReceiver_2eproto.base);
+  user_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  ip_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  port_ = 0;
+}
+
+SyncClientInfoRequest::~SyncClientInfoRequest() {
+  // @@protoc_insertion_point(destructor:proto.messageReceiver.SyncClientInfoRequest)
+  SharedDtor();
+}
+
+void SyncClientInfoRequest::SharedDtor() {
+  user_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  ip_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+}
+
+void SyncClientInfoRequest::SetCachedSize(int size) const {
+  _cached_size_.Set(size);
+}
+const SyncClientInfoRequest& SyncClientInfoRequest::default_instance() {
+  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&::scc_info_SyncClientInfoRequest_messageReceiver_2eproto.base);
+  return *internal_default_instance();
+}
+
+
+void SyncClientInfoRequest::Clear() {
+// @@protoc_insertion_point(message_clear_start:proto.messageReceiver.SyncClientInfoRequest)
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  user_.ClearToEmptyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  ip_.ClearToEmptyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  port_ = 0;
+  _internal_metadata_.Clear();
+}
+
+const char* SyncClientInfoRequest::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  while (!ctx->Done(&ptr)) {
+    ::PROTOBUF_NAMESPACE_ID::uint32 tag;
+    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
+    CHK_(ptr);
+    switch (tag >> 3) {
+      // string user = 1;
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 10)) {
+          auto str = _internal_mutable_user();
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "proto.messageReceiver.SyncClientInfoRequest.user"));
+          CHK_(ptr);
+        } else goto handle_unusual;
+        continue;
+      // string ip = 2;
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 18)) {
+          auto str = _internal_mutable_ip();
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "proto.messageReceiver.SyncClientInfoRequest.ip"));
+          CHK_(ptr);
+        } else goto handle_unusual;
+        continue;
+      // int32 port = 3;
+      case 3:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 24)) {
+          port_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint(&ptr);
+          CHK_(ptr);
+        } else goto handle_unusual;
+        continue;
+      default: {
+      handle_unusual:
+        if ((tag & 7) == 4 || tag == 0) {
+          ctx->SetLastTag(tag);
+          goto success;
+        }
+        ptr = UnknownFieldParse(tag, &_internal_metadata_, ptr, ctx);
+        CHK_(ptr != nullptr);
+        continue;
+      }
+    }  // switch
+  }  // while
+success:
+  return ptr;
+failure:
+  ptr = nullptr;
+  goto success;
+#undef CHK_
+}
+
+::PROTOBUF_NAMESPACE_ID::uint8* SyncClientInfoRequest::_InternalSerialize(
+    ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:proto.messageReceiver.SyncClientInfoRequest)
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // string user = 1;
+  if (this->user().size() > 0) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_user().data(), static_cast<int>(this->_internal_user().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "proto.messageReceiver.SyncClientInfoRequest.user");
+    target = stream->WriteStringMaybeAliased(
+        1, this->_internal_user(), target);
+  }
+
+  // string ip = 2;
+  if (this->ip().size() > 0) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_ip().data(), static_cast<int>(this->_internal_ip().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "proto.messageReceiver.SyncClientInfoRequest.ip");
+    target = stream->WriteStringMaybeAliased(
+        2, this->_internal_ip(), target);
+  }
+
+  // int32 port = 3;
+  if (this->port() != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(3, this->_internal_port(), target);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields(), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:proto.messageReceiver.SyncClientInfoRequest)
+  return target;
+}
+
+size_t SyncClientInfoRequest::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:proto.messageReceiver.SyncClientInfoRequest)
+  size_t total_size = 0;
+
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // string user = 1;
+  if (this->user().size() > 0) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_user());
+  }
+
+  // string ip = 2;
+  if (this->ip().size() > 0) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_ip());
+  }
+
+  // int32 port = 3;
+  if (this->port() != 0) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
+        this->_internal_port());
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    return ::PROTOBUF_NAMESPACE_ID::internal::ComputeUnknownFieldsSize(
+        _internal_metadata_, total_size, &_cached_size_);
+  }
+  int cached_size = ::PROTOBUF_NAMESPACE_ID::internal::ToCachedSize(total_size);
+  SetCachedSize(cached_size);
+  return total_size;
+}
+
+void SyncClientInfoRequest::MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+// @@protoc_insertion_point(generalized_merge_from_start:proto.messageReceiver.SyncClientInfoRequest)
+  GOOGLE_DCHECK_NE(&from, this);
+  const SyncClientInfoRequest* source =
+      ::PROTOBUF_NAMESPACE_ID::DynamicCastToGenerated<SyncClientInfoRequest>(
+          &from);
+  if (source == nullptr) {
+  // @@protoc_insertion_point(generalized_merge_from_cast_fail:proto.messageReceiver.SyncClientInfoRequest)
+    ::PROTOBUF_NAMESPACE_ID::internal::ReflectionOps::Merge(from, this);
+  } else {
+  // @@protoc_insertion_point(generalized_merge_from_cast_success:proto.messageReceiver.SyncClientInfoRequest)
+    MergeFrom(*source);
+  }
+}
+
+void SyncClientInfoRequest::MergeFrom(const SyncClientInfoRequest& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:proto.messageReceiver.SyncClientInfoRequest)
+  GOOGLE_DCHECK_NE(&from, this);
+  _internal_metadata_.MergeFrom(from._internal_metadata_);
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if (from.user().size() > 0) {
+
+    user_.AssignWithDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from.user_);
+  }
+  if (from.ip().size() > 0) {
+
+    ip_.AssignWithDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from.ip_);
+  }
+  if (from.port() != 0) {
+    _internal_set_port(from._internal_port());
+  }
+}
+
+void SyncClientInfoRequest::CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+// @@protoc_insertion_point(generalized_copy_from_start:proto.messageReceiver.SyncClientInfoRequest)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+void SyncClientInfoRequest::CopyFrom(const SyncClientInfoRequest& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:proto.messageReceiver.SyncClientInfoRequest)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool SyncClientInfoRequest::IsInitialized() const {
+  return true;
+}
+
+void SyncClientInfoRequest::InternalSwap(SyncClientInfoRequest* other) {
+  using std::swap;
+  _internal_metadata_.Swap(&other->_internal_metadata_);
+  user_.Swap(&other->user_, &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
+    GetArenaNoVirtual());
+  ip_.Swap(&other->ip_, &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
+    GetArenaNoVirtual());
+  swap(port_, other->port_);
+}
+
+::PROTOBUF_NAMESPACE_ID::Metadata SyncClientInfoRequest::GetMetadata() const {
+  return GetMetadataStatic();
+}
+
+
+// ===================================================================
+
+void SyncClientInfoResponse::InitAsDefaultInstance() {
+}
+class SyncClientInfoResponse::_Internal {
+ public:
+};
+
+SyncClientInfoResponse::SyncClientInfoResponse()
+  : ::PROTOBUF_NAMESPACE_ID::Message(), _internal_metadata_(nullptr) {
+  SharedCtor();
+  // @@protoc_insertion_point(constructor:proto.messageReceiver.SyncClientInfoResponse)
+}
+SyncClientInfoResponse::SyncClientInfoResponse(const SyncClientInfoResponse& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message(),
+      _internal_metadata_(nullptr) {
+  _internal_metadata_.MergeFrom(from._internal_metadata_);
+  message_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  if (!from._internal_message().empty()) {
+    message_.AssignWithDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from.message_);
+  }
+  // @@protoc_insertion_point(copy_constructor:proto.messageReceiver.SyncClientInfoResponse)
+}
+
+void SyncClientInfoResponse::SharedCtor() {
+  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&scc_info_SyncClientInfoResponse_messageReceiver_2eproto.base);
+  message_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+}
+
+SyncClientInfoResponse::~SyncClientInfoResponse() {
+  // @@protoc_insertion_point(destructor:proto.messageReceiver.SyncClientInfoResponse)
+  SharedDtor();
+}
+
+void SyncClientInfoResponse::SharedDtor() {
+  message_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+}
+
+void SyncClientInfoResponse::SetCachedSize(int size) const {
+  _cached_size_.Set(size);
+}
+const SyncClientInfoResponse& SyncClientInfoResponse::default_instance() {
+  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&::scc_info_SyncClientInfoResponse_messageReceiver_2eproto.base);
+  return *internal_default_instance();
+}
+
+
+void SyncClientInfoResponse::Clear() {
+// @@protoc_insertion_point(message_clear_start:proto.messageReceiver.SyncClientInfoResponse)
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  message_.ClearToEmptyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  _internal_metadata_.Clear();
+}
+
+const char* SyncClientInfoResponse::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  while (!ctx->Done(&ptr)) {
+    ::PROTOBUF_NAMESPACE_ID::uint32 tag;
+    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
+    CHK_(ptr);
+    switch (tag >> 3) {
+      // string message = 1;
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 10)) {
+          auto str = _internal_mutable_message();
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "proto.messageReceiver.SyncClientInfoResponse.message"));
+          CHK_(ptr);
+        } else goto handle_unusual;
+        continue;
+      default: {
+      handle_unusual:
+        if ((tag & 7) == 4 || tag == 0) {
+          ctx->SetLastTag(tag);
+          goto success;
+        }
+        ptr = UnknownFieldParse(tag, &_internal_metadata_, ptr, ctx);
+        CHK_(ptr != nullptr);
+        continue;
+      }
+    }  // switch
+  }  // while
+success:
+  return ptr;
+failure:
+  ptr = nullptr;
+  goto success;
+#undef CHK_
+}
+
+::PROTOBUF_NAMESPACE_ID::uint8* SyncClientInfoResponse::_InternalSerialize(
+    ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:proto.messageReceiver.SyncClientInfoResponse)
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // string message = 1;
+  if (this->message().size() > 0) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_message().data(), static_cast<int>(this->_internal_message().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "proto.messageReceiver.SyncClientInfoResponse.message");
+    target = stream->WriteStringMaybeAliased(
+        1, this->_internal_message(), target);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields(), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:proto.messageReceiver.SyncClientInfoResponse)
+  return target;
+}
+
+size_t SyncClientInfoResponse::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:proto.messageReceiver.SyncClientInfoResponse)
+  size_t total_size = 0;
+
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // string message = 1;
+  if (this->message().size() > 0) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_message());
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    return ::PROTOBUF_NAMESPACE_ID::internal::ComputeUnknownFieldsSize(
+        _internal_metadata_, total_size, &_cached_size_);
+  }
+  int cached_size = ::PROTOBUF_NAMESPACE_ID::internal::ToCachedSize(total_size);
+  SetCachedSize(cached_size);
+  return total_size;
+}
+
+void SyncClientInfoResponse::MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+// @@protoc_insertion_point(generalized_merge_from_start:proto.messageReceiver.SyncClientInfoResponse)
+  GOOGLE_DCHECK_NE(&from, this);
+  const SyncClientInfoResponse* source =
+      ::PROTOBUF_NAMESPACE_ID::DynamicCastToGenerated<SyncClientInfoResponse>(
+          &from);
+  if (source == nullptr) {
+  // @@protoc_insertion_point(generalized_merge_from_cast_fail:proto.messageReceiver.SyncClientInfoResponse)
+    ::PROTOBUF_NAMESPACE_ID::internal::ReflectionOps::Merge(from, this);
+  } else {
+  // @@protoc_insertion_point(generalized_merge_from_cast_success:proto.messageReceiver.SyncClientInfoResponse)
+    MergeFrom(*source);
+  }
+}
+
+void SyncClientInfoResponse::MergeFrom(const SyncClientInfoResponse& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:proto.messageReceiver.SyncClientInfoResponse)
+  GOOGLE_DCHECK_NE(&from, this);
+  _internal_metadata_.MergeFrom(from._internal_metadata_);
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if (from.message().size() > 0) {
+
+    message_.AssignWithDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from.message_);
+  }
+}
+
+void SyncClientInfoResponse::CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+// @@protoc_insertion_point(generalized_copy_from_start:proto.messageReceiver.SyncClientInfoResponse)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+void SyncClientInfoResponse::CopyFrom(const SyncClientInfoResponse& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:proto.messageReceiver.SyncClientInfoResponse)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool SyncClientInfoResponse::IsInitialized() const {
+  return true;
+}
+
+void SyncClientInfoResponse::InternalSwap(SyncClientInfoResponse* other) {
+  using std::swap;
+  _internal_metadata_.Swap(&other->_internal_metadata_);
+  message_.Swap(&other->message_, &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
+    GetArenaNoVirtual());
+}
+
+::PROTOBUF_NAMESPACE_ID::Metadata SyncClientInfoResponse::GetMetadata() const {
+  return GetMetadataStatic();
+}
+
+
 // @@protoc_insertion_point(namespace_scope)
 }  // namespace messageReceiver
 }  // namespace proto
@@ -1524,6 +2536,18 @@ template<> PROTOBUF_NOINLINE ::proto::messageReceiver::LogoutRequest* Arena::Cre
 }
 template<> PROTOBUF_NOINLINE ::proto::messageReceiver::LogoutResponse* Arena::CreateMaybeMessage< ::proto::messageReceiver::LogoutResponse >(Arena* arena) {
   return Arena::CreateInternal< ::proto::messageReceiver::LogoutResponse >(arena);
+}
+template<> PROTOBUF_NOINLINE ::proto::messageReceiver::NoticeClientLogoutRequest* Arena::CreateMaybeMessage< ::proto::messageReceiver::NoticeClientLogoutRequest >(Arena* arena) {
+  return Arena::CreateInternal< ::proto::messageReceiver::NoticeClientLogoutRequest >(arena);
+}
+template<> PROTOBUF_NOINLINE ::proto::messageReceiver::NoticeClientLogoutResponse* Arena::CreateMaybeMessage< ::proto::messageReceiver::NoticeClientLogoutResponse >(Arena* arena) {
+  return Arena::CreateInternal< ::proto::messageReceiver::NoticeClientLogoutResponse >(arena);
+}
+template<> PROTOBUF_NOINLINE ::proto::messageReceiver::SyncClientInfoRequest* Arena::CreateMaybeMessage< ::proto::messageReceiver::SyncClientInfoRequest >(Arena* arena) {
+  return Arena::CreateInternal< ::proto::messageReceiver::SyncClientInfoRequest >(arena);
+}
+template<> PROTOBUF_NOINLINE ::proto::messageReceiver::SyncClientInfoResponse* Arena::CreateMaybeMessage< ::proto::messageReceiver::SyncClientInfoResponse >(Arena* arena) {
+  return Arena::CreateInternal< ::proto::messageReceiver::SyncClientInfoResponse >(arena);
 }
 PROTOBUF_NAMESPACE_CLOSE
 

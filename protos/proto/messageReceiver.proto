@@ -17,6 +17,11 @@ service messageReceiver {
 
   // logout
   rpc logout (LogoutRequest) returns (LogoutResponse) {}
+
+  rpc noticeClientLogout (NoticeClientLogoutRequest) returns (NoticeClientLogoutResponse) {}
+
+  // syncClientInfo
+  rpc syncClientInfo (SyncClientInfoRequest) returns (SyncClientInfoResponse) {}
 }
 
 
@@ -61,12 +66,61 @@ message LoginResponse
 //***
 message LogoutRequest
 {
-	string user_name = 1;
+	string user_name   = 1;
+	int32  logout_type = 2; //1:用户自己退出登录 2:管理员踢出用户退出登录
 }
 
 message LogoutResponse
 {
 	string message = 1;
 }
+
+
+//***
+//@request NoticeClientLogoutRequest
+//@response NoticeClientLogoutResponse
+//@remark  通知客户端退出登录
+//***
+message NoticeClientLogoutRequest
+{
+	string message = 1;
+}
+
+message NoticeClientLogoutResponse
+{
+	string message = 1;
+}
+
+
+
+//***
+//@request  SyncClientInfoRequest
+//@response SyncClientInfoResponse
+//@remark  同步客户端信息
+//***
+message SyncClientInfoRequest
+{
+	string user = 1;
+	string ip   = 2;
+	int32  port = 3; 
+}
+
+message SyncClientInfoResponse
+{
+	string message = 1;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 

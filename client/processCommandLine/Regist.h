@@ -3,7 +3,7 @@
 
 
 #include "ProcessCommandLineBase.h"
-#include "Enum.h"
+#include "encrypt.h"
 
 using proto::messageReceiver::RegistRequest;
 using proto::messageReceiver::RegistResponse;
@@ -51,9 +51,20 @@ private:
 			return -1;
 		}
 
+		string userName = params[0];
+		string passWord = params[1];
+
+		//加密passWord
+		char passWordEncrypted[1024] = {0};
+		if(base64_encode(passWord.c_str(), passWord.length(), passWordEncrypted) < 0)
+		{
+			cout << "base64_encode failed!" << endl;
+			return -1;
+		}
+
 		//设置username、password
-		registRequest.set_user_name(params[0]);
-		registRequest.set_pass_word(params[1]);
+		registRequest.set_user_name(userName);
+		registRequest.set_pass_word(passWordEncrypted);
 		return 0;
 	}
 

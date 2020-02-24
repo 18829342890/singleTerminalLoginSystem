@@ -1,0 +1,6 @@
+In file included from main/main.cpp:15:
+In file included from main/commandLine.h:5:
+[1mprocessCommandLine/ProcessCommandLineBase.h:10:10: [0m[0;1;31mfatal error: [0m[1m'grpcpp/grpcpp.h' file not found[0m
+#include <grpcpp/grpcpp.h>
+[0;1;32m         ^~~~~~~~~~~~~~~~~
+[0m1 error generated.

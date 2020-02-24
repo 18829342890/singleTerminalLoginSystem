@@ -21,19 +21,21 @@ using proto::messageReceiver::RegistRequest;
 using proto::messageReceiver::RegistResponse;
 using proto::messageReceiver::LoginRequest;
 using proto::messageReceiver::LoginResponse;
+using proto::messageReceiver::SyncClientInfoRequest;
+using proto::messageReceiver::SyncClientInfoResponse;
+using proto::messageReceiver::LogoutRequest;
+using proto::messageReceiver::LogoutResponse;
 
 class MessageReceiver final : public messageReceiver::Service 
 {
 public:
 	MessageReceiver(SqlApi& sqlApi);
 	~MessageReceiver();
-	// int dealClientMessage(int sendToClientFd, int code, char* message);
- //    int connectTomessageDispatcherService(int epollFd);
- //    void getNeedSendMessage(const char* receivedMessage, int sendToClientFd, std::string& needSendMessage);
- //    int dealServiceResponse(int sendToClientFd, const char* response);
 
     Status regist(ServerContext* context, const RegistRequest* request, RegistResponse* response);
     Status login(ServerContext* context, const LoginRequest* request, LoginResponse* response);
+    Status logout(ServerContext* context, const LogoutRequest* request, LogoutResponse* response);
+    Status syncClientInfo(ServerContext* context, const SyncClientInfoRequest* request, SyncClientInfoResponse* response);
 
 private:
 	int _sendToMessageDispatcherServiceFd;

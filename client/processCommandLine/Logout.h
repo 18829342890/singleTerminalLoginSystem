@@ -2,7 +2,11 @@
 #define __MY_LOGOUT_H__
 
 #include "ProcessCommandLineBase.h"
+#include "code.h"
 #include <stdlib.h>
+
+using proto::messageReceiver::LogoutRequest;
+using proto::messageReceiver::LogoutResponse;
 
 
 class LogoutCmd : public ProcessCommandLineBase
@@ -10,53 +14,47 @@ class LogoutCmd : public ProcessCommandLineBase
 
 public:
 
-	int processCommandLine(std::shared_ptr<messageReceiver::Stub> _stub, const char* params[])
+	int processCommandLine(std::shared_ptr<messageReceiver::Stub> stub, const char* params[])
 	{
-		// //发送退出登录通知
-		// string message;
-		// int ret = getJsonStringFromParams(params, message);
-		// if(ret < 0)
-		// {
-		// 	return -1;
-		// }
+		LogoutRequest logoutRequest;
+		int ret = getLogoutRequestFromParams(params, logoutRequest);
+		if(ret < 0)
+		{
+			return -1;
+		}
 
-		// ret = write(clientSocket, message.c_str(), message.length());
-		// if(ret < 0)
-		// {
-		// 	printf("write failed! ERROR: %s\n", strerror(errno));
-		// 	return -1;
-		// }
-
-		// char buf[MESSAGE_MAX_LEN] = {0};
-		// ret = read(clientSocket, buf, sizeof(buf));
-		// if(ret < 0)
-		// {
-		// 	return -1;
-		// }
-
-		// buf[ret] = '\0';
-		// printf("%s\n", buf);
-		
-		return 0;
+		ClientContext context;
+		LogoutResponse logoutResponse;
+		context.set_compression_algorithm(GRPC_COMPRESS_DEFLATE);
+		Status status = stub->logout(&context, logoutRequest, &logoutResponse);
+		if(status.ok())
+		{
+			cout << logoutResponse.message() << endl;
+			return 0;
+		}
+		else
+		{
+			cout << "RPC failed! errcode:" << status.error_code() << ", errmsg:" << status.error_message() << endl;
+			return -1;
+		}
 	}
-
-	int getJsonStringFromParams(const char* params[], string& message)
+		
+	int getLogoutRequestFromParams(const char* params[], LogoutRequest& logoutRequest)
 	{
-		// //判断参数是否合法
-		// int i = 0;
-		// for(; params[i]; ++i){}
+		//判断参数是否合法
+		int i = 0;
+		for(; params[i]; ++i){}
 
-		// if(i != 2)
-		// {
-		// 	cout << "please input regist username password!" << endl;
-		// 	return -1;
-		// }
+		if(i != 1)
+		{
+			cout << "please input logout username" << endl;
+			return -1;
+		}
 
-		// //设置username、password
-		// registRequest.set_user_name(params[0]);
-		// registRequest.set_pass_word(params[1]);
-		// return 0;
-		// return 0;
+		//设置username
+		logoutRequest.set_user_name(params[0]);
+		logoutRequest.set_logout_type(ADMINISTRATOR_KICK_OUT);
+		return 0;
 	}
 
 };

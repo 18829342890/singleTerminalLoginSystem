@@ -1,3 +1,5 @@
+load("@build_stack_rules_proto//cpp:cpp_grpc_library.bzl", "cpp_grpc_library")
+
 cc_library(
 	name = "processCommandLineLib",
 	hdrs = [
@@ -9,10 +11,13 @@ cc_library(
 		"Logout.h",
 	],
 	copts = [
-		"-Iprotos/protoCode/"
+		"-Iprotos/protoCode/",
+		"-I@my_grpcpp_path",
+		"-Imylib/thirdLib/",
 	],
 	deps = [
-		"//protos/proto:person_cc_proto"
+		"//protos/proto:message_receiver_cc_grpc",
+		"@my_grpcpp//:grpcpp",
 	],
 	visibility = ["//client/main:__pkg__"],
 )
