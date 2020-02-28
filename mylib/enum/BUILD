@@ -1,5 +1,5 @@
 cc_library(
-	name = "myLibEncrypt",
+	name = "myLibEnum",
 	hdrs = [
 		"encrypt.h",
 	],
