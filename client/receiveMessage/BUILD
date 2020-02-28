@@ -6,5 +6,8 @@ cc_library(
 	hdrs = [
 		"receiveMessage.h",
 	],
+	deps = [
+		"//mylib/mylibLog:myLibLog",
+	],
 	visibility = ["//visibility:public"],
 )
