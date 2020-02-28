@@ -18,7 +18,7 @@
 #include <grpcpp/grpcpp.h>
 #include "commandLine.h"
 #include "Help.h"
-#include "logrecord.h"
+#include "mylib/mylibLog/logrecord.h"
 #include "receiveMessage.h"
 #include "protos/protoCode/messageReceiver.pb.h"
 #include "protos/proto/messageReceiver.grpc.pb.h"

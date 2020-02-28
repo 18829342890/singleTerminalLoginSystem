@@ -1,5 +1,5 @@
 cc_library(
-	name = "myLogLib",
+	name = "myLibLog",
 	srcs = [
 		"logrecord.c",
 	],
