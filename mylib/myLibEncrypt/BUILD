@@ -1,5 +1,5 @@
 cc_library(
-	name = "myLogLib",
+	name = "myLibEncrypt",
 	hdrs = [
 		"encrypt.h",
 	],
