@@ -17,7 +17,7 @@ cc_library(
 		"//protos/proto:message_receiver_cc_grpc",
 		"@com_github_grpc_grpc//:grpc++",
 		"//mylib/myLibEncrypt:myLibEncrypt",
-		"//mylib/myLibEncrypt:myLibEnum",
+		"//mylib/enum:myLibEnum",
 	],
 	visibility = ["//client/main:__pkg__"],
 )
