@@ -19,5 +19,10 @@ cc_library(
 		"//mylib/myLibEncrypt:myLibEncrypt",
 		"//mylib/enum:myLibEnum",
 	],
+	linkopt = [
+		"-L/usr/local/lib64",
+		"-lssl",
+		"-lcrypto",
+	],
 	visibility = ["//client/main:__pkg__"],
 )
