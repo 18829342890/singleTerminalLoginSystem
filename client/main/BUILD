@@ -22,6 +22,7 @@ cc_binary (
 	deps = [
 		":commandLine",
 		"//client/processCommandLine:processCommandLineLib",
+		"//client/receiveMessage:receiveMessage",
 		"//mylib/mylibLog:myLibLog",
 		"//protos/proto:message_receiver_cc_grpc",
 		"@com_github_grpc_grpc//:grpc++",
