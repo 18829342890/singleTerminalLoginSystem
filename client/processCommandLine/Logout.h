@@ -1,9 +1,10 @@
 #ifndef __MY_LOGOUT_H__
 #define __MY_LOGOUT_H__
 
-#include "ProcessCommandLineBase.h"
-#include "code.h"
 #include <stdlib.h>
+#include "ProcessCommandLineBase.h"
+#include "mylib/enum/code.h"
+
 
 using proto::messageReceiver::LogoutRequest;
 using proto::messageReceiver::LogoutResponse;
