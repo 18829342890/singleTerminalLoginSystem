@@ -16,6 +16,7 @@ cc_library(
 	deps = [
 		"//protos/proto:message_receiver_cc_grpc",
 		"@com_github_grpc_grpc//:grpc++",
+		"//mylib/myLibEncrypt:myLibEncrypt",
 	],
 	visibility = ["//client/main:__pkg__"],
 )
