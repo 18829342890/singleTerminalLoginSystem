@@ -21,7 +21,7 @@
 #include "logrecord.h"
 #include "receiveMessage.h"
 #include "protos/protoCode/messageReceiver.pb.h"
-#include "protos/protoCode/messageReceiver.grpc.pb.h"
+#include "protos/proto/messageReceiver.grpc.pb.h"
 
 using namespace std;
 using grpc::Server;

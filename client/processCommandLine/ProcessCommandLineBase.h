@@ -8,7 +8,7 @@
 #include <unistd.h>
 #include <errno.h>
 #include <grpcpp/grpcpp.h>
-#include "protos/protoCode/messageReceiver.grpc.pb.h"
+#include "protos/proto/messageReceiver.grpc.pb.h"
 
 using namespace std;
 using grpc::Channel;
