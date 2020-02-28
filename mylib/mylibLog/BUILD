@@ -1,7 +1,7 @@
 cc_library(
 	name = "myLibLog",
 	srcs = [
-		"logrecord.c",
+		"logrecord.cc",
 	],
 	hdrs = [
 		"logrecord.h",
