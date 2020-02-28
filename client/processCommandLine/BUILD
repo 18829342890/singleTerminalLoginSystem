@@ -11,7 +11,6 @@ cc_library(
 		"Logout.h",
 	],
 	copts = [
-		"-Iprotos/protoCode/",
 		"-Imylib/thirdLib/",
 	],
 	deps = [
