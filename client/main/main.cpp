@@ -15,13 +15,13 @@
 #include <arpa/inet.h>
 #include <sys/ioctl.h>
 #include <net/if.h>
-#include "grpcpp/grpcpp.h"
+#include <grpcpp/grpcpp.h>
 #include "commandLine.h"
 #include "Help.h"
 #include "logrecord.h"
 #include "receiveMessage.h"
-#include "messageReceiver.pb.h"
-#include "messageReceiver.grpc.pb.h"
+#include "protos/protoCode/messageReceiver.pb.h"
+#include "protos/protoCode/messageReceiver.grpc.pb.h"
 
 using namespace std;
 using grpc::Server;
