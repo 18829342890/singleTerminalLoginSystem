@@ -11,7 +11,7 @@ cc_library(
 		"Logout.h",
 	],
 	copts = [
-		"-Imylib/thirdLib/",
+		"-Imylib/myLibEncrypt/",
 	],
 	deps = [
 		"//protos/proto:message_receiver_cc_grpc",
