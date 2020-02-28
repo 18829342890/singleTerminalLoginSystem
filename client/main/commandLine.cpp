@@ -48,15 +48,15 @@ const char* getCmdImplDesc(const char* cmd)
 	return NULL;
 }
 
-int processCmd(int clientSocket, const char* cmd, const char* params[])
+int processCmd(std::shared_ptr<messageReceiver::Stub> stub, const char* cmd, const char* params[])
 {
 	ProcessCommandLineBase* cmdImplClass = getCmdImplClass(cmd);
 	if(cmdImplClass == NULL)
 	{
 		Help help;
-		help.processCommandLine(clientSocket, params);
+		help.processCommandLine(stub, params);
 		return -1;
 	}
 
-	return cmdImplClass->processCommandLine(clientSocket, params);
+	return cmdImplClass->processCommandLine(stub, params);
 }

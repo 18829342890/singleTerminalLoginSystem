@@ -1,8 +1,22 @@
+
+
 cc_library(
 	name = "processCommandLineLib",
 	hdrs = [
 		"ProcessCommandLineBase.h",
 		"Help.h",
+		"Exiter.h",
+		"Regist.h",
+		"Login.h",
+		"Logout.h",
+	],
+	copts = [
+		"-Iprotos/protoCode/",
+		"-Imylib/thirdLib/",
+	],
+	deps = [
+		"//protos/proto:message_receiver_cc_grpc",
+		"@com_github_grpc_grpc//:grpc++",
 	],
 	visibility = ["//client/main:__pkg__"],
 )

@@ -2,7 +2,11 @@
 #define __MY_LOGOUT_H__
 
 #include "ProcessCommandLineBase.h"
+#include "code.h"
 #include <stdlib.h>
+
+using proto::messageReceiver::LogoutRequest;
+using proto::messageReceiver::LogoutResponse;
 
 
 class LogoutCmd : public ProcessCommandLineBase
@@ -10,69 +14,46 @@ class LogoutCmd : public ProcessCommandLineBase
 
 public:
 
-	int processCommandLine(int clientSocket, const char* params[])
+	int processCommandLine(std::shared_ptr<messageReceiver::Stub> stub, const char* params[])
 	{
-		//发送退出登录通知
-		string message;
-		int ret = getJsonStringFromParams(params, message);
+		LogoutRequest logoutRequest;
+		int ret = getLogoutRequestFromParams(params, logoutRequest);
 		if(ret < 0)
 		{
 			return -1;
 		}
 
-		ret = write(clientSocket, message.c_str(), message.length());
-		if(ret < 0)
+		ClientContext context;
+		LogoutResponse logoutResponse;
+		context.set_compression_algorithm(GRPC_COMPRESS_DEFLATE);
+		Status status = stub->logout(&context, logoutRequest, &logoutResponse);
+		if(status.ok())
 		{
-			printf("write failed! ERROR: %s\n", strerror(errno));
+			cout << logoutResponse.message() << endl;
+			return 0;
+		}
+		else
+		{
+			cout << "RPC failed! errcode:" << status.error_code() << ", errmsg:" << status.error_message() << endl;
 			return -1;
 		}
-
-		char buf[MESSAGE_MAX_LEN] = {0};
-		ret = read(clientSocket, buf, sizeof(buf));
-		if(ret < 0)
-		{
-			return -1;
-		}
-
-		buf[ret] = '\0';
-		printf("%s\n", buf);
-		
-		return 0;
 	}
-
-	int getJsonStringFromParams(const char* params[], string& message)
+		
+	int getLogoutRequestFromParams(const char* params[], LogoutRequest& logoutRequest)
 	{
-		//判断是否合法
+		//判断参数是否合法
 		int i = 0;
 		for(; params[i]; ++i){}
 
 		if(i != 1)
 		{
-			printf("please input exit username!\n");
+			cout << "please input logout username" << endl;
 			return -1;
 		}
 
-		const char* userName = params[0];
-
-		//创建json
-		cJSON* root = cJSON_CreateObject();
-
-		//messageTyep
-		cJSON* messageType = cJSON_CreateNumber(LOGOUT);
-		cJSON_AddItemToObject(root, "messageType", messageType);
-
-		//message
-		cJSON* messageItem = cJSON_CreateObject();
-		cJSON* userNameItem = cJSON_CreateString(userName);
-		cJSON_AddItemToObject(messageItem, "userName", userNameItem);
-		cJSON_AddItemToObject(root, "message", messageItem);
-
-		//转化为string
-		std::stringstream ss;
-		ss << cJSON_PrintUnformatted(root);
-		message = ss.str();
-
-		cJSON_Delete(root);
+		//设置username
+		logoutRequest.set_user_name(params[0]);
+		logoutRequest.set_logout_type(ADMINISTRATOR_KICK_OUT);
 		return 0;
 	}
 

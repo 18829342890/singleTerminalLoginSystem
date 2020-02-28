@@ -3,44 +3,47 @@
 
 
 #include "ProcessCommandLineBase.h"
-#include "cJSON.h"
-#include "Enum.h"
+#include "encrypt.h"
 
+using proto::messageReceiver::LoginRequest;
+using proto::messageReceiver::LoginResponse;
+
+extern int isLogined;
+extern string userName;
 
 class Login : public ProcessCommandLineBase
 {
 public:
-	virtual int processCommandLine(int clientSocket, const char* params[])
+	virtual int processCommandLine(std::shared_ptr<messageReceiver::Stub> stub, const char* params[])
 	{
-		string message;
-		int ret = getJsonStringFromParams(params, message);
+		LoginRequest loginRequest;
+		int ret = getLoginRequestFromParams(params, loginRequest);
 		if(ret < 0)
 		{
 			return -1;
 		}
 
-		ret = write(clientSocket, message.c_str(), message.length());
-		if(ret < 0)
+		ClientContext context;
+		LoginResponse loginResponse;
+		context.set_compression_algorithm(GRPC_COMPRESS_DEFLATE);
+		Status status = stub->login(&context, loginRequest, &loginResponse);
+		if(status.ok())
 		{
-			printf("write failed! ERROR: %s\n", strerror(errno));
+			cout << loginResponse.message() << endl;
+			isLogined = 1;
+			userName = loginRequest.user_name();
+			return 0;
+		}
+		else
+		{
+			cout << "RPC failed! errcode:" << status.error_code() << ", errmsg:" << status.error_message() << endl;
 			return -1;
 		}
-
-		char buf[MESSAGE_MAX_LEN] = {0};
-		ret = read(clientSocket, buf, sizeof(buf));
-		if(ret < 0)
-		{
-			return -1;
-		}
-
-		buf[ret] = '\0';
-		printf("%s\n", buf);
-		return 0;
 	}
 
 
 private:
-	int getJsonStringFromParams(const char* params[], string& message)
+	int getLoginRequestFromParams(const char* params[], LoginRequest& loginRequest)
 	{
 		//判断是否合法
 		int i = 0;
@@ -48,34 +51,24 @@ private:
 
 		if(i != 2)
 		{
-			printf("please input login username password!\n");
+			cout << "please input login username password!" << endl;
 			return -1;
 		}
 
-		const char* userName = params[0];
-		const char* passWord = params[1];
+		string userName = params[0];
+		string passWord = params[1];
 
-		//创建json
-		cJSON* root = cJSON_CreateObject();
-
-		//messageTyep
-		cJSON* messageType = cJSON_CreateNumber(LOGIN);
-		cJSON_AddItemToObject(root, "messageType", messageType);
-
-		//message
-		cJSON* messageItem = cJSON_CreateObject();
-		cJSON* userNameItem = cJSON_CreateString(userName);
-		cJSON* passWordItem = cJSON_CreateString(passWord);
-		cJSON_AddItemToObject(messageItem, "userName", userNameItem);
-		cJSON_AddItemToObject(messageItem, "passWord", passWordItem);
-		cJSON_AddItemToObject(root, "message", messageItem);
-
-		//转化为string
-		std::stringstream ss;
-		ss << cJSON_PrintUnformatted(root);
-		message = ss.str();
-
-		cJSON_Delete(root);
+		//加密passWord
+		char passWordEncrypted[1024] = {0};
+		if(base64_encode(passWord.c_str(), passWord.length(), passWordEncrypted) < 0)
+		{
+			cout << "base64_encode failed!" << endl;
+			return -1;
+		}
+		
+		//设置username、password
+		loginRequest.set_user_name(userName);
+		loginRequest.set_pass_word(passWordEncrypted);
 		return 0;
 	}
 

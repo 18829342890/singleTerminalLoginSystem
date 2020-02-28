@@ -1,5 +1,5 @@
-#ifndef __I_PROCESS_COMMAND_LENE_H__
-#define __I_PROCESS_COMMAND_LENE_H__
+#ifndef __PROCESS_COMMAND_LENE_H__
+#define __PROCESS_COMMAND_LENE_H__
 
 #include <stdio.h>
 #include <string.h>
@@ -7,10 +7,15 @@
 #include <sstream>
 #include <unistd.h>
 #include <errno.h>
-// #include "mylib/jsoncpp/include/json.h"
-// #include "mylib/jsoncpp/include/writer.h"
+#include "grpcpp/grpcpp.h"
+#include "messageReceiver.grpc.pb.h"
 
 using namespace std;
+using grpc::Channel;
+using grpc::ChannelArguments;
+using grpc::ClientContext;
+using grpc::Status;
+using proto::messageReceiver::messageReceiver;
 
 const int MESSAGE_MAX_LEN = 10240;
 
@@ -24,7 +29,7 @@ public:
 	/*
 	 * 处理命令的公共接口
 	 */
-	virtual int processCommandLine(int clientSocket, const char* params[]){}
+	virtual int processCommandLine(std::shared_ptr<messageReceiver::Stub> stub, const char* params[]){}
 };
 
 
