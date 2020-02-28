@@ -8,6 +8,7 @@ cc_library(
 	],
 	deps = [
 		"//mylib/mylibLog:myLibLog",
+		"//protos/proto:message_receiver_cc_grpc",
 	],
 	visibility = ["//visibility:public"],
 )
