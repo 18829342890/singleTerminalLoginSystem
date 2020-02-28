@@ -1,5 +1,6 @@
 #ifndef __COMMAND_LINE_H__
 #define __COMMAND_LINE_H__
+
 #include <stdbool.h>
 #include <stdio.h>
 #include "ProcessCommandLineBase.h"
@@ -75,18 +76,6 @@ const char* getCmdImplDesc(const char* cmd);
 
 //执行命令
 int processCmd(std::shared_ptr<messageReceiver::Stub> stub, const char* cmd, const char* params[]);
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
