@@ -18,8 +18,8 @@
 #include <grpcpp/grpcpp.h>
 #include "commandLine.h"
 #include "Help.h"
-#include "mylib/mylibLog/logrecord.h"
-#include "client/receiveMessage/receiveMessage.h"
+#include "logrecord.h"
+#include "receiveMessage.h"
 #include "protos/proto/messageReceiver.grpc.pb.h"
 
 using namespace std;
