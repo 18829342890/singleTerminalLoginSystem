@@ -4,8 +4,7 @@
 #include <sstream>
 #include <assert.h>
 #include <grpcpp/grpcpp.h>
-#include "messageReceiver.pb.h"
-#include "messageReceiver.grpc.pb.h"
+#include "protos/proto/messageReceiver.grpc.pb.h"
 
 using grpc::Channel;
 using grpc::ChannelArguments;

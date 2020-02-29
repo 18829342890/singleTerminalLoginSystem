@@ -8,8 +8,7 @@
 #include <grpcpp/grpcpp.h>
 #include "sqlApi.h"
 #include "logrecord.h"
-#include "messageReceiver.pb.h"
-#include "messageReceiver.grpc.pb.h"
+#include "protos/proto/messageReceiver.grpc.pb.h"
 
 using namespace std;
 using grpc::Server;
