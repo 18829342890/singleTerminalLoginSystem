@@ -6,6 +6,11 @@ cc_library(
 	hdrs = [
 		"register.h",
 	],
+	copts = [
+		"-Imylib/enum/",
+		"-Imylib/mylibLog/",
+		"-Imylib/mylibSql/",
+	],
 	deps = [
 		"//mylib/mylibLog:myLibLog",
 		"//mylib/enum:myLibEnum",
