@@ -9,6 +9,7 @@ cc_library(
 	deps = [
 		"//mylib/mylibLog:myLibLog",
 		"//mylib/enum:myLibEnum",
+		"//mylib/mylibSql:myLibSqlApi",
 		"//protos/proto:message_receiver_cc_grpc",
 	],
 	visibility = ["//visibility:public"],

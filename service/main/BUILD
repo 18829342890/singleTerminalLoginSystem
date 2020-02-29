@@ -2,6 +2,14 @@ cc_library(
     name = "userLoginManager",
     srcs = ["userLoginManager.cpp"],
     hdrs = ["userLoginManager.h"],
+    copts = [
+		"-Iservice/loginer/",
+		"-Iservice/regist/",
+		"-Iservice/syncClientInfo/",
+		"-Imylib/enum/",
+		"-Imylib/mylibLog/",
+		"-Imylib/mylibSql/",
+	],
 	deps = [
 		"//service/regist:register",
 		"//service/login:loginer",
