@@ -20,7 +20,7 @@
 #include "Help.h"
 #include "logrecord.h"
 #include "receiveMessage.h"
-#include "messageReceiver.grpc.pb.h"
+#include "protos/proto/messageReceiver.grpc.pb.h"
 
 using namespace std;
 using grpc::Server;

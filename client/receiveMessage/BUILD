@@ -6,6 +6,9 @@ cc_library(
 	hdrs = [
 		"receiveMessage.h",
 	],
+	copts = [
+		"-Imylib/mylibLog/",
+	],
 	deps = [
 		"//mylib/mylibLog:myLibLog",
 		"//protos/proto:message_receiver_cc_grpc",

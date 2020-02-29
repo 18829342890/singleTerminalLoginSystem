@@ -3,7 +3,7 @@
 
 
 #include "ProcessCommandLineBase.h"
-#include "mylib/myLibEncrypt/encrypt.h"
+#include "encrypt.h"
 
 using proto::messageReceiver::RegistRequest;
 using proto::messageReceiver::RegistResponse;

@@ -6,7 +6,7 @@
 #include<string.h>
 #include<unistd.h>
 #include <grpcpp/grpcpp.h>
-#include "mylib/mylibLog/logrecord.h"
+#include "logrecord.h"
 #include "protos/proto/messageReceiver.grpc.pb.h"
 
 using namespace std;
