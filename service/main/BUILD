@@ -11,6 +11,7 @@ cc_library(
 		"-Imylib/mylibSql/",
 	],
 	deps = [
+		"//mylib/mylibLog:myLibLog",
 		"//service/login:loginer",
 		"//service/regist:register",
 		"//service/syncClientInfo:syncClientInfo",
