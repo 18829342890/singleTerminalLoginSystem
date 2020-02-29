@@ -19,6 +19,7 @@ cc_binary (
 		"-Imylib/mylibLog/",
 		"-Iclient/processCommandLine/",
 		"-Iclient/receiveMessage/",
+		"-Iprotos/proto/",
 	],
 	deps = [
 		":commandLine",
