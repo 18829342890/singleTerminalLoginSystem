@@ -7,7 +7,6 @@ cc_library(
 		"sqlApi.h",
 	],
 	copts = [
-		"-I/usr/local/mysql/include",
 		"-Imylib/mylibLog",
 	],
 	linkopts = [
