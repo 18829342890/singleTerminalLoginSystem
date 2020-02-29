@@ -16,5 +16,9 @@ cc_library(
 		"//mylib/enum:myLibEnum",
 		"//mylib/mylibSql:myLibSqlApi",
 	],
+	linkopts = [
+		"-L/usr/local/mysql/lib",
+		"-lmysqlclient",
+	],
 	visibility = ["//visibility:public"],
 )

@@ -17,5 +17,9 @@ cc_library(
 		"//mylib/mylibSql:myLibSqlApi",
 		"//protos/proto:message_receiver_cc_grpc",
 	],
+	linkopts = [
+		"-L/usr/local/mysql/lib",
+		"-lmysqlclient",
+	],
 	visibility = ["//visibility:public"],
 )
