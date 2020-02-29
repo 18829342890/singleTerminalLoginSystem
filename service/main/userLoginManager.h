@@ -6,7 +6,6 @@
 #include<string.h>
 #include<unistd.h>
 #include <grpcpp/grpcpp.h>
-#include "sqlApi.h"
 #include "logrecord.h"
 #include "protos/proto/messageReceiver.grpc.pb.h"
 
