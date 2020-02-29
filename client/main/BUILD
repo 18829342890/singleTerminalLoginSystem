@@ -8,7 +8,6 @@ cc_library(
 	],
 	deps = [
 		"//client/processCommandLine:processCommandLineLib",
-
 	]
 )
 
