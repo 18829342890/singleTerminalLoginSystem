@@ -6,5 +6,9 @@ cc_library(
 	hdrs = [
 		"sqlApi.h",
 	],
+	linkopts = [
+		"-L/usr/local/mysql/lib",
+		"-lmysqlclient",
+	],
 	visibility = ["//visibility:public"],
 )
