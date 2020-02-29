@@ -3,12 +3,10 @@ cc_library(
     srcs = ["userLoginManager.cpp"],
     hdrs = ["userLoginManager.h"],
     copts = [
+    	"-Imylib/mylibLog/",
     	"-Iservice/login/",
     	"-Iservice/regist/",
 		"-Iservice/syncClientInfo/",
-		"-Imylib/enum/",
-		"-Imylib/mylibLog/",
-		"-Imylib/mylibSql/",
 	],
 	deps = [
 		"//mylib/mylibLog:myLibLog",
