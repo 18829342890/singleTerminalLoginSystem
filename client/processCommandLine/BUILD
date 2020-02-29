@@ -12,15 +12,10 @@ cc_library(
 		"-Imylib/myLibEncrypt/",
 	],
 	deps = [
-		"//protos/proto:message_receiver_cc_grpc",
-		"@com_github_grpc_grpc//:grpc++",
 		"//mylib/myLibEncrypt:myLibEncrypt",
 		"//mylib/enum:myLibEnum",
-	],
-	linkopts = [
-		"-L/usr/local/lib64",
-		"-lssl",
-		"-lcrypto",
+		"//protos/proto:message_receiver_cc_grpc",
+		"@com_github_grpc_grpc//:grpc++",
 	],
 	visibility = ["//client/main:__pkg__"],
 )

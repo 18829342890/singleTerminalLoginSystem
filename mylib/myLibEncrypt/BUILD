@@ -3,5 +3,10 @@ cc_library(
 	hdrs = [
 		"encrypt.h",
 	],
+	linkopts = [
+		"-L/usr/local/lib64",
+		"-lssl",
+		"-lcrypto",
+	],
 	visibility = ["//visibility:public"],
 )

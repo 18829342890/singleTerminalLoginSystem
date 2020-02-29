@@ -5,7 +5,6 @@ cc_library(
     hdrs = ["commandLine.h"],
     copts = [
 		"-Iclient/processCommandLine/",
-		"-Imylib/thirdLib/"
 	],
 	deps = [
 		"//client/processCommandLine:processCommandLineLib",
@@ -15,13 +14,11 @@ cc_library(
 cc_binary (
 	name = "client",
 	srcs = ["main.cpp"],
-	defines = ["BAZEL_BUILD"],
 	copts = [
 		"-Iclient/processCommandLine/",
 	],
 	deps = [
 		":commandLine",
-		"//client/processCommandLine:processCommandLineLib",
 		"//client/receiveMessage:receiveMessage",
 		"//mylib/mylibLog:myLibLog",
 		"//protos/proto:message_receiver_cc_grpc",
