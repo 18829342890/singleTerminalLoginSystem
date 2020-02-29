@@ -16,6 +16,8 @@ cc_binary (
 	srcs = ["main.cpp"],
 	copts = [
 		"-Imylib/mylibLog/",
+		"-Imylib/enum/",
+		"-Imylib/myLibEncrypt/",
 		"-Iclient/processCommandLine/",
 		"-Iclient/receiveMessage/",
 	],
