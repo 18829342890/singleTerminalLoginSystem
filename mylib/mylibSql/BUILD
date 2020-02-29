@@ -1,10 +1,4 @@
 cc_library(
-    name = "mysqlLib",
-    srcs = ["/usr/local/mysql/lib/libmysqlclient.so"],
-    hdrs = ["/usr/local/mysql/include/*.h"],
-)
-
-cc_library(
 	name = "myLibSqlApi",
 	srcs = [
 		"sqlApi.cc",
@@ -21,7 +15,6 @@ cc_library(
 	],
 	deps = [
 		"//mylib/mylibLog:myLibLog",
-		":mysqlLib"
 	],
 	visibility = ["//visibility:public"],
 )
