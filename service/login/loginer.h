@@ -1,7 +1,7 @@
 #ifndef __LOGINER_H__
 #define __LOGINER_H__
 
-#include "mylib/mylibSql/sqlApi.h"
+#include "sqlApi.h"
 #include <string>
 
 

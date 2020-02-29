@@ -4,12 +4,14 @@ cc_library(
     hdrs = ["userLoginManager.h"],
     copts = [
     	"-Imylib/mylibLog/",
+    	"-Imylib/mylibSql/",
     	"-Iservice/login/",
     	"-Iservice/regist/",
 		"-Iservice/syncClientInfo/",
 	],
 	deps = [
 		"//mylib/mylibLog:myLibLog",
+		"//mylib/mylibSql:myLibSqlApi",
 		"//service/login:loginer",
 		"//service/regist:register",
 		"//service/syncClientInfo:syncClientInfo",

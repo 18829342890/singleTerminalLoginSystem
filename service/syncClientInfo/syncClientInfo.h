@@ -1,7 +1,7 @@
 #ifndef __SYNC_CLIENT_INFO_H__
 #define __SYNC_CLIENT_INFO_H__
 
-#include "mylib/mylibSql/sqlApi.h"
+#include "sqlApi.h"
 #include <string>
 
 
