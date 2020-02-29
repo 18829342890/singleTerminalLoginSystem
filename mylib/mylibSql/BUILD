@@ -6,6 +6,9 @@ cc_library(
 	hdrs = [
 		"sqlApi.h",
 	],
+	copts = [
+		"-I/usr/local/mysql/include",
+	],
 	linkopts = [
 		"-L/usr/local/mysql/lib",
 		"-lmysqlclient",
