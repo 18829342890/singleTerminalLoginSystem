@@ -1,5 +1,3 @@
-
-
 cc_library(
 	name = "processCommandLineLib",
 	hdrs = [
