@@ -8,6 +8,7 @@ cc_library(
 	],
 	deps = [
 		"//client/processCommandLine:processCommandLineLib",
+
 	]
 )
 
@@ -16,12 +17,13 @@ cc_binary (
 	srcs = ["main.cpp"],
 	copts = [
 		"-Imylib/mylibLog/",
+		"-Iclient/processCommandLine/",
 		"-Iclient/receiveMessage/",
 	],
 	deps = [
 		":commandLine",
-		"//mylib/mylibLog:myLibLog",
 		"//client/receiveMessage:receiveMessage",
+		"//mylib/mylibLog:myLibLog",
 		"//protos/proto:message_receiver_cc_grpc",
 		"@com_github_grpc_grpc//:grpc++",
 	],
