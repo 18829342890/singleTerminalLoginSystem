@@ -1,7 +1,7 @@
 cc_library(
     name = "mysqlLib",
     srcs = ["/usr/local/mysql/lib/libmysqlclient.so"],
-    hdrs = glob(["/usr/local/mysql/include/*.h"]),
+    hdrs = ["/usr/local/mysql/include/*.h"],
 )
 
 cc_library(
