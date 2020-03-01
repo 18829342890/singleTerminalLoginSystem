@@ -31,6 +31,7 @@ $(warning  $(c_src))
 $(warning  $(cpp_src))
 $(warning  $(c_objs))
 $(warning  $(cpp_objs))
+$(warning  $(cc_src))
 $(warning  $(objs))
 
 ALL:$(target)
