@@ -24,7 +24,7 @@ CXXFLAGS += -std=c++11 $(INCLUDE)
 CPPFLAGS += `pkg-config --cflags protobuf grpc` $(INCLUDE)
 LDFLAGS = -L/usr/local/lib `pkg-config --libs protobuf grpc++ grpc`\
            -lgrpc++_reflection\
-           -ldl \
+           -ldl -lpthread\
            -L/usr/local/opt/openssl/lib -lssl -lcrypto
 
 $(warning  $(c_src))
