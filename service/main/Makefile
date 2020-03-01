@@ -9,7 +9,7 @@ cc_objs = $(patsubst %.cc,%.o,$(cc_src))
 objs += $(c_objs) $(cpp_objs) $(cc_objs) 
 CC = gcc
 CXX = g++
-target=messageReceiverService	
+target=userLoginManagerService	
 ##mysql 用 mysql_config --include 命令给出
 INCLUDE += -I/usr/local/mysql/include \
 		   -I/usr/local/opt/openssl/include \
