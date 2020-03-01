@@ -28,7 +28,7 @@ ProcessCommandLineBase* getCmdImplClass(const char* cmd)
 	{
 		if(strcmp(cmd, s_my_cmds[i].cmd) == 0)
 		{
-			return s_my_cmds[i].cmdImplClass;
+			return &s_my_cmds[i].cmdImplClass;
 		}
 	}
 

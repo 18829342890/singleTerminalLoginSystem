@@ -1,7 +1,7 @@
 work_path = $(shell pwd)
 c_src = $(wildcard $(work_path)/../../mylib/cJSON/*.c $(work_path)/../../mylib/mylibLog/*.c)
 cpp_src = $(wildcard ./*.cpp ../receiveMessage/*.cpp)
-cc_src = $(wildcard $(work_path)/../../protos/protoCode/*.cc)
+cc_src = $(wildcard $(work_path)/../../protos/proto/*.cc $(work_path)/../../mylib/mylibLog/*.cc)
 c_objs = $(patsubst %.c,%.o,$(c_src))
 cpp_objs += $(patsubst %.cpp,%.o,$(cpp_src))
 cc_objs = $(patsubst %.cc,%.o,$(cc_src))
@@ -11,6 +11,7 @@ CC = gcc
 CXX = g++
 target=client	
 INCLUDE += -I/usr/local/opt/openssl/include \
+		   -I${work_path}/../../            \
 		   -I${work_path}/../../mylib/mylibLog \
 		   -I${work_path}/../../mylib/enum \
 		   -I${work_path}/../../mylib/myLibEncrypt \

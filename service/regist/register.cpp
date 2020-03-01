@@ -1,6 +1,7 @@
 #include "register.h"
 #include "code.h"
 #include "logrecord.h"
+#include "encrypt.h"
 #include <sstream>
 #include <assert.h>
 #include <grpcpp/grpcpp.h>
@@ -79,8 +80,12 @@ int Register::isAlreadyRegist(const string& userName, bool& isAlreadyRegistFlag)
 
 int Register::regist(const string& userName, const string& passWord)
 {
+	char passWordMd5Str[MD5_STR_LEN + 1];
+	getmd5_string(passWord.c_str(), passWord.length(), passWordMd5Str);
+	LOG_INFO("regist passWord:%s", passWord.c_str());
+
 	std::stringstream ss;
-	ss << "insert into user.t_user_password (FstrUserName, FstrPassWord, FuiCreateTime) values ('" << userName << "' ,'" << passWord << "', " << time(NULL) << ")";
+	ss << "insert into user.t_user_password (FstrUserName, FstrPassWord, FuiCreateTime) values ('" << userName << "' ,'" << passWordMd5Str << "', " << time(NULL) << ")";
 
 	if(_sqlApi.insert(ss.str()) != 0)
 	{

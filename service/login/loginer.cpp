@@ -1,6 +1,7 @@
 #include "loginer.h"
 #include "code.h"
 #include "logrecord.h"
+#include "encrypt.h"
 #include <sstream>
 #include <assert.h>
 #include <grpcpp/grpcpp.h>
@@ -62,7 +63,7 @@ int Loginer::processLogin(const string& userName, const string& passWord, int& c
 	}
 
 	//登录
-	if(login(userName, passWord) != 0)
+	if(login(userName) != 0)
 	{
 		LOG_ERROR("login failed! userName:%s, passWord:%s", userName.c_str(), passWord.c_str());
 		code = DB_OP_FAILED;
@@ -141,8 +142,11 @@ int Loginer::processLogout(const string& userName, int logoutType, int& code, st
 
 int Loginer::isValidUserNameAndPassWord(const string& userName, const string& passWord, bool& isValid)
 {
+	char passWordMd5Str[MD5_STR_LEN + 1];
+	getmd5_string(passWord.c_str(), passWord.length(), passWordMd5Str);
+
 	std::stringstream ss;
-	ss << "select count(1) from user.t_user_password where FstrUserName = '" << userName << "' and FstrPassWord = '" << passWord << "'";
+	ss << "select count(1) from user.t_user_password where FstrUserName = '" << userName << "' and FstrPassWord = '" << passWordMd5Str << "'";
 
 	//select
 	int ret = _sqlApi.select(ss.str());
@@ -162,7 +166,7 @@ int Loginer::isValidUserNameAndPassWord(const string& userName, const string& pa
 	int count = strtoul(mysqlResult.mysqlRowVec[0][0], NULL, 0);
 	isValid = count == 0 ? false : true;
 
-	LOG_INFO("userName:%s, passWord:%s, isValid:%d", userName.c_str(), passWord.c_str(), isValid);
+	LOG_INFO("userName:%s, passWordMd5Str:%s, isValid:%d", userName.c_str(), passWordMd5Str, isValid);
 	return 0;
 }
 
@@ -193,13 +197,13 @@ int Loginer::getIsAlreadyLogined(const string& userName, bool& isAlreadyLogined)
 	return 0;
 }
 
-int Loginer::login(const string& userName, const string& passWord)
+int Loginer::login(const string& userName)
 {
 	std::stringstream ss;
-	ss << "insert into user.t_user_login (FstrUserName,FstrPassWord,FuiStatus,FuiCreateTime) values ('" 
-	   << userName << "', '" << passWord << "', 1, " << time(NULL) 
+	ss << "insert into user.t_user_login (FstrUserName,FuiStatus,FuiCreateTime) values ('" 
+	   << userName << "', 1," << time(NULL) 
 	   << ") ON DUPLICATE KEY UPDATE FstrUserName = '" 
-	   << userName << "', FstrPassWord = '" << passWord << "', FuiStatus = 1";
+	   << userName << "', FuiStatus = 1";
 
 	if(_sqlApi.insert(ss.str()) != 0)
 	{

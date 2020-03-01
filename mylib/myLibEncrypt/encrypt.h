@@ -7,6 +7,10 @@
 #include <openssl/pem.h>
 #include <openssl/bio.h>
 #include <openssl/evp.h>
+#include "md5.h"
+
+#define MD5_SIZE        16
+#define MD5_STR_LEN     (MD5_SIZE * 2)
  
 static int base64_encode(const char *in_str, int in_len, char *out_str)
 {
@@ -56,6 +60,28 @@ static int base64_decode(const char *in_str, int in_len, char *out_str)
     return size;
 }
 
+static void getmd5_string(const char *dest_str, unsigned int dest_len, char *md5_str)
+{
+    int i;
+    unsigned char md5_value[MD5_SIZE];
+    MD5_CTX md5;
+
+    // init md5
+    MD5Init(&md5);
+
+    MD5Update(&md5, (unsigned char *)dest_str, dest_len);
+
+    MD5Final(&md5, md5_value);
+
+    // convert md5 value to md5 string
+    for(i = 0; i < MD5_SIZE; i++)
+    {
+        snprintf(md5_str + i*2, 2+1, "%02x", md5_value[i]);
+    }
+
+    return;
+}
+
 #endif
  
 // int main()
@@ -68,5 +94,9 @@ static int base64_decode(const char *in_str, int in_len, char *out_str)
 // 	char outstr2[1024] = {0};
 // 	base64_decode(outstr1,strlen(outstr1),outstr2);
 // 	printf("str:%s\n",outstr2);
+
+    // const char *test_str = "18829342890@163.com";
+    // Compute_string_md5(test_str, strlen(test_str), md5_str);
+    // printf("[string - %s] md5 value:%s\n", test_str, md5_str);
 // 	return 0;
 // }

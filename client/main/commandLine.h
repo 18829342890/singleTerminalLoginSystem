@@ -13,19 +13,18 @@
 typedef struct 
 {
 	const char* cmd;           //命令
-	ProcessCommandLineBase* cmdImplClass;  //命令实现类
+	ProcessCommandLineBase& cmdImplClass;  //命令实现类
 	const char* cmdDesc;       //命令描述
 }my_cmd_t;
 
 const int MAX_CMD_LEN = 128;
 
 
-
-static Help* help = new Help();
-static Login* login = new Login();
-static LogoutCmd* logoutCmd = new LogoutCmd();
-static Exiter* exiter = new Exiter();
-static RegistCmd* registCmd = new RegistCmd();
+static Help help;
+static Login login;
+static LogoutCmd logoutCmd;
+static Exiter exiter;
+static RegistCmd registCmd;
 static my_cmd_t s_my_cmds[] = {
 	{
 		"help",
@@ -59,7 +58,7 @@ static my_cmd_t s_my_cmds[] = {
 	},
 	{
 		NULL,
-		NULL,
+		help,
 		NULL,
 	}
 };
@@ -76,9 +75,6 @@ const char* getCmdImplDesc(const char* cmd);
 
 //执行命令
 int processCmd(std::shared_ptr<messageReceiver::Stub> stub, const char* cmd, const char* params[]);
-
-
-
 
 
 

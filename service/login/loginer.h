@@ -20,7 +20,7 @@ private:
 	//该用户是否已登录
 	int getIsAlreadyLogined(const string& userName, bool& isAlreadyLogined);
 	//登录
-	int login(const string& userName, const string& passWord);
+	int login(const string& userName);
 	//通知已登录的设备退出登录
 	int noticeLoginedClientLogout(const string& userName);
 	//获取已登录设备对应的fd
