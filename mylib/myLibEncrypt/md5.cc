@@ -9,7 +9,7 @@ unsigned char PADDING[] =
 	0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 };
 
-void MD5Init(MD5_CTX *context)
+void MD5Init(MY_MD5_CTX_t *context)
 {
 	context->count[0] = 0;
 	context->count[1] = 0;
@@ -19,7 +19,7 @@ void MD5Init(MD5_CTX *context)
 	context->state[3] = 0x10325476;
 }
 
-void MD5Update(MD5_CTX *context, unsigned char *input, unsigned int inputlen)
+void MD5Update(MY_MD5_CTX_t *context, unsigned char *input, unsigned int inputlen)
 {
 	unsigned int i = 0;
 	unsigned int index = 0;
@@ -50,7 +50,7 @@ void MD5Update(MD5_CTX *context, unsigned char *input, unsigned int inputlen)
 	memcpy(&context->buffer[index], &input[i], inputlen-i);
 }
 
-void MD5Final(MD5_CTX *context, unsigned char digest[16])
+void MD5Final(MY_MD5_CTX_t *context, unsigned char digest[16])
 {
 	unsigned int index = 0,padlen = 0;
 	unsigned char bits[8];

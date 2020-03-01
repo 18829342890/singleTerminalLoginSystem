@@ -64,7 +64,7 @@ static void getmd5_string(const char *dest_str, unsigned int dest_len, char *md5
 {
     int i;
     unsigned char md5_value[MD5_SIZE];
-    MD5_CTX md5;
+    MY_MD5_CTX_t md5;
 
     // init md5
     MD5Init(&md5);
