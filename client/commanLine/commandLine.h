@@ -10,14 +10,15 @@
 #include "Regist.h"
 #include "Logout.h"
 
+
+const int MAX_CMD_LEN = 128;
+
 typedef struct 
 {
 	const char* cmd;           //命令
 	ProcessCommandLineBase& cmdImplClass;  //命令实现类
 	const char* cmdDesc;       //命令描述
 }my_cmd_t;
-
-const int MAX_CMD_LEN = 128;
 
 
 static Help help;
@@ -67,14 +68,15 @@ static my_cmd_t s_my_cmds[] = {
 //判断命令是否合法
 bool isLegalCmd(const char* cmd);
 
-//获取cmd的实现类
-ProcessCommandLineBase* getCmdImplClass(const char* cmd);
-
 //获取cmd的描述
 const char* getCmdImplDesc(const char* cmd);
 
 //执行命令
 int processCmd(std::shared_ptr<messageReceiver::Stub> stub, const char* cmd, const char* params[]);
+
+
+
+
 
 
 

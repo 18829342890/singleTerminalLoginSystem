@@ -1,9 +1,12 @@
-#include "receiveMessage.h"
+#include "receiveLogoutNotice.h"
+
+using namespace client::service;
 
 extern int isNoticeLogout;
 
 
-Status MessageReceiver::noticeClientLogout(ServerContext* context, const NoticeClientLogoutRequest* request, NoticeClientLogoutResponse* response)
+
+Status receiveLogoutNotice::noticeClientLogout(ServerContext* context, const NoticeClientLogoutRequest* request, NoticeClientLogoutResponse* response)
 {
 	//打印消息
 	string message = request->message();

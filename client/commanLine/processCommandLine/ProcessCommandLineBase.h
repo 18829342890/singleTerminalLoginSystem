@@ -8,7 +8,10 @@
 #include <unistd.h>
 #include <errno.h>
 #include <grpcpp/grpcpp.h>
-#include "protos/proto/messageReceiver.grpc.pb.h"
+#include "messageReceiver.grpc.pb.h"
+
+namespace client{
+namespace commandLine{
 
 using namespace std;
 using grpc::Channel;
@@ -17,7 +20,6 @@ using grpc::ClientContext;
 using grpc::Status;
 using proto::messageReceiver::messageReceiver;
 
-const int MESSAGE_MAX_LEN = 10240;
 
 class ProcessCommandLineBase
 {
@@ -32,6 +34,10 @@ public:
 	virtual int processCommandLine(std::shared_ptr<messageReceiver::Stub> stub, const char* params[]){}
 };
 
+
+
+}
+}
 
 
 

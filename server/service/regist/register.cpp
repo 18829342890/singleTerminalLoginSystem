@@ -1,6 +1,7 @@
 #include "register.h"
 #include "code.h"
 #include "logrecord.h"
+#include "base64.h"
 #include "userPasswordRepository.h"
 #include <sstream>
 #include <assert.h>
@@ -22,6 +23,14 @@ Register::~Register()
 
 int Register::processRegist(const string& userName, const string& passWord, int& code, string& msg)
 {
+	//检查密码格式，防止sql注入
+	if(CheckPassWord::CheckPassWordFormatIsLegal(passWord, msg))
+	{
+		LOG_ERROR("CheckPassWordFormatIsLegal failed!");
+		code = PASSWORD_FORMAT_ERROR;
+		return -1;
+	}
+
 	//校验是否已经注册
 	bool isAlreadyRegistFlag = false;
 	UserPasswordRepository userPasswordRepository(_sqlApi);
@@ -56,6 +65,32 @@ int Register::processRegist(const string& userName, const string& passWord, int&
 	return 0;
 }
 
+bool Register::CheckPassWordFormatIsLegal(const string& passWord, string& errmsg)
+{
+	//解码密码
+	char passWordDecoded[1024];
+	base64_decode(passWord.c_str(), passWord.length(), passWordDecoded);
+
+	//检查长度
+	int length = strlen(passWordDecoded);
+	if(length < 6 or length > 20)
+	{
+		LOG_ERROR("length is < 6 or > 20! length:%d", length);
+		errmsg = "pass word length is between 6 and 20.";
+		return false;
+	}
+
+	//只能是字母、数字、下划线的组合
+	string regex = "^[A-Za-z0-9_]+$";
+	if(!regex_match(passWordDecoded, regex))
+	{
+		LOG_ERROR("passWord do not match %s", regex.c_str());
+		errmsg = "passWord do not match " + regex;
+		return false;
+	}
+
+	return true;
+}
 
 
 int Register::regist(const string& userName, const string& passWord)

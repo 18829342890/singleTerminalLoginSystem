@@ -14,6 +14,7 @@ enum REGIST_LOGIN_CODE
 	ALREADY_LOGINED           = -4,
 	USERNAME_OR_PASSWD_ERROR  = -5,
 	USER_NOT_LOGINED          = -6,
+	PASSWORD_FORMAT_ERROR     = -7,
 
 	
 };

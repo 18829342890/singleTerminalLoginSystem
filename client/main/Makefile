@@ -1,7 +1,7 @@
 work_path = $(shell pwd)
-c_src = $(wildcard $(work_path)/../../mylib/cJSON/*.c $(work_path)/../../mylib/mylibLog/*.c)
-cpp_src = $(wildcard ./*.cpp ../receiveMessage/*.cpp)
-cc_src = $(wildcard $(work_path)/../../protos/proto/*.cc $(work_path)/../../mylib/mylibLog/*.cc $(work_path)/../../mylib/myLibEncrypt/*.cc)
+c_src = $(wildcard $(work_path)/../../mylib/*/*.c)
+cpp_src = $(wildcard ./*.cpp ../service/*/*.cpp ../commanLine/*.cpp)
+cc_src = $(wildcard $(work_path)/../../protos/*/*.cc $(work_path)/../../mylib/mylibLog/*.cc $(work_path)/../../mylib/myLibEncrypt/*.cc)
 c_objs = $(patsubst %.c,%.o,$(c_src))
 cpp_objs += $(patsubst %.cpp,%.o,$(cpp_src))
 cc_objs = $(patsubst %.cc,%.o,$(cc_src))
@@ -16,8 +16,10 @@ INCLUDE += -I/usr/local/opt/openssl/include \
 		   -I${work_path}/../../mylib/enum \
 		   -I${work_path}/../../mylib/myLibEncrypt \
 		   -I${work_path}/../../protos/protoCode \
-		   -I${work_path}/../processCommandLine \
-		   -I${work_path}/../receiveMessage
+		   -I${work_path}/../service/receiveLogoutNotice \
+		   -I${work_path}/../myToolLib  \
+		   -I${work_path}/../commanLine  \
+		    -I${work_path}/../commanLine/processCommandLine  
 
 CFLAGS = $(INCLUDE)
 CXXFLAGS += -std=c++11 $(INCLUDE)

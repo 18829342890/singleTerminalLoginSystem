@@ -3,6 +3,7 @@
 
 #include "ProcessCommandLineBase.h"
 
+using namespace client::commandLine;
 
 class Help : public ProcessCommandLineBase
 {

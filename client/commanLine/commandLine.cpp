@@ -1,13 +1,7 @@
 #include "commandLine.h"
 #include <string.h>
 
-
-#define GET_CMD_IMPL_CLASS (cmdImplClass)  \
-do{                                        \
-	IProcessCommandLine implClass; \
-}while(0)
-
-
+using namespace client::commandLine;
 
 bool isLegalCmd(const char* cmd)
 {

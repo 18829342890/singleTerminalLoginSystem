@@ -1,0 +1,43 @@
+[2020.03.08 17:50:10][/Users/tanxiaohui/mygit/singleTerminalLoginSystem/server/main/../../mylib/mylibSql/sqlApi.cc :38][ERROR]: mysql_real_connect failed! errno:2002, errmsg:Can't connect to local MySQL server through socket '/tmp/mysql.sock' (2)
+[2020.03.08 17:50:10][main.cpp :23][ERROR]: connectMysql failed!
+[2020.03.08 17:50:42][/Users/tanxiaohui/mygit/singleTerminalLoginSystem/server/main/../../mylib/mylibSql/sqlApi.cc :42][INFO]: connect to db success!
+[2020.03.08 17:50:43][main.cpp :41][INFO]: Server listening on 0.0.0.0:50051
+[2020.03.08 17:52:18][../service/userLoginManageService.cpp :31][INFO]: regist txh cHdk
+
+[2020.03.08 17:52:18][../repository/src/userPasswordRepository.cpp :40][INFO]: userName:txh, count(1):0
+[2020.03.08 17:52:19][../service/regist/register.cpp :83][INFO]: bcrypt_hashpw time taken: 0.821042 seconds; passWordHash:$2a$12$bYPTDy6zdgSHHggUPnR79.vHL5nMe.9rZtOVdVEOfofE4RdIkDFYe
+[2020.03.08 17:52:30][../repository/src/userPasswordRepository.cpp :80][INFO]: userName:txh, salt:$2a$12$bYPTDy6zdgSHHggUPnR79.
+[2020.03.08 17:52:31][../repository/src/userPasswordRepository.cpp :107][INFO]: userName:txh, passWordHash:$2a$12$bYPTDy6zdgSHHggUPnR79.vHL5nMe.9rZtOVdVEOfofE4RdIkDFYe, isValid:1
+[2020.03.08 17:52:31][../repository/src/userLoginManageRepository.cpp :27][INFO]: userName:txh, status =1`s count:0
+[2020.03.08 17:52:31][../service/login/loginer.cpp :81][INFO]: userName:txh, passWord:cHdk
+ login success!
+[2020.03.08 17:52:31][../repository/src/userLoginManageRepository.cpp :27][INFO]: userName:txh, status =1`s count:1
+[2020.03.08 17:52:36][../repository/src/userLoginManageRepository.cpp :27][INFO]: userName:txh, status =1`s count:1
+[2020.03.08 17:52:41][../repository/src/userLoginManageRepository.cpp :27][INFO]: userName:txh, status =1`s count:1
+[2020.03.08 17:52:46][../repository/src/userLoginManageRepository.cpp :27][INFO]: userName:txh, status =1`s count:1
+[2020.03.08 17:52:51][../repository/src/userLoginManageRepository.cpp :27][INFO]: userName:txh, status =1`s count:1
+[2020.03.08 17:52:54][../repository/src/userPasswordRepository.cpp :80][INFO]: userName:txh, salt:$2a$12$bYPTDy6zdgSHHggUPnR79.
+[2020.03.08 17:52:55][../repository/src/userPasswordRepository.cpp :107][INFO]: userName:txh, passWordHash:$2a$12$bYPTDy6zdgSHHggUPnR79.vHL5nMe.9rZtOVdVEOfofE4RdIkDFYe, isValid:1
+[2020.03.08 17:52:55][../repository/src/userLoginManageRepository.cpp :27][INFO]: userName:txh, status =1`s count:1
+[2020.03.08 17:52:55][../service/login/loginer.cpp :59][INFO]: userName already logined! Force other logged in devices to exit, and then log in to the device! userName:txh
+[2020.03.08 17:52:55][../repository/src/userLoginManageRepository.cpp :61][INFO]: userName:txh already logined, FstrIp:localhost, port:50052
+[2020.03.08 17:52:55][../service/login/loginer.cpp :228][ERROR]: notice another client logout failed!
+[2020.03.08 17:52:55][../service/login/loginer.cpp :81][INFO]: userName:txh, passWord:cHdk
+ login success!
+[2020.03.08 17:52:55][../repository/src/userLoginManageRepository.cpp :27][INFO]: userName:txh, status =1`s count:1
+[2020.03.08 17:52:56][../repository/src/userLoginManageRepository.cpp :27][INFO]: userName:txh, status =1`s count:1
+[2020.03.08 17:53:00][../repository/src/userLoginManageRepository.cpp :27][INFO]: userName:txh, status =1`s count:1
+[2020.03.08 17:53:01][../repository/src/userLoginManageRepository.cpp :27][INFO]: userName:txh, status =1`s count:1
+[2020.03.08 17:53:04][../repository/src/userLoginManageRepository.cpp :27][INFO]: userName:txh, status =1`s count:1
+[2020.03.08 17:53:04][../service/login/loginer.cpp :129][INFO]: logout success!
+[2020.03.08 17:53:05][../repository/src/userLoginManageRepository.cpp :27][INFO]: userName:txh, status =1`s count:0
+[2020.03.08 17:53:09][../repository/src/userLoginManageRepository.cpp :27][INFO]: userName:txh, status =1`s count:0
+[2020.03.08 17:53:09][../service/login/loginer.cpp :101][INFO]: already logout! just return success.
+[2020.03.08 19:00:25][../repository/src/userPasswordRepository.cpp :80][INFO]: userName:txh, salt:$2a$12$bYPTDy6zdgSHHggUPnR79.
+[2020.03.08 19:00:26][../repository/src/userPasswordRepository.cpp :107][INFO]: userName:txh, passWordHash:$2a$12$bYPTDy6zdgSHHggUPnR79.vHL5nMe.9rZtOVdVEOfofE4RdIkDFYe, isValid:1
+[2020.03.08 19:00:26][../repository/src/userLoginManageRepository.cpp :27][INFO]: userName:txh, status =1`s count:0
+[2020.03.08 19:00:26][../service/login/loginer.cpp :81][INFO]: userName:txh, passWord:cHdk
+ login success!
+[2020.03.08 19:00:26][../repository/src/userLoginManageRepository.cpp :27][INFO]: userName:txh, status =1`s count:1
+[2020.03.08 19:00:28][../repository/src/userLoginManageRepository.cpp :27][INFO]: userName:txh, status =1`s count:1
+[2020.03.08 19:00:28][../service/login/loginer.cpp :129][INFO]: logout success!

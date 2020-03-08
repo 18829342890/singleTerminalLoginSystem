@@ -1,33 +1,38 @@
-#ifndef __REGIST_H__
-#define __REGIST_H__
+#ifndef __LOGIN_H__
+#define __LOGIN_H__
 
 
 #include "ProcessCommandLineBase.h"
-#include "mylib/myLibEncrypt/base64.h"
+#include "base64.h"
 
-using proto::messageReceiver::RegistRequest;
-using proto::messageReceiver::RegistResponse;
+using namespace client::commandLine;
+using proto::messageReceiver::LoginRequest;
+using proto::messageReceiver::LoginResponse;
 
+extern int isLogined;
+extern string userName;
 
-class RegistCmd : public ProcessCommandLineBase
+class Login : public ProcessCommandLineBase
 {
 public:
 	virtual int processCommandLine(std::shared_ptr<messageReceiver::Stub> stub, const char* params[])
 	{
-		RegistRequest registRequest;
-		int ret = getRegistRequestFromParams(params, registRequest);
+		LoginRequest loginRequest;
+		int ret = getLoginRequestFromParams(params, loginRequest);
 		if(ret < 0)
 		{
 			return -1;
 		}
 
 		ClientContext context;
-		RegistResponse registResponse;
+		LoginResponse loginResponse;
 		context.set_compression_algorithm(GRPC_COMPRESS_DEFLATE);
-		Status status = stub->regist(&context, registRequest, &registResponse);
+		Status status = stub->login(&context, loginRequest, &loginResponse);
 		if(status.ok())
 		{
-			cout << registResponse.message() << endl;
+			cout << loginResponse.message() << endl;
+			isLogined = 1;
+			userName = loginRequest.user_name();
 			return 0;
 		}
 		else
@@ -39,15 +44,15 @@ public:
 
 
 private:
-	int getRegistRequestFromParams(const char* params[], RegistRequest& registRequest)
+	int getLoginRequestFromParams(const char* params[], LoginRequest& loginRequest)
 	{
-		//判断参数是否合法
+		//判断是否合法
 		int i = 0;
 		for(; params[i]; ++i){}
 
 		if(i != 2)
 		{
-			cout << "please input regist username password!" << endl;
+			cout << "please input login username password!" << endl;
 			return -1;
 		}
 
@@ -61,10 +66,10 @@ private:
 			cout << "base64_encode failed!" << endl;
 			return -1;
 		}
-
+		
 		//设置username、password
-		registRequest.set_user_name(userName);
-		registRequest.set_pass_word(passWordEncrypted);
+		loginRequest.set_user_name(userName);
+		loginRequest.set_pass_word(passWordEncrypted);
 		return 0;
 	}
 

@@ -16,6 +16,7 @@ public:
 	int processRegist(const string& userName, const string& passWord, int& code, string& msg);
 
 private:
+	bool CheckPassWordFormatIsLegal(const string& passWord, string& errmsg);
 	int regist(const string& userName, const string& passWord);
 
 private:

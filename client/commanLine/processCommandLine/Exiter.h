@@ -1,28 +1,33 @@
-#ifndef __MY_LOGOUT_H__
-#define __MY_LOGOUT_H__
+#ifndef __MY_EXIT_H__
+#define __MY_EXIT_H__
 
 #include <stdlib.h>
 #include "ProcessCommandLineBase.h"
-#include "mylib/enum/code.h"
+#include "code.h"
 
 
+using namespace client::commandLine;
+using namespace userLoginSystem::myEnum;
 using proto::messageReceiver::LogoutRequest;
 using proto::messageReceiver::LogoutResponse;
 
+extern int isLogined;
+extern string userName;
 
-class LogoutCmd : public ProcessCommandLineBase
+class Exiter : public ProcessCommandLineBase
 {
 
 public:
 
 	int processCommandLine(std::shared_ptr<messageReceiver::Stub> stub, const char* params[])
 	{
+		//如果未登录，直接退出
+		if(!isLogined) exit(0);
+
+		//如果已经登录，则发送退出客户端请求
 		LogoutRequest logoutRequest;
-		int ret = getLogoutRequestFromParams(params, logoutRequest);
-		if(ret < 0)
-		{
-			return -1;
-		}
+		logoutRequest.set_user_name(userName);
+		logoutRequest.set_logout_type(USER_LOGOUT);
 
 		ClientContext context;
 		LogoutResponse logoutResponse;
@@ -31,6 +36,7 @@ public:
 		if(status.ok())
 		{
 			cout << logoutResponse.message() << endl;
+			exit(0);
 			return 0;
 		}
 		else
@@ -38,24 +44,6 @@ public:
 			cout << "RPC failed! errcode:" << status.error_code() << ", errmsg:" << status.error_message() << endl;
 			return -1;
 		}
-	}
-		
-	int getLogoutRequestFromParams(const char* params[], LogoutRequest& logoutRequest)
-	{
-		//判断参数是否合法
-		int i = 0;
-		for(; params[i]; ++i){}
-
-		if(i != 1)
-		{
-			cout << "please input logout username" << endl;
-			return -1;
-		}
-
-		//设置username
-		logoutRequest.set_user_name(params[0]);
-		logoutRequest.set_logout_type(ADMINISTRATOR_KICK_OUT);
-		return 0;
 	}
 
 };
