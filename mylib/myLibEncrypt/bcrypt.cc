@@ -39,7 +39,7 @@
 #include <string.h>
 #include <stdint.h>
 #include <stdlib.h>
-#include <bas/stdlib.h>
+#include <bsd/stdlib.h>
 #include "bcrypt.h"
 
 #ifndef __set_errno
