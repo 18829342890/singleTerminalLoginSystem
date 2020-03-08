@@ -14,6 +14,7 @@ cc_binary (
 		"//client/service/receiveLogoutNotice:receiveLogoutNotice",
 		"//client/myToolLib:myTool",
 		"//mylib/mylibLog:myLibLog",
+		"//mylib/myLibIni:myLibIni",
 		"//protos/proto:message_receiver_cc_grpc",
 		"@com_github_grpc_grpc//:grpc++",
 	],
