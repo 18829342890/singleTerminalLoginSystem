@@ -1,10 +1,11 @@
+#include <sstream>
+#include <assert.h>
+#include <fstream>
+#include <sstream>
+#include <grpcpp/grpcpp.h>
 #include "loginer.h"
 #include "code.h"
 #include "logrecord.h"
-#include "encrypt.h"
-#include <sstream>
-#include <assert.h>
-#include <grpcpp/grpcpp.h>
 #include "protos/proto/messageReceiver.grpc.pb.h"
 
 using grpc::Channel;
@@ -140,16 +141,69 @@ int Loginer::processLogout(const string& userName, int logoutType, int& code, st
 	return 0;
 }
 
+int Loginer::getSaltByUserName(const string& userName, char salt[BCRYPT_HASHSIZE])
+{
+	//select
+	std::stringstream ss;
+	ss << "select FstrSalt from user.t_user_password where FstrUserName = '" << userName << "'";
+
+	int ret = _sqlApi.select(ss.str());
+	if(ret != 0)
+	{
+		LOG_ERROR("select failed! select string:%s", ss.str().c_str());
+		return -1;
+	}
+
+	//获取结果
+	mysql_result_t mysqlResult;
+	_sqlApi.getResult(mysqlResult);
+
+	//判断是否存在该用户
+	if(mysqlResult.rowsCount <= 0)
+	{
+		LOG_ERROR("is not exist this userName! userName:%s", userName.c_str());
+		return -1;
+	}
+
+	//获取salt
+	assert(mysqlResult.fieldsCount == 1);
+	string saltString = mysqlResult.mysqlRowVec[0][0];
+	if(saltString.length() > BCRYPT_HASHSIZE - 1)
+	{
+		LOG_ERROR("the salt length in DB is error! length:%d, salt:%s", saltString.length(), saltString.c_str());
+		return -1;
+	}
+
+	strcpy(salt, saltString.c_str());
+	LOG_INFO("userName:%s, salt:%s", userName.c_str(), salt);
+	return 0;
+}
+
 int Loginer::isValidUserNameAndPassWord(const string& userName, const string& passWord, bool& isValid)
 {
-	char passWordMd5Str[MD5_STR_LEN + 1];
-	getmd5_string(passWord.c_str(), passWord.length(), passWordMd5Str);
+	//获取该用户加密用的salt
+	char salt[BCRYPT_HASHSIZE];
+	int ret = getSaltByUserName(userName, salt);
+	if(ret != 0)
+	{
+		LOG_ERROR("getSaltByUserName failed!");
+		return -1;
+	}
 
-	std::stringstream ss;
-	ss << "select count(1) from user.t_user_password where FstrUserName = '" << userName << "' and FstrPassWord = '" << passWordMd5Str << "'";
+	//加密密码
+	char passWordHash[BCRYPT_HASHSIZE];
+	ret = bcrypt_hashpw(userName.c_str(), salt, passWordHash);
+	if(ret != 0)
+	{
+		LOG_ERROR("bcrypt_hashpw failed!");
+		return -1;
+	}
 
 	//select
-	int ret = _sqlApi.select(ss.str());
+	std::stringstream ss;
+	ss << "select count(1) from user.t_user_password where FstrUserName = '" << userName << "' and FstrPassWord = '" << passWordHash << "'";
+
+	ret = _sqlApi.select(ss.str());
 	if(ret != 0)
 	{
 		LOG_ERROR("select failed! select string:%s", ss.str().c_str());
@@ -166,7 +220,7 @@ int Loginer::isValidUserNameAndPassWord(const string& userName, const string& pa
 	int count = strtoul(mysqlResult.mysqlRowVec[0][0], NULL, 0);
 	isValid = count == 0 ? false : true;
 
-	LOG_INFO("userName:%s, passWordMd5Str:%s, isValid:%d", userName.c_str(), passWordMd5Str, isValid);
+	LOG_INFO("userName:%s, passWordHash:%s, isValid:%d", userName.c_str(), passWordHash, isValid);
 	return 0;
 }
 
@@ -259,14 +313,24 @@ int Loginer::noticeLoginedClientLogout(const string& userName)
 	return 0;
 }
 
+static std::string readFile2String(std::string file_name) {
+  std::ifstream ifs(file_name);
+  std::stringstream buffer;
+  buffer << ifs.rdbuf();
+  return buffer.str();
+}
+
 int Loginer::noticeLogout(const string& clientIp, int clientPort)
 {
 	std::stringstream address;
 	address << clientIp << ":" << clientPort;
 
-	ChannelArguments channelArgs;
-	channelArgs.SetCompressionAlgorithm(GRPC_COMPRESS_GZIP);
-	std::shared_ptr<Channel> channel = grpc::CreateCustomChannel(address.str().c_str(), grpc::InsecureChannelCredentials(), channelArgs);
+	auto cacert = readFile2String("../../auth/ca.crt");
+  	auto options = grpc::SslCredentialsOptions();
+  	options.pem_root_certs = cacert;
+  	auto creds = grpc::SslCredentials(options);
+
+	std::shared_ptr<Channel> channel = grpc::CreateChannel(address.str().c_str(), creds);
 	std::shared_ptr<messageReceiver::Stub> stub = messageReceiver::NewStub(channel);
 	if(!stub)
 	{

@@ -1,6 +1,7 @@
 #ifndef __LOGINER_H__
 #define __LOGINER_H__
 
+#include "bcrypt.h"
 #include "mylib/mylibSql/sqlApi.h"
 #include <string>
 
@@ -15,6 +16,8 @@ public:
 	int processLogout(const string& userName, int logoutType, int& code, string& msg);
 
 private:
+	//获取用户加密密码所用的盐
+	int getSaltByUserName(const string& userName, char salt[BCRYPT_HASHSIZE]);
 	//用户名和密码是否有效
 	int isValidUserNameAndPassWord(const string& userName, const string& passWord, bool& isValid);
 	//该用户是否已登录

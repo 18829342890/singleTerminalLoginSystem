@@ -15,6 +15,8 @@
 #include <arpa/inet.h>
 #include <sys/ioctl.h>
 #include <net/if.h>
+#include <fstream>
+#include <sstream>
 #include <grpcpp/grpcpp.h>
 #include "commandLine.h"
 #include "Help.h"
@@ -32,14 +34,21 @@ using proto::messageReceiver::SyncClientInfoRequest;
 using proto::messageReceiver::SyncClientInfoResponse;
 
 const int MAX_MESSAGE_SIZE = 10240;
-const char* DST_IP_PORT = "127.0.0.1:8080";
+const char* DST_IP_PORT = "localhost:50051";
 const char* CLIENT_IP_PORT = "127.0.0.1:8081";
 
-static int s_clientLocalPort = 0;
-static string s_clientLocalIp = "127.0.0.1";
+static int s_clientLocalPort = 50052;
+static string s_clientLocalIp = "localhost";
 int isLogined = 0;
 string userName;
 int isNoticeLogout = 0;
+
+std::string readFile2String(std::string file_name) {
+  std::ifstream ifs(file_name);
+  std::stringstream buffer;
+  buffer << ifs.rdbuf();
+  return buffer.str();
+}
 
 //string to vector
 static void str2vec(const std::string& src, std::vector<std::string>& vec,
@@ -138,17 +147,24 @@ static int getAvailablePort(int& port)
 static void* receiveMessage(void* param)
 {
 	//获取本地ip和可用的端口
-	if(getLocalIP("eth0", s_clientLocalIp) != 0);
-	if(getAvailablePort(s_clientLocalPort) != 0) exit(1);
+	//if(getLocalIP("eth0", s_clientLocalIp) != 0);
+	//if(getAvailablePort(s_clientLocalPort) != 0) exit(1);
 
 	std::stringstream address;
 	address << s_clientLocalIp << ":" << s_clientLocalPort;
 
 	//创建grpc
 	MessageReceiver service;
+	std::string key = readFile2String("../../auth/client.key");
+  	std::string cert = readFile2String("../../auth/client.crt");
+  	std::string root = readFile2String("../../auth/ca.crt");
+  	grpc::SslServerCredentialsOptions::PemKeyCertPair key_cert = {key,cert};
+  	grpc::SslServerCredentialsOptions sslOps;
+  	sslOps.pem_root_certs = root;
+  	sslOps.pem_key_cert_pairs.push_back (key_cert);
+
 	ServerBuilder builder;
-	builder.SetDefaultCompressionAlgorithm(GRPC_COMPRESS_GZIP);
-	builder.AddListeningPort(address.str().c_str(), grpc::InsecureServerCredentials());
+	builder.AddListeningPort(address.str().c_str(), grpc::SslServerCredentials(sslOps));
 	builder.RegisterService(&service);
 
 	std::unique_ptr<Server> server(builder.BuildAndStart());
@@ -160,9 +176,12 @@ static void* receiveMessage(void* param)
 //同步客户端ip和port
 static void* syncClientInfo(void* param)
 {
-	ChannelArguments channelArgs;
-	channelArgs.SetCompressionAlgorithm(GRPC_COMPRESS_GZIP);
-	std::shared_ptr<Channel> channel = grpc::CreateCustomChannel(DST_IP_PORT, grpc::InsecureChannelCredentials(), channelArgs);
+	auto cacert = readFile2String("../../auth/ca.crt");
+  	auto options = grpc::SslCredentialsOptions();
+  	options.pem_root_certs = cacert;
+  	auto creds = grpc::SslCredentials(options);
+
+	std::shared_ptr<Channel> channel = grpc::CreateChannel(DST_IP_PORT, creds);
 	std::shared_ptr<messageReceiver::Stub> stub = messageReceiver::NewStub(channel);
 	if(!stub)
 	{
@@ -205,6 +224,7 @@ static void* monitorIsNoticeLogout(void* params)
 	while(true)
 	{
 		if(isNoticeLogout) exit(0);
+		sleep(1);
 	}
 }
 
@@ -221,10 +241,12 @@ int main()
 
 	//作为客户端，连接服务器
 	char cmds[MAX_CMD_LEN] = {0};
-	ChannelArguments channelArgs;
+	auto cacert = readFile2String("../../auth/ca.crt");
+  	auto options = grpc::SslCredentialsOptions();
+  	options.pem_root_certs = cacert;
+  	auto creds = grpc::SslCredentials(options);
 
-	channelArgs.SetCompressionAlgorithm(GRPC_COMPRESS_GZIP);
-	std::shared_ptr<Channel> channel = grpc::CreateCustomChannel(DST_IP_PORT, grpc::InsecureChannelCredentials(), channelArgs);
+	std::shared_ptr<Channel> channel = grpc::CreateChannel(DST_IP_PORT, creds);
 	std::shared_ptr<messageReceiver::Stub> stub = messageReceiver::NewStub(channel);
 	if(!stub)
 	{
