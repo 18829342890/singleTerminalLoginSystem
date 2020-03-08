@@ -10,17 +10,18 @@ class Register
 {
 
 public:
-	Register(SqlApi& sqlApi);
+	Register(SqlApi& sqlApi, int saltWorkFactor);
 	virtual ~Register();
 
 	int processRegist(const string& userName, const string& passWord, int& code, string& msg);
 
 private:
-	bool CheckPassWordFormatIsLegal(const string& passWord, string& errmsg);
+	bool isLegalPassWordFormat(const string& passWord, string& errmsg);
 	int regist(const string& userName, const string& passWord);
 
 private:
 	SqlApi _sqlApi;
+	int _saltWorkFactor;
 };
 
 

@@ -15,6 +15,7 @@ INCLUDE += -I/usr/local/opt/openssl/include \
 		   -I${work_path}/../../mylib/mylibLog \
 		   -I${work_path}/../../mylib/enum \
 		   -I${work_path}/../../mylib/myLibEncrypt \
+		   -I${work_path}/../../mylib/myLibIni \
 		   -I${work_path}/../../protos/protoCode \
 		   -I${work_path}/../service/receiveLogoutNotice \
 		   -I${work_path}/../myToolLib  \

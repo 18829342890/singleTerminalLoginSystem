@@ -4,7 +4,7 @@
 #include "base64.h"
 #include "userPasswordRepository.h"
 #include <sstream>
-#include <assert.h>
+#include <regex>
 #include <grpcpp/grpcpp.h>
 
 using namespace userLoginSystem::myEnum;
@@ -14,8 +14,9 @@ using grpc::ServerBuilder;
 using grpc::ServerContext;
 using grpc::Status;
 
-Register::Register(SqlApi& sqlApi) 
-		: _sqlApi(sqlApi)
+Register::Register(SqlApi& sqlApi, int saltWorkFactor) 
+		:_sqlApi(sqlApi),
+		 _saltWorkFactor(saltWorkFactor)
 {}
 
 Register::~Register()
@@ -24,7 +25,7 @@ Register::~Register()
 int Register::processRegist(const string& userName, const string& passWord, int& code, string& msg)
 {
 	//检查密码格式，防止sql注入
-	if(CheckPassWord::CheckPassWordFormatIsLegal(passWord, msg))
+	if(!isLegalPassWordFormat(passWord, msg))
 	{
 		LOG_ERROR("CheckPassWordFormatIsLegal failed!");
 		code = PASSWORD_FORMAT_ERROR;
@@ -65,11 +66,12 @@ int Register::processRegist(const string& userName, const string& passWord, int&
 	return 0;
 }
 
-bool Register::CheckPassWordFormatIsLegal(const string& passWord, string& errmsg)
+bool Register::isLegalPassWordFormat(const string& passWord, string& errmsg)
 {
 	//解码密码
 	char passWordDecoded[1024];
 	base64_decode(passWord.c_str(), passWord.length(), passWordDecoded);
+	LOG_INFO("passWordDecoded:%s", passWordDecoded);
 
 	//检查长度
 	int length = strlen(passWordDecoded);
@@ -81,11 +83,11 @@ bool Register::CheckPassWordFormatIsLegal(const string& passWord, string& errmsg
 	}
 
 	//只能是字母、数字、下划线的组合
-	string regex = "^[A-Za-z0-9_]+$";
-	if(!regex_match(passWordDecoded, regex))
+	regex reg("^[A-Za-z0-9_]+$");
+	if(!regex_match(passWordDecoded, reg))
 	{
-		LOG_ERROR("passWord do not match %s", regex.c_str());
-		errmsg = "passWord do not match " + regex;
+		LOG_ERROR("passWord do not match ^[A-Za-z0-9_]+$");
+		errmsg = "passWord do not match ^[A-Za-z0-9_]+$";
 		return false;
 	}
 
@@ -98,7 +100,7 @@ int Register::regist(const string& userName, const string& passWord)
 	//生成盐
 	char salt[BCRYPT_HASHSIZE];
 	char passWordHash[BCRYPT_HASHSIZE];
-	int ret = bcrypt_gensalt(12, salt); //TODO 12可配置
+	int ret = bcrypt_gensalt(_saltWorkFactor, salt);
 	if(ret != 0)
 	{
 		LOG_ERROR("gen salt failed!");

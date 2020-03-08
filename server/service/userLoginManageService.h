@@ -25,11 +25,11 @@ using proto::messageReceiver::SyncClientInfoResponse;
 using proto::messageReceiver::LogoutRequest;
 using proto::messageReceiver::LogoutResponse;
 
-class MessageReceiver final : public messageReceiver::Service 
+class UserLoginManageService final : public messageReceiver::Service 
 {
 public:
-	MessageReceiver(SqlApi& sqlApi);
-	~MessageReceiver();
+	UserLoginManageService(SqlApi& sqlApi, int saltWorkFactor);
+	~UserLoginManageService();
 
 	//注册
     Status regist(ServerContext* context, const RegistRequest* request, RegistResponse* response);
@@ -42,6 +42,7 @@ public:
 
 private:
 	SqlApi _sqlApi;
+    int _saltWorkFactor;
 };
 
 

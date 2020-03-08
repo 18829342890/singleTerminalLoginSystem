@@ -18,6 +18,7 @@ INCLUDE += -I/usr/local/mysql/include \
 		   -I${work_path}/../../mylib/mylibSql \
 		   -I${work_path}/../../mylib/enum \
 		   -I${work_path}/../../mylib/myLibEncrypt \
+		   -I${work_path}/../../mylib/myLibIni \
 		   -I${work_path}/../../protos/protoCode \
 		   -I${work_path}/../domain \
 		   -I${work_path}/../repository/include \

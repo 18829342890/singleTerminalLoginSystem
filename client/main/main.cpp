@@ -21,6 +21,7 @@
 #include "commandLine.h"
 #include "Help.h"
 #include "logrecord.h"
+#include "simpleIni.h"
 #include "myTool.h"
 #include "receiveLogoutNotice.h"
 #include "messageReceiver.grpc.pb.h"
@@ -36,15 +37,15 @@ using proto::messageReceiver::messageReceiver;
 using proto::messageReceiver::SyncClientInfoRequest;
 using proto::messageReceiver::SyncClientInfoResponse;
 
-const int MAX_MESSAGE_SIZE = 10240;
-const char* DST_IP_PORT = "localhost:50051";
-const char* CLIENT_IP_PORT = "127.0.0.1:8081";
+static string s_serverAddress;   //服务器的地址
+static string s_clientLocalIp;   //客户端作为服务器的ip
+static int s_clientLocalPort;    //客户端作为服务器的port
+static int s_syncClientInfoInterval; //同步客户端信息间隔
+static int s_monitorIsNoticeLogoutInterval; //监控是否通知退出登录的间隔
 
-static int s_clientLocalPort = 50052;
-static string s_clientLocalIp = "localhost";
-int isLogined = 0;
-string userName;
-int isNoticeLogout = 0;
+int isLogined = 0;               //是否登录的标志
+string userName;                 //登录之后的用户名
+int isNoticeLogout = 0;          //是否通知退出登录标志
 
 
 
@@ -86,7 +87,7 @@ static void* syncClientInfo(void* param)
   	options.pem_root_certs = cacert;
   	auto creds = grpc::SslCredentials(options);
 
-	std::shared_ptr<Channel> channel = grpc::CreateChannel(DST_IP_PORT, creds);
+	std::shared_ptr<Channel> channel = grpc::CreateChannel(s_serverAddress, creds);
 	std::shared_ptr<messageReceiver::Stub> stub = messageReceiver::NewStub(channel);
 	if(!stub)
 	{
@@ -117,7 +118,7 @@ static void* syncClientInfo(void* param)
 			LOG_INFO("syncClientInfo failed!");
 		}
 
-		sleep (5);
+		usleep (s_syncClientInfoInterval);
 	}
 
 	return NULL;
@@ -129,7 +130,7 @@ static void* monitorIsNoticeLogout(void* params)
 	while(true)
 	{
 		if(isNoticeLogout) exit(0);
-		sleep(1);
+		usleep(s_monitorIsNoticeLogoutInterval);
 	}
 }
 
@@ -139,10 +140,30 @@ static void sigintHandler(int sig)
 	printf("please input exit to exit!\n");
 }
 
+static void ininConfig()
+{
+	CSimpleIniA ini;
+	ini.SetUnicode();
+	ini.LoadFile("../config/client_config.ini");
+
+	s_serverAddress = ini.GetValue("server", "address", "localhost:50051");
+	s_clientLocalIp = ini.GetValue("client", "ip", "localhost");
+	s_clientLocalPort = strtol(ini.GetValue("client", "port", "50051"), NULL, 10);
+	s_syncClientInfoInterval = strtol(ini.GetValue("client", "syncClientInfoInterval", "5000"), NULL, 10);
+	s_monitorIsNoticeLogoutInterval = strtol(ini.GetValue("client", "monitorIsNoticeLogoutInterval", "500"), NULL, 10);
+
+	LOG_INFO("s_serverAddress:%s", s_serverAddress.c_str());
+	LOG_INFO("s_clientLocalIp:%s, s_clientLocalPort:%d", s_clientLocalIp.c_str(), s_clientLocalPort);
+	LOG_INFO("s_syncClientInfoInterval:%d, s_monitorIsNoticeLogoutInterval:%d", s_syncClientInfoInterval, s_monitorIsNoticeLogoutInterval);
+}
+
 int main()
 {
 	//防止ctrl + c 退出，需执行exit
 	signal(SIGINT, sigintHandler);
+
+	//初始化配置
+	ininConfig();
 
 	//作为客户端，连接服务器
 	char cmds[MAX_CMD_LEN] = {0};
@@ -151,7 +172,7 @@ int main()
   	options.pem_root_certs = cacert;
   	auto creds = grpc::SslCredentials(options);
 
-	std::shared_ptr<Channel> channel = grpc::CreateChannel(DST_IP_PORT, creds);
+	std::shared_ptr<Channel> channel = grpc::CreateChannel(s_serverAddress, creds);
 	std::shared_ptr<messageReceiver::Stub> stub = messageReceiver::NewStub(channel);
 	if(!stub)
 	{

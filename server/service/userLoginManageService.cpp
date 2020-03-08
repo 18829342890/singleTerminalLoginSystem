@@ -13,16 +13,17 @@ static const char* IP = "127.0.0.1";
 static const int MESSAGE_DISPATCHER_SERVICE_PORT = 8081;
 static const int MESSAGE_MAX_LEN = 10240;
 
-MessageReceiver::MessageReceiver(SqlApi& sqlApi)
-	:_sqlApi(sqlApi)
+UserLoginManageService::UserLoginManageService(SqlApi& sqlApi, int saltWorkFactor)
+	:_sqlApi(sqlApi),
+	 _saltWorkFactor(_saltWorkFactor)
 {}
 
-MessageReceiver::~MessageReceiver()
+UserLoginManageService::~UserLoginManageService()
 {}
 
 
 
-Status MessageReceiver::regist(ServerContext* context, const RegistRequest* request, RegistResponse* response)
+Status UserLoginManageService::regist(ServerContext* context, const RegistRequest* request, RegistResponse* response)
 {
 	int code = 0;
 	string message;
@@ -30,7 +31,7 @@ Status MessageReceiver::regist(ServerContext* context, const RegistRequest* requ
 	string passWord = request->pass_word();
 	LOG_INFO("regist %s %s", userName.c_str(), passWord.c_str());
 	
-	Register myRegister(_sqlApi);
+	Register myRegister(_sqlApi, _saltWorkFactor);
 	int ret = myRegister.processRegist(userName, passWord, code, message);
 	if(ret != 0)
 	{
@@ -43,7 +44,7 @@ Status MessageReceiver::regist(ServerContext* context, const RegistRequest* requ
 }
 
 
-Status MessageReceiver::login(ServerContext* context, const LoginRequest* request, LoginResponse* response)
+Status UserLoginManageService::login(ServerContext* context, const LoginRequest* request, LoginResponse* response)
 {
  	int code = 0;
 	string message;
@@ -63,7 +64,7 @@ Status MessageReceiver::login(ServerContext* context, const LoginRequest* reques
  }
 
 
- Status MessageReceiver::logout(ServerContext* context, const LogoutRequest* request, LogoutResponse* response)
+ Status UserLoginManageService::logout(ServerContext* context, const LogoutRequest* request, LogoutResponse* response)
  {
  	int code = 0;
 	string message;
@@ -83,7 +84,7 @@ Status MessageReceiver::login(ServerContext* context, const LoginRequest* reques
  }
 
 
- Status MessageReceiver::syncClientInfo(ServerContext* context, const SyncClientInfoRequest* request, SyncClientInfoResponse* response)
+ Status UserLoginManageService::syncClientInfo(ServerContext* context, const SyncClientInfoRequest* request, SyncClientInfoResponse* response)
  {
  	int code = 0;
 	string message;
