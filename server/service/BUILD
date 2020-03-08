@@ -15,7 +15,7 @@ cc_library(
 		"//server/service/login:loginer",
 		"//server/service/regist:register",
 		"//server/service/syncClientInfo:syncClientInfo",
-		"//protos/protoCode:message_receiver_cc_grpc",
+		"//protos/proto:message_receiver_cc_grpc",
 		"@com_github_grpc_grpc//:grpc++",
 	],
 	visibility = ["//visibility:public"],
