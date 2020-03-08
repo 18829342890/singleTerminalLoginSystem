@@ -11,7 +11,6 @@ cc_binary (
 	],
 	deps = [
 		"//client/commanLine:commandLine",
-		"//client/receiveMessage:receiveMessage",
 		"//client/service/receiveLogoutNotice/receiveMessage:receiveLogoutNotice",
 		"//client/myToolLib:myTool",
 		"//mylib/mylibLog:myLibLog",
