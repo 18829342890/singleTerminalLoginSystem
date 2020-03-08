@@ -1,7 +1,7 @@
 #include "syncClientInfo.h"
 #include "mylib/enum/code.h"
 #include "mylib/mylibLog/logrecord.h"
-#include "server/repository/userLoginManageRepository.h"
+#include "server/repository/include/userLoginManageRepository.h"
 #include <sstream>
 #include <assert.h>
 

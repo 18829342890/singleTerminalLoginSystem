@@ -9,9 +9,6 @@
 
 using namespace std;
 
-static const char* IP = "127.0.0.1";
-static const int MESSAGE_DISPATCHER_SERVICE_PORT = 8081;
-static const int MESSAGE_MAX_LEN = 10240;
 
 UserLoginManageService::UserLoginManageService(SqlApi& sqlApi, int saltWorkFactor)
 	:_sqlApi(sqlApi),

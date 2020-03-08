@@ -5,8 +5,8 @@
 #include "loginer.h"
 #include "mylib/enum/code.h"
 #include "mylib/mylibLog/logrecord.h"
-#include "server/repository/userPasswordRepository.h"
-#include "server/repository/userLoginManageRepository.h"
+#include "server/repository/include/userPasswordRepository.h"
+#include "server/repository/include/userLoginManageRepository.h"
 #include "protos/proto/messageReceiver.grpc.pb.h"
 
 using namespace userLoginSystem::myEnum;
