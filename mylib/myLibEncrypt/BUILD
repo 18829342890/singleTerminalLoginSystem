@@ -1,10 +1,12 @@
 cc_library(
 	name = "myLibEncrypt",
 	hdrs = [
-		"encrypt.h",
+		"base64.h",
+		"bcrypt.h",
 		"md5.h"
 	],
 	srcs = [
+		"bcrypt.cc",
 		"md5.cc",
 	],
 	linkopts = [
