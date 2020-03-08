@@ -2,7 +2,7 @@
 #include "logrecord.h"
 #include "sqlApi.h"
 #include "bcrypt.h"
-#include "userPassWordBO.h"
+#include "server/domain/userPassWordBO.h"
 
 namespace userLoginService{
 namespace repository{
