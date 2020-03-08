@@ -11,6 +11,7 @@ cc_library(
 	copts = [
 		"-Imylib/myLibEncrypt/",
 		"-Imylib/enum/",
+		"-Iprotos/proto/",
 	],
 	deps = [
 		"//mylib/myLibEncrypt:myLibEncrypt",
