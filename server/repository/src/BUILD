@@ -7,6 +7,7 @@ cc_library(
 	copts = [
 		"-Imylib/mylibLog",
 		"-Iserver/domain",
+		"-Iserver/repository/include",
 	],
 	linkopts = [
 		"-L/usr/local/mysql/lib",
