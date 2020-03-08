@@ -13,6 +13,7 @@ cc_library(
 		"-L/usr/local/lib64",
 		"-lssl",
 		"-lcrypto",
+		"-L/usr/local/lib",
 		"-lbsd",
 	],
 	visibility = ["//visibility:public"],
