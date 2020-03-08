@@ -14,6 +14,7 @@ cc_library(
 		"-lssl",
 		"-lcrypto",
 		"-lbsd",
+		"-lz"
 	],
 	visibility = ["//visibility:public"],
 )
