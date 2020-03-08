@@ -12,7 +12,9 @@ cc_library(
 		"-Imylib/mylibSql/",
 		"-Imylib/myLibEncrypt/",
 		"-Imylib/myLibIni",
+		"-Iprotos/protoCode",
 		"-Iserver/repository/include",
+
 	],
 	deps = [
 		"//mylib/mylibLog:myLibLog",
@@ -20,7 +22,7 @@ cc_library(
 		"//mylib/mylibSql:myLibSqlApi",
 		"//mylib/myLibEncrypt:myLibEncrypt",
 		"//server/repository/include:serverRespository",
-		"//protos/proto:message_receiver_cc_grpc",
+		"//protos/protoCode:message_receiver_cc_grpc",
 	],
 	visibility = ["//visibility:public"],
 )
