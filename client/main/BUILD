@@ -6,12 +6,12 @@ cc_binary (
 	copts = [
 		"-Imylib/mylibLog/",
 		"-Iclient/commanLine/processCommandLine/",
-		"-Iclient/service/receiveLogoutNotice/receiveMessage/",
+		"-Iclient/service/receiveLogoutNotice/",
 		"-Iclient/myToolLib",
 	],
 	deps = [
 		"//client/commanLine:commandLine",
-		"//client/service/receiveLogoutNotice/receiveMessage:receiveLogoutNotice",
+		"//client/service/receiveLogoutNotice:receiveLogoutNotice",
 		"//client/myToolLib:myTool",
 		"//mylib/mylibLog:myLibLog",
 		"//protos/proto:message_receiver_cc_grpc",
