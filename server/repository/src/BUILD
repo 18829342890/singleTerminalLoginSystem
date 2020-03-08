@@ -1,8 +1,8 @@
 cc_library(
-	name = "serverRespository",
-	hdrs = [
-		"userPasswordRepository.h",
-		"userLoginManageRepository.h",
+	name = "serverRespositorySrc",
+	srcs = [
+		"userPasswordRepository.cpp",
+		"userLoginManageRepository.cpp",
 	],
 	copts = [
 		"-Imylib/mylibLog",
@@ -15,8 +15,6 @@ cc_library(
 	deps = [
 		"//mylib/mylibLog:myLibLog",
 		"//server/domain:serverDomain",
-		"//server/repository/serverRespositorySrc"
-
 	],
 	visibility = ["//visibility:public"],
 )
