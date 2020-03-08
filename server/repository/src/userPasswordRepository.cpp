@@ -1,5 +1,6 @@
 #include "server/repository/include/userPasswordRepository.h"
 #include <sstream>
+#include <assert.h>
 
 using namespace userLoginService::repository;
 

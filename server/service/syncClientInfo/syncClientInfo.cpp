@@ -3,7 +3,6 @@
 #include "mylib/mylibLog/logrecord.h"
 #include "server/repository/include/userLoginManageRepository.h"
 #include <sstream>
-#include <assert.h>
 
 using namespace userLoginSystem::myEnum;
 using namespace userLoginService::repository;
