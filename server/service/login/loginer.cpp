@@ -7,7 +7,7 @@
 #include "logrecord.h"
 #include "userPasswordRepository.h"
 #include "userLoginManageRepository.h"
-#include "messageReceiver.grpc.pb.h"
+#include "protos/proto/messageReceiver.grpc.pb.h"
 
 using namespace userLoginSystem::myEnum;
 using namespace userLoginService::repository;
