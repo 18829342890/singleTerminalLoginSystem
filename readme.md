@@ -18,7 +18,8 @@
 create table user.t_user_password(
 	`FuiId` bigint(20) unsigned NOT NULL AUTO_INCREMENT COMMENT '自增主键',
 	`FstrUserName` varchar(256) NOT NULL DEFAULT '' COMMENT '用户名',
-	`FstrPassWord` varchar(32) NOT NULL DEFAULT '' COMMENT '加密并经过MD5之后的密码',
+	`FstrPassWord` varchar(64) NOT NULL DEFAULT '' COMMENT '加密之后的密码',
+	`FstrSalt` varchar(64) NOT NULL DEFAULT '' COMMENT '加密密码所用的盐',
 	`FuiCreateTime` bigint(20) unsigned NOT NULL DEFAULT '0' COMMENT '创建时间',
   `FuiUpdateTime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
 	PRIMARY KEY (`FuiId`),
@@ -31,14 +32,14 @@ create table user.t_user_password(
 
 
 
-- 用户登录记录表
+- 用户登录管理表
 ```
-create table user.t_user_login(
+create table user.t_user_login_manage(
 	`FuiId` bigint(20) unsigned NOT NULL AUTO_INCREMENT COMMENT '自增主键',
 	`FstrUserName` varchar(256) NOT NULL DEFAULT '' COMMENT '用户名',
 	`FstrIp` varchar(46) NOT NULL DEFAULT '' COMMENT '用户登录时的客户端ip',
 	`FuiPort` smallint(5) unsigned NOT NULL DEFAULT '0' COMMENT '用户登录时的客户端ip',
-	`FuiStatus` tinyint(1) unsigned NOT NULL DEFAULT '0' COMMENT '登录状态 1:已登录 2:退出登录 3:待迁移',
+	`FuiStatus` tinyint(1) unsigned NOT NULL DEFAULT '0' COMMENT '登录状态 1:已登录 2:退出登录',
 	`FuiCreateTime` bigint(20) unsigned NOT NULL DEFAULT '0' COMMENT '创建时间',
   `FuiUpdateTime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
 	PRIMARY KEY (`FuiId`),
