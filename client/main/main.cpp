@@ -18,13 +18,13 @@
 #include <fstream>
 #include <sstream>
 #include <grpcpp/grpcpp.h>
-#include "commandLine.h"
-#include "Help.h"
-#include "logrecord.h"
-#include "simpleIni.h"
-#include "myTool.h"
-#include "receiveLogoutNotice.h"
-#include "messageReceiver.grpc.pb.h"
+#include "client/commanLine/commandLine.h"
+#include "client/commanLine/processCommandLine/Help.h"
+#include "mylib/mylibLog/logrecord.h"
+#include "mylib/myLibIni/simpleIni.h"
+#include "client/myToolLib/myTool.h"
+#include "client/service/receiveLogoutNotice/receiveLogoutNotice.h"
+#include "protos/proto/messageReceiver.grpc.pb.h"
 
 using namespace std;
 using namespace client::service;
