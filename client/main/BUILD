@@ -1,4 +1,3 @@
-
 cc_library(
     name = "commandLine",
     srcs = ["commandLine.cpp"],
