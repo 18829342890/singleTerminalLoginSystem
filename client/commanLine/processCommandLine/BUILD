@@ -18,5 +18,5 @@ cc_library(
 		"//protos/proto:message_receiver_cc_grpc",
 		"@com_github_grpc_grpc//:grpc++",
 	],
-	visibility = ["//client/main:__pkg__"],
+	visibility = ["//visibility:public"],
 )

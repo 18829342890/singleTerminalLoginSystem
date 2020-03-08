@@ -13,5 +13,5 @@ cc_library(
 		"//mylib/mylibLog:myLibLog",
 		"//protos/proto:message_receiver_cc_grpc",
 	],
-	visibility = ["//client/main:__pkg__"],
+	visibility = ["//visibility:public"],
 )
