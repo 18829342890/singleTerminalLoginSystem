@@ -1,4 +1,4 @@
-#include "userPasswordRepository.h"
+#include "server/repository/include/userPasswordRepository.h"
 #include <sstream>
 
 using namespace userLoginService::repository;

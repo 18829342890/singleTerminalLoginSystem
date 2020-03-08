@@ -1,7 +1,7 @@
 #pragma once
-#include "logrecord.h"
-#include "sqlApi.h"
-#include "bcrypt.h"
+#include "mylib/mylibLog/logrecord.h"
+#include "mylib/mylibSql/sqlApi.h"
+#include "mylib/myLibEncrypt/bcrypt.h"
 #include "server/domain/userPassWordBO.h"
 
 namespace userLoginService{
