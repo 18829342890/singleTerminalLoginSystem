@@ -696,7 +696,7 @@ int bcrypt_gensalt(int factor, char salt[BCRYPT_HASHSIZE]) {
 	int workf;
 	char *aux;
 	
-	srandom_r(input, RANDBYTES);
+	arc4random_buf(input, RANDBYTES);
 	workf = (factor < 4 || factor > 31) ? 12 : factor;
 	aux = _crypt_gensalt_blowfish_rn(workf, input, RANDBYTES, salt, BCRYPT_HASHSIZE);
 	
