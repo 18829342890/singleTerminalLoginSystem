@@ -3,7 +3,7 @@
 
 #include <stdlib.h>
 #include "ProcessCommandLineBase.h"
-#include "code.h"
+#include "mylib/enum/code.h"
 
 using namespace client::commandLine;
 using proto::messageReceiver::LogoutRequest;

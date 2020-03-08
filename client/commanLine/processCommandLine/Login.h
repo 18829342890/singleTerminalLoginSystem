@@ -3,7 +3,7 @@
 
 
 #include "ProcessCommandLineBase.h"
-#include "base64.h"
+#include "mylib/myLibEncrypt/base64.h"
 
 using namespace client::commandLine;
 using proto::messageReceiver::LoginRequest;

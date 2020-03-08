@@ -8,7 +8,7 @@
 #include <unistd.h>
 #include <errno.h>
 #include <grpcpp/grpcpp.h>
-#include "messageReceiver.grpc.pb.h"
+#include "protos/proto/messageReceiver.grpc.pb.h"
 
 namespace client{
 namespace commandLine{
