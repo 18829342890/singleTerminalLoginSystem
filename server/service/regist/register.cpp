@@ -1,8 +1,8 @@
 #include "register.h"
-#include "code.h"
-#include "logrecord.h"
-#include "base64.h"
-#include "userPasswordRepository.h"
+#include "mylib/enum/code.h"
+#include "mylib/mylibLog/logrecord.h"
+#include "mylib/myLibEncrypt/base64.h"
+#include "server/repository/userPasswordRepository.h"
 #include <sstream>
 #include <regex>
 #include <grpcpp/grpcpp.h>

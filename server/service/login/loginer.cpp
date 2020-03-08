@@ -3,10 +3,10 @@
 #include <fstream>
 #include <grpcpp/grpcpp.h>
 #include "loginer.h"
-#include "code.h"
-#include "logrecord.h"
-#include "userPasswordRepository.h"
-#include "userLoginManageRepository.h"
+#include "mylib/enum/code.h"
+#include "mylib/mylibLog/logrecord.h"
+#include "server/repository/userPasswordRepository.h"
+#include "server/repository/userLoginManageRepository.h"
 #include "protos/proto/messageReceiver.grpc.pb.h"
 
 using namespace userLoginSystem::myEnum;

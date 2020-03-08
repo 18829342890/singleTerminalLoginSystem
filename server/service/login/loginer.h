@@ -1,8 +1,8 @@
 #ifndef __LOGINER_H__
 #define __LOGINER_H__
 
-#include "bcrypt.h"
-#include "sqlApi.h"
+#include "mylib/myLibEncrypt/bcrypt.h"
+#include "mylog/mylibSql/sqlApi.h"
 #include <string>
 
 
