@@ -15,7 +15,6 @@ cc_library(
 	deps = [
 		"//mylib/mylibLog:myLibLog",
 		"//server/domain:serverDomain",
-		"//server/repository/src:serverRespositorySrc"
 
 	],
 	visibility = ["//visibility:public"],
