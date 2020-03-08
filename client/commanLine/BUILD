@@ -7,5 +7,6 @@ cc_library(
 	],
 	deps = [
 		"//client/commanLine/processCommandLine:processCommandLineLib",
-	]
+	],
+	visibility = ["//visibility:public"],
 )
