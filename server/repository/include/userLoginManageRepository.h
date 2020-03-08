@@ -1,7 +1,7 @@
 #pragma once
 #include "logrecord.h"
 #include "sqlApi.h"
-#include "userLoginManageBO.h"
+#include "server/domain/userLoginManageBO.h"
 
 
 namespace userLoginService{
