@@ -39,6 +39,7 @@
 #include <string.h>
 #include <stdint.h>
 #include <stdlib.h>
+#include <bas/stdlib.h>
 #include "bcrypt.h"
 
 #ifndef __set_errno
@@ -690,6 +691,8 @@ static char *_crypt_gensalt_blowfish_rn(unsigned long count, const char *input, 
 }
 
 #define RANDBYTES 16
+
+void 
 
 int bcrypt_gensalt(int factor, char salt[BCRYPT_HASHSIZE]) {
 	char input[RANDBYTES];
