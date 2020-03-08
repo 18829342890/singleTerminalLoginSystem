@@ -2,7 +2,7 @@
 #define __REGISTER_H__
 
 #include <string>
-#include "mylog/mylibSql/sqlApi.h"
+#include "mylib/mylibSql/sqlApi.h"
 using namespace std;
 
 
