@@ -7,6 +7,7 @@ cc_library(
 	copts = [
 		"-Imylib/mylibLog",
 		"-Imylib/mylibSql",
+		"-Imylib/myLibEncrypt",
 		"-Iserver/domain",
 	],
 	linkopts = [
@@ -16,6 +17,7 @@ cc_library(
 	deps = [
 		"//mylib/mylibLog:myLibLog",
 		"//mylib/mylibSql:myLibSqlApi",
+		"//mylib/myLibEncrypt:myLibEncrypt",
 		"//server/domain:serverDomain",
 
 	],
