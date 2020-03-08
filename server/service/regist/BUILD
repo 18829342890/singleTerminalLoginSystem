@@ -17,7 +17,7 @@ cc_library(
 		"//mylib/mylibLog:myLibLog",
 		"//mylib/enum:myLibEnum",
 		"//mylib/mylibSql:myLibSqlApi",
-		"//server/repository/include:serverRespository",
+		"//server/repository/src:serverRespositorySrc",
 		"//mylib/myLibEncrypt:myLibEncrypt",
 	],
 	visibility = ["//visibility:public"],

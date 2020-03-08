@@ -21,7 +21,7 @@ cc_library(
 		"//mylib/enum:myLibEnum",
 		"//mylib/mylibSql:myLibSqlApi",
 		"//mylib/myLibEncrypt:myLibEncrypt",
-		"//server/repository/include:serverRespository",
+		"//server/repository/src:serverRespositorySrc",
 		"//protos/proto:message_receiver_cc_grpc",
 	],
 	visibility = ["//visibility:public"],
