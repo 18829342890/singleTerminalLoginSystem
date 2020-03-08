@@ -2,7 +2,7 @@
 #include "mylib/enum/code.h"
 #include "mylib/mylibLog/logrecord.h"
 #include "mylib/myLibEncrypt/base64.h"
-#include "server/repository/userPasswordRepository.h"
+#include "server/repository/include/userPasswordRepository.h"
 #include <sstream>
 #include <regex>
 #include <grpcpp/grpcpp.h>
