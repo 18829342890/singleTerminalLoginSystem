@@ -1,10 +1,10 @@
 cc_library(
-	name = "receiveMessage",
+	name = "receiveLogoutNotice",
 	srcs = [
-		"receiveMessage.cpp",
+		"receiveLogoutNotice.cpp",
 	],
 	hdrs = [
-		"receiveMessage.h",
+		"receiveLogoutNotice.h",
 	],
 	copts = [
 		"-Imylib/mylibLog/",

@@ -1,26 +1,19 @@
-cc_library(
-    name = "commandLine",
-    srcs = ["commandLine.cpp"],
-    hdrs = ["commandLine.h"],
-    copts = [
-		"-Iclient/processCommandLine/",
-	],
-	deps = [
-		"//client/processCommandLine:processCommandLineLib",
-	]
-)
+
 
 cc_binary (
 	name = "client",
 	srcs = ["main.cpp"],
 	copts = [
 		"-Imylib/mylibLog/",
-		"-Iclient/processCommandLine/",
-		"-Iclient/receiveMessage/",
+		"-Iclient/commanLine/processCommandLine/",
+		"-Iclient/service/receiveLogoutNotice/receiveMessage/",
+		"-Iclient/myToolLib",
 	],
 	deps = [
-		":commandLine",
+		"//client/commanLine:commandLine",
 		"//client/receiveMessage:receiveMessage",
+		"//client/service/receiveLogoutNotice/receiveMessage:receiveLogoutNotice",
+		"//client/myToolLib:myTool",
 		"//mylib/mylibLog:myLibLog",
 		"//protos/proto:message_receiver_cc_grpc",
 		"@com_github_grpc_grpc//:grpc++",
