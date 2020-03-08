@@ -2,9 +2,9 @@
 #include <sstream>
 #include <assert.h>
 #include "userLoginManageService.h"
-#include "register.h"
-#include "loginer.h"
-#include "syncClientInfo.h"
+#include "server/service/regist/register.h"
+#include "server/service/login/loginer.h"
+#include "server/service/syncClientInfo/syncClientInfo.h"
 
 
 using namespace std;
