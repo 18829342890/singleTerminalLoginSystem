@@ -1,7 +1,7 @@
 work_path = $(shell pwd)
 c_src = $(wildcard $(work_path)/../../mylib/*/*.c)
 cpp_src = $(wildcard ./*.cpp ../service/*/*.cpp ../commanLine/*.cpp)
-cc_src = $(wildcard $(work_path)/../../protos/*/*.cc $(work_path)/../../mylib/mylibLog/*.cc $(work_path)/../../mylib/myLibEncrypt/*.cc)
+cc_src = $(wildcard $(work_path)/../../protos/proto/*.cc $(work_path)/../../mylib/mylibLog/*.cc $(work_path)/../../mylib/myLibEncrypt/*.cc)
 c_objs = $(patsubst %.c,%.o,$(c_src))
 cpp_objs += $(patsubst %.cpp,%.o,$(cpp_src))
 cc_objs = $(patsubst %.cc,%.o,$(cc_src))
@@ -28,7 +28,7 @@ CPPFLAGS += `pkg-config --cflags protobuf grpc` $(INCLUDE)
 LDFLAGS = -L/usr/local/lib `pkg-config --libs protobuf grpc++ grpc`\
            -lgrpc++_reflection\
            -ldl -lpthread\
-           -L/usr/local/opt/openssl/lib -lssl -lcrypto
+           -L/usr/local/opt/openssl/lib -lssl -lcrypto 
 
 $(warning  $(c_src))
 $(warning  $(cpp_src))

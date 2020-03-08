@@ -1,7 +1,7 @@
 work_path = $(shell pwd)
 c_src = $(wildcard $(work_path)/../../mylib/*/*.c)
 cpp_src = $(wildcard $(work_path)/../../mylib/*/*.cpp ./*.cpp ../repository/src/*.cpp ../service/*.cpp ../service/*/*.cpp)
-cc_src = $(wildcard $(work_path)/../../protos/protoCode/*.cc $(work_path)/../../mylib/*/*.cc)
+cc_src = $(wildcard $(work_path)/../../protos/proto/*.cc $(work_path)/../../mylib/*/*.cc)
 c_objs = $(patsubst %.c,%.o,$(c_src))
 cpp_objs += $(patsubst %.cpp,%.o,$(cpp_src))
 cc_objs = $(patsubst %.cc,%.o,$(cc_src))
