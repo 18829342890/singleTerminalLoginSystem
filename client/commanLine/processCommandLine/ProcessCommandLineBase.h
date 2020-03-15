@@ -8,7 +8,8 @@
 #include <unistd.h>
 #include <errno.h>
 #include <grpcpp/grpcpp.h>
-#include "protos/proto/messageReceiver.grpc.pb.h"
+#include <grpcpp/client_context.h>
+#include "protos/proto/userLoginManage.grpc.pb.h"
 
 namespace client{
 namespace commandLine{
@@ -18,7 +19,8 @@ using grpc::Channel;
 using grpc::ChannelArguments;
 using grpc::ClientContext;
 using grpc::Status;
-using proto::messageReceiver::messageReceiver;
+using grpc::ClientReaderWriter;
+using proto::userLoginManage::userLoginManageService;
 
 
 class ProcessCommandLineBase
@@ -31,7 +33,7 @@ public:
 	/*
 	 * 处理命令的公共接口
 	 */
-	virtual int processCommandLine(std::shared_ptr<messageReceiver::Stub> stub, const char* params[]){}
+	virtual int processCommandLine(std::shared_ptr<userLoginManageService::Stub> stub, const char* params[]){}
 };
 
 

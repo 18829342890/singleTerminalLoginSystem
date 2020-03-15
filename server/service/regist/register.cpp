@@ -9,26 +9,24 @@
 
 using namespace userLoginSystem::myEnum;
 using namespace userLoginService::repository;
-using grpc::Server;
-using grpc::ServerBuilder;
-using grpc::ServerContext;
-using grpc::Status;
 
-Register::Register(SqlApi& sqlApi, int saltWorkFactor) 
-		:_sqlApi(sqlApi),
+
+
+Register::Register(const SqlApi& sqlApi, const redisContext* redisConnect, int saltWorkFactor) 
+		:LoginManageServiceBase(sqlApi, redisConnect),
 		 _saltWorkFactor(saltWorkFactor)
 {}
 
 Register::~Register()
 {}
 
-int Register::processRegist(const string& userName, const string& passWord, int& code, string& msg)
+
+int Register::processRegist(const string& userName, const string& passWord)
 {
-	//检查密码格式，防止sql注入
-	if(!isLegalPassWordFormat(passWord, msg))
+	//检查密码格式
+	if(!isLegalPassWordFormat(passWord))
 	{
 		LOG_ERROR("CheckPassWordFormatIsLegal failed!");
-		code = PASSWORD_FORMAT_ERROR;
 		return -1;
 	}
 
@@ -39,55 +37,49 @@ int Register::processRegist(const string& userName, const string& passWord, int&
 	if(ret != 0)
 	{
 		LOG_INFO("isAlreadyRegist failed! userName:%s", userName.c_str());
-		code = DB_OP_FAILED;
-		msg = "system error: insert data into DB failed!";
+		_code = DB_OP_FAILED;
+		_msg = "system error: select data from DB failed!";
 		return -1;
 	}
 
 	if(isAlreadyRegistFlag)
 	{
 		LOG_INFO("[%s] already regist!", userName.c_str());
-		code = ALREADY_REGIST;
-		string errmsg = userName + " already regist!";
-		msg = errmsg;
+		_code = SUCCESS;
+		_msg =  userName + " already regist!";
 		return 0;
 	}
 
 	//入库
 	if(regist(userName, passWord) != 0)
 	{
-		code = DB_OP_FAILED;
-		msg = "system error: insert data into DB failed!";
+		LOG_ERROR("process regist failed!");
 		return -1;
 	}
 
-	code = SUCCESS;
-	msg = "regist success!";
+	_code = SUCCESS;
+	_msg = "regist success!";
 	return 0;
 }
 
-bool Register::isLegalPassWordFormat(const string& passWord, string& errmsg)
+bool Register::isLegalPassWordFormat(const string& passWord)
 {
-	//解码密码
-	char passWordDecoded[1024];
-	base64_decode(passWord.c_str(), passWord.length(), passWordDecoded);
-	LOG_INFO("passWordDecoded:%s", passWordDecoded);
-
 	//检查长度
-	int length = strlen(passWordDecoded);
-	if(length < 6 or length > 20)
+	if(passWord.length() < 6 or passWord.length() > 20)
 	{
-		LOG_ERROR("length is < 6 or > 20! length:%d", length);
-		errmsg = "pass word length is between 6 and 20.";
+		LOG_ERROR("length is < 6 or > 20! length:%d", passWord.length());
+		_code = PASSWORD_FORMAT_ERROR;
+		_msg = "pass word length is between 6 and 20.";
 		return false;
 	}
 
 	//只能是字母、数字、下划线的组合
 	regex reg("^[A-Za-z0-9_]+$");
-	if(!regex_match(passWordDecoded, reg))
+	if(!regex_match(passWord.c_str(), reg))
 	{
 		LOG_ERROR("passWord do not match ^[A-Za-z0-9_]+$");
-		errmsg = "passWord do not match ^[A-Za-z0-9_]+$";
+		_code = PASSWORD_FORMAT_ERROR;
+		_msg = "passWord do not match ^[A-Za-z0-9_]+$";
 		return false;
 	}
 
@@ -104,15 +96,19 @@ int Register::regist(const string& userName, const string& passWord)
 	if(ret != 0)
 	{
 		LOG_ERROR("gen salt failed!");
+		_code = GEN_SALT_FAILED;
+		_msg = "gen salt for password failed!";
 		return -1;
 	}
 
-	//加密
+	//加密密码
 	clock_t before = clock();
-	ret = bcrypt_hashpw(userName.c_str(), salt, passWordHash);
+	ret = bcrypt_hashpw(passWord.c_str(), salt, passWordHash);
 	if(ret != 0)
 	{
 		LOG_ERROR("bcrypt_hashpw failed!");
+		_code = ENCRYPT_FAILED;
+		_msg = "bcrypt failed!";
 		return -1;
 	}
 
@@ -129,6 +125,9 @@ int Register::regist(const string& userName, const string& passWord)
 	ret = userPasswordRepository.insert(userPassWord);
 	if(ret != 0)
 	{
+		LOG_ERROR("insert into UserPasswordRepository failed!");
+		_code = DB_OP_FAILED;
+		_msg = "SYSTEM ERROR: insert data into DB failed!";
 		return -1;
 	}
 

@@ -4,6 +4,15 @@
 
 using namespace userLoginService::repository;
 
+
+UserPasswordRepository::UserPasswordRepository(SqlApi sqlApi)
+		:_sqlApi(sqlApi)
+{}
+
+UserPasswordRepository::~UserPasswordRepository()
+{}
+
+
 int UserPasswordRepository::insert(UserPassWordBO userPassWord)
 {
 	std::stringstream ss;
@@ -44,7 +53,7 @@ int UserPasswordRepository::isAlreadyRegist(const string& userName, bool& isAlre
 	return 0;
 }
 
-int UserPasswordRepository::getSaltByUserName(const string& userName, char salt[BCRYPT_HASHSIZE])
+int UserPasswordRepository::selectSaltByUserName(const string& userName, char salt[BCRYPT_HASHSIZE])
 {
 	//select
 	std::stringstream ss;
@@ -82,7 +91,7 @@ int UserPasswordRepository::getSaltByUserName(const string& userName, char salt[
 	return 0;
 }
 
-int UserPasswordRepository::isValidUserNameAndPassWord(const string& userName, const string& passWordHash, bool& isValid)
+int UserPasswordRepository::isValidAndPassWordByUserName(const string& userName, const string& passWordHash, bool& isValid)
 {
 	//select
 	std::stringstream ss;

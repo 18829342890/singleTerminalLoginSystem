@@ -1,26 +1,24 @@
-#ifndef __REGISTER_H__
-#define __REGISTER_H__
+#pragma once
 
 #include <string>
-#include "mylib/mylibSql/sqlApi.h"
+#include "server/service/base/loginManageServiceBase.h"
 using namespace std;
 
 
-class Register
+class Register : public LoginManageServiceBase
 {
 
 public:
-	Register(SqlApi& sqlApi, int saltWorkFactor);
+	Register(const SqlApi& sqlApi, const redisContext* redisConnect, int saltWorkFactor);
 	virtual ~Register();
 
-	int processRegist(const string& userName, const string& passWord, int& code, string& msg);
+	int processRegist(const string& userName, const string& passWord);
 
 private:
-	bool isLegalPassWordFormat(const string& passWord, string& errmsg);
+	bool isLegalPassWordFormat(const string& passWord);
 	int regist(const string& userName, const string& passWord);
 
 private:
-	SqlApi _sqlApi;
 	int _saltWorkFactor;
 };
 
@@ -29,5 +27,3 @@ private:
 
 
 
-
-#endif

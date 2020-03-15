@@ -11,8 +11,7 @@ class UserLoginManageBO
 public:
 	uint64_t id;
 	string   userName;
-	string   ip;
-	int16_t  port;
+	uint64_t clientUid;
 	int8_t   status;
 	uint64_t createTime;
 	//updateTime 由mysql触发器管理
@@ -29,14 +28,9 @@ public:
 		this->userName = userName;
 	}
 
-	void setIp(const string& ip)
+	void setClientUid(uint64_t clientUid)
 	{
-		this->ip = ip;
-	}
-
-	void setPort(int16_t port)
-	{
-		this->port = port;
+		this->clientUid = clientUid;
 	}
 
 	void setStatus(int8_t status)
@@ -60,14 +54,9 @@ public:
 		return this->userName;
 	}
 
-	string getIp()
+	uint64_t getClientUid()
 	{
-		return this->ip;
-	}
-
-	int16_t getPort() 
-	{
-		return this->port;
+		return this->clientUid;
 	}
 
 	int8_t getStatus()

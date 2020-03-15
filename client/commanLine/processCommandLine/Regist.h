@@ -6,14 +6,14 @@
 #include "mylib/myLibEncrypt/base64.h"
 
 using namespace client::commandLine;
-using proto::messageReceiver::RegistRequest;
-using proto::messageReceiver::RegistResponse;
+using proto::userLoginManage::RegistRequest;
+using proto::userLoginManage::RegistResponse;
 
 
 class RegistCmd : public ProcessCommandLineBase
 {
 public:
-	virtual int processCommandLine(std::shared_ptr<messageReceiver::Stub> stub, const char* params[])
+	virtual int processCommandLine(std::shared_ptr<userLoginManageService::Stub> stub, const char* params[])
 	{
 		RegistRequest registRequest;
 		int ret = getRegistRequestFromParams(params, registRequest);
@@ -23,18 +23,22 @@ public:
 		}
 
 		ClientContext context;
-		RegistResponse registResponse;
-		context.set_compression_algorithm(GRPC_COMPRESS_DEFLATE);
-		Status status = stub->regist(&context, registRequest, &registResponse);
-		if(status.ok())
+		std::shared_ptr<ClientReaderWriter<RegistRequest, RegistResponse> > stream(stub->regist(&context));
+		stream->Write(registRequest);
+		stream->WritesDone();
+		Status status = stream->Finish();
+	    if (!status.ok()) {
+	      std::cout << "regist rpc failed." << std::endl;
+	    }
+	    else
+	    {
+	    	cout << "regist rpc success." << std::endl;
+	    }
+
+	    RegistResponse registResponse;
+		while (stream->Read(&registResponse))
 		{
-			cout << registResponse.message() << endl;
-			return 0;
-		}
-		else
-		{
-			cout << "RPC failed! errcode:" << status.error_code() << ", errmsg:" << status.error_message() << endl;
-			return -1;
+			cout << "get registResponse: " << registResponse.basic().code() << " " << registResponse.basic().msg() << endl;
 		}
 	}
 
@@ -55,8 +59,14 @@ private:
 		string userName = params[0];
 		string passWord = params[1];
 
-		//加密passWord
+		//编码username、passWord
+		char userNameEncrypted[1024] = {0};
 		char passWordEncrypted[1024] = {0};
+		if(base64_encode(userName.c_str(), userName.length(), userNameEncrypted) < 0)
+		{
+			cout << "base64_encode failed!" << endl;
+			return -1;
+		}
 		if(base64_encode(passWord.c_str(), passWord.length(), passWordEncrypted) < 0)
 		{
 			cout << "base64_encode failed!" << endl;
@@ -64,7 +74,7 @@ private:
 		}
 
 		//设置username、password
-		registRequest.set_user_name(userName);
+		registRequest.set_user_name(userNameEncrypted);
 		registRequest.set_pass_word(passWordEncrypted);
 		return 0;
 	}

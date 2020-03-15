@@ -42,7 +42,7 @@ const char* getCmdImplDesc(const char* cmd)
 	return NULL;
 }
 
-int processCmd(std::shared_ptr<messageReceiver::Stub> stub, const char* cmd, const char* params[])
+int processCmd(std::shared_ptr<userLoginManageService::Stub> stub, const char* cmd, const char* params[])
 {
 	ProcessCommandLineBase* cmdImplClass = getCmdImplClass(cmd);
 	if(cmdImplClass == NULL)

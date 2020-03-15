@@ -3,6 +3,7 @@
 #include <errno.h>
 #include <fstream>
 #include <sstream>
+#include <hiredis/hiredis.h>
 
 
 
@@ -29,8 +30,13 @@ int main()
 	const char* mysqlDb = ini.GetValue("mysql", "db", "user");
 	int mysqlPort = strtol(ini.GetValue("mysql", "port", "3306"), NULL, 10);
 
+	const char* redisHost = ini.GetValue("redis", "host", "localhost");
+	int redisPort = strtol(ini.GetValue("redis", "port", "6379"), NULL, 10);
+	int userLoginInfoCacheTtl = strtol(ini.GetValue("redis", "userLoginInfoCacheTtl", "300"), NULL, 10);
+
 	LOG_INFO("serverAddress:%s, saltWorkFactor:%d", serverAddress, saltWorkFactor);
 	LOG_INFO("mysqlHost:%s, mysqlUser:%s, mysqlPassWord:%s, mysqlDb:%s, mysqlPort:%d", mysqlHost, mysqlUser, mysqlPassWord, mysqlDb, mysqlPort);
+	LOG_INFO("redisHost:%s, redisPort:%d, userLoginInfoCacheTtl:%d", redisHost, redisPort, userLoginInfoCacheTtl);
 
 	//连接mysql
 	SqlApi sqlApi(mysqlHost, mysqlUser, mysqlPassWord, mysqlDb, mysqlPort);
@@ -38,6 +44,14 @@ int main()
 	if(ret < 0)
 	{
 		LOG_ERROR("connectMysql failed!");
+		return -1;
+	}
+
+	//连接redis
+	redisContext* rc = redisConnect(redisHost, redisPort);
+	if(rc == NULL || rc->err)
+	{
+		LOG_ERROR("redis connect failed!");
 		return -1;
 	}
 	
@@ -50,7 +64,7 @@ int main()
   	sslOps.pem_root_certs = root;
   	sslOps.pem_key_cert_pairs.push_back (key_cert);
 
-	UserLoginManageService service(sqlApi, saltWorkFactor);
+	UserLoginManageService service(sqlApi, rc, saltWorkFactor, userLoginInfoCacheTtl);
 	ServerBuilder builder;
 	builder.AddListeningPort(serverAddress, grpc::SslServerCredentials(sslOps));
 	builder.RegisterService(&service);
@@ -59,4 +73,6 @@ int main()
 	LOG_INFO("Server listening on %s", serverAddress);
 
   	server->Wait();
+  	sqlApi.closeMysql();
+  	redisFree(rc);
 }

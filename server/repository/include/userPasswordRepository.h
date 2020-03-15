@@ -1,4 +1,6 @@
 #pragma once
+
+#include <string>
 #include "mylib/mylibLog/logrecord.h"
 #include "mylib/mylibSql/sqlApi.h"
 #include "mylib/myLibEncrypt/bcrypt.h"
@@ -13,19 +15,18 @@ class UserPasswordRepository
 {
 
 public:
-	UserPasswordRepository(SqlApi sqlApi)
-		:_sqlApi(sqlApi)
-	{}
-	virtual ~UserPasswordRepository(){}
+	UserPasswordRepository(SqlApi sqlApi);
+	virtual ~UserPasswordRepository();
 
+	
 	int insert(UserPassWordBO userPassWord);
 	int update(UserPassWordBO userPassWord); //unused
 	//获取用户是否已注册
 	int isAlreadyRegist(const string& userName, bool& isAlreadyRegistFlag);
 	//获取用户加密所用的盐
-	int getSaltByUserName(const string& userName, char salt[BCRYPT_HASHSIZE]);
+	int selectSaltByUserName(const string& userName, char salt[BCRYPT_HASHSIZE]);
 	//用户名密码是否正确
-	int isValidUserNameAndPassWord(const string& userName, const string& passWordHash, bool& isValid);
+	int isValidAndPassWordByUserName(const string& userName, const string& passWordHash, bool& isValid);
 
 private:
 	SqlApi _sqlApi;

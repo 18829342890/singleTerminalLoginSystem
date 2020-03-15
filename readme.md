@@ -37,14 +37,13 @@ create table user.t_user_password(
 create table user.t_user_login_manage(
 	`FuiId` bigint(20) unsigned NOT NULL AUTO_INCREMENT COMMENT '自增主键',
 	`FstrUserName` varchar(256) NOT NULL DEFAULT '' COMMENT '用户名',
-	`FstrIp` varchar(46) NOT NULL DEFAULT '' COMMENT '用户登录时的客户端ip',
-	`FuiPort` smallint(5) unsigned NOT NULL DEFAULT '0' COMMENT '用户登录时的客户端ip',
+	`FuiClientUid` bigint(20) unsigned NOT NULL DEFAULT '0' COMMENT '客户端uid',
 	`FuiStatus` tinyint(1) unsigned NOT NULL DEFAULT '0' COMMENT '登录状态 1:已登录 2:退出登录',
 	`FuiCreateTime` bigint(20) unsigned NOT NULL DEFAULT '0' COMMENT '创建时间',
   `FuiUpdateTime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
 	PRIMARY KEY (`FuiId`),
 	UNIQUE KEY `u_idx_username` (`FstrUserName`),
-	KEY `idx_username_status_ip_port` (`FstrUserName`, `FuiStatus`, `FstrIp`, `FuiPort`),
+	KEY `idx_username_status_clientuid` (`FstrUserName`, `FuiStatus`, `FuiClientUid`),
 	KEY `idx_update_time` (`FuiUpdateTime`)
 )ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COMMENT='用户登录记录表';
 ```

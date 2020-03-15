@@ -1,40 +1,32 @@
-#ifndef __LOGINER_H__
-#define __LOGINER_H__
+#pragma once
 
 #include "mylib/myLibEncrypt/bcrypt.h"
-#include "mylib/mylibSql/sqlApi.h"
+#include "server/service/base/loginManageServiceBase.h"
 #include <string>
 
+using namespace std;
 
 
-class Loginer
+class Loginer : public LoginManageServiceBase
 {
 public:
-	Loginer(SqlApi& sqlApi);
+	Loginer(const SqlApi& sqlApi, const redisContext* redisConnect, int userLoginInfoCacheTtl);
 	virtual ~Loginer();
-	int processLogin(const string& userName, const string& passWord, int& code, string& msg);
-	int processLogout(const string& userName, int logoutType, int& code, string& msg);
+
+	int processLogin(const string& userName, const string& passWord, uint64_t clientUid);
+	void cacheUserLoginInfo(const string& userName, uint64_t clientUid);
 
 private:
 	//用户名和密码是否有效
-	int isValidUserNameAndPassWord(const string& userName, const string& passWord, bool& isValid);
+	int isValidAndPassWordByUserName(const string& userName, const string& passWord, bool& isValid);
 	//登录
-	int login(const string& userName);
-	//通知已登录的设备退出登录
-	int noticeLoginedClientLogout(const string& userName);
-	//读取文件内容
-	string readFile2String(const string& fileName);
-	//通知设备退出登录
-	int noticeLogout(const string& clientIp, int clientPort);
-
+	int login(const string& userName,  uint64_t clientUid);
 
 private:
-	SqlApi _sqlApi;
+	int _userLoginInfoCacheTtl;
+
 };
 
 
 
 
-
-
-#endif

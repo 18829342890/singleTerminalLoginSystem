@@ -1,6 +1,6 @@
 work_path = $(shell pwd)
 c_src = $(wildcard $(work_path)/../../mylib/*/*.c)
-cpp_src = $(wildcard $(work_path)/../../mylib/*/*.cpp ./*.cpp ../repository/src/*.cpp ../service/*.cpp ../service/*/*.cpp)
+cpp_src = $(wildcard $(work_path)/../../mylib/*/*.cpp ./*.cpp ../repository/src/*.cpp ../service/*.cpp ../service/*/*.cpp ../infrastructure/src/*.cpp)
 cc_src = $(wildcard $(work_path)/../../protos/proto/*.cc $(work_path)/../../mylib/*/*.cc)
 c_objs = $(patsubst %.c,%.o,$(c_src))
 cpp_objs += $(patsubst %.cpp,%.o,$(cpp_src))
@@ -13,6 +13,7 @@ target=userLoginManagerService
 ##mysql 用 mysql_config --include 命令给出
 INCLUDE += -I/usr/local/mysql/include \
 		   -I/usr/local/opt/openssl/include \
+		   -I/usr/local/redis/deps \
  		   -I${work_path}/../../ \
 		   -I${work_path}/../../mylib/mylibLog \
 		   -I${work_path}/../../mylib/mylibSql \
@@ -34,7 +35,8 @@ CPPFLAGS += `pkg-config --cflags protobuf grpc` $(INCLUDE)
 LDFLAGS =  -L/usr/local/lib `pkg-config --libs protobuf grpc++ grpc`\
            -lgrpc++_reflection \
            -L/usr/local/mysql/lib -lmysqlclient \
-           -L/usr/local/opt/openssl/lib -lssl -lcrypto
+           -L/usr/local/opt/openssl/lib -lssl -lcrypto \
+           -L/usr/local/redis/deps/hiredis -lhiredis
 
 $(warning  $(c_src))
 $(warning  $(cpp_src))

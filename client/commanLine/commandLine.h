@@ -72,7 +72,7 @@ bool isLegalCmd(const char* cmd);
 const char* getCmdImplDesc(const char* cmd);
 
 //执行命令
-int processCmd(std::shared_ptr<messageReceiver::Stub> stub, const char* cmd, const char* params[]);
+int processCmd(std::shared_ptr<userLoginManageService::Stub> stub, const char* cmd, const char* params[]);
 
 
 

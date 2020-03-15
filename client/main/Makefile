@@ -20,7 +20,7 @@ INCLUDE += -I/usr/local/opt/openssl/include \
 		   -I${work_path}/../service/receiveLogoutNotice \
 		   -I${work_path}/../myToolLib  \
 		   -I${work_path}/../commanLine  \
-		    -I${work_path}/../commanLine/processCommandLine  
+		   -I${work_path}/../commanLine/processCommandLine  
 
 CFLAGS = $(INCLUDE)
 CXXFLAGS += -std=c++11 $(INCLUDE)

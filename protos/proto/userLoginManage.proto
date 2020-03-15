@@ -1,0 +1,146 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "singleTerminaLoginSystem.protos.loginManageService";
+option java_outer_classname = "loginManageProto";
+option objc_class_prefix = "TXH";
+
+package proto.userLoginManage;
+
+
+service userLoginManageService {
+  // regist
+  rpc regist (stream RegistRequest) returns (stream RegistResponse) {}
+
+  // login
+  rpc login (stream LoginRequest) returns (stream LoginResponse) {}
+
+  // logout
+  rpc logout (stream LogoutRequest) returns (stream LogoutResponse) {}
+
+  // heart beat
+  rpc heartBeat (stream HeartBeatRequest) returns (stream HeartBeatResponse) {}
+
+  // kick out user
+  rpc kickOutUser (stream KickOutUserRequest) returns (stream KickOutUserResponse) {}
+}
+
+//***
+//@request  BasicRequest
+//@response BasicResponse
+//@remark   请求的基本信息
+//***
+message BasicRequest
+{
+	int64   timestamp = 1; //时间戳
+	uint64  uuid      = 2; //客户端的uuid
+}
+
+message BasicResponse
+{
+	int64   timestamp = 1; //时间戳
+	int32   code      = 2; //状态码
+	string  msg       = 3; //描述信息
+}
+
+
+//***
+//@request  RegistRequest
+//@response RegistResponse
+//@remark   用户注册
+//***
+message RegistRequest
+{
+	BasicRequest  basic     = 1;
+	string        user_name = 2;
+	string        pass_word = 3;
+}
+
+message RegistResponse
+{
+	BasicResponse basic     = 1;
+}
+
+
+//***
+//@request  LoginRequest
+//@response LoginResponse
+//@remark   用户登录
+//***
+message LoginRequest
+{
+	BasicRequest  basic     = 1;
+	string        user_name = 2;
+	string        pass_word = 3;
+}
+
+message LoginResponse
+{
+	BasicResponse basic     = 1;
+}
+
+
+//***
+//@request  LogoutRequest
+//@response LogoutResponse
+//@remark   退出登录
+//***
+message LogoutRequest
+{
+	BasicRequest  basic     = 1;
+	string        user_name = 2;
+}
+
+message LogoutResponse
+{
+	BasicResponse basic     = 1;
+}
+
+//***
+//@request  KickOutUserRequest
+//@response KickOutUserResponse
+//@remark   踢出用户
+//***
+message KickOutUserRequest
+{
+	BasicRequest  basic     = 1;
+	string        user_name = 2;
+}
+
+message KickOutUserResponse
+{
+	BasicResponse basic     = 1;
+}
+
+
+//***
+//@request  HeartBeatRequest
+//@response HeartBeatResponse
+//@remark   心跳
+//***
+message HeartBeatRequest
+{
+	BasicRequest  basic     = 1;
+	string        user_name = 2;
+}
+
+message HeartBeatResponse
+{
+	BasicResponse basic     = 1;
+	int32         operation = 2; //客户端应做的操作  0:无须做任何操作 1:退出登录
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
