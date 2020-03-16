@@ -21,7 +21,7 @@ Logout::Logout(const SqlApi& sqlApi, const redisContext* redisConnect, int userL
 Logout::~Logout()
 {}
 
-int Logout::processLogout(const string& userName, uint64_t clientUid)
+int Logout::processLogout(const string& userName, const string& clientUid)
 {
 	UserLoginManageBO userLoginManage;
 	UserLoginManageRepository userLoginManageRepository(_sqlApi);
@@ -35,7 +35,7 @@ int Logout::processLogout(const string& userName, uint64_t clientUid)
 	}
 
 	//判断是否已退出登录 需判断clientuid，防止另一个退出登录的请求由于网络延迟慢到了，导致记录的clientUid不一致的情况
-	if(userLoginManage.getClientUid() == clientUid && userLoginManage.getStatus() == LOGOUT)
+	if(clientUid == userLoginManage.getClientUid() && userLoginManage.getStatus() == LOGOUT)
 	{
 		_code = SUCCESS;
 		_msg = "logout success!";
@@ -59,7 +59,7 @@ int Logout::processLogout(const string& userName, uint64_t clientUid)
 	return 0;
 }
 
-void Logout::cacheUserLogoutInfo(const string& userName, uint64_t clientUid)
+void Logout::cacheUserLogoutInfo(const string& userName, const string& clientUid)
 {
 	//缓存用户已退出登录，并设置登录时间
 	UserLoginCacheBO userLoginCacheBO;

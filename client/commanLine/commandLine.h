@@ -3,13 +3,16 @@
 
 #include <stdbool.h>
 #include <stdio.h>
+#include <string>
 #include "ProcessCommandLineBase.h"
 #include "Help.h"
 #include "Login.h"
 #include "Exiter.h"
 #include "Regist.h"
 #include "Logout.h"
+#include "kickout.h"
 
+using namespace std;
 
 const int MAX_CMD_LEN = 128;
 
@@ -22,10 +25,13 @@ typedef struct
 
 
 static Help help;
+static RegistCmd registCmd;
 static Login login;
 static LogoutCmd logoutCmd;
+static KickoutUserCmd kickoutUser;
 static Exiter exiter;
-static RegistCmd registCmd;
+
+
 static my_cmd_t s_my_cmds[] = {
 	{
 		"help",
@@ -58,6 +64,11 @@ static my_cmd_t s_my_cmds[] = {
 		"user regist."
 	},
 	{
+		"kickout",
+		kickoutUser,
+		"kickout user."
+	},
+	{
 		NULL,
 		help,
 		NULL,
@@ -72,7 +83,7 @@ bool isLegalCmd(const char* cmd);
 const char* getCmdImplDesc(const char* cmd);
 
 //执行命令
-int processCmd(std::shared_ptr<userLoginManageService::Stub> stub, const char* cmd, const char* params[]);
+int processCmd(std::shared_ptr<userLoginManageService::Stub> stub, const string& clientUuid, const char* cmd, const char* params[]);
 
 
 

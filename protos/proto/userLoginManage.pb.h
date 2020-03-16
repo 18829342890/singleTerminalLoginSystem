@@ -219,9 +219,25 @@ class BasicRequest :
   // accessors -------------------------------------------------------
 
   enum : int {
-    kTimestampFieldNumber = 1,
     kUuidFieldNumber = 2,
+    kTimestampFieldNumber = 1,
   };
+  // string uuid = 2;
+  void clear_uuid();
+  const std::string& uuid() const;
+  void set_uuid(const std::string& value);
+  void set_uuid(std::string&& value);
+  void set_uuid(const char* value);
+  void set_uuid(const char* value, size_t size);
+  std::string* mutable_uuid();
+  std::string* release_uuid();
+  void set_allocated_uuid(std::string* uuid);
+  private:
+  const std::string& _internal_uuid() const;
+  void _internal_set_uuid(const std::string& value);
+  std::string* _internal_mutable_uuid();
+  public:
+
   // int64 timestamp = 1;
   void clear_timestamp();
   ::PROTOBUF_NAMESPACE_ID::int64 timestamp() const;
@@ -231,22 +247,13 @@ class BasicRequest :
   void _internal_set_timestamp(::PROTOBUF_NAMESPACE_ID::int64 value);
   public:
 
-  // uint64 uuid = 2;
-  void clear_uuid();
-  ::PROTOBUF_NAMESPACE_ID::uint64 uuid() const;
-  void set_uuid(::PROTOBUF_NAMESPACE_ID::uint64 value);
-  private:
-  ::PROTOBUF_NAMESPACE_ID::uint64 _internal_uuid() const;
-  void _internal_set_uuid(::PROTOBUF_NAMESPACE_ID::uint64 value);
-  public:
-
   // @@protoc_insertion_point(class_scope:proto.userLoginManage.BasicRequest)
  private:
   class _Internal;
 
   ::PROTOBUF_NAMESPACE_ID::internal::InternalMetadataWithArena _internal_metadata_;
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr uuid_;
   ::PROTOBUF_NAMESPACE_ID::int64 timestamp_;
-  ::PROTOBUF_NAMESPACE_ID::uint64 uuid_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_userLoginManage_2eproto;
 };
@@ -1915,24 +1922,64 @@ inline void BasicRequest::set_timestamp(::PROTOBUF_NAMESPACE_ID::int64 value) {
   // @@protoc_insertion_point(field_set:proto.userLoginManage.BasicRequest.timestamp)
 }
 
-// uint64 uuid = 2;
+// string uuid = 2;
 inline void BasicRequest::clear_uuid() {
-  uuid_ = PROTOBUF_ULONGLONG(0);
+  uuid_.ClearToEmptyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
 }
-inline ::PROTOBUF_NAMESPACE_ID::uint64 BasicRequest::_internal_uuid() const {
-  return uuid_;
-}
-inline ::PROTOBUF_NAMESPACE_ID::uint64 BasicRequest::uuid() const {
+inline const std::string& BasicRequest::uuid() const {
   // @@protoc_insertion_point(field_get:proto.userLoginManage.BasicRequest.uuid)
   return _internal_uuid();
 }
-inline void BasicRequest::_internal_set_uuid(::PROTOBUF_NAMESPACE_ID::uint64 value) {
-  
-  uuid_ = value;
-}
-inline void BasicRequest::set_uuid(::PROTOBUF_NAMESPACE_ID::uint64 value) {
+inline void BasicRequest::set_uuid(const std::string& value) {
   _internal_set_uuid(value);
   // @@protoc_insertion_point(field_set:proto.userLoginManage.BasicRequest.uuid)
+}
+inline std::string* BasicRequest::mutable_uuid() {
+  // @@protoc_insertion_point(field_mutable:proto.userLoginManage.BasicRequest.uuid)
+  return _internal_mutable_uuid();
+}
+inline const std::string& BasicRequest::_internal_uuid() const {
+  return uuid_.GetNoArena();
+}
+inline void BasicRequest::_internal_set_uuid(const std::string& value) {
+  
+  uuid_.SetNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), value);
+}
+inline void BasicRequest::set_uuid(std::string&& value) {
+  
+  uuid_.SetNoArena(
+    &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
+  // @@protoc_insertion_point(field_set_rvalue:proto.userLoginManage.BasicRequest.uuid)
+}
+inline void BasicRequest::set_uuid(const char* value) {
+  GOOGLE_DCHECK(value != nullptr);
+  
+  uuid_.SetNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:proto.userLoginManage.BasicRequest.uuid)
+}
+inline void BasicRequest::set_uuid(const char* value, size_t size) {
+  
+  uuid_.SetNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:proto.userLoginManage.BasicRequest.uuid)
+}
+inline std::string* BasicRequest::_internal_mutable_uuid() {
+  
+  return uuid_.MutableNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+}
+inline std::string* BasicRequest::release_uuid() {
+  // @@protoc_insertion_point(field_release:proto.userLoginManage.BasicRequest.uuid)
+  
+  return uuid_.ReleaseNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+}
+inline void BasicRequest::set_allocated_uuid(std::string* uuid) {
+  if (uuid != nullptr) {
+    
+  } else {
+    
+  }
+  uuid_.SetAllocatedNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), uuid);
+  // @@protoc_insertion_point(field_set_allocated:proto.userLoginManage.BasicRequest.uuid)
 }
 
 // -------------------------------------------------------------------

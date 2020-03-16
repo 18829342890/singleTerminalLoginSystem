@@ -6,6 +6,7 @@
 #include "mylib/enum/code.h"
 
 
+using namespace userLoginSystem::myEnum;
 using namespace client::commandLine;
 using namespace userLoginSystem::myEnum;
 using proto::userLoginManage::LogoutRequest;
@@ -19,31 +20,36 @@ class Exiter : public ProcessCommandLineBase
 
 public:
 
-	int processCommandLine(std::shared_ptr<userLoginManageService::Stub> stub, const char* params[])
+	int processCommandLine(std::shared_ptr<userLoginManageService::Stub> stub, const string& clientUuid, const char* params[])
 	{
 		//如果未登录，直接退出
 		if(!isLogined) exit(0);
 
-		//如果已经登录，则发送退出客户端请求
-		// LogoutRequest logoutRequest;
-		// logoutRequest.set_user_name(userName);
-		// logoutRequest.set_logout_type(USER_LOGOUT);
+		//如果已经登录，则发送退出登录请求
+		ClientContext context;
+		LogoutRequest logoutRequest;
+		char userNameEncrypted[1024] = {0};
+		base64_encode(userName.c_str(), userName.length(), userNameEncrypted);
+		logoutRequest.mutable_basic()->set_uuid(clientUuid);
+		logoutRequest.set_user_name(userNameEncrypted);
 
-		// ClientContext context;
-		// LogoutResponse logoutResponse;
-		// context.set_compression_algorithm(GRPC_COMPRESS_DEFLATE);
-		// Status status = stub->logout(&context, logoutRequest, &logoutResponse);
-		// if(status.ok())
-		// {
-		// 	cout << logoutResponse.message() << endl;
-		// 	exit(0);
-		// 	return 0;
-		// }
-		// else
-		// {
-		// 	cout << "RPC failed! errcode:" << status.error_code() << ", errmsg:" << status.error_message() << endl;
-		// 	return -1;
-		// }
+		std::shared_ptr<ClientReaderWriter<LogoutRequest, LogoutResponse> > stream(stub->logout(&context));
+		stream->Write(logoutRequest);
+		stream->WritesDone();
+
+		//获取响应
+		LogoutResponse logoutResponse;
+		stream->Read(&logoutResponse);
+		if(logoutResponse.basic().code() == SUCCESS)
+		{
+			cout << logoutResponse.basic().msg() << endl;
+			exit(0);
+		}
+		else
+		{
+			cout << "server occur error. please try again! server errmsg:" << logoutResponse.basic().msg();
+			return -1;
+		}
 	}
 
 };

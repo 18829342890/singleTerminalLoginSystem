@@ -11,7 +11,7 @@ class UserLoginManageBO
 public:
 	uint64_t id;
 	string   userName;
-	uint64_t clientUid;
+	string clientUid;
 	int8_t   status;
 	uint64_t createTime;
 	//updateTime 由mysql触发器管理
@@ -28,7 +28,7 @@ public:
 		this->userName = userName;
 	}
 
-	void setClientUid(uint64_t clientUid)
+	void setClientUid(string clientUid)
 	{
 		this->clientUid = clientUid;
 	}
@@ -54,7 +54,7 @@ public:
 		return this->userName;
 	}
 
-	uint64_t getClientUid()
+	string getClientUid()
 	{
 		return this->clientUid;
 	}

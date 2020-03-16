@@ -5,55 +5,70 @@
 #include "ProcessCommandLineBase.h"
 #include "mylib/enum/code.h"
 
+
+using namespace userLoginSystem::myEnum;
 using namespace client::commandLine;
 using proto::userLoginManage::LogoutRequest;
 using proto::userLoginManage::LogoutResponse;
 
+
+extern int isLogined;
+extern string userName;
 
 class LogoutCmd : public ProcessCommandLineBase
 {
 
 public:
 
-	int processCommandLine(std::shared_ptr<userLoginManageService::Stub> stub, const char* params[])
+	int processCommandLine(std::shared_ptr<userLoginManageService::Stub> stub, const string& clientUuid, const char* params[])
 	{
+		//获取请求
 		LogoutRequest logoutRequest;
-		int ret = getLogoutRequestFromParams(params, logoutRequest);
+		int ret = getLogoutRequestFromParams(clientUuid, logoutRequest);
 		if(ret < 0)
 		{
 			return -1;
 		}
 
-		// ClientContext context;
-		// LogoutResponse logoutResponse;
-		// context.set_compression_algorithm(GRPC_COMPRESS_DEFLATE);
-		// Status status = stub->logout(&context, logoutRequest, &logoutResponse);
-		// if(status.ok())
-		// {
-		// 	cout << logoutResponse.message() << endl;
-		// 	return 0;
-		// }
-		// else
-		// {
-		// 	cout << "RPC failed! errcode:" << status.error_code() << ", errmsg:" << status.error_message() << endl;
-		// 	return -1;
-		// }
+		//发送退出登录请求
+		ClientContext context;
+		std::shared_ptr<ClientReaderWriter<LogoutRequest, LogoutResponse> > stream(stub->logout(&context));
+		stream->Write(logoutRequest);
+		stream->WritesDone();
+
+		//获取响应
+		LogoutResponse logoutResponse;
+		stream->Read(&logoutResponse);
+		if(logoutResponse.basic().code() == SUCCESS)
+		{
+			cout << logoutResponse.basic().msg() << endl;
+			isLogined = 0;
+			userName = "";
+			return 0;
+		}
+		else
+		{
+			cout << "server occur error. please try again! server errmsg:" << logoutResponse.basic().msg();
+			return -1;
+		}
 	}
 		
-	int getLogoutRequestFromParams(const char* params[], LogoutRequest& logoutRequest)
+	int getLogoutRequestFromParams(const string& clientUuid, LogoutRequest& logoutRequest)
 	{
-		//判断参数是否合法
-		int i = 0;
-		for(; params[i]; ++i){}
-
-		if(i != 1)
+		//判断是否已登录
+		if(!isLogined)
 		{
-			cout << "please input logout username" << endl;
+			cout << "please login!" << endl;
 			return -1;
 		}
 
+		//编码userName
+		char userNameEncrypted[1024] = {0};
+		base64_encode(userName.c_str(), userName.length(), userNameEncrypted);
+
 		//设置username
-		logoutRequest.set_user_name(params[0]);
+		logoutRequest.mutable_basic()->set_uuid(clientUuid);
+		logoutRequest.set_user_name(userNameEncrypted);
 		return 0;
 	}
 

@@ -2,11 +2,9 @@
 #include "mylib/enum/code.h"
 #include "mylib/mylibLog/logrecord.h"
 #include "server/infrastructure/include/userLoginCache.h"
-#include "server/repository/include/userLoginManageRepository.h"
 
 using namespace userLoginSystem::myEnum;
 using namespace userLoginService::infrastructure;
-using namespace userLoginService::repository;
 
 HeartBeat::HeartBeat(const SqlApi& sqlApi, const redisContext* redisConnect, int userLoginInfoTtl)
 	:LoginManageServiceBase(sqlApi, redisConnect),
@@ -18,7 +16,7 @@ HeartBeat::~HeartBeat()
 
 
 
-int HeartBeat::processHeartBeat(const string& userName, uint64_t clientUid, int& clientOperation)
+int HeartBeat::processHeartBeat(const string& userName, const string& clientUid, int& clientOperation)
 {
 	UserLoginCacheBO userLoginCache;
 	int ret = getUserLoginInfo(userName, userLoginCache);
@@ -32,17 +30,37 @@ int HeartBeat::processHeartBeat(const string& userName, uint64_t clientUid, int&
 
 	if(clientUid == userLoginCache.getClientUid() && userLoginCache.getStatus() == LOGINED)
 	{
+		//当前用户还在登录中，状态正常
 		_code = SUCCESS;
 		_msg = "success";
 		clientOperation = NOTHING;
 		return 0;
 	}
 
-	if(clientUid != userLoginCache.getClientUid() || userLoginCache.getStatus() == LOGOUT)
+	if(clientUid == userLoginCache.getClientUid() && userLoginCache.getStatus() == LOGOUT)
 	{
+		//当前用户已退出登录
 		_code = SUCCESS;
 		_msg = "success";
-		clientOperation = LOG_OUT;
+		clientOperation = CURRENT_USER_LOGOUT;
+		return 0;
+	}
+
+	if(userLoginCache.getClientUid() == "0" && userLoginCache.getStatus() == LOGOUT)
+	{
+		//被管理员踢出登录，当前用户应退出登录
+		_code = SUCCESS;
+		_msg = "success";
+		clientOperation = KICKOUT_BY_MANAGER_JUST_LOGOUT;
+		return 0;
+	}
+
+	if(clientUid != userLoginCache.getClientUid() || userLoginCache.getStatus() == LOGOUT)
+	{
+		//当前账号在另一台设备登录，当前设备应退出登录
+		_code = SUCCESS;
+		_msg = "success";
+		clientOperation = OTHER_DEVICE_LOGINED_JUST_LOGOUT;
 		return 0;
 	}
 
@@ -56,33 +74,4 @@ void HeartBeat::updateUserLoginInfoCacheTtl(const string& userName)
 {
 	UserLoginCache userLoginCache(_redisConnect);
 	userLoginCache.updateCacheTtl(userName, _userLoginInfoTtl);
-}
-
-
-int HeartBeat::getUserLoginInfo(const string& userName, UserLoginCacheBO& userLoginCacheBO)
-{
-	//先从缓存中获取登录信息
-	UserLoginCache userLoginCache(_redisConnect);
-	int ret = userLoginCache.getUserLoginCacheByUserName(userName, userLoginCacheBO);
-	if(ret == 0)
-	{
-		return 0;
-	}
-
-	LOG_WARNNING("get User Login info from Cache failed!");
-
-	//缓存获取失败，再从DB中获取登录信息
-	UserLoginManageBO userLoginManage;
-	UserLoginManageRepository userLoginManageRepository(_sqlApi);
-	ret = userLoginManageRepository.select(userName, userLoginManage);
-	if(ret != 0)
-	{
-		LOG_ERROR("not found this userName info from cache and DB! userName:%s", userName.c_str());
-		return -1;
-	}
-
-	userLoginCacheBO.setUserName(userLoginManage.getUserName());
-	userLoginCacheBO.setClientUid(userLoginManage.getClientUid());
-	userLoginCacheBO.setStatus(userLoginManage.getStatus());
-	return 0;
 }

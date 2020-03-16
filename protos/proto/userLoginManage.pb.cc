@@ -368,7 +368,7 @@ static ::PROTOBUF_NAMESPACE_ID::Message const * const file_default_instances[] =
 const char descriptor_table_protodef_userLoginManage_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) =
   "\n\025userLoginManage.proto\022\025proto.userLogin"
   "Manage\"/\n\014BasicRequest\022\021\n\ttimestamp\030\001 \001("
-  "\003\022\014\n\004uuid\030\002 \001(\004\"=\n\rBasicResponse\022\021\n\ttime"
+  "\003\022\014\n\004uuid\030\002 \001(\t\"=\n\rBasicResponse\022\021\n\ttime"
   "stamp\030\001 \001(\003\022\014\n\004code\030\002 \001(\005\022\013\n\003msg\030\003 \001(\t\"i"
   "\n\rRegistRequest\0222\n\005basic\030\001 \001(\0132#.proto.u"
   "serLoginManage.BasicRequest\022\021\n\tuser_name"
@@ -455,16 +455,18 @@ BasicRequest::BasicRequest(const BasicRequest& from)
   : ::PROTOBUF_NAMESPACE_ID::Message(),
       _internal_metadata_(nullptr) {
   _internal_metadata_.MergeFrom(from._internal_metadata_);
-  ::memcpy(&timestamp_, &from.timestamp_,
-    static_cast<size_t>(reinterpret_cast<char*>(&uuid_) -
-    reinterpret_cast<char*>(&timestamp_)) + sizeof(uuid_));
+  uuid_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  if (!from._internal_uuid().empty()) {
+    uuid_.AssignWithDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from.uuid_);
+  }
+  timestamp_ = from.timestamp_;
   // @@protoc_insertion_point(copy_constructor:proto.userLoginManage.BasicRequest)
 }
 
 void BasicRequest::SharedCtor() {
-  ::memset(&timestamp_, 0, static_cast<size_t>(
-      reinterpret_cast<char*>(&uuid_) -
-      reinterpret_cast<char*>(&timestamp_)) + sizeof(uuid_));
+  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&scc_info_BasicRequest_userLoginManage_2eproto.base);
+  uuid_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  timestamp_ = PROTOBUF_LONGLONG(0);
 }
 
 BasicRequest::~BasicRequest() {
@@ -473,6 +475,7 @@ BasicRequest::~BasicRequest() {
 }
 
 void BasicRequest::SharedDtor() {
+  uuid_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
 }
 
 void BasicRequest::SetCachedSize(int size) const {
@@ -490,9 +493,8 @@ void BasicRequest::Clear() {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  ::memset(&timestamp_, 0, static_cast<size_t>(
-      reinterpret_cast<char*>(&uuid_) -
-      reinterpret_cast<char*>(&timestamp_)) + sizeof(uuid_));
+  uuid_.ClearToEmptyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  timestamp_ = PROTOBUF_LONGLONG(0);
   _internal_metadata_.Clear();
 }
 
@@ -510,10 +512,12 @@ const char* BasicRequest::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_I
           CHK_(ptr);
         } else goto handle_unusual;
         continue;
-      // uint64 uuid = 2;
+      // string uuid = 2;
       case 2:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 16)) {
-          uuid_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint(&ptr);
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 18)) {
+          auto str = _internal_mutable_uuid();
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "proto.userLoginManage.BasicRequest.uuid"));
           CHK_(ptr);
         } else goto handle_unusual;
         continue;
@@ -549,10 +553,14 @@ failure:
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt64ToArray(1, this->_internal_timestamp(), target);
   }
 
-  // uint64 uuid = 2;
-  if (this->uuid() != 0) {
-    target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteUInt64ToArray(2, this->_internal_uuid(), target);
+  // string uuid = 2;
+  if (this->uuid().size() > 0) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_uuid().data(), static_cast<int>(this->_internal_uuid().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "proto.userLoginManage.BasicRequest.uuid");
+    target = stream->WriteStringMaybeAliased(
+        2, this->_internal_uuid(), target);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
@@ -571,18 +579,18 @@ size_t BasicRequest::ByteSizeLong() const {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
+  // string uuid = 2;
+  if (this->uuid().size() > 0) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_uuid());
+  }
+
   // int64 timestamp = 1;
   if (this->timestamp() != 0) {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int64Size(
         this->_internal_timestamp());
-  }
-
-  // uint64 uuid = 2;
-  if (this->uuid() != 0) {
-    total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::UInt64Size(
-        this->_internal_uuid());
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
@@ -616,11 +624,12 @@ void BasicRequest::MergeFrom(const BasicRequest& from) {
   ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
+  if (from.uuid().size() > 0) {
+
+    uuid_.AssignWithDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from.uuid_);
+  }
   if (from.timestamp() != 0) {
     _internal_set_timestamp(from._internal_timestamp());
-  }
-  if (from.uuid() != 0) {
-    _internal_set_uuid(from._internal_uuid());
   }
 }
 
@@ -645,8 +654,9 @@ bool BasicRequest::IsInitialized() const {
 void BasicRequest::InternalSwap(BasicRequest* other) {
   using std::swap;
   _internal_metadata_.Swap(&other->_internal_metadata_);
+  uuid_.Swap(&other->uuid_, &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
+    GetArenaNoVirtual());
   swap(timestamp_, other->timestamp_);
-  swap(uuid_, other->uuid_);
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata BasicRequest::GetMetadata() const {

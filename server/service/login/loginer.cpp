@@ -28,7 +28,7 @@ Loginer::~Loginer()
 {}
 
 
-int Loginer::processLogin(const string& userName, const string& passWord, uint64_t clientUid)
+int Loginer::processLogin(const string& userName, const string& passWord, const string& clientUid)
 {
 	//判断密码是否有效
 	bool isValid = false;
@@ -58,11 +58,11 @@ int Loginer::processLogin(const string& userName, const string& passWord, uint64
 
 	_code = SUCCESS;
 	_msg = "login success!";
-	LOG_INFO("userName:%s, clientUid:%lu login success!", userName.c_str(), clientUid);
+	LOG_INFO("userName:%s, clientUid:%s login success!", userName.c_str(), clientUid.c_str());
 	return 0;
 }
 
-void Loginer::cacheUserLoginInfo(const string& userName, uint64_t clientUid)
+void Loginer::cacheUserLoginInfo(const string& userName, const string& clientUid)
 {
 	//缓存用户登录信息，并设置登录时间
 	UserLoginCacheBO userLoginCacheBO;
@@ -90,7 +90,7 @@ int Loginer::isValidAndPassWordByUserName(const string& userName, const string& 
 
 	//加密密码
 	char passWordHash[BCRYPT_HASHSIZE];
-	ret = bcrypt_hashpw(userName.c_str(), salt, passWordHash);
+	ret = bcrypt_hashpw(passWord.c_str(), salt, passWordHash);
 	if(ret != 0)
 	{
 		LOG_ERROR("bcrypt_hashpw failed!");
@@ -111,7 +111,7 @@ int Loginer::isValidAndPassWordByUserName(const string& userName, const string& 
 	return 0;
 }
 
-int Loginer::login(const string& userName, uint64_t clientUid)
+int Loginer::login(const string& userName, const string& clientUid)
 {
 	UserLoginManageRepository userLoginManageRepository(_sqlApi);
 	return userLoginManageRepository.updateClientUidAndStatusByUserName(userName, clientUid, LOGINED);

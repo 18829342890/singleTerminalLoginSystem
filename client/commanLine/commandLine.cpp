@@ -42,15 +42,15 @@ const char* getCmdImplDesc(const char* cmd)
 	return NULL;
 }
 
-int processCmd(std::shared_ptr<userLoginManageService::Stub> stub, const char* cmd, const char* params[])
+int processCmd(std::shared_ptr<userLoginManageService::Stub> stub, const string& clientUuid, const char* cmd, const char* params[])
 {
 	ProcessCommandLineBase* cmdImplClass = getCmdImplClass(cmd);
 	if(cmdImplClass == NULL)
 	{
 		Help help;
-		help.processCommandLine(stub, params);
+		help.processCommandLine(stub, clientUuid, params);
 		return -1;
 	}
 
-	return cmdImplClass->processCommandLine(stub, params);
+	return cmdImplClass->processCommandLine(stub, clientUuid, params);
 }

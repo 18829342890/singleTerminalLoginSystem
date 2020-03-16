@@ -10,7 +10,7 @@ class Help : public ProcessCommandLineBase
 
 public:
 
-	virtual int processCommandLine(std::shared_ptr<userLoginManageService::Stub> stub, const char* params[])
+	virtual int processCommandLine(std::shared_ptr<userLoginManageService::Stub> stub, const string& clientUuid, const char* params[])
 	{
 		processHelp();
 		return 0;
@@ -24,7 +24,8 @@ private:
 		printf("######### exit   : logout then exit client. for example:exit username             #############################\n");
 		printf("######### regist : user regist. for example: regist username password             #############################\n");
 		printf("######### login  : login server.for example: login username password              #############################\n");
-		printf("######### logout : logout user. for example: logout username                      #############################\n");
+		printf("######### logout : logout.      for example: logout                               #############################\n");
+		printf("######### kickout: kickout user.for example: kickout username                     #############################\n");
 		printf("###############################################################################################################\n");
 	}
 

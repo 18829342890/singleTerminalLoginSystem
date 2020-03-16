@@ -1,7 +1,6 @@
 #pragma once
 
 #include<string>
-#include "server/domain/userLoginCacheBO.h"
 #include "server/service/base/loginManageServiceBase.h"
 
 using namespace std;
@@ -14,11 +13,8 @@ public:
 	HeartBeat(const SqlApi& sqlApi, const redisContext* redisConnect, int userLoginInfoTtl);
 	virtual ~HeartBeat();
 
-	int processHeartBeat(const string& userName, uint64_t clientUid, int& clientOperation);
+	int processHeartBeat(const string& userName, const string& clientUid, int& clientOperation);
 	void updateUserLoginInfoCacheTtl(const string& userName);
-
-private:
-	int getUserLoginInfo(const string& userName, UserLoginCacheBO& userLoginCache);
 
 private:
 	int _userLoginInfoTtl;

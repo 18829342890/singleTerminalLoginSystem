@@ -18,12 +18,12 @@ UserLoginCache::~UserLoginCache()
 int UserLoginCache::getUserLoginCacheByUserName(const string& userName, UserLoginCacheBO& userLoginCache)
 {
 	//获取clientUid
-	uint64_t clientUid;
+	string clientUid;
 	string getClientUidCmd = "lindex " + userName + " 0";
-	int ret = getUint64ValueByCmd(getClientUidCmd, clientUid);
+	int ret = getStringValueByCmd(getClientUidCmd, clientUid);
 	if(ret != 0)
 	{
-		LOG_ERROR("getUint64ValueByCmd failed! cmd:%s", getClientUidCmd.c_str());
+		LOG_ERROR("getStringValueByCmd failed! cmd:%s", getClientUidCmd.c_str());
 		return -1;
 	}
 
@@ -37,7 +37,7 @@ int UserLoginCache::getUserLoginCacheByUserName(const string& userName, UserLogi
 		return -1;
 	}
 
-	LOG_INFO("[getUserLoginCacheByUserName]: userName:%s, clientUid:%lu, status:%d", userName.c_str(), clientUid, status);
+	//LOG_INFO("[getUserLoginCacheByUserName]: userName:%s, clientUid:%s, status:%d", userName.c_str(), clientUid.c_str(), status);
 	userLoginCache.setUserName(userName);
 	userLoginCache.setClientUid(clientUid);
 	userLoginCache.setStatus(status);
@@ -55,12 +55,14 @@ void UserLoginCache::cacheUserLoginInfo(UserLoginCacheBO userLoginCache, int ttl
 		std::vector<std::string> cmds;
 		cmds.push_back("rpush");
 		cmds.push_back(userLoginCache.getUserName());
-		cmds.push_back(type2str(userLoginCache.getClientUid()));
+		cmds.push_back(userLoginCache.getClientUid());
 		cmds.push_back(type2str(userLoginCache.getStatus()));
+		cmds.push_back(";");
 
 		cmds.push_back("expire");
 		cmds.push_back(userLoginCache.getUserName());
 		cmds.push_back(type2str(ttl));
+		cmds.push_back(";");
 
 		(void)executeCmds(cmds);
 	}
@@ -71,16 +73,19 @@ void UserLoginCache::cacheUserLoginInfo(UserLoginCacheBO userLoginCache, int ttl
 		cmds.push_back("lset");
 		cmds.push_back(userLoginCache.getUserName());
 		cmds.push_back("0");
-		cmds.push_back(type2str(userLoginCache.getClientUid()));
+		cmds.push_back(userLoginCache.getClientUid());
+		cmds.push_back(";");
 
 		cmds.push_back("lset");
 		cmds.push_back(userLoginCache.getUserName());
 		cmds.push_back("1");
 		cmds.push_back(type2str(userLoginCache.getStatus()));
+		cmds.push_back(";");
 
 		cmds.push_back("expire");
 		cmds.push_back(userLoginCache.getUserName());
 		cmds.push_back(type2str(ttl));
+		cmds.push_back(";");
 
 		(void)executeCmds(cmds);
 	}
@@ -98,40 +103,21 @@ void UserLoginCache::justExecuteCmd(const string& cmd)
 	freeReplyObject(reply);
 }
 
-int UserLoginCache::executeCmds(const vector<string>& cmds)
+void UserLoginCache::executeCmds(const vector<string>& cmds)
 {
-	vector<const char*> argv;
-    vector<size_t> argvlen;
-    argv.reserve(cmds.size());
-    argvlen.reserve(cmds.size());
-
     ostringstream cmd;
     for(vector<string>::const_iterator it = cmds.begin(); it != cmds.end();++it) 
     {
-        argv.push_back(it->c_str());
-        argvlen.push_back(it->size());
-
-        cmd << *it;
-        if (argv.size() <  cmds.size()) {
-            cmd << " ";
+        if (*it == ";") {
+            LOG_INFO("redis cmds:%s", cmd.str().c_str());//TODO 去掉调试信息
+            justExecuteCmd(cmd.str());
+            cmd.str("");
+        }
+        else
+        {
+        	cmd << *it << " ";
         }
     }
-    LOG_INFO("cmds:%s", cmd.str().c_str());//TODO 去掉调试信息
-
-    redisReply* reply = (redisReply*)redisCommandArgv(const_cast<redisContext*>(_redisConnect), static_cast<int>(cmds.size()), argv.data(), argvlen.data());
-    if(reply == NULL)
-    {
-    	LOG_ERROR("redisCommand failed! cmd:%s, errmsg:%s", cmd.str().c_str(), _redisConnect->errstr);
-		return -1;
-    }
-
-    if(reply->type == REDIS_REPLY_ERROR)
-    {
-    	LOG_ERROR("redisCommand failed! cmd:%s, errmsg:%s", cmd.str().c_str(), reply->str);
-		return -1;
-    }
-
-    return 0;
 }
 
 
@@ -146,7 +132,7 @@ int UserLoginCache::getStringValueByCmd(const string& cmd, string& value)
 
 	if(reply->type != REDIS_REPLY_STRING)
 	{
-		LOG_ERROR("redisCommand return type is error! type:%d", reply->type);
+		LOG_ERROR("redisCommand return type is error! type:%d, errmsg:%s", reply->type, reply->str);
 		freeReplyObject(reply);
 		return -1;
 	}
@@ -179,7 +165,7 @@ int UserLoginCache::getUint64ValueByCmd(const string& cmd, uint64_t& value)
 	}
 	else
 	{
-		LOG_ERROR("redisCommand return type is error! type:%d", reply->type);
+		LOG_ERROR("redisCommand return type is error! type:%d, errmsg:%s", reply->type, reply->str);
 		freeReplyObject(reply);
 		return -1;
 	}
@@ -208,7 +194,7 @@ int UserLoginCache::getIntValueByCmd(const string& cmd, int& value)
 	}
 	else
 	{
-		LOG_ERROR("redisCommand return type is error! type:%d", reply->type);
+		LOG_ERROR("redisCommand return type is error! type:%d, errmsg:%s", reply->type, reply->str);
 		freeReplyObject(reply);
 		return -1;
 	}

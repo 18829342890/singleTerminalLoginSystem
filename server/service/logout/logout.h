@@ -11,11 +11,10 @@ public:
 	Logout(const SqlApi& sqlApi, const redisContext* redisConnect, int userLoginInfoCacheTtl);
 	virtual ~Logout();
 
-	int processLogout(const string& userName, uint64_t clientUid);
-	void cacheUserLogoutInfo(const string& userName, uint64_t clientUid);
+	int processLogout(const string& userName, const string& clientUid);
+	void cacheUserLogoutInfo(const string& userName, const string& clientUid);
 
 private:
-	SqlApi _sqlApi;
 	int _userLoginInfoCacheTtl;
 };
 

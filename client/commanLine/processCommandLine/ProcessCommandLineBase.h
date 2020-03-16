@@ -33,7 +33,7 @@ public:
 	/*
 	 * 处理命令的公共接口
 	 */
-	virtual int processCommandLine(std::shared_ptr<userLoginManageService::Stub> stub, const char* params[]){}
+	virtual int processCommandLine(std::shared_ptr<userLoginManageService::Stub> stub, const string& clientUuid, const char* params[]){}
 };
 
 

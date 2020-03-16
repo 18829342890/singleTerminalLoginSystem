@@ -27,10 +27,10 @@ public:
 
 
 private:
-	//执行一条命令，不关注是否成功
+	//执行一条命令
 	inline void justExecuteCmd(const string& cmd);
-	//执行多条命令，关注是否执行成功
-	int executeCmds(const vector<string>& cmds);
+	//事务执行多条命令
+	void executeCmds(const vector<string>& cmds);
 	
 	inline uint64_t strToUint64(const string& str);
 	inline uint64_t strToLongInt(const string& str);

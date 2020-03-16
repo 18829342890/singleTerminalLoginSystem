@@ -14,6 +14,5 @@ public:
 	void cacheUserLogoutInfo(const string& userName);
 
 private:
-	SqlApi _sqlApi;
 	int _userLoginInfoCacheTtl;
 };

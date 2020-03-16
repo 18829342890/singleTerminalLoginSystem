@@ -18,6 +18,8 @@
 #include <fstream>
 #include <sstream>
 #include <grpcpp/grpcpp.h>
+#include <uuid/uuid.h>
+
 #include "client/commanLine/commandLine.h"
 #include "client/commanLine/processCommandLine/Help.h"
 #include "mylib/mylibLog/logrecord.h"
@@ -32,71 +34,71 @@ using grpc::ServerBuilder;
 using grpc::ServerContext;
 using grpc::Status;
 using proto::userLoginManage::userLoginManageService;
+using proto::userLoginManage::HeartBeatRequest;
+using proto::userLoginManage::HeartBeatResponse;
 
 static string s_serverAddress;   //服务器的地址
-static string s_clientLocalIp;   //客户端作为服务器的ip
-static int s_clientLocalPort;    //客户端作为服务器的port
-static int s_syncClientInfoInterval; //同步客户端信息间隔
-static int s_monitorIsNoticeLogoutInterval; //监控是否通知退出登录的间隔
+static int s_heartBeatInterval;  //发送心跳包的时间间隔
+static string s_clientUuid;        //客户端uuid
 
 int isLogined = 0;               //是否登录的标志
 string userName;                 //登录之后的用户名
-int isNoticeLogout = 0;          //是否通知退出登录标志
 
 
 //同步客户端ip和port
-static void* syncClientInfo(void* param)
-{
-	// auto cacert = myTool::readFile2String("../../auth/ca.crt");
- //  	auto options = grpc::SslCredentialsOptions();
- //  	options.pem_root_certs = cacert;
- //  	auto creds = grpc::SslCredentials(options);
+static void* heartBeat(void* param)
+{	
+	bool isEncoded = false;
+	char userNameEncrypted[1024] = {0};
+	auto stub = static_cast<std::shared_ptr<userLoginManageService::Stub>*>(param);
 
-	// std::shared_ptr<Channel> channel = grpc::CreateChannel(s_serverAddress, creds);
-	// std::shared_ptr<userLoginManageService::Stub> stub = userLoginManageService::NewStub(channel);
-	// if(!stub)
-	// {
-	// 	printf("connect to service failed!\n");
-	// 	return NULL;
-	// }
-
-	// while(true)
-	// {
-	// 	if(!isLogined) continue;
-
-	// 	//登录之后，同步客户端信息
-	// 	SyncClientInfoRequest syncClientInfoRequest;
-	// 	syncClientInfoRequest.set_user(userName);
-	// 	syncClientInfoRequest.set_ip(s_clientLocalIp);
-	// 	syncClientInfoRequest.set_port(s_clientLocalPort);
-
-	// 	ClientContext context;
-	// 	SyncClientInfoResponse syncClientInfoResponse;
-	// 	context.set_compression_algorithm(GRPC_COMPRESS_DEFLATE);
-	// 	Status status = stub->syncClientInfo(&context, syncClientInfoRequest, &syncClientInfoResponse);
-	// 	if(status.ok())
-	// 	{
-	// 		LOG_INFO("%s", syncClientInfoResponse.message().c_str());
-	// 	}
-	// 	else
-	// 	{
-	// 		LOG_INFO("syncClientInfo failed!");
-	// 	}
-
-	// 	usleep (s_syncClientInfoInterval);
-	// }
-
-	return NULL;
-}
-
-//监控服务端是否发送退出登录请求
-static void* monitorIsNoticeLogout(void* params)
-{
 	while(true)
 	{
-		if(isNoticeLogout) exit(0);
-		usleep(s_monitorIsNoticeLogoutInterval);
+		if(isLogined)
+		{
+			//编码用户名
+			if(!isEncoded)
+			{
+				isEncoded = true;
+				base64_encode(userName.c_str(), userName.length(), userNameEncrypted);
+			}
+			
+			//发送心跳请求
+			ClientContext context;
+			HeartBeatRequest heartBeatRequest;
+			std::shared_ptr<ClientReaderWriter<HeartBeatRequest, HeartBeatResponse> > stream((*stub)->heartBeat(&context));
+
+			heartBeatRequest.mutable_basic()->set_uuid(s_clientUuid);
+			heartBeatRequest.set_user_name(userNameEncrypted);
+			stream->Write(heartBeatRequest);
+			stream->WritesDone();
+
+			//获取响应
+			HeartBeatResponse heartBeatResponse;
+			stream->Read(&heartBeatResponse);
+			if(heartBeatResponse.basic().code() != SUCCESS)
+			{
+				LOG_ERROR("heartBeatResponse code is not SUCCESS! errmsg:%s", heartBeatResponse.basic().msg().c_str());
+			}
+			else
+			{
+				if(heartBeatResponse.operation() == OTHER_DEVICE_LOGINED_JUST_LOGOUT)
+				{
+					cout << "您的账号已在另一台设备上登录，退出当前登录!" << endl;
+					exit(0);
+				}
+				else if(heartBeatResponse.operation() == KICKOUT_BY_MANAGER_JUST_LOGOUT)
+				{
+					cout << "您已被管理员踢出登录，请再次登录!" << endl;
+					isLogined = 0;
+					userName = "";
+				}
+			}
+		}
+
+		usleep(s_heartBeatInterval);
 	}
+	return NULL;
 }
 
 //处理ctrl + c 信号
@@ -112,20 +114,22 @@ static void ininConfig()
 	ini.LoadFile("../config/client_config.ini");
 
 	s_serverAddress = ini.GetValue("server", "address", "localhost:50051");
-	s_clientLocalIp = ini.GetValue("client", "ip", "localhost");
-	s_clientLocalPort = strtol(ini.GetValue("client", "port", "50051"), NULL, 10);
-	s_syncClientInfoInterval = strtol(ini.GetValue("client", "syncClientInfoInterval", "5000"), NULL, 10);
-	s_monitorIsNoticeLogoutInterval = strtol(ini.GetValue("client", "monitorIsNoticeLogoutInterval", "500"), NULL, 10);
+	s_heartBeatInterval = strtol(ini.GetValue("client", "heartBeatInterval", "1000000"), NULL, 10);
 
-	LOG_INFO("s_serverAddress:%s", s_serverAddress.c_str());
-	LOG_INFO("s_clientLocalIp:%s, s_clientLocalPort:%d", s_clientLocalIp.c_str(), s_clientLocalPort);
-	LOG_INFO("s_syncClientInfoInterval:%d, s_monitorIsNoticeLogoutInterval:%d", s_syncClientInfoInterval, s_monitorIsNoticeLogoutInterval);
+	LOG_INFO("s_serverAddress:%s, s_heartBeatInterval:%d", s_serverAddress.c_str(), s_heartBeatInterval);
 }
 
 int main()
 {
 	//防止ctrl + c 退出，需执行exit
 	signal(SIGINT, sigintHandler);
+
+	//生成客户端uuid
+	uuid_t uuid;
+	char uuidStr[36];
+	uuid_generate(uuid);
+	uuid_unparse(uuid, uuidStr);
+	s_clientUuid = uuidStr;
 
 	//初始化配置
 	ininConfig();
@@ -146,16 +150,8 @@ int main()
 	}
 
 	//创建一个线程定时发送心跳包请求
-	pthread_t syncClientInfoTid;
-	if(pthread_create(&syncClientInfoTid, NULL, syncClientInfo, NULL) < 0)
-	{
-		printf("create pthread failed!\n");
-		return -1;
-	}
-
-	//创建一个线程监控是否通知退出
-	pthread_t monitorIsNoticeLogoutTip;
-	if(pthread_create(&syncClientInfoTid, NULL, monitorIsNoticeLogout, NULL) < 0)
+	pthread_t heartBeatTid;
+	if(pthread_create(&heartBeatTid, NULL, heartBeat, &stub) < 0)
 	{
 		printf("create pthread failed!\n");
 		return -1;
@@ -189,15 +185,14 @@ int main()
 		{
 			Help help;
 			printf("command error! Please refer to the following introduction:\n");
-			help.processCommandLine(stub, params);
+			help.processCommandLine(stub, s_clientUuid, params);
 			continue;
 		}
 
 		//执行命令
-		processCmd(stub, cmd, params);
+		processCmd(stub, s_clientUuid, cmd, params);
 	}
 
-	pthread_join(syncClientInfoTid, NULL);
-	pthread_join(monitorIsNoticeLogoutTip, NULL);
+	pthread_join(heartBeatTid, NULL);
 	return 0;
 }

@@ -40,6 +40,7 @@ Status UserLoginManageService::regist(ServerContext* context, ServerReaderWriter
 	char passWordDecoded[1024];
 	base64_decode(userName.c_str(), userName.length(), userNameDecoded);
 	base64_decode(passWord.c_str(), passWord.length(), passWordDecoded);
+	LOG_INFO("regist %s %s", userNameDecoded, passWordDecoded);
 	
 	//处理注册请求
 	Register myRegister(_sqlApi, _redisConnect, _saltWorkFactor);
@@ -66,8 +67,8 @@ Status UserLoginManageService::login(ServerContext* context, ServerReaderWriter<
 
 	string userName = request.user_name();
 	string passWord = request.pass_word();
-	uint64_t clientUid = request.basic().uuid();
-	LOG_INFO("login %s %s %lu", userName.c_str(), passWord.c_str(), clientUid);
+	string clientUid = request.basic().uuid();
+	LOG_INFO("login %s %s %s", userName.c_str(), passWord.c_str(), clientUid.c_str());
 
 	char userNameDecoded[1024];
 	char passWordDecoded[1024];
@@ -90,7 +91,7 @@ Status UserLoginManageService::login(ServerContext* context, ServerReaderWriter<
     stream->Write(response);
 
     //再缓存用户登录信息,并设置过期时间
-    loginer.cacheUserLoginInfo(userName, clientUid);
+    loginer.cacheUserLoginInfo(userNameDecoded, clientUid);
     return Status::OK;
  }
 
@@ -102,8 +103,8 @@ Status UserLoginManageService::login(ServerContext* context, ServerReaderWriter<
 	stream->Read(&request);
 
 	string userName = request.user_name();
-	uint64_t clientUid = request.basic().uuid();
-	LOG_INFO("logout %s %lu", userName.c_str(), clientUid);
+	string clientUid = request.basic().uuid();
+	LOG_INFO("logout %s %s", userName.c_str(), clientUid.c_str());
 
 	char userNameDecoded[1024];
 	base64_decode(userName.c_str(), userName.length(), userNameDecoded);
@@ -137,12 +138,9 @@ Status UserLoginManageService::login(ServerContext* context, ServerReaderWriter<
 	stream->Read(&request);
 
 	string userName = request.user_name();
-	uint64_t clientUid = request.basic().uuid();
-	LOG_INFO("heartBeat %s %lu", userName.c_str(), clientUid);
-
+	string clientUid = request.basic().uuid();
 	char userNameDecoded[1024];
 	base64_decode(userName.c_str(), userName.length(), userNameDecoded);
-	LOG_INFO("heartBeat %s", userNameDecoded);
 
 	//处理心跳请求
 	int clientOperation = 0;
@@ -153,6 +151,7 @@ Status UserLoginManageService::login(ServerContext* context, ServerReaderWriter<
 	HeartBeatResponse response;
 	response.mutable_basic()->set_code(heartBeat.getCode());
     response.mutable_basic()->set_msg(heartBeat.getMsg());
+    response.set_operation(clientOperation);
     stream->Write(response);
 
     //再更新缓存的生存时间
@@ -172,7 +171,7 @@ Status UserLoginManageService::kickOutUser(ServerContext* context, ServerReaderW
 
 	char userNameDecoded[1024];
 	base64_decode(userName.c_str(), userName.length(), userNameDecoded);
-	LOG_INFO("heartBeat %s", userNameDecoded);
+	LOG_INFO("kickOut %s", userNameDecoded);
 
 	//处理踢出用户请求
 	KickoutUser kickoutUser(_sqlApi, _redisConnect, _userLoginInfoCacheTtl);
