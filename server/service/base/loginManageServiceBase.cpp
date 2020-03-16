@@ -7,10 +7,10 @@ using namespace userLoginSystem::myEnum;
 using namespace userLoginService::infrastructure;
 using namespace userLoginService::repository;
 
-LoginManageServiceBase::LoginManageServiceBase(const SqlApi& sqlApi, const redisContext* redisConnect)
+LoginManageServiceBase::LoginManageServiceBase(const sql::Connection* mysqlConnect, const redisContext* redisConnect)
 	:_code(SUCCESS),
 	 _msg("success"),
-	 _sqlApi(sqlApi),
+	 _mysqlConnect(mysqlConnect),
 	 _redisConnect(redisConnect)
 {}
 
@@ -44,7 +44,7 @@ int LoginManageServiceBase::getUserLoginInfo(const string& userName, UserLoginCa
 
 	//缓存获取失败，再从DB中获取登录信息
 	UserLoginManageBO userLoginManage;
-	UserLoginManageRepository userLoginManageRepository(_sqlApi);
+	UserLoginManageRepository userLoginManageRepository(_mysqlConnect);
 	ret = userLoginManageRepository.select(userName, userLoginManage);
 	if(ret != 0)
 	{

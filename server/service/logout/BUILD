@@ -1,22 +1,22 @@
 cc_library(
-	name = "syncClientInfo",
+	name = "logout",
 	srcs = [
-		"syncClientInfo.cpp",
+		"logout.cpp",
 	],
 	hdrs = [
-		"syncClientInfo.h",
+		"logout.h",
 	],
 	copts = [
 		"-Imylib/enum",
 		"-Imylib/mylibLog",
-		"-Imylib/mylibSql",
 		"-Iserver/repository/include",
+		"-Iserver/infrastructure/include",
 	],
 	deps = [
 		"//mylib/mylibLog:myLibLog",
 		"//mylib/enum:myLibEnum",
-		"//mylib/mylibSql:myLibSqlApi",
 		"//server/repository/src:serverRespositorySrc",
+		"//server/infrastructure/src:userLoginInfoCacheSrc",
 	],
 	visibility = ["//visibility:public"],
 )

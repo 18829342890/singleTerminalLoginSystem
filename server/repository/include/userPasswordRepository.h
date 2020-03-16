@@ -1,6 +1,7 @@
 #pragma once
 
 #include <string>
+#include <mysql_connection.h>
 #include "mylib/mylibLog/logrecord.h"
 #include "mylib/mylibSql/sqlApi.h"
 #include "mylib/myLibEncrypt/bcrypt.h"
@@ -15,7 +16,7 @@ class UserPasswordRepository
 {
 
 public:
-	UserPasswordRepository(SqlApi sqlApi);
+	UserPasswordRepository(const sql::Connection* mysqlConnect);
 	virtual ~UserPasswordRepository();
 
 	
@@ -29,7 +30,7 @@ public:
 	int isValidAndPassWordByUserName(const string& userName, const string& passWordHash, bool& isValid);
 
 private:
-	SqlApi _sqlApi;
+	const sql::Connection* _mysqlConnect;
 };
 
 

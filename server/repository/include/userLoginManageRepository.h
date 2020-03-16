@@ -1,4 +1,6 @@
 #pragma once
+
+#include <mysql_connection.h>
 #include "mylib/mylibLog/logrecord.h"
 #include "mylib/mylibSql/sqlApi.h"
 #include "server/domain/userLoginManageBO.h"
@@ -13,7 +15,7 @@ using namespace userLoginService::BO;
 class UserLoginManageRepository
 {
 public:
-	UserLoginManageRepository(SqlApi sqlApi);
+	UserLoginManageRepository(const sql::Connection* mysqlConnect);
 	virtual ~UserLoginManageRepository();
 
 	int select(const string& userName, UserLoginManageBO& userLoginManage);
@@ -25,7 +27,7 @@ public:
 	int updateClientUidAndStatusByUserName(const string& userName, const string& clientUid, int status);
 
 private:
-	SqlApi _sqlApi;
+	const sql::Connection* _mysqlConnect;
 };
 
 

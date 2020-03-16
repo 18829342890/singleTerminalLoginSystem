@@ -9,20 +9,17 @@ cc_library(
 	copts = [
 		"-Imylib/enum/",
 		"-Imylib/mylibLog/",
-		"-Imylib/mylibSql/",
 		"-Imylib/myLibEncrypt/",
-		"-Imylib/myLibIni",
-		"-Iprotos/proto",
 		"-Iserver/repository/include",
+		"-Iserver/infrastructure/include",
 
 	],
 	deps = [
 		"//mylib/mylibLog:myLibLog",
 		"//mylib/enum:myLibEnum",
-		"//mylib/mylibSql:myLibSqlApi",
 		"//mylib/myLibEncrypt:myLibEncrypt",
 		"//server/repository/src:serverRespositorySrc",
-		"//protos/proto:message_receiver_cc_grpc",
+		"//server/infrastructure/src:userLoginInfoCacheSrc",
 	],
 	visibility = ["//visibility:public"],
 )

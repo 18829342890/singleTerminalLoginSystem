@@ -12,8 +12,8 @@ using namespace userLoginService::repository;
 
 
 
-Register::Register(const SqlApi& sqlApi, const redisContext* redisConnect, int saltWorkFactor) 
-		:LoginManageServiceBase(sqlApi, redisConnect),
+Register::Register(const sql::Connection* mysqlConnect, const redisContext* redisConnect, int saltWorkFactor) 
+		:LoginManageServiceBase(mysqlConnect, redisConnect),
 		 _saltWorkFactor(saltWorkFactor)
 {}
 
@@ -32,7 +32,7 @@ int Register::processRegist(const string& userName, const string& passWord)
 
 	//校验是否已经注册
 	bool isAlreadyRegistFlag = false;
-	UserPasswordRepository userPasswordRepository(_sqlApi);
+	UserPasswordRepository userPasswordRepository(_mysqlConnect);
 	int ret = userPasswordRepository.isAlreadyRegist(userName, isAlreadyRegistFlag);
 	if(ret != 0)
 	{
@@ -121,7 +121,7 @@ int Register::regist(const string& userName, const string& passWord)
 	userPassWord.setPassWord(passWordHash);
 	userPassWord.setSalt(salt);
 
-	UserPasswordRepository userPasswordRepository(_sqlApi);
+	UserPasswordRepository userPasswordRepository(_mysqlConnect);
 	ret = userPasswordRepository.insert(userPassWord);
 	if(ret != 0)
 	{

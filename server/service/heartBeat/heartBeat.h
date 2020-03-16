@@ -10,7 +10,7 @@ class HeartBeat : public LoginManageServiceBase
 {
 
 public:
-	HeartBeat(const SqlApi& sqlApi, const redisContext* redisConnect, int userLoginInfoTtl);
+	HeartBeat(const sql::Connection* mysqlConnect, const redisContext* redisConnect, int userLoginInfoTtl);
 	virtual ~HeartBeat();
 
 	int processHeartBeat(const string& userName, const string& clientUid, int& clientOperation);

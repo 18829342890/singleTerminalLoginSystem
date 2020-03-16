@@ -3,7 +3,6 @@
 #include "mylib/mylibLog/logrecord.h"
 #include "server/domain/userLoginManageBO.h"
 #include "server/infrastructure/include/userLoginCache.h"
-#include "logout.h"
 #include "server/repository/include/userLoginManageRepository.h"
 #include <sstream>
 
@@ -13,8 +12,8 @@ using namespace userLoginService::repository;
 using namespace userLoginService::infrastructure;
 
 
-Logout::Logout(const SqlApi& sqlApi, const redisContext* redisConnect, int userLoginInfoCacheTtl) 
-		:LoginManageServiceBase(sqlApi, redisConnect),
+Logout::Logout(const sql::Connection* mysqlConnect, const redisContext* redisConnect, int userLoginInfoCacheTtl) 
+		:LoginManageServiceBase(mysqlConnect, redisConnect),
 		 _userLoginInfoCacheTtl(userLoginInfoCacheTtl)
 {}
 
@@ -24,7 +23,7 @@ Logout::~Logout()
 int Logout::processLogout(const string& userName, const string& clientUid)
 {
 	UserLoginManageBO userLoginManage;
-	UserLoginManageRepository userLoginManageRepository(_sqlApi);
+	UserLoginManageRepository userLoginManageRepository(_mysqlConnect);
 	int ret = userLoginManageRepository.select(userName, userLoginManage);
 	if(ret != 0)
 	{

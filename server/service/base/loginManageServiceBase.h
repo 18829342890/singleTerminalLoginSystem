@@ -2,7 +2,7 @@
 
 #include <string>
 #include <hiredis/hiredis.h>
-#include "mylib/mylibSql/sqlApi.h"
+#include <cppconn/connection.h>
 #include "server/domain/userLoginCacheBO.h"
 
 using namespace userLoginService::BO;
@@ -10,7 +10,7 @@ using namespace userLoginService::BO;
 class LoginManageServiceBase
 {
 public:
-	LoginManageServiceBase(const SqlApi& sqlApi, const redisContext* redisConnect);
+	LoginManageServiceBase(const sql::Connection* mysqlConnect, const redisContext* redisConnect);
 	~LoginManageServiceBase();
 
 	int getCode();
@@ -23,6 +23,6 @@ protected:
 protected:
 	int _code;
 	string _msg;
-	const SqlApi& _sqlApi;
+	const sql::Connection* _mysqlConnect;
 	const redisContext* _redisConnect;
 };

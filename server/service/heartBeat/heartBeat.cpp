@@ -6,8 +6,8 @@
 using namespace userLoginSystem::myEnum;
 using namespace userLoginService::infrastructure;
 
-HeartBeat::HeartBeat(const SqlApi& sqlApi, const redisContext* redisConnect, int userLoginInfoTtl)
-	:LoginManageServiceBase(sqlApi, redisConnect),
+HeartBeat::HeartBeat(const sql::Connection* mysqlConnect, const redisContext* redisConnect, int userLoginInfoTtl)
+	:LoginManageServiceBase(mysqlConnect, redisConnect),
 	 _userLoginInfoTtl(userLoginInfoTtl)
 {}
 

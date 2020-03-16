@@ -105,6 +105,8 @@ void UserLoginCache::justExecuteCmd(const string& cmd)
 
 void UserLoginCache::executeCmds(const vector<string>& cmds)
 {
+	//justExecuteCmd("MULTI");  //不行！！！！  why ？
+
     ostringstream cmd;
     for(vector<string>::const_iterator it = cmds.begin(); it != cmds.end();++it) 
     {
@@ -118,6 +120,8 @@ void UserLoginCache::executeCmds(const vector<string>& cmds)
         	cmd << *it << " ";
         }
     }
+
+    //justExecuteCmd("EXEC");
 }
 
 

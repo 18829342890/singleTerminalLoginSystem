@@ -12,8 +12,8 @@ using namespace userLoginService::infrastructure;
 
 
 
-KickoutUser::KickoutUser(const SqlApi& sqlApi, const redisContext* redisConnect, int userLoginInfoCacheTtl) 
-		:LoginManageServiceBase(sqlApi, redisConnect),
+KickoutUser::KickoutUser(const sql::Connection* mysqlConnect, const redisContext* redisConnect, int userLoginInfoCacheTtl) 
+		:LoginManageServiceBase(mysqlConnect, redisConnect),
 		 _userLoginInfoCacheTtl(userLoginInfoCacheTtl)
 {}
 
@@ -51,7 +51,7 @@ int KickoutUser::processkickout(const string& userName)
 	}
 
 	//设置为退出登录状态 clientUid为0，记录是被踢出的
-	UserLoginManageRepository userLoginManageRepository(_sqlApi);
+	UserLoginManageRepository userLoginManageRepository(_mysqlConnect);
 	ret = userLoginManageRepository.updateClientUidAndStatusByUserName(userName, "0", LOGOUT);
 	if(ret != 0)
 	{

@@ -8,7 +8,7 @@
 class KickoutUser : public LoginManageServiceBase
 {
 public:
-	KickoutUser(const SqlApi& sqlApi, const redisContext* redisConnect, int userLoginInfoCacheTtl);
+	KickoutUser(const sql::Connection* mysqlConnect, const redisContext* redisConnect, int userLoginInfoCacheTtl);
 	virtual ~KickoutUser();
 	int processkickout(const string& userName);
 	void cacheUserLogoutInfo(const string& userName);

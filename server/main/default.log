@@ -23396,3 +23396,202 @@
 [2020.03.16 14:34:12][../infrastructure/src/userLoginCache.cpp :112][INFO]: redis cmds:lset root 0 32477BC8-36EE-45C6-86E4-E3EB7666279B 
 [2020.03.16 14:34:12][../infrastructure/src/userLoginCache.cpp :112][INFO]: redis cmds:lset root 1 2 
 [2020.03.16 14:34:12][../infrastructure/src/userLoginCache.cpp :112][INFO]: redis cmds:expire root 300 
+[2020.03.16 21:29:07][main.cpp :42][INFO]: serverAddress:0.0.0.0:50051, saltWorkFactor:12
+[2020.03.16 21:29:07][main.cpp :43][INFO]: mysqlHost:localhost, mysqlUser:root, mysqlPassWord:root, mysqlDb:user, mysqlPort:3306
+[2020.03.16 21:29:07][main.cpp :44][INFO]: redisHost:127.0.0.1, redisPort:6379, userLoginInfoCacheTtl:300
+[2020.03.16 21:29:08][/Users/tanxiaohui/mygit/singleTerminalLoginSystem/server/main/../../mylib/mylibSql/sqlApi.cc :42][INFO]: connect to db success!
+[2020.03.16 21:29:08][main.cpp :85][INFO]: Server listening on 0.0.0.0:50051
+[2020.03.16 21:29:44][../service/userLoginManageService.cpp :38][INFO]: regist dGFueGlhbw==
+ dDE5OTQwMTE0
+
+[2020.03.16 21:29:44][../service/userLoginManageService.cpp :44][INFO]: regist tanxiao t19940114
+[2020.03.16 21:32:23][main.cpp :42][INFO]: serverAddress:0.0.0.0:50051, saltWorkFactor:12
+[2020.03.16 21:32:23][main.cpp :43][INFO]: mysqlHost:localhost, mysqlUser:root, mysqlPassWord:root, mysqlDb:user, mysqlPort:3306
+[2020.03.16 21:32:23][main.cpp :44][INFO]: redisHost:127.0.0.1, redisPort:6379, userLoginInfoCacheTtl:300
+[2020.03.16 21:32:23][/Users/tanxiaohui/mygit/singleTerminalLoginSystem/server/main/../../mylib/mylibSql/sqlApi.cc :42][INFO]: connect to db success!
+[2020.03.16 21:32:24][main.cpp :85][INFO]: Server listening on 0.0.0.0:50051
+[2020.03.16 21:32:33][../service/userLoginManageService.cpp :38][INFO]: regist dGFueGlhbw==
+ dDE5OTQwMTE0
+
+[2020.03.16 21:32:33][../service/userLoginManageService.cpp :44][INFO]: regist tanxiao t19940114
+[2020.03.16 21:32:33][../repository/src/userPasswordRepository.cpp :52][INFO]: 2........
+[2020.03.16 21:32:33][../repository/src/userPasswordRepository.cpp :57][INFO]: 3........
+[2020.03.16 21:40:59][main.cpp :42][INFO]: serverAddress:0.0.0.0:50051, saltWorkFactor:12
+[2020.03.16 21:40:59][main.cpp :43][INFO]: mysqlHost:localhost, mysqlUser:root, mysqlPassWord:root, mysqlDb:user, mysqlPort:3306
+[2020.03.16 21:40:59][main.cpp :44][INFO]: redisHost:127.0.0.1, redisPort:6379, userLoginInfoCacheTtl:300
+[2020.03.16 21:41:00][/Users/tanxiaohui/mygit/singleTerminalLoginSystem/server/main/../../mylib/mylibSql/sqlApi.cc :42][INFO]: connect to db success!
+[2020.03.16 21:41:00][main.cpp :85][INFO]: Server listening on 0.0.0.0:50051
+[2020.03.16 21:41:12][../service/userLoginManageService.cpp :38][INFO]: regist dGFueGlhbw==
+ dDE5OTQwMTE0
+
+[2020.03.16 21:41:12][../service/userLoginManageService.cpp :44][INFO]: regist tanxiao t19940114
+[2020.03.16 21:41:12][../repository/src/userPasswordRepository.cpp :52][INFO]: 2........
+[2020.03.16 21:41:12][../repository/src/userPasswordRepository.cpp :57][INFO]: 3........
+[2020.03.16 21:41:12][../repository/src/userPasswordRepository.cpp :60][INFO]: 4........
+[2020.03.16 21:49:32][main.cpp :42][INFO]: serverAddress:0.0.0.0:50051, saltWorkFactor:12
+[2020.03.16 21:49:32][main.cpp :43][INFO]: mysqlHost:localhost, mysqlUser:root, mysqlPassWord:root, mysqlDb:user, mysqlPort:3306
+[2020.03.16 21:49:32][main.cpp :44][INFO]: redisHost:127.0.0.1, redisPort:6379, userLoginInfoCacheTtl:300
+[2020.03.16 21:49:32][/Users/tanxiaohui/mygit/singleTerminalLoginSystem/server/main/../../mylib/mylibSql/sqlApi.cc :42][INFO]: connect to db success!
+[2020.03.16 21:49:33][main.cpp :85][INFO]: Server listening on 0.0.0.0:50051
+[2020.03.16 21:49:41][../service/userLoginManageService.cpp :38][INFO]: regist dGFueGlhbw==
+ dDE5OTQwMTE0
+
+[2020.03.16 21:49:41][../service/userLoginManageService.cpp :44][INFO]: regist tanxiao t19940114
+[2020.03.16 21:49:41][../repository/src/userPasswordRepository.cpp :52][INFO]: 2........
+[2020.03.16 21:49:41][../repository/src/userPasswordRepository.cpp :57][INFO]: 3........
+[2020.03.16 21:49:41][../repository/src/userPasswordRepository.cpp :60][INFO]: 4........
+[2020.03.16 21:49:41][../repository/src/userPasswordRepository.cpp :65][INFO]: userName:tanxiao, count(1):0
+[2020.03.16 21:49:43][../service/regist/register.cpp :116][INFO]: bcrypt_hashpw time taken: 0.911262 seconds; passWordHash:$2a$12$NpAqMYUem1mTAp5WmooTIOqPGIrFUMrrzBvIq2.lcYQD.viymVkCG
+[2020.03.16 22:00:39][../service/userLoginManageService.cpp :38][INFO]: regist dGFueGlhbw==
+ dDE5OTQwMTE0
+
+[2020.03.16 22:00:39][../service/userLoginManageService.cpp :44][INFO]: regist tanxiao t19940114
+[2020.03.16 22:00:39][../repository/src/userPasswordRepository.cpp :52][INFO]: 2........
+[2020.03.16 22:00:39][../repository/src/userPasswordRepository.cpp :57][INFO]: 3........
+[2020.03.16 22:00:39][../repository/src/userPasswordRepository.cpp :60][INFO]: 4........
+[2020.03.16 22:00:39][../repository/src/userPasswordRepository.cpp :65][INFO]: userName:tanxiao, count(1):1
+[2020.03.16 22:00:39][../service/regist/register.cpp :47][INFO]: [tanxiao] already regist!
+[2020.03.16 22:42:29][main.cpp :42][INFO]: serverAddress:0.0.0.0:50051, saltWorkFactor:12
+[2020.03.16 22:42:30][main.cpp :43][INFO]: mysqlHost:localhost, mysqlUser:root, mysqlPassWord:root, mysqlDb:user, mysqlPort:3306
+[2020.03.16 22:42:30][main.cpp :44][INFO]: redisHost:127.0.0.1, redisPort:6379, userLoginInfoCacheTtl:300
+[2020.03.16 22:42:30][main.cpp :77][INFO]: Server listening on 0.0.0.0:50051
+[2020.03.16 22:43:17][../service/userLoginManageService.cpp :37][INFO]: regist eGlhb3hpYW9odWk=
+ dDE5OTQwMTE0
+
+[2020.03.16 22:43:17][../service/userLoginManageService.cpp :43][INFO]: regist xiaoxiaohui t19940114
+[2020.03.16 22:43:17][../repository/src/userPasswordRepository.cpp :58][INFO]: userName:xiaoxiaohui, count(1):0
+[2020.03.16 22:43:18][../service/regist/register.cpp :116][INFO]: bcrypt_hashpw time taken: 0.853085 seconds; passWordHash:$2a$12$wN3.EBFR3RzQ4vELkCvzk.9QH1rbKctgU9IXr1wW1nzNTPvNDH.N6
+[2020.03.16 22:43:18][../repository/src/userPasswordRepository.cpp :30][INFO]: insertCount:1
+[2020.03.16 22:43:59][../service/userLoginManageService.cpp :71][INFO]: login eGlhb3hpYW9odWk=
+ dDE5OTQwMTE0
+ 7A0AA597-7740-4244-9735-45B7E8F296D7
+[2020.03.16 22:43:59][../service/userLoginManageService.cpp :77][INFO]: login xiaoxiaohui t19940114
+[2020.03.16 22:43:59][../repository/src/userPasswordRepository.cpp :97][ERROR]: occur SQLException! errmsg:MySQL_Prepared_ResultSet::getFetchSize(), mysql err code:0, SQLState:
+[2020.03.16 22:43:59][../service/login/loginer.cpp :85][ERROR]: getSaltByUserName failed!
+[2020.03.16 22:43:59][../service/login/loginer.cpp :38][ERROR]: isValidAndPassWordByUserName failed! userName:xiaoxiaohui, passWord:t19940114
+[2020.03.16 22:43:59][../service/userLoginManageService.cpp :84][ERROR]: processLogin failed! errcode:-2, errmsg:system error: select data from DB failed!
+[2020.03.16 22:43:59][../infrastructure/src/userLoginCache.cpp :112][INFO]: redis cmds:rpush xiaoxiaohui 7A0AA597-7740-4244-9735-45B7E8F296D7 1 
+[2020.03.16 22:43:59][../infrastructure/src/userLoginCache.cpp :112][INFO]: redis cmds:expire xiaoxiaohui 300 
+[2020.03.16 22:51:12][main.cpp :42][INFO]: serverAddress:0.0.0.0:50051, saltWorkFactor:12
+[2020.03.16 22:51:12][main.cpp :43][INFO]: mysqlHost:localhost, mysqlUser:root, mysqlPassWord:root, mysqlDb:user, mysqlPort:3306
+[2020.03.16 22:51:12][main.cpp :44][INFO]: redisHost:127.0.0.1, redisPort:6379, userLoginInfoCacheTtl:300
+[2020.03.16 22:51:12][main.cpp :77][INFO]: Server listening on 0.0.0.0:50051
+[2020.03.16 22:51:34][../service/userLoginManageService.cpp :71][INFO]: login eGlhb3hpYW9odWk=
+ dDE5OTQwMTE0
+ 7A0AA597-7740-4244-9735-45B7E8F296D7
+[2020.03.16 22:51:34][../service/userLoginManageService.cpp :77][INFO]: login xiaoxiaohui t19940114
+[2020.03.16 22:51:34][../repository/src/userPasswordRepository.cpp :94][INFO]: userName:xiaoxiaohui, salt:$2a$12$wN3.EBFR3RzQ4vELkCvzk.
+[2020.03.16 22:51:35][../repository/src/userPasswordRepository.cpp :118][INFO]: userName:xiaoxiaohui, passWordHash:$2a$12$wN3.EBFR3RzQ4vELkCvzk.9QH1rbKctgU9IXr1wW1nzNTPvNDH.N6, isValid:1
+[2020.03.16 22:51:35][../repository/src/userLoginManageRepository.cpp :142][INFO]: insertCount:1
+[2020.03.16 22:51:35][../service/login/loginer.cpp :61][INFO]: userName:xiaoxiaohui, clientUid:7A0AA597-7740-4244-9735-45B7E8F296D7 login success!
+[2020.03.16 22:51:35][../infrastructure/src/userLoginCache.cpp :112][INFO]: redis cmds:rpush xiaoxiaohui 7A0AA597-7740-4244-9735-45B7E8F296D7 1 
+[2020.03.16 22:51:35][../infrastructure/src/userLoginCache.cpp :112][INFO]: redis cmds:expire xiaoxiaohui 300 
+[2020.03.16 22:52:14][../service/userLoginManageService.cpp :71][INFO]: login cm9vdA==
+ cm9vdHJvb3Q=
+ 97F4C487-839C-4BED-9DA2-EA15D56A9EEA
+[2020.03.16 22:52:14][../service/userLoginManageService.cpp :77][INFO]: login root rootroot
+[2020.03.16 22:52:14][../repository/src/userPasswordRepository.cpp :94][INFO]: userName:root, salt:$2a$12$erkSrOjFRsjW98sg43O1O.
+[2020.03.16 22:52:15][../repository/src/userPasswordRepository.cpp :118][INFO]: userName:root, passWordHash:$2a$12$erkSrOjFRsjW98sg43O1O./3Y5f5OpoiWjFY/qbPlYHa9KNBjgXlO, isValid:1
+[2020.03.16 22:52:15][../repository/src/userLoginManageRepository.cpp :142][INFO]: insertCount:2
+[2020.03.16 22:52:15][../repository/src/userLoginManageRepository.cpp :145][ERROR]: insert failed! insertCount:2
+[2020.03.16 22:52:15][../service/login/loginer.cpp :53][ERROR]: login failed! userName:root, passWord:rootroot
+[2020.03.16 22:52:15][../service/userLoginManageService.cpp :84][ERROR]: processLogin failed! errcode:-2, errmsg:system error: insert or update data into DB failed!
+[2020.03.16 22:52:15][../infrastructure/src/userLoginCache.cpp :112][INFO]: redis cmds:rpush root 97F4C487-839C-4BED-9DA2-EA15D56A9EEA 1 
+[2020.03.16 22:52:15][../infrastructure/src/userLoginCache.cpp :112][INFO]: redis cmds:expire root 300 
+[2020.03.16 22:54:08][../service/userLoginManageService.cpp :71][INFO]: login cm9vdA==
+ cm9vdHJvb3Q=
+ 97F4C487-839C-4BED-9DA2-EA15D56A9EEA
+[2020.03.16 22:54:08][../service/userLoginManageService.cpp :77][INFO]: login root rootroot
+[2020.03.16 22:54:08][../repository/src/userPasswordRepository.cpp :94][INFO]: userName:root, salt:$2a$12$erkSrOjFRsjW98sg43O1O.
+[2020.03.16 22:54:09][../repository/src/userPasswordRepository.cpp :118][INFO]: userName:root, passWordHash:$2a$12$erkSrOjFRsjW98sg43O1O./3Y5f5OpoiWjFY/qbPlYHa9KNBjgXlO, isValid:1
+[2020.03.16 22:54:09][../repository/src/userLoginManageRepository.cpp :142][INFO]: insertCount:2
+[2020.03.16 22:54:09][../repository/src/userLoginManageRepository.cpp :145][ERROR]: insert failed! insertCount:2
+[2020.03.16 22:54:09][../service/login/loginer.cpp :53][ERROR]: login failed! userName:root, passWord:rootroot
+[2020.03.16 22:54:09][../service/userLoginManageService.cpp :84][ERROR]: processLogin failed! errcode:-2, errmsg:system error: insert or update data into DB failed!
+[2020.03.16 22:54:09][../infrastructure/src/userLoginCache.cpp :112][INFO]: redis cmds:lset root 0 97F4C487-839C-4BED-9DA2-EA15D56A9EEA 
+[2020.03.16 22:54:09][../infrastructure/src/userLoginCache.cpp :112][INFO]: redis cmds:lset root 1 1 
+[2020.03.16 22:54:09][../infrastructure/src/userLoginCache.cpp :112][INFO]: redis cmds:expire root 300 
+[2020.03.16 22:55:26][main.cpp :42][INFO]: serverAddress:0.0.0.0:50051, saltWorkFactor:12
+[2020.03.16 22:55:26][main.cpp :43][INFO]: mysqlHost:localhost, mysqlUser:root, mysqlPassWord:root, mysqlDb:user, mysqlPort:3306
+[2020.03.16 22:55:26][main.cpp :44][INFO]: redisHost:127.0.0.1, redisPort:6379, userLoginInfoCacheTtl:300
+[2020.03.16 22:55:27][main.cpp :77][INFO]: Server listening on 0.0.0.0:50051
+[2020.03.16 22:55:38][../service/userLoginManageService.cpp :71][INFO]: login cm9vdA==
+ cm9vdHJvb3Q=
+ 97F4C487-839C-4BED-9DA2-EA15D56A9EEA
+[2020.03.16 22:55:38][../service/userLoginManageService.cpp :77][INFO]: login root rootroot
+[2020.03.16 22:55:38][../repository/src/userPasswordRepository.cpp :94][INFO]: userName:root, salt:$2a$12$erkSrOjFRsjW98sg43O1O.
+[2020.03.16 22:55:39][../repository/src/userPasswordRepository.cpp :118][INFO]: userName:root, passWordHash:$2a$12$erkSrOjFRsjW98sg43O1O./3Y5f5OpoiWjFY/qbPlYHa9KNBjgXlO, isValid:1
+[2020.03.16 22:55:39][../repository/src/userLoginManageRepository.cpp :144][ERROR]: insert failed! insertCount:0
+[2020.03.16 22:55:39][../service/login/loginer.cpp :53][ERROR]: login failed! userName:root, passWord:rootroot
+[2020.03.16 22:55:39][../service/userLoginManageService.cpp :84][ERROR]: processLogin failed! errcode:-2, errmsg:system error: insert or update data into DB failed!
+[2020.03.16 22:55:39][../infrastructure/src/userLoginCache.cpp :112][INFO]: redis cmds:lset root 0 97F4C487-839C-4BED-9DA2-EA15D56A9EEA 
+[2020.03.16 22:55:40][../infrastructure/src/userLoginCache.cpp :112][INFO]: redis cmds:lset root 1 1 
+[2020.03.16 22:55:40][../infrastructure/src/userLoginCache.cpp :112][INFO]: redis cmds:expire root 300 
+[2020.03.16 22:56:43][../service/userLoginManageService.cpp :71][INFO]: login cm9vdA==
+ cm9vdHJvb3Q=
+ EDFB9417-3782-4F09-B3EC-F39297C36A4A
+[2020.03.16 22:56:43][../service/userLoginManageService.cpp :77][INFO]: login root rootroot
+[2020.03.16 22:56:43][../repository/src/userPasswordRepository.cpp :94][INFO]: userName:root, salt:$2a$12$erkSrOjFRsjW98sg43O1O.
+[2020.03.16 22:56:44][../repository/src/userPasswordRepository.cpp :118][INFO]: userName:root, passWordHash:$2a$12$erkSrOjFRsjW98sg43O1O./3Y5f5OpoiWjFY/qbPlYHa9KNBjgXlO, isValid:1
+[2020.03.16 22:56:44][../service/login/loginer.cpp :61][INFO]: userName:root, clientUid:EDFB9417-3782-4F09-B3EC-F39297C36A4A login success!
+[2020.03.16 22:56:44][../infrastructure/src/userLoginCache.cpp :112][INFO]: redis cmds:lset root 0 EDFB9417-3782-4F09-B3EC-F39297C36A4A 
+[2020.03.16 22:56:44][../infrastructure/src/userLoginCache.cpp :112][INFO]: redis cmds:lset root 1 1 
+[2020.03.16 22:56:44][../infrastructure/src/userLoginCache.cpp :112][INFO]: redis cmds:expire root 300 
+[2020.03.16 22:57:00][../service/userLoginManageService.cpp :107][INFO]: logout eGlhb3hpYW9odWk=
+ 7A0AA597-7740-4244-9735-45B7E8F296D7
+[2020.03.16 22:57:00][../service/userLoginManageService.cpp :111][INFO]: logout xiaoxiaohui
+[2020.03.16 22:57:00][../service/logout/logout.cpp :58][INFO]: logout success!
+[2020.03.16 22:57:00][../infrastructure/src/userLoginCache.cpp :112][INFO]: redis cmds:lset xiaoxiaohui 0 7A0AA597-7740-4244-9735-45B7E8F296D7 
+[2020.03.16 22:57:00][../infrastructure/src/userLoginCache.cpp :112][INFO]: redis cmds:lset xiaoxiaohui 1 2 
+[2020.03.16 22:57:00][../infrastructure/src/userLoginCache.cpp :112][INFO]: redis cmds:expire xiaoxiaohui 300 
+[2020.03.16 22:57:23][../service/userLoginManageService.cpp :71][INFO]: login eGlhb3hpYW9odWk=
+ dDE5OTQwMTE0
+ 7A0AA597-7740-4244-9735-45B7E8F296D7
+[2020.03.16 22:57:23][../service/userLoginManageService.cpp :77][INFO]: login xiaoxiaohui t19940114
+[2020.03.16 22:57:23][../repository/src/userPasswordRepository.cpp :94][INFO]: userName:xiaoxiaohui, salt:$2a$12$wN3.EBFR3RzQ4vELkCvzk.
+[2020.03.16 22:57:24][../repository/src/userPasswordRepository.cpp :118][INFO]: userName:xiaoxiaohui, passWordHash:$2a$12$wN3.EBFR3RzQ4vELkCvzk.9QH1rbKctgU9IXr1wW1nzNTPvNDH.N6, isValid:1
+[2020.03.16 22:57:24][../service/login/loginer.cpp :61][INFO]: userName:xiaoxiaohui, clientUid:7A0AA597-7740-4244-9735-45B7E8F296D7 login success!
+[2020.03.16 22:57:24][../infrastructure/src/userLoginCache.cpp :112][INFO]: redis cmds:lset xiaoxiaohui 0 7A0AA597-7740-4244-9735-45B7E8F296D7 
+[2020.03.16 22:57:24][../infrastructure/src/userLoginCache.cpp :112][INFO]: redis cmds:lset xiaoxiaohui 1 1 
+[2020.03.16 22:57:24][../infrastructure/src/userLoginCache.cpp :112][INFO]: redis cmds:expire xiaoxiaohui 300 
+[2020.03.16 22:57:40][../service/userLoginManageService.cpp :170][INFO]: kickOut eGlhb3hpYW9odWk=
+
+[2020.03.16 22:57:40][../service/userLoginManageService.cpp :174][INFO]: kickOut xiaoxiaohui
+[2020.03.16 22:57:40][../service/kickout/kickoutUser.cpp :66][INFO]: kickout success!
+[2020.03.16 22:57:40][../infrastructure/src/userLoginCache.cpp :112][INFO]: redis cmds:lset xiaoxiaohui 0 0 
+[2020.03.16 22:57:40][../infrastructure/src/userLoginCache.cpp :112][INFO]: redis cmds:lset xiaoxiaohui 1 2 
+[2020.03.16 22:57:40][../infrastructure/src/userLoginCache.cpp :112][INFO]: redis cmds:expire xiaoxiaohui 300 
+[2020.03.16 22:57:55][../service/userLoginManageService.cpp :71][INFO]: login eGlhb3hpYW9odWk=
+ dDE5OTQwMTE0
+ 7A0AA597-7740-4244-9735-45B7E8F296D7
+[2020.03.16 22:57:55][../service/userLoginManageService.cpp :77][INFO]: login xiaoxiaohui t19940114
+[2020.03.16 22:57:55][../repository/src/userPasswordRepository.cpp :94][INFO]: userName:xiaoxiaohui, salt:$2a$12$wN3.EBFR3RzQ4vELkCvzk.
+[2020.03.16 22:57:56][../repository/src/userPasswordRepository.cpp :118][INFO]: userName:xiaoxiaohui, passWordHash:$2a$12$wN3.EBFR3RzQ4vELkCvzk.9QH1rbKctgU9IXr1wW1nzNTPvNDH.N6, isValid:1
+[2020.03.16 22:57:56][../service/login/loginer.cpp :61][INFO]: userName:xiaoxiaohui, clientUid:7A0AA597-7740-4244-9735-45B7E8F296D7 login success!
+[2020.03.16 22:57:56][../infrastructure/src/userLoginCache.cpp :112][INFO]: redis cmds:lset xiaoxiaohui 0 7A0AA597-7740-4244-9735-45B7E8F296D7 
+[2020.03.16 22:57:56][../infrastructure/src/userLoginCache.cpp :112][INFO]: redis cmds:lset xiaoxiaohui 1 1 
+[2020.03.16 22:57:56][../infrastructure/src/userLoginCache.cpp :112][INFO]: redis cmds:expire xiaoxiaohui 300 
+[2020.03.16 22:58:10][../service/userLoginManageService.cpp :107][INFO]: logout cm9vdA==
+ EDFB9417-3782-4F09-B3EC-F39297C36A4A
+[2020.03.16 22:58:10][../service/userLoginManageService.cpp :111][INFO]: logout root
+[2020.03.16 22:58:10][../service/logout/logout.cpp :58][INFO]: logout success!
+[2020.03.16 22:58:10][../infrastructure/src/userLoginCache.cpp :112][INFO]: redis cmds:lset root 0 EDFB9417-3782-4F09-B3EC-F39297C36A4A 
+[2020.03.16 22:58:10][../infrastructure/src/userLoginCache.cpp :112][INFO]: redis cmds:lset root 1 2 
+[2020.03.16 22:58:10][../infrastructure/src/userLoginCache.cpp :112][INFO]: redis cmds:expire root 300 
+[2020.03.16 22:58:20][../service/userLoginManageService.cpp :71][INFO]: login eGlhb3hpYW9odWk=
+ dDE5OTQwMTE0
+ EDFB9417-3782-4F09-B3EC-F39297C36A4A
+[2020.03.16 22:58:20][../service/userLoginManageService.cpp :77][INFO]: login xiaoxiaohui t19940114
+[2020.03.16 22:58:20][../repository/src/userPasswordRepository.cpp :94][INFO]: userName:xiaoxiaohui, salt:$2a$12$wN3.EBFR3RzQ4vELkCvzk.
+[2020.03.16 22:58:21][../repository/src/userPasswordRepository.cpp :118][INFO]: userName:xiaoxiaohui, passWordHash:$2a$12$wN3.EBFR3RzQ4vELkCvzk.9QH1rbKctgU9IXr1wW1nzNTPvNDH.N6, isValid:1
+[2020.03.16 22:58:21][../service/login/loginer.cpp :61][INFO]: userName:xiaoxiaohui, clientUid:EDFB9417-3782-4F09-B3EC-F39297C36A4A login success!
+[2020.03.16 22:58:21][../infrastructure/src/userLoginCache.cpp :112][INFO]: redis cmds:lset xiaoxiaohui 0 EDFB9417-3782-4F09-B3EC-F39297C36A4A 
+[2020.03.16 22:58:21][../infrastructure/src/userLoginCache.cpp :112][INFO]: redis cmds:lset xiaoxiaohui 1 1 
+[2020.03.16 22:58:21][../infrastructure/src/userLoginCache.cpp :112][INFO]: redis cmds:expire xiaoxiaohui 300 
+[2020.03.16 22:58:39][../service/userLoginManageService.cpp :107][INFO]: logout eGlhb3hpYW9odWk=
+ EDFB9417-3782-4F09-B3EC-F39297C36A4A
+[2020.03.16 22:58:39][../service/userLoginManageService.cpp :111][INFO]: logout xiaoxiaohui
+[2020.03.16 22:58:39][../service/logout/logout.cpp :58][INFO]: logout success!
+[2020.03.16 22:58:39][../infrastructure/src/userLoginCache.cpp :112][INFO]: redis cmds:lset xiaoxiaohui 0 EDFB9417-3782-4F09-B3EC-F39297C36A4A 
+[2020.03.16 22:58:39][../infrastructure/src/userLoginCache.cpp :112][INFO]: redis cmds:lset xiaoxiaohui 1 2 
+[2020.03.16 22:58:39][../infrastructure/src/userLoginCache.cpp :112][INFO]: redis cmds:expire xiaoxiaohui 300 

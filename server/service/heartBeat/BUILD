@@ -1,24 +1,23 @@
 cc_library(
-	name = "register",
+	name = "heartBeat",
 	srcs = [
-		"register.cpp",
+		"heartBeat.cpp",
 	],
 	hdrs = [
-		"register.h",
+		"heartBeat.h",
 	],
 	copts = [
-		"-Imylib/enum",
-		"-Imylib/mylibLog",
-		"-Imylib/myLibEncrypt",
+		"-Imylib/enum/",
+		"-Imylib/mylibLog/",
 		"-Iserver/repository/include",
 		"-Iserver/infrastructure/include",
+
 	],
 	deps = [
 		"//mylib/mylibLog:myLibLog",
 		"//mylib/enum:myLibEnum",
 		"//server/repository/src:serverRespositorySrc",
 		"//server/infrastructure/src:userLoginInfoCacheSrc",
-		"//mylib/myLibEncrypt:myLibEncrypt",
 	],
 	visibility = ["//visibility:public"],
 )

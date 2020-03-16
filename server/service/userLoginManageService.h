@@ -6,6 +6,7 @@
 #include<string.h>
 #include<unistd.h>
 #include <grpcpp/grpcpp.h>
+#include <mysql_connection.h>
 #include <hiredis/hiredis.h>
 #include "mylib/mylibSql/sqlApi.h"
 #include "mylib/mylibLog/logrecord.h"
@@ -34,7 +35,7 @@ using proto::userLoginManage::KickOutUserResponse;
 class UserLoginManageService final : public userLoginManageService::Service 
 {
 public:
-	UserLoginManageService(SqlApi& sqlApi, redisContext* redisConnect, int saltWorkFactor, int userLoginInfoCacheTtl);
+	UserLoginManageService(const sql::Connection* mysqlConnect,const redisContext* redisConnect, int saltWorkFactor, int userLoginInfoCacheTtl);
 	~UserLoginManageService();
 
 	//注册
@@ -49,8 +50,8 @@ public:
     Status kickOutUser(ServerContext* context, ServerReaderWriter<KickOutUserResponse, KickOutUserRequest>* stream);
 
 private:
-	SqlApi _sqlApi;
-    redisContext* _redisConnect;
+    const sql::Connection* _mysqlConnect;
+    const redisContext* _redisConnect;
     int _saltWorkFactor;
     int _userLoginInfoCacheTtl;
 };

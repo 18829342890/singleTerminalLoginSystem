@@ -10,7 +10,7 @@ using namespace std;
 class Loginer : public LoginManageServiceBase
 {
 public:
-	Loginer(const SqlApi& sqlApi, const redisContext* redisConnect, int userLoginInfoCacheTtl);
+	Loginer(const sql::Connection* mysqlConnect, const redisContext* redisConnect, int userLoginInfoCacheTtl);
 	virtual ~Loginer();
 
 	int processLogin(const string& userName, const string& passWord, const string& clientUid);

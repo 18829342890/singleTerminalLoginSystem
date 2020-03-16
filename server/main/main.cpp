@@ -3,6 +3,11 @@
 #include <errno.h>
 #include <fstream>
 #include <sstream>
+#include <mysql_connection.h>
+#include <mysql_driver.h>
+#include <cppconn/driver.h>
+#include <cppconn/statement.h>
+#include <boost/scoped_ptr.hpp>
 #include <hiredis/hiredis.h>
 
 
@@ -39,13 +44,12 @@ int main()
 	LOG_INFO("redisHost:%s, redisPort:%d, userLoginInfoCacheTtl:%d", redisHost, redisPort, userLoginInfoCacheTtl);
 
 	//连接mysql
-	SqlApi sqlApi(mysqlHost, mysqlUser, mysqlPassWord, mysqlDb, mysqlPort);
-	int ret = sqlApi.connectMysql();
-	if(ret < 0)
-	{
-		LOG_ERROR("connectMysql failed!");
-		return -1;
-	}
+	sql::Driver *driver = sql::mysql::get_driver_instance();
+	sql::Connection* mysqlConnect = driver->connect(mysqlHost, mysqlUser, mysqlPassWord);
+	sql::Statement* stmt = mysqlConnect->createStatement();
+	string execCmd = "use ";
+	execCmd += mysqlDb;
+	stmt->execute(execCmd);
 
 	//连接redis
 	redisContext* rc = redisConnect(redisHost, redisPort);
@@ -64,7 +68,7 @@ int main()
   	sslOps.pem_root_certs = root;
   	sslOps.pem_key_cert_pairs.push_back (key_cert);
 
-	UserLoginManageService service(sqlApi, rc, saltWorkFactor, userLoginInfoCacheTtl);
+	UserLoginManageService service(mysqlConnect, rc, saltWorkFactor, userLoginInfoCacheTtl);
 	ServerBuilder builder;
 	builder.AddListeningPort(serverAddress, grpc::SslServerCredentials(sslOps));
 	builder.RegisterService(&service);
@@ -73,6 +77,7 @@ int main()
 	LOG_INFO("Server listening on %s", serverAddress);
 
   	server->Wait();
-  	sqlApi.closeMysql();
+  	stmt->close();
+  	mysqlConnect->close();
   	redisFree(rc);
 }

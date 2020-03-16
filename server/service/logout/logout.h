@@ -8,7 +8,7 @@
 class Logout : public LoginManageServiceBase
 {
 public:
-	Logout(const SqlApi& sqlApi, const redisContext* redisConnect, int userLoginInfoCacheTtl);
+	Logout(const sql::Connection* mysqlConnect, const redisContext* redisConnect, int userLoginInfoCacheTtl);
 	virtual ~Logout();
 
 	int processLogout(const string& userName, const string& clientUid);

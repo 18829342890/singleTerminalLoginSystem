@@ -19,8 +19,8 @@ using namespace userLoginService::infrastructure;
 
 
 
-Loginer::Loginer(const SqlApi& sqlApi, const redisContext* redisConnect, int userLoginInfoCacheTtl) 
-		: LoginManageServiceBase(sqlApi, redisConnect),
+Loginer::Loginer(const sql::Connection* mysqlConnect, const redisContext* redisConnect, int userLoginInfoCacheTtl) 
+		: LoginManageServiceBase(mysqlConnect, redisConnect),
 		  _userLoginInfoCacheTtl(userLoginInfoCacheTtl)
 {}
 
@@ -78,7 +78,7 @@ int Loginer::isValidAndPassWordByUserName(const string& userName, const string& 
 {
 	//获取该用户加密用的salt
 	char salt[BCRYPT_HASHSIZE];
-	UserPasswordRepository userPasswordRepository(_sqlApi);
+	UserPasswordRepository userPasswordRepository(_mysqlConnect);
 	int ret = userPasswordRepository.selectSaltByUserName(userName, salt);
 	if(ret != 0)
 	{
@@ -113,7 +113,7 @@ int Loginer::isValidAndPassWordByUserName(const string& userName, const string& 
 
 int Loginer::login(const string& userName, const string& clientUid)
 {
-	UserLoginManageRepository userLoginManageRepository(_sqlApi);
+	UserLoginManageRepository userLoginManageRepository(_mysqlConnect);
 	return userLoginManageRepository.updateClientUidAndStatusByUserName(userName, clientUid, LOGINED);
 }
 

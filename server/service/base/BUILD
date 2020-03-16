@@ -1,24 +1,21 @@
 cc_library(
-	name = "register",
+	name = "loginManageServiceBase",
 	srcs = [
-		"register.cpp",
+		"loginManageServiceBase.cpp",
 	],
 	hdrs = [
-		"register.h",
+		"loginManageServiceBase.h",
 	],
 	copts = [
-		"-Imylib/enum",
-		"-Imylib/mylibLog",
-		"-Imylib/myLibEncrypt",
+		"-Imylib/mylibLog/",
 		"-Iserver/repository/include",
 		"-Iserver/infrastructure/include",
+
 	],
 	deps = [
 		"//mylib/mylibLog:myLibLog",
-		"//mylib/enum:myLibEnum",
 		"//server/repository/src:serverRespositorySrc",
 		"//server/infrastructure/src:userLoginInfoCacheSrc",
-		"//mylib/myLibEncrypt:myLibEncrypt",
 	],
 	visibility = ["//visibility:public"],
 )
