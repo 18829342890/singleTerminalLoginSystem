@@ -10,6 +10,7 @@ cc_library(
 		"-Imylib/enum/",
 		"-Imylib/mylibLog/",
 		"-Imylib/myLibEncrypt/",
+		"-Iserver/service/base",
 		"-Iserver/repository/include",
 		"-Iserver/infrastructure/include",
 
@@ -18,6 +19,7 @@ cc_library(
 		"//mylib/mylibLog:myLibLog",
 		"//mylib/enum:myLibEnum",
 		"//mylib/myLibEncrypt:myLibEncrypt",
+		"//server/service/base:loginManageServiceBase",
 		"//server/repository/src:serverRespositorySrc",
 		"//server/infrastructure/src:userLoginInfoCacheSrc",
 	],
