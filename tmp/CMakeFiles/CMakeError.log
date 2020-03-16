@@ -1,0 +1,823 @@
+Performing C++ SOURCE FILE Test HAVE_IS_SAME failed with the following output:
+Change Dir: /Users/tanxiaohui/mygit/mysql-connector-cpp/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_69cf9/fast && /Applications/Xcode.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTC_69cf9.dir/build.make CMakeFiles/cmTC_69cf9.dir/build
+Building CXX object CMakeFiles/cmTC_69cf9.dir/src.cxx.o
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++    -stdlib=libc++ -std=c++11 -stdlib=libc++ -std=c++11  -DHAVE_IS_SAME  -std=c++11 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk   -o CMakeFiles/cmTC_69cf9.dir/src.cxx.o -c /Users/tanxiaohui/mygit/mysql-connector-cpp/CMakeFiles/CMakeTmp/src.cxx
+/Users/tanxiaohui/mygit/mysql-connector-cpp/CMakeFiles/CMakeTmp/src.cxx:1:1: error: 'main' must return 'int'
+void main() { return is_same<bool,char>::value; }
+^~~~
+int
+/Users/tanxiaohui/mygit/mysql-connector-cpp/CMakeFiles/CMakeTmp/src.cxx:1:22: error: use of undeclared identifier 'is_same'
+void main() { return is_same<bool,char>::value; }
+                     ^
+/Users/tanxiaohui/mygit/mysql-connector-cpp/CMakeFiles/CMakeTmp/src.cxx:1:34: error: expected '(' for function-style cast or type construction
+void main() { return is_same<bool,char>::value; }
+                             ~~~~^
+3 errors generated.
+make[1]: *** [CMakeFiles/cmTC_69cf9.dir/src.cxx.o] Error 1
+make: *** [cmTC_69cf9/fast] Error 2
+
+
+Source file was:
+void main() { return is_same<bool,char>::value; }
+Determining size of __int8 failed with the following output:
+Change Dir: /Users/tanxiaohui/mygit/mysql-connector-cpp/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_5d4b7/fast && /Applications/Xcode.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTC_5d4b7.dir/build.make CMakeFiles/cmTC_5d4b7.dir/build
+Building C object CMakeFiles/cmTC_5d4b7.dir/HAVE_MS_INT8.c.o
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc   -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk   -o CMakeFiles/cmTC_5d4b7.dir/HAVE_MS_INT8.c.o   -c /Users/tanxiaohui/mygit/mysql-connector-cpp/CMakeFiles/CheckTypeSize/HAVE_MS_INT8.c
+/Users/tanxiaohui/mygit/mysql-connector-cpp/CMakeFiles/CheckTypeSize/HAVE_MS_INT8.c:25:12: error: use of undeclared identifier '__int8'
+  ('0' + ((SIZE / 10000)%10)),
+           ^
+/Users/tanxiaohui/mygit/mysql-connector-cpp/CMakeFiles/CheckTypeSize/HAVE_MS_INT8.c:23:22: note: expanded from macro 'SIZE'
+#define SIZE (sizeof(__int8))
+                     ^
+/Users/tanxiaohui/mygit/mysql-connector-cpp/CMakeFiles/CheckTypeSize/HAVE_MS_INT8.c:26:12: error: use of undeclared identifier '__int8'
+  ('0' + ((SIZE / 1000)%10)),
+           ^
+/Users/tanxiaohui/mygit/mysql-connector-cpp/CMakeFiles/CheckTypeSize/HAVE_MS_INT8.c:23:22: note: expanded from macro 'SIZE'
+#define SIZE (sizeof(__int8))
+                     ^
+/Users/tanxiaohui/mygit/mysql-connector-cpp/CMakeFiles/CheckTypeSize/HAVE_MS_INT8.c:27:12: error: use of undeclared identifier '__int8'
+  ('0' + ((SIZE / 100)%10)),
+           ^
+/Users/tanxiaohui/mygit/mysql-connector-cpp/CMakeFiles/CheckTypeSize/HAVE_MS_INT8.c:23:22: note: expanded from macro 'SIZE'
+#define SIZE (sizeof(__int8))
+                     ^
+/Users/tanxiaohui/mygit/mysql-connector-cpp/CMakeFiles/CheckTypeSize/HAVE_MS_INT8.c:28:12: error: use of undeclared identifier '__int8'
+  ('0' + ((SIZE / 10)%10)),
+           ^
+/Users/tanxiaohui/mygit/mysql-connector-cpp/CMakeFiles/CheckTypeSize/HAVE_MS_INT8.c:23:22: note: expanded from macro 'SIZE'
+#define SIZE (sizeof(__int8))
+                     ^
+/Users/tanxiaohui/mygit/mysql-connector-cpp/CMakeFiles/CheckTypeSize/HAVE_MS_INT8.c:29:12: error: use of undeclared identifier '__int8'
+  ('0' +  (SIZE    % 10)),
+           ^
+/Users/tanxiaohui/mygit/mysql-connector-cpp/CMakeFiles/CheckTypeSize/HAVE_MS_INT8.c:23:22: note: expanded from macro 'SIZE'
+#define SIZE (sizeof(__int8))
+                     ^
+5 errors generated.
+make[1]: *** [CMakeFiles/cmTC_5d4b7.dir/HAVE_MS_INT8.c.o] Error 1
+make: *** [cmTC_5d4b7/fast] Error 2
+
+
+/Users/tanxiaohui/mygit/mysql-connector-cpp/CMakeFiles/CheckTypeSize/HAVE_MS_INT8.c:
+#include <sys/types.h>
+#include <stdint.h>
+#include <stddef.h>
+
+
+#undef KEY
+#if defined(__i386)
+# define KEY '_','_','i','3','8','6'
+#elif defined(__x86_64)
+# define KEY '_','_','x','8','6','_','6','4'
+#elif defined(__ppc__)
+# define KEY '_','_','p','p','c','_','_'
+#elif defined(__ppc64__)
+# define KEY '_','_','p','p','c','6','4','_','_'
+#elif defined(__aarch64__)
+# define KEY '_','_','a','a','r','c','h','6','4','_','_'
+#elif defined(__ARM_ARCH_7A__)
+# define KEY '_','_','A','R','M','_','A','R','C','H','_','7','A','_','_'
+#elif defined(__ARM_ARCH_7S__)
+# define KEY '_','_','A','R','M','_','A','R','C','H','_','7','S','_','_'
+#endif
+
+#define SIZE (sizeof(__int8))
+static char info_size[] =  {'I', 'N', 'F', 'O', ':', 's','i','z','e','[',
+  ('0' + ((SIZE / 10000)%10)),
+  ('0' + ((SIZE / 1000)%10)),
+  ('0' + ((SIZE / 100)%10)),
+  ('0' + ((SIZE / 10)%10)),
+  ('0' +  (SIZE    % 10)),
+  ']',
+#ifdef KEY
+  ' ','k','e','y','[', KEY, ']',
+#endif
+  '\0'};
+
+#ifdef __CLASSIC_C__
+int main(argc, argv) int argc; char *argv[];
+#else
+int main(int argc, char *argv[])
+#endif
+{
+  int require = 0;
+  require += info_size[argc];
+  (void)argv;
+  return require;
+}
+
+
+Determining size of unsigned __int8 failed with the following output:
+Change Dir: /Users/tanxiaohui/mygit/mysql-connector-cpp/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_62b78/fast && /Applications/Xcode.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTC_62b78.dir/build.make CMakeFiles/cmTC_62b78.dir/build
+Building C object CMakeFiles/cmTC_62b78.dir/HAVE_MS_UINT8.c.o
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc   -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk   -o CMakeFiles/cmTC_62b78.dir/HAVE_MS_UINT8.c.o   -c /Users/tanxiaohui/mygit/mysql-connector-cpp/CMakeFiles/CheckTypeSize/HAVE_MS_UINT8.c
+/Users/tanxiaohui/mygit/mysql-connector-cpp/CMakeFiles/CheckTypeSize/HAVE_MS_UINT8.c:25:12: error: expected ')'
+  ('0' + ((SIZE / 10000)%10)),
+           ^
+/Users/tanxiaohui/mygit/mysql-connector-cpp/CMakeFiles/CheckTypeSize/HAVE_MS_UINT8.c:23:31: note: expanded from macro 'SIZE'
+#define SIZE (sizeof(unsigned __int8))
+                              ^
+/Users/tanxiaohui/mygit/mysql-connector-cpp/CMakeFiles/CheckTypeSize/HAVE_MS_UINT8.c:25:12: note: to match this '('
+/Users/tanxiaohui/mygit/mysql-connector-cpp/CMakeFiles/CheckTypeSize/HAVE_MS_UINT8.c:23:21: note: expanded from macro 'SIZE'
+#define SIZE (sizeof(unsigned __int8))
+                    ^
+/Users/tanxiaohui/mygit/mysql-connector-cpp/CMakeFiles/CheckTypeSize/HAVE_MS_UINT8.c:26:12: error: expected ')'
+  ('0' + ((SIZE / 1000)%10)),
+           ^
+/Users/tanxiaohui/mygit/mysql-connector-cpp/CMakeFiles/CheckTypeSize/HAVE_MS_UINT8.c:23:31: note: expanded from macro 'SIZE'
+#define SIZE (sizeof(unsigned __int8))
+                              ^
+/Users/tanxiaohui/mygit/mysql-connector-cpp/CMakeFiles/CheckTypeSize/HAVE_MS_UINT8.c:26:12: note: to match this '('
+/Users/tanxiaohui/mygit/mysql-connector-cpp/CMakeFiles/CheckTypeSize/HAVE_MS_UINT8.c:23:21: note: expanded from macro 'SIZE'
+#define SIZE (sizeof(unsigned __int8))
+                    ^
+/Users/tanxiaohui/mygit/mysql-connector-cpp/CMakeFiles/CheckTypeSize/HAVE_MS_UINT8.c:27:12: error: expected ')'
+  ('0' + ((SIZE / 100)%10)),
+           ^
+/Users/tanxiaohui/mygit/mysql-connector-cpp/CMakeFiles/CheckTypeSize/HAVE_MS_UINT8.c:23:31: note: expanded from macro 'SIZE'
+#define SIZE (sizeof(unsigned __int8))
+                              ^
+/Users/tanxiaohui/mygit/mysql-connector-cpp/CMakeFiles/CheckTypeSize/HAVE_MS_UINT8.c:27:12: note: to match this '('
+/Users/tanxiaohui/mygit/mysql-connector-cpp/CMakeFiles/CheckTypeSize/HAVE_MS_UINT8.c:23:21: note: expanded from macro 'SIZE'
+#define SIZE (sizeof(unsigned __int8))
+                    ^
+/Users/tanxiaohui/mygit/mysql-connector-cpp/CMakeFiles/CheckTypeSize/HAVE_MS_UINT8.c:28:12: error: expected ')'
+  ('0' + ((SIZE / 10)%10)),
+           ^
+/Users/tanxiaohui/mygit/mysql-connector-cpp/CMakeFiles/CheckTypeSize/HAVE_MS_UINT8.c:23:31: note: expanded from macro 'SIZE'
+#define SIZE (sizeof(unsigned __int8))
+                              ^
+/Users/tanxiaohui/mygit/mysql-connector-cpp/CMakeFiles/CheckTypeSize/HAVE_MS_UINT8.c:28:12: note: to match this '('
+/Users/tanxiaohui/mygit/mysql-connector-cpp/CMakeFiles/CheckTypeSize/HAVE_MS_UINT8.c:23:21: note: expanded from macro 'SIZE'
+#define SIZE (sizeof(unsigned __int8))
+                    ^
+/Users/tanxiaohui/mygit/mysql-connector-cpp/CMakeFiles/CheckTypeSize/HAVE_MS_UINT8.c:29:12: error: expected ')'
+  ('0' +  (SIZE    % 10)),
+           ^
+/Users/tanxiaohui/mygit/mysql-connector-cpp/CMakeFiles/CheckTypeSize/HAVE_MS_UINT8.c:23:31: note: expanded from macro 'SIZE'
+#define SIZE (sizeof(unsigned __int8))
+                              ^
+/Users/tanxiaohui/mygit/mysql-connector-cpp/CMakeFiles/CheckTypeSize/HAVE_MS_UINT8.c:29:12: note: to match this '('
+/Users/tanxiaohui/mygit/mysql-connector-cpp/CMakeFiles/CheckTypeSize/HAVE_MS_UINT8.c:23:21: note: expanded from macro 'SIZE'
+#define SIZE (sizeof(unsigned __int8))
+                    ^
+5 errors generated.
+make[1]: *** [CMakeFiles/cmTC_62b78.dir/HAVE_MS_UINT8.c.o] Error 1
+make: *** [cmTC_62b78/fast] Error 2
+
+
+/Users/tanxiaohui/mygit/mysql-connector-cpp/CMakeFiles/CheckTypeSize/HAVE_MS_UINT8.c:
+#include <sys/types.h>
+#include <stdint.h>
+#include <stddef.h>
+
+
+#undef KEY
+#if defined(__i386)
+# define KEY '_','_','i','3','8','6'
+#elif defined(__x86_64)
+# define KEY '_','_','x','8','6','_','6','4'
+#elif defined(__ppc__)
+# define KEY '_','_','p','p','c','_','_'
+#elif defined(__ppc64__)
+# define KEY '_','_','p','p','c','6','4','_','_'
+#elif defined(__aarch64__)
+# define KEY '_','_','a','a','r','c','h','6','4','_','_'
+#elif defined(__ARM_ARCH_7A__)
+# define KEY '_','_','A','R','M','_','A','R','C','H','_','7','A','_','_'
+#elif defined(__ARM_ARCH_7S__)
+# define KEY '_','_','A','R','M','_','A','R','C','H','_','7','S','_','_'
+#endif
+
+#define SIZE (sizeof(unsigned __int8))
+static char info_size[] =  {'I', 'N', 'F', 'O', ':', 's','i','z','e','[',
+  ('0' + ((SIZE / 10000)%10)),
+  ('0' + ((SIZE / 1000)%10)),
+  ('0' + ((SIZE / 100)%10)),
+  ('0' + ((SIZE / 10)%10)),
+  ('0' +  (SIZE    % 10)),
+  ']',
+#ifdef KEY
+  ' ','k','e','y','[', KEY, ']',
+#endif
+  '\0'};
+
+#ifdef __CLASSIC_C__
+int main(argc, argv) int argc; char *argv[];
+#else
+int main(int argc, char *argv[])
+#endif
+{
+  int require = 0;
+  require += info_size[argc];
+  (void)argv;
+  return require;
+}
+
+
+Determining size of __int16 failed with the following output:
+Change Dir: /Users/tanxiaohui/mygit/mysql-connector-cpp/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_e78de/fast && /Applications/Xcode.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTC_e78de.dir/build.make CMakeFiles/cmTC_e78de.dir/build
+Building C object CMakeFiles/cmTC_e78de.dir/HAVE_MS_INT16.c.o
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc   -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk   -o CMakeFiles/cmTC_e78de.dir/HAVE_MS_INT16.c.o   -c /Users/tanxiaohui/mygit/mysql-connector-cpp/CMakeFiles/CheckTypeSize/HAVE_MS_INT16.c
+/Users/tanxiaohui/mygit/mysql-connector-cpp/CMakeFiles/CheckTypeSize/HAVE_MS_INT16.c:25:12: error: use of undeclared identifier '__int16'
+  ('0' + ((SIZE / 10000)%10)),
+           ^
+/Users/tanxiaohui/mygit/mysql-connector-cpp/CMakeFiles/CheckTypeSize/HAVE_MS_INT16.c:23:22: note: expanded from macro 'SIZE'
+#define SIZE (sizeof(__int16))
+                     ^
+/Users/tanxiaohui/mygit/mysql-connector-cpp/CMakeFiles/CheckTypeSize/HAVE_MS_INT16.c:26:12: error: use of undeclared identifier '__int16'
+  ('0' + ((SIZE / 1000)%10)),
+           ^
+/Users/tanxiaohui/mygit/mysql-connector-cpp/CMakeFiles/CheckTypeSize/HAVE_MS_INT16.c:23:22: note: expanded from macro 'SIZE'
+#define SIZE (sizeof(__int16))
+                     ^
+/Users/tanxiaohui/mygit/mysql-connector-cpp/CMakeFiles/CheckTypeSize/HAVE_MS_INT16.c:27:12: error: use of undeclared identifier '__int16'
+  ('0' + ((SIZE / 100)%10)),
+           ^
+/Users/tanxiaohui/mygit/mysql-connector-cpp/CMakeFiles/CheckTypeSize/HAVE_MS_INT16.c:23:22: note: expanded from macro 'SIZE'
+#define SIZE (sizeof(__int16))
+                     ^
+/Users/tanxiaohui/mygit/mysql-connector-cpp/CMakeFiles/CheckTypeSize/HAVE_MS_INT16.c:28:12: error: use of undeclared identifier '__int16'
+  ('0' + ((SIZE / 10)%10)),
+           ^
+/Users/tanxiaohui/mygit/mysql-connector-cpp/CMakeFiles/CheckTypeSize/HAVE_MS_INT16.c:23:22: note: expanded from macro 'SIZE'
+#define SIZE (sizeof(__int16))
+                     ^
+/Users/tanxiaohui/mygit/mysql-connector-cpp/CMakeFiles/CheckTypeSize/HAVE_MS_INT16.c:29:12: error: use of undeclared identifier '__int16'
+  ('0' +  (SIZE    % 10)),
+           ^
+/Users/tanxiaohui/mygit/mysql-connector-cpp/CMakeFiles/CheckTypeSize/HAVE_MS_INT16.c:23:22: note: expanded from macro 'SIZE'
+#define SIZE (sizeof(__int16))
+                     ^
+5 errors generated.
+make[1]: *** [CMakeFiles/cmTC_e78de.dir/HAVE_MS_INT16.c.o] Error 1
+make: *** [cmTC_e78de/fast] Error 2
+
+
+/Users/tanxiaohui/mygit/mysql-connector-cpp/CMakeFiles/CheckTypeSize/HAVE_MS_INT16.c:
+#include <sys/types.h>
+#include <stdint.h>
+#include <stddef.h>
+
+
+#undef KEY
+#if defined(__i386)
+# define KEY '_','_','i','3','8','6'
+#elif defined(__x86_64)
+# define KEY '_','_','x','8','6','_','6','4'
+#elif defined(__ppc__)
+# define KEY '_','_','p','p','c','_','_'
+#elif defined(__ppc64__)
+# define KEY '_','_','p','p','c','6','4','_','_'
+#elif defined(__aarch64__)
+# define KEY '_','_','a','a','r','c','h','6','4','_','_'
+#elif defined(__ARM_ARCH_7A__)
+# define KEY '_','_','A','R','M','_','A','R','C','H','_','7','A','_','_'
+#elif defined(__ARM_ARCH_7S__)
+# define KEY '_','_','A','R','M','_','A','R','C','H','_','7','S','_','_'
+#endif
+
+#define SIZE (sizeof(__int16))
+static char info_size[] =  {'I', 'N', 'F', 'O', ':', 's','i','z','e','[',
+  ('0' + ((SIZE / 10000)%10)),
+  ('0' + ((SIZE / 1000)%10)),
+  ('0' + ((SIZE / 100)%10)),
+  ('0' + ((SIZE / 10)%10)),
+  ('0' +  (SIZE    % 10)),
+  ']',
+#ifdef KEY
+  ' ','k','e','y','[', KEY, ']',
+#endif
+  '\0'};
+
+#ifdef __CLASSIC_C__
+int main(argc, argv) int argc; char *argv[];
+#else
+int main(int argc, char *argv[])
+#endif
+{
+  int require = 0;
+  require += info_size[argc];
+  (void)argv;
+  return require;
+}
+
+
+Determining size of unsigned __int16 failed with the following output:
+Change Dir: /Users/tanxiaohui/mygit/mysql-connector-cpp/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_7cb59/fast && /Applications/Xcode.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTC_7cb59.dir/build.make CMakeFiles/cmTC_7cb59.dir/build
+Building C object CMakeFiles/cmTC_7cb59.dir/HAVE_MS_UINT16.c.o
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc   -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk   -o CMakeFiles/cmTC_7cb59.dir/HAVE_MS_UINT16.c.o   -c /Users/tanxiaohui/mygit/mysql-connector-cpp/CMakeFiles/CheckTypeSize/HAVE_MS_UINT16.c
+/Users/tanxiaohui/mygit/mysql-connector-cpp/CMakeFiles/CheckTypeSize/HAVE_MS_UINT16.c:25:12: error: expected ')'
+  ('0' + ((SIZE / 10000)%10)),
+           ^
+/Users/tanxiaohui/mygit/mysql-connector-cpp/CMakeFiles/CheckTypeSize/HAVE_MS_UINT16.c:23:31: note: expanded from macro 'SIZE'
+#define SIZE (sizeof(unsigned __int16))
+                              ^
+/Users/tanxiaohui/mygit/mysql-connector-cpp/CMakeFiles/CheckTypeSize/HAVE_MS_UINT16.c:25:12: note: to match this '('
+/Users/tanxiaohui/mygit/mysql-connector-cpp/CMakeFiles/CheckTypeSize/HAVE_MS_UINT16.c:23:21: note: expanded from macro 'SIZE'
+#define SIZE (sizeof(unsigned __int16))
+                    ^
+/Users/tanxiaohui/mygit/mysql-connector-cpp/CMakeFiles/CheckTypeSize/HAVE_MS_UINT16.c:26:12: error: expected ')'
+  ('0' + ((SIZE / 1000)%10)),
+           ^
+/Users/tanxiaohui/mygit/mysql-connector-cpp/CMakeFiles/CheckTypeSize/HAVE_MS_UINT16.c:23:31: note: expanded from macro 'SIZE'
+#define SIZE (sizeof(unsigned __int16))
+                              ^
+/Users/tanxiaohui/mygit/mysql-connector-cpp/CMakeFiles/CheckTypeSize/HAVE_MS_UINT16.c:26:12: note: to match this '('
+/Users/tanxiaohui/mygit/mysql-connector-cpp/CMakeFiles/CheckTypeSize/HAVE_MS_UINT16.c:23:21: note: expanded from macro 'SIZE'
+#define SIZE (sizeof(unsigned __int16))
+                    ^
+/Users/tanxiaohui/mygit/mysql-connector-cpp/CMakeFiles/CheckTypeSize/HAVE_MS_UINT16.c:27:12: error: expected ')'
+  ('0' + ((SIZE / 100)%10)),
+           ^
+/Users/tanxiaohui/mygit/mysql-connector-cpp/CMakeFiles/CheckTypeSize/HAVE_MS_UINT16.c:23:31: note: expanded from macro 'SIZE'
+#define SIZE (sizeof(unsigned __int16))
+                              ^
+/Users/tanxiaohui/mygit/mysql-connector-cpp/CMakeFiles/CheckTypeSize/HAVE_MS_UINT16.c:27:12: note: to match this '('
+/Users/tanxiaohui/mygit/mysql-connector-cpp/CMakeFiles/CheckTypeSize/HAVE_MS_UINT16.c:23:21: note: expanded from macro 'SIZE'
+#define SIZE (sizeof(unsigned __int16))
+                    ^
+/Users/tanxiaohui/mygit/mysql-connector-cpp/CMakeFiles/CheckTypeSize/HAVE_MS_UINT16.c:28:12: error: expected ')'
+  ('0' + ((SIZE / 10)%10)),
+           ^
+/Users/tanxiaohui/mygit/mysql-connector-cpp/CMakeFiles/CheckTypeSize/HAVE_MS_UINT16.c:23:31: note: expanded from macro 'SIZE'
+#define SIZE (sizeof(unsigned __int16))
+                              ^
+/Users/tanxiaohui/mygit/mysql-connector-cpp/CMakeFiles/CheckTypeSize/HAVE_MS_UINT16.c:28:12: note: to match this '('
+/Users/tanxiaohui/mygit/mysql-connector-cpp/CMakeFiles/CheckTypeSize/HAVE_MS_UINT16.c:23:21: note: expanded from macro 'SIZE'
+#define SIZE (sizeof(unsigned __int16))
+                    ^
+/Users/tanxiaohui/mygit/mysql-connector-cpp/CMakeFiles/CheckTypeSize/HAVE_MS_UINT16.c:29:12: error: expected ')'
+  ('0' +  (SIZE    % 10)),
+           ^
+/Users/tanxiaohui/mygit/mysql-connector-cpp/CMakeFiles/CheckTypeSize/HAVE_MS_UINT16.c:23:31: note: expanded from macro 'SIZE'
+#define SIZE (sizeof(unsigned __int16))
+                              ^
+/Users/tanxiaohui/mygit/mysql-connector-cpp/CMakeFiles/CheckTypeSize/HAVE_MS_UINT16.c:29:12: note: to match this '('
+/Users/tanxiaohui/mygit/mysql-connector-cpp/CMakeFiles/CheckTypeSize/HAVE_MS_UINT16.c:23:21: note: expanded from macro 'SIZE'
+#define SIZE (sizeof(unsigned __int16))
+                    ^
+5 errors generated.
+make[1]: *** [CMakeFiles/cmTC_7cb59.dir/HAVE_MS_UINT16.c.o] Error 1
+make: *** [cmTC_7cb59/fast] Error 2
+
+
+/Users/tanxiaohui/mygit/mysql-connector-cpp/CMakeFiles/CheckTypeSize/HAVE_MS_UINT16.c:
+#include <sys/types.h>
+#include <stdint.h>
+#include <stddef.h>
+
+
+#undef KEY
+#if defined(__i386)
+# define KEY '_','_','i','3','8','6'
+#elif defined(__x86_64)
+# define KEY '_','_','x','8','6','_','6','4'
+#elif defined(__ppc__)
+# define KEY '_','_','p','p','c','_','_'
+#elif defined(__ppc64__)
+# define KEY '_','_','p','p','c','6','4','_','_'
+#elif defined(__aarch64__)
+# define KEY '_','_','a','a','r','c','h','6','4','_','_'
+#elif defined(__ARM_ARCH_7A__)
+# define KEY '_','_','A','R','M','_','A','R','C','H','_','7','A','_','_'
+#elif defined(__ARM_ARCH_7S__)
+# define KEY '_','_','A','R','M','_','A','R','C','H','_','7','S','_','_'
+#endif
+
+#define SIZE (sizeof(unsigned __int16))
+static char info_size[] =  {'I', 'N', 'F', 'O', ':', 's','i','z','e','[',
+  ('0' + ((SIZE / 10000)%10)),
+  ('0' + ((SIZE / 1000)%10)),
+  ('0' + ((SIZE / 100)%10)),
+  ('0' + ((SIZE / 10)%10)),
+  ('0' +  (SIZE    % 10)),
+  ']',
+#ifdef KEY
+  ' ','k','e','y','[', KEY, ']',
+#endif
+  '\0'};
+
+#ifdef __CLASSIC_C__
+int main(argc, argv) int argc; char *argv[];
+#else
+int main(int argc, char *argv[])
+#endif
+{
+  int require = 0;
+  require += info_size[argc];
+  (void)argv;
+  return require;
+}
+
+
+Determining size of __int32 failed with the following output:
+Change Dir: /Users/tanxiaohui/mygit/mysql-connector-cpp/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_3ffd5/fast && /Applications/Xcode.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTC_3ffd5.dir/build.make CMakeFiles/cmTC_3ffd5.dir/build
+Building C object CMakeFiles/cmTC_3ffd5.dir/HAVE_MS_INT32.c.o
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc   -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk   -o CMakeFiles/cmTC_3ffd5.dir/HAVE_MS_INT32.c.o   -c /Users/tanxiaohui/mygit/mysql-connector-cpp/CMakeFiles/CheckTypeSize/HAVE_MS_INT32.c
+/Users/tanxiaohui/mygit/mysql-connector-cpp/CMakeFiles/CheckTypeSize/HAVE_MS_INT32.c:25:12: error: use of undeclared identifier '__int32'
+  ('0' + ((SIZE / 10000)%10)),
+           ^
+/Users/tanxiaohui/mygit/mysql-connector-cpp/CMakeFiles/CheckTypeSize/HAVE_MS_INT32.c:23:22: note: expanded from macro 'SIZE'
+#define SIZE (sizeof(__int32))
+                     ^
+/Users/tanxiaohui/mygit/mysql-connector-cpp/CMakeFiles/CheckTypeSize/HAVE_MS_INT32.c:26:12: error: use of undeclared identifier '__int32'
+  ('0' + ((SIZE / 1000)%10)),
+           ^
+/Users/tanxiaohui/mygit/mysql-connector-cpp/CMakeFiles/CheckTypeSize/HAVE_MS_INT32.c:23:22: note: expanded from macro 'SIZE'
+#define SIZE (sizeof(__int32))
+                     ^
+/Users/tanxiaohui/mygit/mysql-connector-cpp/CMakeFiles/CheckTypeSize/HAVE_MS_INT32.c:27:12: error: use of undeclared identifier '__int32'
+  ('0' + ((SIZE / 100)%10)),
+           ^
+/Users/tanxiaohui/mygit/mysql-connector-cpp/CMakeFiles/CheckTypeSize/HAVE_MS_INT32.c:23:22: note: expanded from macro 'SIZE'
+#define SIZE (sizeof(__int32))
+                     ^
+/Users/tanxiaohui/mygit/mysql-connector-cpp/CMakeFiles/CheckTypeSize/HAVE_MS_INT32.c:28:12: error: use of undeclared identifier '__int32'
+  ('0' + ((SIZE / 10)%10)),
+           ^
+/Users/tanxiaohui/mygit/mysql-connector-cpp/CMakeFiles/CheckTypeSize/HAVE_MS_INT32.c:23:22: note: expanded from macro 'SIZE'
+#define SIZE (sizeof(__int32))
+                     ^
+/Users/tanxiaohui/mygit/mysql-connector-cpp/CMakeFiles/CheckTypeSize/HAVE_MS_INT32.c:29:12: error: use of undeclared identifier '__int32'
+  ('0' +  (SIZE    % 10)),
+           ^
+/Users/tanxiaohui/mygit/mysql-connector-cpp/CMakeFiles/CheckTypeSize/HAVE_MS_INT32.c:23:22: note: expanded from macro 'SIZE'
+#define SIZE (sizeof(__int32))
+                     ^
+5 errors generated.
+make[1]: *** [CMakeFiles/cmTC_3ffd5.dir/HAVE_MS_INT32.c.o] Error 1
+make: *** [cmTC_3ffd5/fast] Error 2
+
+
+/Users/tanxiaohui/mygit/mysql-connector-cpp/CMakeFiles/CheckTypeSize/HAVE_MS_INT32.c:
+#include <sys/types.h>
+#include <stdint.h>
+#include <stddef.h>
+
+
+#undef KEY
+#if defined(__i386)
+# define KEY '_','_','i','3','8','6'
+#elif defined(__x86_64)
+# define KEY '_','_','x','8','6','_','6','4'
+#elif defined(__ppc__)
+# define KEY '_','_','p','p','c','_','_'
+#elif defined(__ppc64__)
+# define KEY '_','_','p','p','c','6','4','_','_'
+#elif defined(__aarch64__)
+# define KEY '_','_','a','a','r','c','h','6','4','_','_'
+#elif defined(__ARM_ARCH_7A__)
+# define KEY '_','_','A','R','M','_','A','R','C','H','_','7','A','_','_'
+#elif defined(__ARM_ARCH_7S__)
+# define KEY '_','_','A','R','M','_','A','R','C','H','_','7','S','_','_'
+#endif
+
+#define SIZE (sizeof(__int32))
+static char info_size[] =  {'I', 'N', 'F', 'O', ':', 's','i','z','e','[',
+  ('0' + ((SIZE / 10000)%10)),
+  ('0' + ((SIZE / 1000)%10)),
+  ('0' + ((SIZE / 100)%10)),
+  ('0' + ((SIZE / 10)%10)),
+  ('0' +  (SIZE    % 10)),
+  ']',
+#ifdef KEY
+  ' ','k','e','y','[', KEY, ']',
+#endif
+  '\0'};
+
+#ifdef __CLASSIC_C__
+int main(argc, argv) int argc; char *argv[];
+#else
+int main(int argc, char *argv[])
+#endif
+{
+  int require = 0;
+  require += info_size[argc];
+  (void)argv;
+  return require;
+}
+
+
+Determining size of unsigned __int32 failed with the following output:
+Change Dir: /Users/tanxiaohui/mygit/mysql-connector-cpp/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_c9244/fast && /Applications/Xcode.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTC_c9244.dir/build.make CMakeFiles/cmTC_c9244.dir/build
+Building C object CMakeFiles/cmTC_c9244.dir/HAVE_MS_UINT32.c.o
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc   -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk   -o CMakeFiles/cmTC_c9244.dir/HAVE_MS_UINT32.c.o   -c /Users/tanxiaohui/mygit/mysql-connector-cpp/CMakeFiles/CheckTypeSize/HAVE_MS_UINT32.c
+/Users/tanxiaohui/mygit/mysql-connector-cpp/CMakeFiles/CheckTypeSize/HAVE_MS_UINT32.c:25:12: error: expected ')'
+  ('0' + ((SIZE / 10000)%10)),
+           ^
+/Users/tanxiaohui/mygit/mysql-connector-cpp/CMakeFiles/CheckTypeSize/HAVE_MS_UINT32.c:23:31: note: expanded from macro 'SIZE'
+#define SIZE (sizeof(unsigned __int32))
+                              ^
+/Users/tanxiaohui/mygit/mysql-connector-cpp/CMakeFiles/CheckTypeSize/HAVE_MS_UINT32.c:25:12: note: to match this '('
+/Users/tanxiaohui/mygit/mysql-connector-cpp/CMakeFiles/CheckTypeSize/HAVE_MS_UINT32.c:23:21: note: expanded from macro 'SIZE'
+#define SIZE (sizeof(unsigned __int32))
+                    ^
+/Users/tanxiaohui/mygit/mysql-connector-cpp/CMakeFiles/CheckTypeSize/HAVE_MS_UINT32.c:26:12: error: expected ')'
+  ('0' + ((SIZE / 1000)%10)),
+           ^
+/Users/tanxiaohui/mygit/mysql-connector-cpp/CMakeFiles/CheckTypeSize/HAVE_MS_UINT32.c:23:31: note: expanded from macro 'SIZE'
+#define SIZE (sizeof(unsigned __int32))
+                              ^
+/Users/tanxiaohui/mygit/mysql-connector-cpp/CMakeFiles/CheckTypeSize/HAVE_MS_UINT32.c:26:12: note: to match this '('
+/Users/tanxiaohui/mygit/mysql-connector-cpp/CMakeFiles/CheckTypeSize/HAVE_MS_UINT32.c:23:21: note: expanded from macro 'SIZE'
+#define SIZE (sizeof(unsigned __int32))
+                    ^
+/Users/tanxiaohui/mygit/mysql-connector-cpp/CMakeFiles/CheckTypeSize/HAVE_MS_UINT32.c:27:12: error: expected ')'
+  ('0' + ((SIZE / 100)%10)),
+           ^
+/Users/tanxiaohui/mygit/mysql-connector-cpp/CMakeFiles/CheckTypeSize/HAVE_MS_UINT32.c:23:31: note: expanded from macro 'SIZE'
+#define SIZE (sizeof(unsigned __int32))
+                              ^
+/Users/tanxiaohui/mygit/mysql-connector-cpp/CMakeFiles/CheckTypeSize/HAVE_MS_UINT32.c:27:12: note: to match this '('
+/Users/tanxiaohui/mygit/mysql-connector-cpp/CMakeFiles/CheckTypeSize/HAVE_MS_UINT32.c:23:21: note: expanded from macro 'SIZE'
+#define SIZE (sizeof(unsigned __int32))
+                    ^
+/Users/tanxiaohui/mygit/mysql-connector-cpp/CMakeFiles/CheckTypeSize/HAVE_MS_UINT32.c:28:12: error: expected ')'
+  ('0' + ((SIZE / 10)%10)),
+           ^
+/Users/tanxiaohui/mygit/mysql-connector-cpp/CMakeFiles/CheckTypeSize/HAVE_MS_UINT32.c:23:31: note: expanded from macro 'SIZE'
+#define SIZE (sizeof(unsigned __int32))
+                              ^
+/Users/tanxiaohui/mygit/mysql-connector-cpp/CMakeFiles/CheckTypeSize/HAVE_MS_UINT32.c:28:12: note: to match this '('
+/Users/tanxiaohui/mygit/mysql-connector-cpp/CMakeFiles/CheckTypeSize/HAVE_MS_UINT32.c:23:21: note: expanded from macro 'SIZE'
+#define SIZE (sizeof(unsigned __int32))
+                    ^
+/Users/tanxiaohui/mygit/mysql-connector-cpp/CMakeFiles/CheckTypeSize/HAVE_MS_UINT32.c:29:12: error: expected ')'
+  ('0' +  (SIZE    % 10)),
+           ^
+/Users/tanxiaohui/mygit/mysql-connector-cpp/CMakeFiles/CheckTypeSize/HAVE_MS_UINT32.c:23:31: note: expanded from macro 'SIZE'
+#define SIZE (sizeof(unsigned __int32))
+                              ^
+/Users/tanxiaohui/mygit/mysql-connector-cpp/CMakeFiles/CheckTypeSize/HAVE_MS_UINT32.c:29:12: note: to match this '('
+/Users/tanxiaohui/mygit/mysql-connector-cpp/CMakeFiles/CheckTypeSize/HAVE_MS_UINT32.c:23:21: note: expanded from macro 'SIZE'
+#define SIZE (sizeof(unsigned __int32))
+                    ^
+5 errors generated.
+make[1]: *** [CMakeFiles/cmTC_c9244.dir/HAVE_MS_UINT32.c.o] Error 1
+make: *** [cmTC_c9244/fast] Error 2
+
+
+/Users/tanxiaohui/mygit/mysql-connector-cpp/CMakeFiles/CheckTypeSize/HAVE_MS_UINT32.c:
+#include <sys/types.h>
+#include <stdint.h>
+#include <stddef.h>
+
+
+#undef KEY
+#if defined(__i386)
+# define KEY '_','_','i','3','8','6'
+#elif defined(__x86_64)
+# define KEY '_','_','x','8','6','_','6','4'
+#elif defined(__ppc__)
+# define KEY '_','_','p','p','c','_','_'
+#elif defined(__ppc64__)
+# define KEY '_','_','p','p','c','6','4','_','_'
+#elif defined(__aarch64__)
+# define KEY '_','_','a','a','r','c','h','6','4','_','_'
+#elif defined(__ARM_ARCH_7A__)
+# define KEY '_','_','A','R','M','_','A','R','C','H','_','7','A','_','_'
+#elif defined(__ARM_ARCH_7S__)
+# define KEY '_','_','A','R','M','_','A','R','C','H','_','7','S','_','_'
+#endif
+
+#define SIZE (sizeof(unsigned __int32))
+static char info_size[] =  {'I', 'N', 'F', 'O', ':', 's','i','z','e','[',
+  ('0' + ((SIZE / 10000)%10)),
+  ('0' + ((SIZE / 1000)%10)),
+  ('0' + ((SIZE / 100)%10)),
+  ('0' + ((SIZE / 10)%10)),
+  ('0' +  (SIZE    % 10)),
+  ']',
+#ifdef KEY
+  ' ','k','e','y','[', KEY, ']',
+#endif
+  '\0'};
+
+#ifdef __CLASSIC_C__
+int main(argc, argv) int argc; char *argv[];
+#else
+int main(int argc, char *argv[])
+#endif
+{
+  int require = 0;
+  require += info_size[argc];
+  (void)argv;
+  return require;
+}
+
+
+Determining size of __int64 failed with the following output:
+Change Dir: /Users/tanxiaohui/mygit/mysql-connector-cpp/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_271d8/fast && /Applications/Xcode.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTC_271d8.dir/build.make CMakeFiles/cmTC_271d8.dir/build
+Building C object CMakeFiles/cmTC_271d8.dir/HAVE_MS_INT64.c.o
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc   -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk   -o CMakeFiles/cmTC_271d8.dir/HAVE_MS_INT64.c.o   -c /Users/tanxiaohui/mygit/mysql-connector-cpp/CMakeFiles/CheckTypeSize/HAVE_MS_INT64.c
+/Users/tanxiaohui/mygit/mysql-connector-cpp/CMakeFiles/CheckTypeSize/HAVE_MS_INT64.c:25:12: error: use of undeclared identifier '__int64'
+  ('0' + ((SIZE / 10000)%10)),
+           ^
+/Users/tanxiaohui/mygit/mysql-connector-cpp/CMakeFiles/CheckTypeSize/HAVE_MS_INT64.c:23:22: note: expanded from macro 'SIZE'
+#define SIZE (sizeof(__int64))
+                     ^
+/Users/tanxiaohui/mygit/mysql-connector-cpp/CMakeFiles/CheckTypeSize/HAVE_MS_INT64.c:26:12: error: use of undeclared identifier '__int64'
+  ('0' + ((SIZE / 1000)%10)),
+           ^
+/Users/tanxiaohui/mygit/mysql-connector-cpp/CMakeFiles/CheckTypeSize/HAVE_MS_INT64.c:23:22: note: expanded from macro 'SIZE'
+#define SIZE (sizeof(__int64))
+                     ^
+/Users/tanxiaohui/mygit/mysql-connector-cpp/CMakeFiles/CheckTypeSize/HAVE_MS_INT64.c:27:12: error: use of undeclared identifier '__int64'
+  ('0' + ((SIZE / 100)%10)),
+           ^
+/Users/tanxiaohui/mygit/mysql-connector-cpp/CMakeFiles/CheckTypeSize/HAVE_MS_INT64.c:23:22: note: expanded from macro 'SIZE'
+#define SIZE (sizeof(__int64))
+                     ^
+/Users/tanxiaohui/mygit/mysql-connector-cpp/CMakeFiles/CheckTypeSize/HAVE_MS_INT64.c:28:12: error: use of undeclared identifier '__int64'
+  ('0' + ((SIZE / 10)%10)),
+           ^
+/Users/tanxiaohui/mygit/mysql-connector-cpp/CMakeFiles/CheckTypeSize/HAVE_MS_INT64.c:23:22: note: expanded from macro 'SIZE'
+#define SIZE (sizeof(__int64))
+                     ^
+/Users/tanxiaohui/mygit/mysql-connector-cpp/CMakeFiles/CheckTypeSize/HAVE_MS_INT64.c:29:12: error: use of undeclared identifier '__int64'
+  ('0' +  (SIZE    % 10)),
+           ^
+/Users/tanxiaohui/mygit/mysql-connector-cpp/CMakeFiles/CheckTypeSize/HAVE_MS_INT64.c:23:22: note: expanded from macro 'SIZE'
+#define SIZE (sizeof(__int64))
+                     ^
+5 errors generated.
+make[1]: *** [CMakeFiles/cmTC_271d8.dir/HAVE_MS_INT64.c.o] Error 1
+make: *** [cmTC_271d8/fast] Error 2
+
+
+/Users/tanxiaohui/mygit/mysql-connector-cpp/CMakeFiles/CheckTypeSize/HAVE_MS_INT64.c:
+#include <sys/types.h>
+#include <stdint.h>
+#include <stddef.h>
+
+
+#undef KEY
+#if defined(__i386)
+# define KEY '_','_','i','3','8','6'
+#elif defined(__x86_64)
+# define KEY '_','_','x','8','6','_','6','4'
+#elif defined(__ppc__)
+# define KEY '_','_','p','p','c','_','_'
+#elif defined(__ppc64__)
+# define KEY '_','_','p','p','c','6','4','_','_'
+#elif defined(__aarch64__)
+# define KEY '_','_','a','a','r','c','h','6','4','_','_'
+#elif defined(__ARM_ARCH_7A__)
+# define KEY '_','_','A','R','M','_','A','R','C','H','_','7','A','_','_'
+#elif defined(__ARM_ARCH_7S__)
+# define KEY '_','_','A','R','M','_','A','R','C','H','_','7','S','_','_'
+#endif
+
+#define SIZE (sizeof(__int64))
+static char info_size[] =  {'I', 'N', 'F', 'O', ':', 's','i','z','e','[',
+  ('0' + ((SIZE / 10000)%10)),
+  ('0' + ((SIZE / 1000)%10)),
+  ('0' + ((SIZE / 100)%10)),
+  ('0' + ((SIZE / 10)%10)),
+  ('0' +  (SIZE    % 10)),
+  ']',
+#ifdef KEY
+  ' ','k','e','y','[', KEY, ']',
+#endif
+  '\0'};
+
+#ifdef __CLASSIC_C__
+int main(argc, argv) int argc; char *argv[];
+#else
+int main(int argc, char *argv[])
+#endif
+{
+  int require = 0;
+  require += info_size[argc];
+  (void)argv;
+  return require;
+}
+
+
+Determining size of unsigned __int64 failed with the following output:
+Change Dir: /Users/tanxiaohui/mygit/mysql-connector-cpp/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_4a6e6/fast && /Applications/Xcode.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTC_4a6e6.dir/build.make CMakeFiles/cmTC_4a6e6.dir/build
+Building C object CMakeFiles/cmTC_4a6e6.dir/HAVE_MS_UINT64.c.o
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc   -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk   -o CMakeFiles/cmTC_4a6e6.dir/HAVE_MS_UINT64.c.o   -c /Users/tanxiaohui/mygit/mysql-connector-cpp/CMakeFiles/CheckTypeSize/HAVE_MS_UINT64.c
+/Users/tanxiaohui/mygit/mysql-connector-cpp/CMakeFiles/CheckTypeSize/HAVE_MS_UINT64.c:25:12: error: expected ')'
+  ('0' + ((SIZE / 10000)%10)),
+           ^
+/Users/tanxiaohui/mygit/mysql-connector-cpp/CMakeFiles/CheckTypeSize/HAVE_MS_UINT64.c:23:31: note: expanded from macro 'SIZE'
+#define SIZE (sizeof(unsigned __int64))
+                              ^
+/Users/tanxiaohui/mygit/mysql-connector-cpp/CMakeFiles/CheckTypeSize/HAVE_MS_UINT64.c:25:12: note: to match this '('
+/Users/tanxiaohui/mygit/mysql-connector-cpp/CMakeFiles/CheckTypeSize/HAVE_MS_UINT64.c:23:21: note: expanded from macro 'SIZE'
+#define SIZE (sizeof(unsigned __int64))
+                    ^
+/Users/tanxiaohui/mygit/mysql-connector-cpp/CMakeFiles/CheckTypeSize/HAVE_MS_UINT64.c:26:12: error: expected ')'
+  ('0' + ((SIZE / 1000)%10)),
+           ^
+/Users/tanxiaohui/mygit/mysql-connector-cpp/CMakeFiles/CheckTypeSize/HAVE_MS_UINT64.c:23:31: note: expanded from macro 'SIZE'
+#define SIZE (sizeof(unsigned __int64))
+                              ^
+/Users/tanxiaohui/mygit/mysql-connector-cpp/CMakeFiles/CheckTypeSize/HAVE_MS_UINT64.c:26:12: note: to match this '('
+/Users/tanxiaohui/mygit/mysql-connector-cpp/CMakeFiles/CheckTypeSize/HAVE_MS_UINT64.c:23:21: note: expanded from macro 'SIZE'
+#define SIZE (sizeof(unsigned __int64))
+                    ^
+/Users/tanxiaohui/mygit/mysql-connector-cpp/CMakeFiles/CheckTypeSize/HAVE_MS_UINT64.c:27:12: error: expected ')'
+  ('0' + ((SIZE / 100)%10)),
+           ^
+/Users/tanxiaohui/mygit/mysql-connector-cpp/CMakeFiles/CheckTypeSize/HAVE_MS_UINT64.c:23:31: note: expanded from macro 'SIZE'
+#define SIZE (sizeof(unsigned __int64))
+                              ^
+/Users/tanxiaohui/mygit/mysql-connector-cpp/CMakeFiles/CheckTypeSize/HAVE_MS_UINT64.c:27:12: note: to match this '('
+/Users/tanxiaohui/mygit/mysql-connector-cpp/CMakeFiles/CheckTypeSize/HAVE_MS_UINT64.c:23:21: note: expanded from macro 'SIZE'
+#define SIZE (sizeof(unsigned __int64))
+                    ^
+/Users/tanxiaohui/mygit/mysql-connector-cpp/CMakeFiles/CheckTypeSize/HAVE_MS_UINT64.c:28:12: error: expected ')'
+  ('0' + ((SIZE / 10)%10)),
+           ^
+/Users/tanxiaohui/mygit/mysql-connector-cpp/CMakeFiles/CheckTypeSize/HAVE_MS_UINT64.c:23:31: note: expanded from macro 'SIZE'
+#define SIZE (sizeof(unsigned __int64))
+                              ^
+/Users/tanxiaohui/mygit/mysql-connector-cpp/CMakeFiles/CheckTypeSize/HAVE_MS_UINT64.c:28:12: note: to match this '('
+/Users/tanxiaohui/mygit/mysql-connector-cpp/CMakeFiles/CheckTypeSize/HAVE_MS_UINT64.c:23:21: note: expanded from macro 'SIZE'
+#define SIZE (sizeof(unsigned __int64))
+                    ^
+/Users/tanxiaohui/mygit/mysql-connector-cpp/CMakeFiles/CheckTypeSize/HAVE_MS_UINT64.c:29:12: error: expected ')'
+  ('0' +  (SIZE    % 10)),
+           ^
+/Users/tanxiaohui/mygit/mysql-connector-cpp/CMakeFiles/CheckTypeSize/HAVE_MS_UINT64.c:23:31: note: expanded from macro 'SIZE'
+#define SIZE (sizeof(unsigned __int64))
+                              ^
+/Users/tanxiaohui/mygit/mysql-connector-cpp/CMakeFiles/CheckTypeSize/HAVE_MS_UINT64.c:29:12: note: to match this '('
+/Users/tanxiaohui/mygit/mysql-connector-cpp/CMakeFiles/CheckTypeSize/HAVE_MS_UINT64.c:23:21: note: expanded from macro 'SIZE'
+#define SIZE (sizeof(unsigned __int64))
+                    ^
+5 errors generated.
+make[1]: *** [CMakeFiles/cmTC_4a6e6.dir/HAVE_MS_UINT64.c.o] Error 1
+make: *** [cmTC_4a6e6/fast] Error 2
+
+
+/Users/tanxiaohui/mygit/mysql-connector-cpp/CMakeFiles/CheckTypeSize/HAVE_MS_UINT64.c:
+#include <sys/types.h>
+#include <stdint.h>
+#include <stddef.h>
+
+
+#undef KEY
+#if defined(__i386)
+# define KEY '_','_','i','3','8','6'
+#elif defined(__x86_64)
+# define KEY '_','_','x','8','6','_','6','4'
+#elif defined(__ppc__)
+# define KEY '_','_','p','p','c','_','_'
+#elif defined(__ppc64__)
+# define KEY '_','_','p','p','c','6','4','_','_'
+#elif defined(__aarch64__)
+# define KEY '_','_','a','a','r','c','h','6','4','_','_'
+#elif defined(__ARM_ARCH_7A__)
+# define KEY '_','_','A','R','M','_','A','R','C','H','_','7','A','_','_'
+#elif defined(__ARM_ARCH_7S__)
+# define KEY '_','_','A','R','M','_','A','R','C','H','_','7','S','_','_'
+#endif
+
+#define SIZE (sizeof(unsigned __int64))
+static char info_size[] =  {'I', 'N', 'F', 'O', ':', 's','i','z','e','[',
+  ('0' + ((SIZE / 10000)%10)),
+  ('0' + ((SIZE / 1000)%10)),
+  ('0' + ((SIZE / 100)%10)),
+  ('0' + ((SIZE / 10)%10)),
+  ('0' +  (SIZE    % 10)),
+  ']',
+#ifdef KEY
+  ' ','k','e','y','[', KEY, ']',
+#endif
+  '\0'};
+
+#ifdef __CLASSIC_C__
+int main(argc, argv) int argc; char *argv[];
+#else
+int main(int argc, char *argv[])
+#endif
+{
+  int require = 0;
+  require += info_size[argc];
+  (void)argv;
+  return require;
+}
+
+

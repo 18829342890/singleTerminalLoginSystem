@@ -1,0 +1,1017 @@
+The system is: Darwin - 19.3.0 - x86_64
+Compiling the C compiler identification source file "CMakeCCompilerId.c" succeeded.
+Compiler: /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc 
+Build flags: 
+Id flags:  
+
+The output was:
+0
+
+
+Compilation of the C compiler identification source "CMakeCCompilerId.c" produced "a.out"
+
+The C compiler identification is AppleClang, found in "/Users/tanxiaohui/mygit/mysql-connector-cpp/CMakeFiles/3.16.5/CompilerIdC/a.out"
+
+Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" succeeded.
+Compiler: /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ 
+Build flags: 
+Id flags:  
+
+The output was:
+0
+
+
+Compilation of the CXX compiler identification source "CMakeCXXCompilerId.cpp" produced "a.out"
+
+The CXX compiler identification is AppleClang, found in "/Users/tanxiaohui/mygit/mysql-connector-cpp/CMakeFiles/3.16.5/CompilerIdCXX/a.out"
+
+Determining if the C compiler works passed with the following output:
+Change Dir: /Users/tanxiaohui/mygit/mysql-connector-cpp/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_a4e42/fast && /Applications/Xcode.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTC_a4e42.dir/build.make CMakeFiles/cmTC_a4e42.dir/build
+Building C object CMakeFiles/cmTC_a4e42.dir/testCCompiler.c.o
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc   -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk   -o CMakeFiles/cmTC_a4e42.dir/testCCompiler.c.o   -c /Users/tanxiaohui/mygit/mysql-connector-cpp/CMakeFiles/CMakeTmp/testCCompiler.c
+Linking C executable cmTC_a4e42
+/usr/local/Cellar/cmake/3.16.5/bin/cmake -E cmake_link_script CMakeFiles/cmTC_a4e42.dir/link.txt --verbose=1
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc   -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk -Wl,-search_paths_first -Wl,-headerpad_max_install_names   CMakeFiles/cmTC_a4e42.dir/testCCompiler.c.o  -o cmTC_a4e42 
+
+
+
+Detecting C compiler ABI info compiled with the following output:
+Change Dir: /Users/tanxiaohui/mygit/mysql-connector-cpp/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_cd671/fast && /Applications/Xcode.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTC_cd671.dir/build.make CMakeFiles/cmTC_cd671.dir/build
+Building C object CMakeFiles/cmTC_cd671.dir/CMakeCCompilerABI.c.o
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc   -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk   -v -Wl,-v -o CMakeFiles/cmTC_cd671.dir/CMakeCCompilerABI.c.o   -c /usr/local/Cellar/cmake/3.16.5/share/cmake/Modules/CMakeCCompilerABI.c
+Apple clang version 11.0.0 (clang-1100.0.33.17)
+Target: x86_64-apple-darwin19.3.0
+Thread model: posix
+InstalledDir: /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin
+clang: warning: -Wl,-v: 'linker' input unused [-Wunused-command-line-argument]
+ "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang" -cc1 -triple x86_64-apple-macosx10.15.0 -Wdeprecated-objc-isa-usage -Werror=deprecated-objc-isa-usage -emit-obj -mrelax-all -disable-free -disable-llvm-verifier -discard-value-names -main-file-name CMakeCCompilerABI.c -mrelocation-model pic -pic-level 2 -mthread-model posix -mdisable-fp-elim -fno-strict-return -masm-verbose -munwind-tables -target-sdk-version=10.15 -target-cpu penryn -dwarf-column-info -debugger-tuning=lldb -ggnu-pubnames -target-linker-version 530 -v -coverage-notes-file /Users/tanxiaohui/mygit/mysql-connector-cpp/CMakeFiles/CMakeTmp/CMakeFiles/cmTC_cd671.dir/CMakeCCompilerABI.c.gcno -resource-dir /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/11.0.0 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk -c-isystem . -c-isystem /usr/local/opt/openssl/include/openssl -c-isystem /usr/local/include/ -cxx-isystem . -cxx-isystem /usr/local/opt/openssl/include/openssl -cxx-isystem /usr/local/include/ -Wno-framework-include-private-from-public -Wno-atimport-in-framework-header -Wno-extra-semi-stmt -Wno-quoted-include-in-framework-header -fdebug-compilation-dir /Users/tanxiaohui/mygit/mysql-connector-cpp/CMakeFiles/CMakeTmp -ferror-limit 19 -fmessage-length 0 -stack-protector 1 -fstack-check -mdarwin-stkchk-strong-link -fblocks -fencode-extended-block-signature -fregister-global-dtors-with-atexit -fobjc-runtime=macosx-10.15.0 -fmax-type-align=16 -fdiagnostics-show-option -o CMakeFiles/cmTC_cd671.dir/CMakeCCompilerABI.c.o -x c /usr/local/Cellar/cmake/3.16.5/share/cmake/Modules/CMakeCCompilerABI.c
+clang -cc1 version 11.0.0 (clang-1100.0.33.17) default target x86_64-apple-darwin19.3.0
+ignoring nonexistent directory "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/usr/local/include"
+ignoring nonexistent directory "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/Library/Frameworks"
+#include "..." search starts here:
+#include <...> search starts here:
+ .
+ /usr/local/opt/openssl/include/openssl
+ /usr/local/include
+ /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/11.0.0/include
+ /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include
+ /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/usr/include
+ /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/System/Library/Frameworks (framework directory)
+End of search list.
+Linking C executable cmTC_cd671
+/usr/local/Cellar/cmake/3.16.5/bin/cmake -E cmake_link_script CMakeFiles/cmTC_cd671.dir/link.txt --verbose=1
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc   -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk -Wl,-search_paths_first -Wl,-headerpad_max_install_names  -v -Wl,-v CMakeFiles/cmTC_cd671.dir/CMakeCCompilerABI.c.o  -o cmTC_cd671 
+Apple clang version 11.0.0 (clang-1100.0.33.17)
+Target: x86_64-apple-darwin19.3.0
+Thread model: posix
+InstalledDir: /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin
+ "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/ld" -demangle -lto_library /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/libLTO.dylib -dynamic -arch x86_64 -macosx_version_min 10.15.0 -syslibroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk -o cmTC_cd671 -search_paths_first -headerpad_max_install_names -v CMakeFiles/cmTC_cd671.dir/CMakeCCompilerABI.c.o -lSystem /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/11.0.0/lib/darwin/libclang_rt.osx.a
+@(#)PROGRAM:ld  PROJECT:ld64-530
+BUILD 18:57:17 Dec 13 2019
+configured to support archs: armv6 armv7 armv7s arm64 arm64e arm64_32 i386 x86_64 x86_64h armv6m armv7k armv7m armv7em
+Library search paths:
+	/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/usr/lib
+Framework search paths:
+	/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/System/Library/Frameworks/
+
+
+
+Parsed C implicit include dir info from above output: rv=done
+  found start of include info
+  found start of implicit include info
+    add: [.]
+    add: [/usr/local/opt/openssl/include/openssl]
+    add: [/usr/local/include]
+    add: [/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/11.0.0/include]
+    add: [/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include]
+    add: [/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/usr/include]
+  end of search list found
+  skipping relative include dir [.]
+  collapse include dir [/usr/local/opt/openssl/include/openssl] ==> [/usr/local/opt/openssl/include/openssl]
+  collapse include dir [/usr/local/include] ==> [/usr/local/include]
+  collapse include dir [/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/11.0.0/include] ==> [/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/11.0.0/include]
+  collapse include dir [/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include] ==> [/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include]
+  collapse include dir [/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/usr/include] ==> [/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/usr/include]
+  implicit include dirs: [/usr/local/opt/openssl/include/openssl;/usr/local/include;/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/11.0.0/include;/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include;/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/usr/include]
+
+
+Parsed C implicit link information from above output:
+  link line regex: [^( *|.*[/\])(ld|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\]+-)?ld|collect2)[^/\]*( |$)]
+  ignore line: [Change Dir: /Users/tanxiaohui/mygit/mysql-connector-cpp/CMakeFiles/CMakeTmp]
+  ignore line: []
+  ignore line: [Run Build Command(s):/usr/bin/make cmTC_cd671/fast && /Applications/Xcode.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTC_cd671.dir/build.make CMakeFiles/cmTC_cd671.dir/build]
+  ignore line: [Building C object CMakeFiles/cmTC_cd671.dir/CMakeCCompilerABI.c.o]
+  ignore line: [/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc   -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk   -v -Wl -v -o CMakeFiles/cmTC_cd671.dir/CMakeCCompilerABI.c.o   -c /usr/local/Cellar/cmake/3.16.5/share/cmake/Modules/CMakeCCompilerABI.c]
+  ignore line: [Apple clang version 11.0.0 (clang-1100.0.33.17)]
+  ignore line: [Target: x86_64-apple-darwin19.3.0]
+  ignore line: [Thread model: posix]
+  ignore line: [InstalledDir: /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin]
+  ignore line: [clang: warning: -Wl -v: 'linker' input unused [-Wunused-command-line-argument]]
+  ignore line: [ "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang" -cc1 -triple x86_64-apple-macosx10.15.0 -Wdeprecated-objc-isa-usage -Werror=deprecated-objc-isa-usage -emit-obj -mrelax-all -disable-free -disable-llvm-verifier -discard-value-names -main-file-name CMakeCCompilerABI.c -mrelocation-model pic -pic-level 2 -mthread-model posix -mdisable-fp-elim -fno-strict-return -masm-verbose -munwind-tables -target-sdk-version=10.15 -target-cpu penryn -dwarf-column-info -debugger-tuning=lldb -ggnu-pubnames -target-linker-version 530 -v -coverage-notes-file /Users/tanxiaohui/mygit/mysql-connector-cpp/CMakeFiles/CMakeTmp/CMakeFiles/cmTC_cd671.dir/CMakeCCompilerABI.c.gcno -resource-dir /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/11.0.0 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk -c-isystem . -c-isystem /usr/local/opt/openssl/include/openssl -c-isystem /usr/local/include/ -cxx-isystem . -cxx-isystem /usr/local/opt/openssl/include/openssl -cxx-isystem /usr/local/include/ -Wno-framework-include-private-from-public -Wno-atimport-in-framework-header -Wno-extra-semi-stmt -Wno-quoted-include-in-framework-header -fdebug-compilation-dir /Users/tanxiaohui/mygit/mysql-connector-cpp/CMakeFiles/CMakeTmp -ferror-limit 19 -fmessage-length 0 -stack-protector 1 -fstack-check -mdarwin-stkchk-strong-link -fblocks -fencode-extended-block-signature -fregister-global-dtors-with-atexit -fobjc-runtime=macosx-10.15.0 -fmax-type-align=16 -fdiagnostics-show-option -o CMakeFiles/cmTC_cd671.dir/CMakeCCompilerABI.c.o -x c /usr/local/Cellar/cmake/3.16.5/share/cmake/Modules/CMakeCCompilerABI.c]
+  ignore line: [clang -cc1 version 11.0.0 (clang-1100.0.33.17) default target x86_64-apple-darwin19.3.0]
+  ignore line: [ignoring nonexistent directory "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/usr/local/include"]
+  ignore line: [ignoring nonexistent directory "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/Library/Frameworks"]
+  ignore line: [#include "..." search starts here:]
+  ignore line: [#include <...> search starts here:]
+  ignore line: [ .]
+  ignore line: [ /usr/local/opt/openssl/include/openssl]
+  ignore line: [ /usr/local/include]
+  ignore line: [ /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/11.0.0/include]
+  ignore line: [ /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include]
+  ignore line: [ /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/usr/include]
+  ignore line: [ /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/System/Library/Frameworks (framework directory)]
+  ignore line: [End of search list.]
+  ignore line: [Linking C executable cmTC_cd671]
+  ignore line: [/usr/local/Cellar/cmake/3.16.5/bin/cmake -E cmake_link_script CMakeFiles/cmTC_cd671.dir/link.txt --verbose=1]
+  ignore line: [/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc   -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk -Wl -search_paths_first -Wl -headerpad_max_install_names  -v -Wl -v CMakeFiles/cmTC_cd671.dir/CMakeCCompilerABI.c.o  -o cmTC_cd671 ]
+  ignore line: [Apple clang version 11.0.0 (clang-1100.0.33.17)]
+  ignore line: [Target: x86_64-apple-darwin19.3.0]
+  ignore line: [Thread model: posix]
+  ignore line: [InstalledDir: /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin]
+  link line: [ "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/ld" -demangle -lto_library /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/libLTO.dylib -dynamic -arch x86_64 -macosx_version_min 10.15.0 -syslibroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk -o cmTC_cd671 -search_paths_first -headerpad_max_install_names -v CMakeFiles/cmTC_cd671.dir/CMakeCCompilerABI.c.o -lSystem /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/11.0.0/lib/darwin/libclang_rt.osx.a]
+    arg [/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/ld] ==> ignore
+    arg [-demangle] ==> ignore
+    arg [-lto_library] ==> ignore, skip following value
+    arg [/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/libLTO.dylib] ==> skip value of -lto_library
+    arg [-dynamic] ==> ignore
+    arg [-arch] ==> ignore
+    arg [x86_64] ==> ignore
+    arg [-macosx_version_min] ==> ignore
+    arg [10.15.0] ==> ignore
+    arg [-syslibroot] ==> ignore
+    arg [/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk] ==> ignore
+    arg [-o] ==> ignore
+    arg [cmTC_cd671] ==> ignore
+    arg [-search_paths_first] ==> ignore
+    arg [-headerpad_max_install_names] ==> ignore
+    arg [-v] ==> ignore
+    arg [CMakeFiles/cmTC_cd671.dir/CMakeCCompilerABI.c.o] ==> ignore
+    arg [-lSystem] ==> lib [System]
+    arg [/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/11.0.0/lib/darwin/libclang_rt.osx.a] ==> lib [/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/11.0.0/lib/darwin/libclang_rt.osx.a]
+  Library search paths: [;/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/usr/lib]
+  Framework search paths: [;/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/System/Library/Frameworks/]
+  remove lib [System]
+  remove lib [/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/11.0.0/lib/darwin/libclang_rt.osx.a]
+  collapse library dir [/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/usr/lib] ==> [/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/usr/lib]
+  collapse framework dir [/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/System/Library/Frameworks/] ==> [/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/System/Library/Frameworks]
+  implicit libs: []
+  implicit dirs: [/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/usr/lib]
+  implicit fwks: [/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/System/Library/Frameworks]
+
+
+Determining if the CXX compiler works passed with the following output:
+Change Dir: /Users/tanxiaohui/mygit/mysql-connector-cpp/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_73706/fast && /Applications/Xcode.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTC_73706.dir/build.make CMakeFiles/cmTC_73706.dir/build
+Building CXX object CMakeFiles/cmTC_73706.dir/testCXXCompiler.cxx.o
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++    -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk   -o CMakeFiles/cmTC_73706.dir/testCXXCompiler.cxx.o -c /Users/tanxiaohui/mygit/mysql-connector-cpp/CMakeFiles/CMakeTmp/testCXXCompiler.cxx
+Linking CXX executable cmTC_73706
+/usr/local/Cellar/cmake/3.16.5/bin/cmake -E cmake_link_script CMakeFiles/cmTC_73706.dir/link.txt --verbose=1
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++    -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk -Wl,-search_paths_first -Wl,-headerpad_max_install_names   CMakeFiles/cmTC_73706.dir/testCXXCompiler.cxx.o  -o cmTC_73706 
+
+
+
+Detecting CXX compiler ABI info compiled with the following output:
+Change Dir: /Users/tanxiaohui/mygit/mysql-connector-cpp/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_4b91e/fast && /Applications/Xcode.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTC_4b91e.dir/build.make CMakeFiles/cmTC_4b91e.dir/build
+Building CXX object CMakeFiles/cmTC_4b91e.dir/CMakeCXXCompilerABI.cpp.o
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++    -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk   -v -Wl,-v -o CMakeFiles/cmTC_4b91e.dir/CMakeCXXCompilerABI.cpp.o -c /usr/local/Cellar/cmake/3.16.5/share/cmake/Modules/CMakeCXXCompilerABI.cpp
+Apple clang version 11.0.0 (clang-1100.0.33.17)
+Target: x86_64-apple-darwin19.3.0
+Thread model: posix
+InstalledDir: /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin
+clang: warning: -Wl,-v: 'linker' input unused [-Wunused-command-line-argument]
+ "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang" -cc1 -triple x86_64-apple-macosx10.15.0 -Wdeprecated-objc-isa-usage -Werror=deprecated-objc-isa-usage -emit-obj -mrelax-all -disable-free -disable-llvm-verifier -discard-value-names -main-file-name CMakeCXXCompilerABI.cpp -mrelocation-model pic -pic-level 2 -mthread-model posix -mdisable-fp-elim -fno-strict-return -masm-verbose -munwind-tables -target-sdk-version=10.15 -target-cpu penryn -dwarf-column-info -debugger-tuning=lldb -ggnu-pubnames -target-linker-version 530 -v -coverage-notes-file /Users/tanxiaohui/mygit/mysql-connector-cpp/CMakeFiles/CMakeTmp/CMakeFiles/cmTC_4b91e.dir/CMakeCXXCompilerABI.cpp.gcno -resource-dir /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/11.0.0 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk -c-isystem . -c-isystem /usr/local/opt/openssl/include/openssl -c-isystem /usr/local/include/ -cxx-isystem . -cxx-isystem /usr/local/opt/openssl/include/openssl -cxx-isystem /usr/local/include/ -stdlib=libc++ -internal-isystem /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1 -Wno-framework-include-private-from-public -Wno-atimport-in-framework-header -Wno-extra-semi-stmt -Wno-quoted-include-in-framework-header -fdeprecated-macro -fdebug-compilation-dir /Users/tanxiaohui/mygit/mysql-connector-cpp/CMakeFiles/CMakeTmp -ferror-limit 19 -fmessage-length 0 -stack-protector 1 -fstack-check -mdarwin-stkchk-strong-link -fblocks -fencode-extended-block-signature -fregister-global-dtors-with-atexit -fobjc-runtime=macosx-10.15.0 -fcxx-exceptions -fexceptions -fmax-type-align=16 -fdiagnostics-show-option -o CMakeFiles/cmTC_4b91e.dir/CMakeCXXCompilerABI.cpp.o -x c++ /usr/local/Cellar/cmake/3.16.5/share/cmake/Modules/CMakeCXXCompilerABI.cpp
+clang -cc1 version 11.0.0 (clang-1100.0.33.17) default target x86_64-apple-darwin19.3.0
+ignoring nonexistent directory "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/usr/include/c++/v1"
+ignoring nonexistent directory "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/usr/local/include"
+ignoring nonexistent directory "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/Library/Frameworks"
+#include "..." search starts here:
+#include <...> search starts here:
+ .
+ /usr/local/opt/openssl/include/openssl
+ /usr/local/include
+ /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1
+ /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/11.0.0/include
+ /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include
+ /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/usr/include
+ /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/System/Library/Frameworks (framework directory)
+End of search list.
+Linking CXX executable cmTC_4b91e
+/usr/local/Cellar/cmake/3.16.5/bin/cmake -E cmake_link_script CMakeFiles/cmTC_4b91e.dir/link.txt --verbose=1
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++    -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk -Wl,-search_paths_first -Wl,-headerpad_max_install_names  -v -Wl,-v CMakeFiles/cmTC_4b91e.dir/CMakeCXXCompilerABI.cpp.o  -o cmTC_4b91e 
+Apple clang version 11.0.0 (clang-1100.0.33.17)
+Target: x86_64-apple-darwin19.3.0
+Thread model: posix
+InstalledDir: /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin
+ "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/ld" -demangle -lto_library /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/libLTO.dylib -dynamic -arch x86_64 -macosx_version_min 10.15.0 -syslibroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk -o cmTC_4b91e -search_paths_first -headerpad_max_install_names -v CMakeFiles/cmTC_4b91e.dir/CMakeCXXCompilerABI.cpp.o -lc++ -lSystem /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/11.0.0/lib/darwin/libclang_rt.osx.a
+@(#)PROGRAM:ld  PROJECT:ld64-530
+BUILD 18:57:17 Dec 13 2019
+configured to support archs: armv6 armv7 armv7s arm64 arm64e arm64_32 i386 x86_64 x86_64h armv6m armv7k armv7m armv7em
+Library search paths:
+	/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/usr/lib
+Framework search paths:
+	/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/System/Library/Frameworks/
+
+
+
+Parsed CXX implicit include dir info from above output: rv=done
+  found start of include info
+  found start of implicit include info
+    add: [.]
+    add: [/usr/local/opt/openssl/include/openssl]
+    add: [/usr/local/include]
+    add: [/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1]
+    add: [/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/11.0.0/include]
+    add: [/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include]
+    add: [/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/usr/include]
+  end of search list found
+  skipping relative include dir [.]
+  collapse include dir [/usr/local/opt/openssl/include/openssl] ==> [/usr/local/opt/openssl/include/openssl]
+  collapse include dir [/usr/local/include] ==> [/usr/local/include]
+  collapse include dir [/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1] ==> [/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include/c++/v1]
+  collapse include dir [/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/11.0.0/include] ==> [/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/11.0.0/include]
+  collapse include dir [/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include] ==> [/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include]
+  collapse include dir [/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/usr/include] ==> [/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/usr/include]
+  implicit include dirs: [/usr/local/opt/openssl/include/openssl;/usr/local/include;/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include/c++/v1;/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/11.0.0/include;/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include;/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/usr/include]
+
+
+Parsed CXX implicit link information from above output:
+  link line regex: [^( *|.*[/\])(ld|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\]+-)?ld|collect2)[^/\]*( |$)]
+  ignore line: [Change Dir: /Users/tanxiaohui/mygit/mysql-connector-cpp/CMakeFiles/CMakeTmp]
+  ignore line: []
+  ignore line: [Run Build Command(s):/usr/bin/make cmTC_4b91e/fast && /Applications/Xcode.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTC_4b91e.dir/build.make CMakeFiles/cmTC_4b91e.dir/build]
+  ignore line: [Building CXX object CMakeFiles/cmTC_4b91e.dir/CMakeCXXCompilerABI.cpp.o]
+  ignore line: [/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++    -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk   -v -Wl -v -o CMakeFiles/cmTC_4b91e.dir/CMakeCXXCompilerABI.cpp.o -c /usr/local/Cellar/cmake/3.16.5/share/cmake/Modules/CMakeCXXCompilerABI.cpp]
+  ignore line: [Apple clang version 11.0.0 (clang-1100.0.33.17)]
+  ignore line: [Target: x86_64-apple-darwin19.3.0]
+  ignore line: [Thread model: posix]
+  ignore line: [InstalledDir: /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin]
+  ignore line: [clang: warning: -Wl -v: 'linker' input unused [-Wunused-command-line-argument]]
+  ignore line: [ "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang" -cc1 -triple x86_64-apple-macosx10.15.0 -Wdeprecated-objc-isa-usage -Werror=deprecated-objc-isa-usage -emit-obj -mrelax-all -disable-free -disable-llvm-verifier -discard-value-names -main-file-name CMakeCXXCompilerABI.cpp -mrelocation-model pic -pic-level 2 -mthread-model posix -mdisable-fp-elim -fno-strict-return -masm-verbose -munwind-tables -target-sdk-version=10.15 -target-cpu penryn -dwarf-column-info -debugger-tuning=lldb -ggnu-pubnames -target-linker-version 530 -v -coverage-notes-file /Users/tanxiaohui/mygit/mysql-connector-cpp/CMakeFiles/CMakeTmp/CMakeFiles/cmTC_4b91e.dir/CMakeCXXCompilerABI.cpp.gcno -resource-dir /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/11.0.0 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk -c-isystem . -c-isystem /usr/local/opt/openssl/include/openssl -c-isystem /usr/local/include/ -cxx-isystem . -cxx-isystem /usr/local/opt/openssl/include/openssl -cxx-isystem /usr/local/include/ -stdlib=libc++ -internal-isystem /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1 -Wno-framework-include-private-from-public -Wno-atimport-in-framework-header -Wno-extra-semi-stmt -Wno-quoted-include-in-framework-header -fdeprecated-macro -fdebug-compilation-dir /Users/tanxiaohui/mygit/mysql-connector-cpp/CMakeFiles/CMakeTmp -ferror-limit 19 -fmessage-length 0 -stack-protector 1 -fstack-check -mdarwin-stkchk-strong-link -fblocks -fencode-extended-block-signature -fregister-global-dtors-with-atexit -fobjc-runtime=macosx-10.15.0 -fcxx-exceptions -fexceptions -fmax-type-align=16 -fdiagnostics-show-option -o CMakeFiles/cmTC_4b91e.dir/CMakeCXXCompilerABI.cpp.o -x c++ /usr/local/Cellar/cmake/3.16.5/share/cmake/Modules/CMakeCXXCompilerABI.cpp]
+  ignore line: [clang -cc1 version 11.0.0 (clang-1100.0.33.17) default target x86_64-apple-darwin19.3.0]
+  ignore line: [ignoring nonexistent directory "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/usr/include/c++/v1"]
+  ignore line: [ignoring nonexistent directory "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/usr/local/include"]
+  ignore line: [ignoring nonexistent directory "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/Library/Frameworks"]
+  ignore line: [#include "..." search starts here:]
+  ignore line: [#include <...> search starts here:]
+  ignore line: [ .]
+  ignore line: [ /usr/local/opt/openssl/include/openssl]
+  ignore line: [ /usr/local/include]
+  ignore line: [ /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1]
+  ignore line: [ /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/11.0.0/include]
+  ignore line: [ /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include]
+  ignore line: [ /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/usr/include]
+  ignore line: [ /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/System/Library/Frameworks (framework directory)]
+  ignore line: [End of search list.]
+  ignore line: [Linking CXX executable cmTC_4b91e]
+  ignore line: [/usr/local/Cellar/cmake/3.16.5/bin/cmake -E cmake_link_script CMakeFiles/cmTC_4b91e.dir/link.txt --verbose=1]
+  ignore line: [/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++    -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk -Wl -search_paths_first -Wl -headerpad_max_install_names  -v -Wl -v CMakeFiles/cmTC_4b91e.dir/CMakeCXXCompilerABI.cpp.o  -o cmTC_4b91e ]
+  ignore line: [Apple clang version 11.0.0 (clang-1100.0.33.17)]
+  ignore line: [Target: x86_64-apple-darwin19.3.0]
+  ignore line: [Thread model: posix]
+  ignore line: [InstalledDir: /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin]
+  link line: [ "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/ld" -demangle -lto_library /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/libLTO.dylib -dynamic -arch x86_64 -macosx_version_min 10.15.0 -syslibroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk -o cmTC_4b91e -search_paths_first -headerpad_max_install_names -v CMakeFiles/cmTC_4b91e.dir/CMakeCXXCompilerABI.cpp.o -lc++ -lSystem /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/11.0.0/lib/darwin/libclang_rt.osx.a]
+    arg [/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/ld] ==> ignore
+    arg [-demangle] ==> ignore
+    arg [-lto_library] ==> ignore, skip following value
+    arg [/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/libLTO.dylib] ==> skip value of -lto_library
+    arg [-dynamic] ==> ignore
+    arg [-arch] ==> ignore
+    arg [x86_64] ==> ignore
+    arg [-macosx_version_min] ==> ignore
+    arg [10.15.0] ==> ignore
+    arg [-syslibroot] ==> ignore
+    arg [/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk] ==> ignore
+    arg [-o] ==> ignore
+    arg [cmTC_4b91e] ==> ignore
+    arg [-search_paths_first] ==> ignore
+    arg [-headerpad_max_install_names] ==> ignore
+    arg [-v] ==> ignore
+    arg [CMakeFiles/cmTC_4b91e.dir/CMakeCXXCompilerABI.cpp.o] ==> ignore
+    arg [-lc++] ==> lib [c++]
+    arg [-lSystem] ==> lib [System]
+    arg [/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/11.0.0/lib/darwin/libclang_rt.osx.a] ==> lib [/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/11.0.0/lib/darwin/libclang_rt.osx.a]
+  Library search paths: [;/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/usr/lib]
+  Framework search paths: [;/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/System/Library/Frameworks/]
+  remove lib [System]
+  remove lib [/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/11.0.0/lib/darwin/libclang_rt.osx.a]
+  collapse library dir [/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/usr/lib] ==> [/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/usr/lib]
+  collapse framework dir [/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/System/Library/Frameworks/] ==> [/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/System/Library/Frameworks]
+  implicit libs: [c++]
+  implicit dirs: [/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/usr/lib]
+  implicit fwks: [/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/System/Library/Frameworks]
+
+
+Determining if the include file sys/types.h exists passed with the following output:
+Change Dir: /Users/tanxiaohui/mygit/mysql-connector-cpp/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_85ce1/fast && /Applications/Xcode.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTC_85ce1.dir/build.make CMakeFiles/cmTC_85ce1.dir/build
+Building C object CMakeFiles/cmTC_85ce1.dir/CheckIncludeFile.c.o
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc   -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk   -o CMakeFiles/cmTC_85ce1.dir/CheckIncludeFile.c.o   -c /Users/tanxiaohui/mygit/mysql-connector-cpp/CMakeFiles/CMakeTmp/CheckIncludeFile.c
+Linking C executable cmTC_85ce1
+/usr/local/Cellar/cmake/3.16.5/bin/cmake -E cmake_link_script CMakeFiles/cmTC_85ce1.dir/link.txt --verbose=1
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc   -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk -Wl,-search_paths_first -Wl,-headerpad_max_install_names   CMakeFiles/cmTC_85ce1.dir/CheckIncludeFile.c.o  -o cmTC_85ce1 
+
+
+
+Determining if the include file stdint.h exists passed with the following output:
+Change Dir: /Users/tanxiaohui/mygit/mysql-connector-cpp/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_ffbad/fast && /Applications/Xcode.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTC_ffbad.dir/build.make CMakeFiles/cmTC_ffbad.dir/build
+Building C object CMakeFiles/cmTC_ffbad.dir/CheckIncludeFile.c.o
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc   -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk   -o CMakeFiles/cmTC_ffbad.dir/CheckIncludeFile.c.o   -c /Users/tanxiaohui/mygit/mysql-connector-cpp/CMakeFiles/CMakeTmp/CheckIncludeFile.c
+Linking C executable cmTC_ffbad
+/usr/local/Cellar/cmake/3.16.5/bin/cmake -E cmake_link_script CMakeFiles/cmTC_ffbad.dir/link.txt --verbose=1
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc   -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk -Wl,-search_paths_first -Wl,-headerpad_max_install_names   CMakeFiles/cmTC_ffbad.dir/CheckIncludeFile.c.o  -o cmTC_ffbad 
+
+
+
+Determining if the include file stddef.h exists passed with the following output:
+Change Dir: /Users/tanxiaohui/mygit/mysql-connector-cpp/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_47705/fast && /Applications/Xcode.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTC_47705.dir/build.make CMakeFiles/cmTC_47705.dir/build
+Building C object CMakeFiles/cmTC_47705.dir/CheckIncludeFile.c.o
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc   -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk   -o CMakeFiles/cmTC_47705.dir/CheckIncludeFile.c.o   -c /Users/tanxiaohui/mygit/mysql-connector-cpp/CMakeFiles/CMakeTmp/CheckIncludeFile.c
+Linking C executable cmTC_47705
+/usr/local/Cellar/cmake/3.16.5/bin/cmake -E cmake_link_script CMakeFiles/cmTC_47705.dir/link.txt --verbose=1
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc   -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk -Wl,-search_paths_first -Wl,-headerpad_max_install_names   CMakeFiles/cmTC_47705.dir/CheckIncludeFile.c.o  -o cmTC_47705 
+
+
+
+Determining size of unsigned short passed with the following output:
+Change Dir: /Users/tanxiaohui/mygit/mysql-connector-cpp/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_1e187/fast && /Applications/Xcode.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTC_1e187.dir/build.make CMakeFiles/cmTC_1e187.dir/build
+Building C object CMakeFiles/cmTC_1e187.dir/CMAKE_SIZEOF_UNSIGNED_SHORT.c.o
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc   -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk   -o CMakeFiles/cmTC_1e187.dir/CMAKE_SIZEOF_UNSIGNED_SHORT.c.o   -c /Users/tanxiaohui/mygit/mysql-connector-cpp/CMakeFiles/CheckTypeSize/CMAKE_SIZEOF_UNSIGNED_SHORT.c
+Linking C executable cmTC_1e187
+/usr/local/Cellar/cmake/3.16.5/bin/cmake -E cmake_link_script CMakeFiles/cmTC_1e187.dir/link.txt --verbose=1
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc   -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk -Wl,-search_paths_first -Wl,-headerpad_max_install_names   CMakeFiles/cmTC_1e187.dir/CMAKE_SIZEOF_UNSIGNED_SHORT.c.o  -o cmTC_1e187 
+
+
+
+Determining if the system is big endian passed with the following output:
+Change Dir: /Users/tanxiaohui/mygit/mysql-connector-cpp/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_1d3da/fast && /Applications/Xcode.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTC_1d3da.dir/build.make CMakeFiles/cmTC_1d3da.dir/build
+Building C object CMakeFiles/cmTC_1d3da.dir/TestEndianess.c.o
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc   -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk   -o CMakeFiles/cmTC_1d3da.dir/TestEndianess.c.o   -c /Users/tanxiaohui/mygit/mysql-connector-cpp/CMakeFiles/CMakeTmp/TestEndianess.c
+Linking C executable cmTC_1d3da
+/usr/local/Cellar/cmake/3.16.5/bin/cmake -E cmake_link_script CMakeFiles/cmTC_1d3da.dir/link.txt --verbose=1
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc   -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk -Wl,-search_paths_first -Wl,-headerpad_max_install_names   CMakeFiles/cmTC_1d3da.dir/TestEndianess.c.o  -o cmTC_1d3da 
+
+
+TestEndianess.c:
+/* A 16 bit integer is required. */
+typedef unsigned short cmakeint16;
+
+/* On a little endian machine, these 16bit ints will give "THIS IS LITTLE ENDIAN."
+   On a big endian machine the characters will be exchanged pairwise. */
+const cmakeint16 info_little[] =  {0x4854, 0x5349, 0x4920, 0x2053, 0x494c, 0x5454, 0x454c, 0x4520, 0x444e, 0x4149, 0x2e4e, 0x0000};
+
+/* on a big endian machine, these 16bit ints will give "THIS IS BIG ENDIAN."
+   On a little endian machine the characters will be exchanged pairwise. */
+const cmakeint16 info_big[] =     {0x5448, 0x4953, 0x2049, 0x5320, 0x4249, 0x4720, 0x454e, 0x4449, 0x414e, 0x2e2e, 0x0000};
+
+#ifdef __CLASSIC_C__
+int main(argc, argv) int argc; char *argv[];
+#else
+int main(int argc, char *argv[])
+#endif
+{
+  int require = 0;
+  require += info_little[argc];
+  require += info_big[argc];
+  (void)argv;
+  return require;
+}
+
+
+Performing C++ SOURCE FILE Test HAVE_STATIC_ASSERT succeeded with the following output:
+Change Dir: /Users/tanxiaohui/mygit/mysql-connector-cpp/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_81368/fast && /Applications/Xcode.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTC_81368.dir/build.make CMakeFiles/cmTC_81368.dir/build
+Building CXX object CMakeFiles/cmTC_81368.dir/src.cxx.o
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++    -stdlib=libc++ -std=c++11 -stdlib=libc++ -std=c++11  -DHAVE_STATIC_ASSERT  -std=c++11 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk   -o CMakeFiles/cmTC_81368.dir/src.cxx.o -c /Users/tanxiaohui/mygit/mysql-connector-cpp/CMakeFiles/CMakeTmp/src.cxx
+Linking CXX executable cmTC_81368
+/usr/local/Cellar/cmake/3.16.5/bin/cmake -E cmake_link_script CMakeFiles/cmTC_81368.dir/link.txt --verbose=1
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  -stdlib=libc++ -std=c++11 -stdlib=libc++ -std=c++11  -DHAVE_STATIC_ASSERT  -std=c++11 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk -Wl,-search_paths_first -Wl,-headerpad_max_install_names   CMakeFiles/cmTC_81368.dir/src.cxx.o  -o cmTC_81368 
+
+
+Source file was:
+#include <string>
+  int main() { static_assert(true,"Ok"); }
+Performing C++ SOURCE FILE Test HAVE_SHARED_PTR succeeded with the following output:
+Change Dir: /Users/tanxiaohui/mygit/mysql-connector-cpp/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_bd0dc/fast && /Applications/Xcode.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTC_bd0dc.dir/build.make CMakeFiles/cmTC_bd0dc.dir/build
+Building CXX object CMakeFiles/cmTC_bd0dc.dir/src.cxx.o
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++    -stdlib=libc++ -std=c++11 -stdlib=libc++ -std=c++11  -DHAVE_SHARED_PTR  -std=c++11 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk   -o CMakeFiles/cmTC_bd0dc.dir/src.cxx.o -c /Users/tanxiaohui/mygit/mysql-connector-cpp/CMakeFiles/CMakeTmp/src.cxx
+Linking CXX executable cmTC_bd0dc
+/usr/local/Cellar/cmake/3.16.5/bin/cmake -E cmake_link_script CMakeFiles/cmTC_bd0dc.dir/link.txt --verbose=1
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  -stdlib=libc++ -std=c++11 -stdlib=libc++ -std=c++11  -DHAVE_SHARED_PTR  -std=c++11 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk -Wl,-search_paths_first -Wl,-headerpad_max_install_names   CMakeFiles/cmTC_bd0dc.dir/src.cxx.o  -o cmTC_bd0dc 
+
+
+Source file was:
+#include <memory>
+   void test(std::shared_ptr<int>) {};
+   int main() { return 0; }
+The system is: Darwin - 19.3.0 - x86_64
+Compiling the C compiler identification source file "CMakeCCompilerId.c" succeeded.
+Compiler: /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc 
+Build flags: 
+Id flags:  
+
+The output was:
+0
+
+
+Compilation of the C compiler identification source "CMakeCCompilerId.c" produced "a.out"
+
+The C compiler identification is AppleClang, found in "/Users/tanxiaohui/mygit/mysql-connector-cpp/CMakeFiles/3.16.5/CompilerIdC/a.out"
+
+Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" succeeded.
+Compiler: /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ 
+Build flags: 
+Id flags:  
+
+The output was:
+0
+
+
+Compilation of the CXX compiler identification source "CMakeCXXCompilerId.cpp" produced "a.out"
+
+The CXX compiler identification is AppleClang, found in "/Users/tanxiaohui/mygit/mysql-connector-cpp/CMakeFiles/3.16.5/CompilerIdCXX/a.out"
+
+Determining if the C compiler works passed with the following output:
+Change Dir: /Users/tanxiaohui/mygit/mysql-connector-cpp/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_f3527/fast && /Applications/Xcode.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTC_f3527.dir/build.make CMakeFiles/cmTC_f3527.dir/build
+Building C object CMakeFiles/cmTC_f3527.dir/testCCompiler.c.o
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc   -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk   -o CMakeFiles/cmTC_f3527.dir/testCCompiler.c.o   -c /Users/tanxiaohui/mygit/mysql-connector-cpp/CMakeFiles/CMakeTmp/testCCompiler.c
+Linking C executable cmTC_f3527
+/usr/local/Cellar/cmake/3.16.5/bin/cmake -E cmake_link_script CMakeFiles/cmTC_f3527.dir/link.txt --verbose=1
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc   -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk -Wl,-search_paths_first -Wl,-headerpad_max_install_names   CMakeFiles/cmTC_f3527.dir/testCCompiler.c.o  -o cmTC_f3527 
+
+
+
+Detecting C compiler ABI info compiled with the following output:
+Change Dir: /Users/tanxiaohui/mygit/mysql-connector-cpp/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_fe9db/fast && /Applications/Xcode.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTC_fe9db.dir/build.make CMakeFiles/cmTC_fe9db.dir/build
+Building C object CMakeFiles/cmTC_fe9db.dir/CMakeCCompilerABI.c.o
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc   -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk   -v -Wl,-v -o CMakeFiles/cmTC_fe9db.dir/CMakeCCompilerABI.c.o   -c /usr/local/Cellar/cmake/3.16.5/share/cmake/Modules/CMakeCCompilerABI.c
+Apple clang version 11.0.0 (clang-1100.0.33.17)
+Target: x86_64-apple-darwin19.3.0
+Thread model: posix
+InstalledDir: /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin
+clang: warning: -Wl,-v: 'linker' input unused [-Wunused-command-line-argument]
+ "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang" -cc1 -triple x86_64-apple-macosx10.15.0 -Wdeprecated-objc-isa-usage -Werror=deprecated-objc-isa-usage -emit-obj -mrelax-all -disable-free -disable-llvm-verifier -discard-value-names -main-file-name CMakeCCompilerABI.c -mrelocation-model pic -pic-level 2 -mthread-model posix -mdisable-fp-elim -fno-strict-return -masm-verbose -munwind-tables -target-sdk-version=10.15 -target-cpu penryn -dwarf-column-info -debugger-tuning=lldb -ggnu-pubnames -target-linker-version 530 -v -coverage-notes-file /Users/tanxiaohui/mygit/mysql-connector-cpp/CMakeFiles/CMakeTmp/CMakeFiles/cmTC_fe9db.dir/CMakeCCompilerABI.c.gcno -resource-dir /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/11.0.0 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk -c-isystem . -c-isystem /usr/local/opt/openssl/include/openssl -c-isystem /usr/local/include/ -cxx-isystem . -cxx-isystem /usr/local/opt/openssl/include/openssl -cxx-isystem /usr/local/include/ -Wno-framework-include-private-from-public -Wno-atimport-in-framework-header -Wno-extra-semi-stmt -Wno-quoted-include-in-framework-header -fdebug-compilation-dir /Users/tanxiaohui/mygit/mysql-connector-cpp/CMakeFiles/CMakeTmp -ferror-limit 19 -fmessage-length 0 -stack-protector 1 -fstack-check -mdarwin-stkchk-strong-link -fblocks -fencode-extended-block-signature -fregister-global-dtors-with-atexit -fobjc-runtime=macosx-10.15.0 -fmax-type-align=16 -fdiagnostics-show-option -o CMakeFiles/cmTC_fe9db.dir/CMakeCCompilerABI.c.o -x c /usr/local/Cellar/cmake/3.16.5/share/cmake/Modules/CMakeCCompilerABI.c
+clang -cc1 version 11.0.0 (clang-1100.0.33.17) default target x86_64-apple-darwin19.3.0
+ignoring nonexistent directory "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/usr/local/include"
+ignoring nonexistent directory "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/Library/Frameworks"
+#include "..." search starts here:
+#include <...> search starts here:
+ .
+ /usr/local/opt/openssl/include/openssl
+ /usr/local/include
+ /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/11.0.0/include
+ /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include
+ /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/usr/include
+ /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/System/Library/Frameworks (framework directory)
+End of search list.
+Linking C executable cmTC_fe9db
+/usr/local/Cellar/cmake/3.16.5/bin/cmake -E cmake_link_script CMakeFiles/cmTC_fe9db.dir/link.txt --verbose=1
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc   -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk -Wl,-search_paths_first -Wl,-headerpad_max_install_names  -v -Wl,-v CMakeFiles/cmTC_fe9db.dir/CMakeCCompilerABI.c.o  -o cmTC_fe9db 
+Apple clang version 11.0.0 (clang-1100.0.33.17)
+Target: x86_64-apple-darwin19.3.0
+Thread model: posix
+InstalledDir: /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin
+ "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/ld" -demangle -lto_library /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/libLTO.dylib -dynamic -arch x86_64 -macosx_version_min 10.15.0 -syslibroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk -o cmTC_fe9db -search_paths_first -headerpad_max_install_names -v CMakeFiles/cmTC_fe9db.dir/CMakeCCompilerABI.c.o -lSystem /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/11.0.0/lib/darwin/libclang_rt.osx.a
+@(#)PROGRAM:ld  PROJECT:ld64-530
+BUILD 18:57:17 Dec 13 2019
+configured to support archs: armv6 armv7 armv7s arm64 arm64e arm64_32 i386 x86_64 x86_64h armv6m armv7k armv7m armv7em
+Library search paths:
+	/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/usr/lib
+Framework search paths:
+	/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/System/Library/Frameworks/
+
+
+
+Parsed C implicit include dir info from above output: rv=done
+  found start of include info
+  found start of implicit include info
+    add: [.]
+    add: [/usr/local/opt/openssl/include/openssl]
+    add: [/usr/local/include]
+    add: [/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/11.0.0/include]
+    add: [/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include]
+    add: [/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/usr/include]
+  end of search list found
+  skipping relative include dir [.]
+  collapse include dir [/usr/local/opt/openssl/include/openssl] ==> [/usr/local/opt/openssl/include/openssl]
+  collapse include dir [/usr/local/include] ==> [/usr/local/include]
+  collapse include dir [/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/11.0.0/include] ==> [/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/11.0.0/include]
+  collapse include dir [/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include] ==> [/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include]
+  collapse include dir [/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/usr/include] ==> [/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/usr/include]
+  implicit include dirs: [/usr/local/opt/openssl/include/openssl;/usr/local/include;/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/11.0.0/include;/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include;/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/usr/include]
+
+
+Parsed C implicit link information from above output:
+  link line regex: [^( *|.*[/\])(ld|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\]+-)?ld|collect2)[^/\]*( |$)]
+  ignore line: [Change Dir: /Users/tanxiaohui/mygit/mysql-connector-cpp/CMakeFiles/CMakeTmp]
+  ignore line: []
+  ignore line: [Run Build Command(s):/usr/bin/make cmTC_fe9db/fast && /Applications/Xcode.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTC_fe9db.dir/build.make CMakeFiles/cmTC_fe9db.dir/build]
+  ignore line: [Building C object CMakeFiles/cmTC_fe9db.dir/CMakeCCompilerABI.c.o]
+  ignore line: [/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc   -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk   -v -Wl -v -o CMakeFiles/cmTC_fe9db.dir/CMakeCCompilerABI.c.o   -c /usr/local/Cellar/cmake/3.16.5/share/cmake/Modules/CMakeCCompilerABI.c]
+  ignore line: [Apple clang version 11.0.0 (clang-1100.0.33.17)]
+  ignore line: [Target: x86_64-apple-darwin19.3.0]
+  ignore line: [Thread model: posix]
+  ignore line: [InstalledDir: /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin]
+  ignore line: [clang: warning: -Wl -v: 'linker' input unused [-Wunused-command-line-argument]]
+  ignore line: [ "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang" -cc1 -triple x86_64-apple-macosx10.15.0 -Wdeprecated-objc-isa-usage -Werror=deprecated-objc-isa-usage -emit-obj -mrelax-all -disable-free -disable-llvm-verifier -discard-value-names -main-file-name CMakeCCompilerABI.c -mrelocation-model pic -pic-level 2 -mthread-model posix -mdisable-fp-elim -fno-strict-return -masm-verbose -munwind-tables -target-sdk-version=10.15 -target-cpu penryn -dwarf-column-info -debugger-tuning=lldb -ggnu-pubnames -target-linker-version 530 -v -coverage-notes-file /Users/tanxiaohui/mygit/mysql-connector-cpp/CMakeFiles/CMakeTmp/CMakeFiles/cmTC_fe9db.dir/CMakeCCompilerABI.c.gcno -resource-dir /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/11.0.0 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk -c-isystem . -c-isystem /usr/local/opt/openssl/include/openssl -c-isystem /usr/local/include/ -cxx-isystem . -cxx-isystem /usr/local/opt/openssl/include/openssl -cxx-isystem /usr/local/include/ -Wno-framework-include-private-from-public -Wno-atimport-in-framework-header -Wno-extra-semi-stmt -Wno-quoted-include-in-framework-header -fdebug-compilation-dir /Users/tanxiaohui/mygit/mysql-connector-cpp/CMakeFiles/CMakeTmp -ferror-limit 19 -fmessage-length 0 -stack-protector 1 -fstack-check -mdarwin-stkchk-strong-link -fblocks -fencode-extended-block-signature -fregister-global-dtors-with-atexit -fobjc-runtime=macosx-10.15.0 -fmax-type-align=16 -fdiagnostics-show-option -o CMakeFiles/cmTC_fe9db.dir/CMakeCCompilerABI.c.o -x c /usr/local/Cellar/cmake/3.16.5/share/cmake/Modules/CMakeCCompilerABI.c]
+  ignore line: [clang -cc1 version 11.0.0 (clang-1100.0.33.17) default target x86_64-apple-darwin19.3.0]
+  ignore line: [ignoring nonexistent directory "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/usr/local/include"]
+  ignore line: [ignoring nonexistent directory "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/Library/Frameworks"]
+  ignore line: [#include "..." search starts here:]
+  ignore line: [#include <...> search starts here:]
+  ignore line: [ .]
+  ignore line: [ /usr/local/opt/openssl/include/openssl]
+  ignore line: [ /usr/local/include]
+  ignore line: [ /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/11.0.0/include]
+  ignore line: [ /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include]
+  ignore line: [ /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/usr/include]
+  ignore line: [ /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/System/Library/Frameworks (framework directory)]
+  ignore line: [End of search list.]
+  ignore line: [Linking C executable cmTC_fe9db]
+  ignore line: [/usr/local/Cellar/cmake/3.16.5/bin/cmake -E cmake_link_script CMakeFiles/cmTC_fe9db.dir/link.txt --verbose=1]
+  ignore line: [/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc   -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk -Wl -search_paths_first -Wl -headerpad_max_install_names  -v -Wl -v CMakeFiles/cmTC_fe9db.dir/CMakeCCompilerABI.c.o  -o cmTC_fe9db ]
+  ignore line: [Apple clang version 11.0.0 (clang-1100.0.33.17)]
+  ignore line: [Target: x86_64-apple-darwin19.3.0]
+  ignore line: [Thread model: posix]
+  ignore line: [InstalledDir: /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin]
+  link line: [ "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/ld" -demangle -lto_library /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/libLTO.dylib -dynamic -arch x86_64 -macosx_version_min 10.15.0 -syslibroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk -o cmTC_fe9db -search_paths_first -headerpad_max_install_names -v CMakeFiles/cmTC_fe9db.dir/CMakeCCompilerABI.c.o -lSystem /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/11.0.0/lib/darwin/libclang_rt.osx.a]
+    arg [/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/ld] ==> ignore
+    arg [-demangle] ==> ignore
+    arg [-lto_library] ==> ignore, skip following value
+    arg [/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/libLTO.dylib] ==> skip value of -lto_library
+    arg [-dynamic] ==> ignore
+    arg [-arch] ==> ignore
+    arg [x86_64] ==> ignore
+    arg [-macosx_version_min] ==> ignore
+    arg [10.15.0] ==> ignore
+    arg [-syslibroot] ==> ignore
+    arg [/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk] ==> ignore
+    arg [-o] ==> ignore
+    arg [cmTC_fe9db] ==> ignore
+    arg [-search_paths_first] ==> ignore
+    arg [-headerpad_max_install_names] ==> ignore
+    arg [-v] ==> ignore
+    arg [CMakeFiles/cmTC_fe9db.dir/CMakeCCompilerABI.c.o] ==> ignore
+    arg [-lSystem] ==> lib [System]
+    arg [/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/11.0.0/lib/darwin/libclang_rt.osx.a] ==> lib [/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/11.0.0/lib/darwin/libclang_rt.osx.a]
+  Library search paths: [;/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/usr/lib]
+  Framework search paths: [;/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/System/Library/Frameworks/]
+  remove lib [System]
+  remove lib [/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/11.0.0/lib/darwin/libclang_rt.osx.a]
+  collapse library dir [/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/usr/lib] ==> [/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/usr/lib]
+  collapse framework dir [/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/System/Library/Frameworks/] ==> [/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/System/Library/Frameworks]
+  implicit libs: []
+  implicit dirs: [/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/usr/lib]
+  implicit fwks: [/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/System/Library/Frameworks]
+
+
+Determining if the CXX compiler works passed with the following output:
+Change Dir: /Users/tanxiaohui/mygit/mysql-connector-cpp/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_3280b/fast && /Applications/Xcode.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTC_3280b.dir/build.make CMakeFiles/cmTC_3280b.dir/build
+Building CXX object CMakeFiles/cmTC_3280b.dir/testCXXCompiler.cxx.o
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++    -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk   -o CMakeFiles/cmTC_3280b.dir/testCXXCompiler.cxx.o -c /Users/tanxiaohui/mygit/mysql-connector-cpp/CMakeFiles/CMakeTmp/testCXXCompiler.cxx
+Linking CXX executable cmTC_3280b
+/usr/local/Cellar/cmake/3.16.5/bin/cmake -E cmake_link_script CMakeFiles/cmTC_3280b.dir/link.txt --verbose=1
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++    -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk -Wl,-search_paths_first -Wl,-headerpad_max_install_names   CMakeFiles/cmTC_3280b.dir/testCXXCompiler.cxx.o  -o cmTC_3280b 
+
+
+
+Detecting CXX compiler ABI info compiled with the following output:
+Change Dir: /Users/tanxiaohui/mygit/mysql-connector-cpp/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_f571c/fast && /Applications/Xcode.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTC_f571c.dir/build.make CMakeFiles/cmTC_f571c.dir/build
+Building CXX object CMakeFiles/cmTC_f571c.dir/CMakeCXXCompilerABI.cpp.o
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++    -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk   -v -Wl,-v -o CMakeFiles/cmTC_f571c.dir/CMakeCXXCompilerABI.cpp.o -c /usr/local/Cellar/cmake/3.16.5/share/cmake/Modules/CMakeCXXCompilerABI.cpp
+Apple clang version 11.0.0 (clang-1100.0.33.17)
+Target: x86_64-apple-darwin19.3.0
+Thread model: posix
+InstalledDir: /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin
+clang: warning: -Wl,-v: 'linker' input unused [-Wunused-command-line-argument]
+ "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang" -cc1 -triple x86_64-apple-macosx10.15.0 -Wdeprecated-objc-isa-usage -Werror=deprecated-objc-isa-usage -emit-obj -mrelax-all -disable-free -disable-llvm-verifier -discard-value-names -main-file-name CMakeCXXCompilerABI.cpp -mrelocation-model pic -pic-level 2 -mthread-model posix -mdisable-fp-elim -fno-strict-return -masm-verbose -munwind-tables -target-sdk-version=10.15 -target-cpu penryn -dwarf-column-info -debugger-tuning=lldb -ggnu-pubnames -target-linker-version 530 -v -coverage-notes-file /Users/tanxiaohui/mygit/mysql-connector-cpp/CMakeFiles/CMakeTmp/CMakeFiles/cmTC_f571c.dir/CMakeCXXCompilerABI.cpp.gcno -resource-dir /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/11.0.0 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk -c-isystem . -c-isystem /usr/local/opt/openssl/include/openssl -c-isystem /usr/local/include/ -cxx-isystem . -cxx-isystem /usr/local/opt/openssl/include/openssl -cxx-isystem /usr/local/include/ -stdlib=libc++ -internal-isystem /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1 -Wno-framework-include-private-from-public -Wno-atimport-in-framework-header -Wno-extra-semi-stmt -Wno-quoted-include-in-framework-header -fdeprecated-macro -fdebug-compilation-dir /Users/tanxiaohui/mygit/mysql-connector-cpp/CMakeFiles/CMakeTmp -ferror-limit 19 -fmessage-length 0 -stack-protector 1 -fstack-check -mdarwin-stkchk-strong-link -fblocks -fencode-extended-block-signature -fregister-global-dtors-with-atexit -fobjc-runtime=macosx-10.15.0 -fcxx-exceptions -fexceptions -fmax-type-align=16 -fdiagnostics-show-option -o CMakeFiles/cmTC_f571c.dir/CMakeCXXCompilerABI.cpp.o -x c++ /usr/local/Cellar/cmake/3.16.5/share/cmake/Modules/CMakeCXXCompilerABI.cpp
+clang -cc1 version 11.0.0 (clang-1100.0.33.17) default target x86_64-apple-darwin19.3.0
+ignoring nonexistent directory "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/usr/include/c++/v1"
+ignoring nonexistent directory "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/usr/local/include"
+ignoring nonexistent directory "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/Library/Frameworks"
+#include "..." search starts here:
+#include <...> search starts here:
+ .
+ /usr/local/opt/openssl/include/openssl
+ /usr/local/include
+ /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1
+ /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/11.0.0/include
+ /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include
+ /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/usr/include
+ /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/System/Library/Frameworks (framework directory)
+End of search list.
+Linking CXX executable cmTC_f571c
+/usr/local/Cellar/cmake/3.16.5/bin/cmake -E cmake_link_script CMakeFiles/cmTC_f571c.dir/link.txt --verbose=1
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++    -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk -Wl,-search_paths_first -Wl,-headerpad_max_install_names  -v -Wl,-v CMakeFiles/cmTC_f571c.dir/CMakeCXXCompilerABI.cpp.o  -o cmTC_f571c 
+Apple clang version 11.0.0 (clang-1100.0.33.17)
+Target: x86_64-apple-darwin19.3.0
+Thread model: posix
+InstalledDir: /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin
+ "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/ld" -demangle -lto_library /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/libLTO.dylib -dynamic -arch x86_64 -macosx_version_min 10.15.0 -syslibroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk -o cmTC_f571c -search_paths_first -headerpad_max_install_names -v CMakeFiles/cmTC_f571c.dir/CMakeCXXCompilerABI.cpp.o -lc++ -lSystem /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/11.0.0/lib/darwin/libclang_rt.osx.a
+@(#)PROGRAM:ld  PROJECT:ld64-530
+BUILD 18:57:17 Dec 13 2019
+configured to support archs: armv6 armv7 armv7s arm64 arm64e arm64_32 i386 x86_64 x86_64h armv6m armv7k armv7m armv7em
+Library search paths:
+	/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/usr/lib
+Framework search paths:
+	/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/System/Library/Frameworks/
+
+
+
+Parsed CXX implicit include dir info from above output: rv=done
+  found start of include info
+  found start of implicit include info
+    add: [.]
+    add: [/usr/local/opt/openssl/include/openssl]
+    add: [/usr/local/include]
+    add: [/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1]
+    add: [/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/11.0.0/include]
+    add: [/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include]
+    add: [/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/usr/include]
+  end of search list found
+  skipping relative include dir [.]
+  collapse include dir [/usr/local/opt/openssl/include/openssl] ==> [/usr/local/opt/openssl/include/openssl]
+  collapse include dir [/usr/local/include] ==> [/usr/local/include]
+  collapse include dir [/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1] ==> [/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include/c++/v1]
+  collapse include dir [/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/11.0.0/include] ==> [/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/11.0.0/include]
+  collapse include dir [/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include] ==> [/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include]
+  collapse include dir [/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/usr/include] ==> [/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/usr/include]
+  implicit include dirs: [/usr/local/opt/openssl/include/openssl;/usr/local/include;/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include/c++/v1;/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/11.0.0/include;/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include;/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/usr/include]
+
+
+Parsed CXX implicit link information from above output:
+  link line regex: [^( *|.*[/\])(ld|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\]+-)?ld|collect2)[^/\]*( |$)]
+  ignore line: [Change Dir: /Users/tanxiaohui/mygit/mysql-connector-cpp/CMakeFiles/CMakeTmp]
+  ignore line: []
+  ignore line: [Run Build Command(s):/usr/bin/make cmTC_f571c/fast && /Applications/Xcode.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTC_f571c.dir/build.make CMakeFiles/cmTC_f571c.dir/build]
+  ignore line: [Building CXX object CMakeFiles/cmTC_f571c.dir/CMakeCXXCompilerABI.cpp.o]
+  ignore line: [/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++    -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk   -v -Wl -v -o CMakeFiles/cmTC_f571c.dir/CMakeCXXCompilerABI.cpp.o -c /usr/local/Cellar/cmake/3.16.5/share/cmake/Modules/CMakeCXXCompilerABI.cpp]
+  ignore line: [Apple clang version 11.0.0 (clang-1100.0.33.17)]
+  ignore line: [Target: x86_64-apple-darwin19.3.0]
+  ignore line: [Thread model: posix]
+  ignore line: [InstalledDir: /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin]
+  ignore line: [clang: warning: -Wl -v: 'linker' input unused [-Wunused-command-line-argument]]
+  ignore line: [ "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang" -cc1 -triple x86_64-apple-macosx10.15.0 -Wdeprecated-objc-isa-usage -Werror=deprecated-objc-isa-usage -emit-obj -mrelax-all -disable-free -disable-llvm-verifier -discard-value-names -main-file-name CMakeCXXCompilerABI.cpp -mrelocation-model pic -pic-level 2 -mthread-model posix -mdisable-fp-elim -fno-strict-return -masm-verbose -munwind-tables -target-sdk-version=10.15 -target-cpu penryn -dwarf-column-info -debugger-tuning=lldb -ggnu-pubnames -target-linker-version 530 -v -coverage-notes-file /Users/tanxiaohui/mygit/mysql-connector-cpp/CMakeFiles/CMakeTmp/CMakeFiles/cmTC_f571c.dir/CMakeCXXCompilerABI.cpp.gcno -resource-dir /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/11.0.0 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk -c-isystem . -c-isystem /usr/local/opt/openssl/include/openssl -c-isystem /usr/local/include/ -cxx-isystem . -cxx-isystem /usr/local/opt/openssl/include/openssl -cxx-isystem /usr/local/include/ -stdlib=libc++ -internal-isystem /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1 -Wno-framework-include-private-from-public -Wno-atimport-in-framework-header -Wno-extra-semi-stmt -Wno-quoted-include-in-framework-header -fdeprecated-macro -fdebug-compilation-dir /Users/tanxiaohui/mygit/mysql-connector-cpp/CMakeFiles/CMakeTmp -ferror-limit 19 -fmessage-length 0 -stack-protector 1 -fstack-check -mdarwin-stkchk-strong-link -fblocks -fencode-extended-block-signature -fregister-global-dtors-with-atexit -fobjc-runtime=macosx-10.15.0 -fcxx-exceptions -fexceptions -fmax-type-align=16 -fdiagnostics-show-option -o CMakeFiles/cmTC_f571c.dir/CMakeCXXCompilerABI.cpp.o -x c++ /usr/local/Cellar/cmake/3.16.5/share/cmake/Modules/CMakeCXXCompilerABI.cpp]
+  ignore line: [clang -cc1 version 11.0.0 (clang-1100.0.33.17) default target x86_64-apple-darwin19.3.0]
+  ignore line: [ignoring nonexistent directory "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/usr/include/c++/v1"]
+  ignore line: [ignoring nonexistent directory "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/usr/local/include"]
+  ignore line: [ignoring nonexistent directory "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/Library/Frameworks"]
+  ignore line: [#include "..." search starts here:]
+  ignore line: [#include <...> search starts here:]
+  ignore line: [ .]
+  ignore line: [ /usr/local/opt/openssl/include/openssl]
+  ignore line: [ /usr/local/include]
+  ignore line: [ /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1]
+  ignore line: [ /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/11.0.0/include]
+  ignore line: [ /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include]
+  ignore line: [ /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/usr/include]
+  ignore line: [ /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/System/Library/Frameworks (framework directory)]
+  ignore line: [End of search list.]
+  ignore line: [Linking CXX executable cmTC_f571c]
+  ignore line: [/usr/local/Cellar/cmake/3.16.5/bin/cmake -E cmake_link_script CMakeFiles/cmTC_f571c.dir/link.txt --verbose=1]
+  ignore line: [/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++    -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk -Wl -search_paths_first -Wl -headerpad_max_install_names  -v -Wl -v CMakeFiles/cmTC_f571c.dir/CMakeCXXCompilerABI.cpp.o  -o cmTC_f571c ]
+  ignore line: [Apple clang version 11.0.0 (clang-1100.0.33.17)]
+  ignore line: [Target: x86_64-apple-darwin19.3.0]
+  ignore line: [Thread model: posix]
+  ignore line: [InstalledDir: /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin]
+  link line: [ "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/ld" -demangle -lto_library /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/libLTO.dylib -dynamic -arch x86_64 -macosx_version_min 10.15.0 -syslibroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk -o cmTC_f571c -search_paths_first -headerpad_max_install_names -v CMakeFiles/cmTC_f571c.dir/CMakeCXXCompilerABI.cpp.o -lc++ -lSystem /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/11.0.0/lib/darwin/libclang_rt.osx.a]
+    arg [/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/ld] ==> ignore
+    arg [-demangle] ==> ignore
+    arg [-lto_library] ==> ignore, skip following value
+    arg [/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/libLTO.dylib] ==> skip value of -lto_library
+    arg [-dynamic] ==> ignore
+    arg [-arch] ==> ignore
+    arg [x86_64] ==> ignore
+    arg [-macosx_version_min] ==> ignore
+    arg [10.15.0] ==> ignore
+    arg [-syslibroot] ==> ignore
+    arg [/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk] ==> ignore
+    arg [-o] ==> ignore
+    arg [cmTC_f571c] ==> ignore
+    arg [-search_paths_first] ==> ignore
+    arg [-headerpad_max_install_names] ==> ignore
+    arg [-v] ==> ignore
+    arg [CMakeFiles/cmTC_f571c.dir/CMakeCXXCompilerABI.cpp.o] ==> ignore
+    arg [-lc++] ==> lib [c++]
+    arg [-lSystem] ==> lib [System]
+    arg [/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/11.0.0/lib/darwin/libclang_rt.osx.a] ==> lib [/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/11.0.0/lib/darwin/libclang_rt.osx.a]
+  Library search paths: [;/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/usr/lib]
+  Framework search paths: [;/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/System/Library/Frameworks/]
+  remove lib [System]
+  remove lib [/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/11.0.0/lib/darwin/libclang_rt.osx.a]
+  collapse library dir [/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/usr/lib] ==> [/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/usr/lib]
+  collapse framework dir [/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/System/Library/Frameworks/] ==> [/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/System/Library/Frameworks]
+  implicit libs: [c++]
+  implicit dirs: [/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/usr/lib]
+  implicit fwks: [/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/System/Library/Frameworks]
+
+
+Determining if files stdint.h exist passed with the following output:
+Change Dir: /Users/tanxiaohui/mygit/mysql-connector-cpp/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_e5bac/fast && /Applications/Xcode.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTC_e5bac.dir/build.make CMakeFiles/cmTC_e5bac.dir/build
+Building C object CMakeFiles/cmTC_e5bac.dir/HAVE_STDINT_H.c.o
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc   -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk   -o CMakeFiles/cmTC_e5bac.dir/HAVE_STDINT_H.c.o   -c /Users/tanxiaohui/mygit/mysql-connector-cpp/CMakeFiles/CheckIncludeFiles/HAVE_STDINT_H.c
+Linking C executable cmTC_e5bac
+/usr/local/Cellar/cmake/3.16.5/bin/cmake -E cmake_link_script CMakeFiles/cmTC_e5bac.dir/link.txt --verbose=1
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc   -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk -Wl,-search_paths_first -Wl,-headerpad_max_install_names   CMakeFiles/cmTC_e5bac.dir/HAVE_STDINT_H.c.o  -o cmTC_e5bac 
+
+
+
+Determining if files inttypes.h exist passed with the following output:
+Change Dir: /Users/tanxiaohui/mygit/mysql-connector-cpp/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_661c6/fast && /Applications/Xcode.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTC_661c6.dir/build.make CMakeFiles/cmTC_661c6.dir/build
+Building C object CMakeFiles/cmTC_661c6.dir/HAVE_INTTYPES_H.c.o
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc   -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk   -o CMakeFiles/cmTC_661c6.dir/HAVE_INTTYPES_H.c.o   -c /Users/tanxiaohui/mygit/mysql-connector-cpp/CMakeFiles/CheckIncludeFiles/HAVE_INTTYPES_H.c
+Linking C executable cmTC_661c6
+/usr/local/Cellar/cmake/3.16.5/bin/cmake -E cmake_link_script CMakeFiles/cmTC_661c6.dir/link.txt --verbose=1
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc   -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk -Wl,-search_paths_first -Wl,-headerpad_max_install_names   CMakeFiles/cmTC_661c6.dir/HAVE_INTTYPES_H.c.o  -o cmTC_661c6 
+
+
+
+Determining if the include file sys/types.h exists passed with the following output:
+Change Dir: /Users/tanxiaohui/mygit/mysql-connector-cpp/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_074d2/fast && /Applications/Xcode.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTC_074d2.dir/build.make CMakeFiles/cmTC_074d2.dir/build
+Building C object CMakeFiles/cmTC_074d2.dir/CheckIncludeFile.c.o
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc   -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk   -o CMakeFiles/cmTC_074d2.dir/CheckIncludeFile.c.o   -c /Users/tanxiaohui/mygit/mysql-connector-cpp/CMakeFiles/CMakeTmp/CheckIncludeFile.c
+Linking C executable cmTC_074d2
+/usr/local/Cellar/cmake/3.16.5/bin/cmake -E cmake_link_script CMakeFiles/cmTC_074d2.dir/link.txt --verbose=1
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc   -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk -Wl,-search_paths_first -Wl,-headerpad_max_install_names   CMakeFiles/cmTC_074d2.dir/CheckIncludeFile.c.o  -o cmTC_074d2 
+
+
+
+Determining if the include file stddef.h exists passed with the following output:
+Change Dir: /Users/tanxiaohui/mygit/mysql-connector-cpp/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_2ba93/fast && /Applications/Xcode.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTC_2ba93.dir/build.make CMakeFiles/cmTC_2ba93.dir/build
+Building C object CMakeFiles/cmTC_2ba93.dir/CheckIncludeFile.c.o
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc   -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk   -o CMakeFiles/cmTC_2ba93.dir/CheckIncludeFile.c.o   -c /Users/tanxiaohui/mygit/mysql-connector-cpp/CMakeFiles/CMakeTmp/CheckIncludeFile.c
+Linking C executable cmTC_2ba93
+/usr/local/Cellar/cmake/3.16.5/bin/cmake -E cmake_link_script CMakeFiles/cmTC_2ba93.dir/link.txt --verbose=1
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc   -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk -Wl,-search_paths_first -Wl,-headerpad_max_install_names   CMakeFiles/cmTC_2ba93.dir/CheckIncludeFile.c.o  -o cmTC_2ba93 
+
+
+
+Determining size of int8_t passed with the following output:
+Change Dir: /Users/tanxiaohui/mygit/mysql-connector-cpp/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_e9305/fast && /Applications/Xcode.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTC_e9305.dir/build.make CMakeFiles/cmTC_e9305.dir/build
+Building C object CMakeFiles/cmTC_e9305.dir/HAVE_INT8_T.c.o
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc   -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk   -o CMakeFiles/cmTC_e9305.dir/HAVE_INT8_T.c.o   -c /Users/tanxiaohui/mygit/mysql-connector-cpp/CMakeFiles/CheckTypeSize/HAVE_INT8_T.c
+Linking C executable cmTC_e9305
+/usr/local/Cellar/cmake/3.16.5/bin/cmake -E cmake_link_script CMakeFiles/cmTC_e9305.dir/link.txt --verbose=1
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc   -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk -Wl,-search_paths_first -Wl,-headerpad_max_install_names   CMakeFiles/cmTC_e9305.dir/HAVE_INT8_T.c.o  -o cmTC_e9305 
+
+
+
+Determining size of uint8_t passed with the following output:
+Change Dir: /Users/tanxiaohui/mygit/mysql-connector-cpp/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_52e2e/fast && /Applications/Xcode.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTC_52e2e.dir/build.make CMakeFiles/cmTC_52e2e.dir/build
+Building C object CMakeFiles/cmTC_52e2e.dir/HAVE_UINT8_T.c.o
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc   -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk   -o CMakeFiles/cmTC_52e2e.dir/HAVE_UINT8_T.c.o   -c /Users/tanxiaohui/mygit/mysql-connector-cpp/CMakeFiles/CheckTypeSize/HAVE_UINT8_T.c
+Linking C executable cmTC_52e2e
+/usr/local/Cellar/cmake/3.16.5/bin/cmake -E cmake_link_script CMakeFiles/cmTC_52e2e.dir/link.txt --verbose=1
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc   -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk -Wl,-search_paths_first -Wl,-headerpad_max_install_names   CMakeFiles/cmTC_52e2e.dir/HAVE_UINT8_T.c.o  -o cmTC_52e2e 
+
+
+
+Determining size of int16_t passed with the following output:
+Change Dir: /Users/tanxiaohui/mygit/mysql-connector-cpp/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_b33fa/fast && /Applications/Xcode.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTC_b33fa.dir/build.make CMakeFiles/cmTC_b33fa.dir/build
+Building C object CMakeFiles/cmTC_b33fa.dir/HAVE_INT16_T.c.o
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc   -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk   -o CMakeFiles/cmTC_b33fa.dir/HAVE_INT16_T.c.o   -c /Users/tanxiaohui/mygit/mysql-connector-cpp/CMakeFiles/CheckTypeSize/HAVE_INT16_T.c
+Linking C executable cmTC_b33fa
+/usr/local/Cellar/cmake/3.16.5/bin/cmake -E cmake_link_script CMakeFiles/cmTC_b33fa.dir/link.txt --verbose=1
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc   -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk -Wl,-search_paths_first -Wl,-headerpad_max_install_names   CMakeFiles/cmTC_b33fa.dir/HAVE_INT16_T.c.o  -o cmTC_b33fa 
+
+
+
+Determining size of uint16_t passed with the following output:
+Change Dir: /Users/tanxiaohui/mygit/mysql-connector-cpp/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_3c477/fast && /Applications/Xcode.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTC_3c477.dir/build.make CMakeFiles/cmTC_3c477.dir/build
+Building C object CMakeFiles/cmTC_3c477.dir/HAVE_UINT16_T.c.o
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc   -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk   -o CMakeFiles/cmTC_3c477.dir/HAVE_UINT16_T.c.o   -c /Users/tanxiaohui/mygit/mysql-connector-cpp/CMakeFiles/CheckTypeSize/HAVE_UINT16_T.c
+Linking C executable cmTC_3c477
+/usr/local/Cellar/cmake/3.16.5/bin/cmake -E cmake_link_script CMakeFiles/cmTC_3c477.dir/link.txt --verbose=1
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc   -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk -Wl,-search_paths_first -Wl,-headerpad_max_install_names   CMakeFiles/cmTC_3c477.dir/HAVE_UINT16_T.c.o  -o cmTC_3c477 
+
+
+
+Determining size of int32_t passed with the following output:
+Change Dir: /Users/tanxiaohui/mygit/mysql-connector-cpp/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_dc411/fast && /Applications/Xcode.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTC_dc411.dir/build.make CMakeFiles/cmTC_dc411.dir/build
+Building C object CMakeFiles/cmTC_dc411.dir/HAVE_INT32_T.c.o
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc   -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk   -o CMakeFiles/cmTC_dc411.dir/HAVE_INT32_T.c.o   -c /Users/tanxiaohui/mygit/mysql-connector-cpp/CMakeFiles/CheckTypeSize/HAVE_INT32_T.c
+Linking C executable cmTC_dc411
+/usr/local/Cellar/cmake/3.16.5/bin/cmake -E cmake_link_script CMakeFiles/cmTC_dc411.dir/link.txt --verbose=1
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc   -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk -Wl,-search_paths_first -Wl,-headerpad_max_install_names   CMakeFiles/cmTC_dc411.dir/HAVE_INT32_T.c.o  -o cmTC_dc411 
+
+
+
+Determining size of uint32_t passed with the following output:
+Change Dir: /Users/tanxiaohui/mygit/mysql-connector-cpp/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_728c7/fast && /Applications/Xcode.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTC_728c7.dir/build.make CMakeFiles/cmTC_728c7.dir/build
+Building C object CMakeFiles/cmTC_728c7.dir/HAVE_UINT32_T.c.o
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc   -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk   -o CMakeFiles/cmTC_728c7.dir/HAVE_UINT32_T.c.o   -c /Users/tanxiaohui/mygit/mysql-connector-cpp/CMakeFiles/CheckTypeSize/HAVE_UINT32_T.c
+Linking C executable cmTC_728c7
+/usr/local/Cellar/cmake/3.16.5/bin/cmake -E cmake_link_script CMakeFiles/cmTC_728c7.dir/link.txt --verbose=1
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc   -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk -Wl,-search_paths_first -Wl,-headerpad_max_install_names   CMakeFiles/cmTC_728c7.dir/HAVE_UINT32_T.c.o  -o cmTC_728c7 
+
+
+
+Determining size of int64_t passed with the following output:
+Change Dir: /Users/tanxiaohui/mygit/mysql-connector-cpp/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_2a6d7/fast && /Applications/Xcode.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTC_2a6d7.dir/build.make CMakeFiles/cmTC_2a6d7.dir/build
+Building C object CMakeFiles/cmTC_2a6d7.dir/HAVE_INT64_T.c.o
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc   -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk   -o CMakeFiles/cmTC_2a6d7.dir/HAVE_INT64_T.c.o   -c /Users/tanxiaohui/mygit/mysql-connector-cpp/CMakeFiles/CheckTypeSize/HAVE_INT64_T.c
+Linking C executable cmTC_2a6d7
+/usr/local/Cellar/cmake/3.16.5/bin/cmake -E cmake_link_script CMakeFiles/cmTC_2a6d7.dir/link.txt --verbose=1
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc   -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk -Wl,-search_paths_first -Wl,-headerpad_max_install_names   CMakeFiles/cmTC_2a6d7.dir/HAVE_INT64_T.c.o  -o cmTC_2a6d7 
+
+
+
+Determining size of uint64_t passed with the following output:
+Change Dir: /Users/tanxiaohui/mygit/mysql-connector-cpp/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_1bf33/fast && /Applications/Xcode.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTC_1bf33.dir/build.make CMakeFiles/cmTC_1bf33.dir/build
+Building C object CMakeFiles/cmTC_1bf33.dir/HAVE_UINT64_T.c.o
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc   -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk   -o CMakeFiles/cmTC_1bf33.dir/HAVE_UINT64_T.c.o   -c /Users/tanxiaohui/mygit/mysql-connector-cpp/CMakeFiles/CheckTypeSize/HAVE_UINT64_T.c
+Linking C executable cmTC_1bf33
+/usr/local/Cellar/cmake/3.16.5/bin/cmake -E cmake_link_script CMakeFiles/cmTC_1bf33.dir/link.txt --verbose=1
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc   -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk -Wl,-search_paths_first -Wl,-headerpad_max_install_names   CMakeFiles/cmTC_1bf33.dir/HAVE_UINT64_T.c.o  -o cmTC_1bf33 
+
+
+
+Determining if the function strtold exists passed with the following output:
+Change Dir: /Users/tanxiaohui/mygit/mysql-connector-cpp/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_44f0d/fast && /Applications/Xcode.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTC_44f0d.dir/build.make CMakeFiles/cmTC_44f0d.dir/build
+Building C object CMakeFiles/cmTC_44f0d.dir/CheckFunctionExists.c.o
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=strtold -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk   -o CMakeFiles/cmTC_44f0d.dir/CheckFunctionExists.c.o   -c /usr/local/Cellar/cmake/3.16.5/share/cmake/Modules/CheckFunctionExists.c
+/usr/local/Cellar/cmake/3.16.5/share/cmake/Modules/CheckFunctionExists.c:7:3: warning: incompatible redeclaration of library function 'strtold' [-Wincompatible-library-redeclaration]
+  CHECK_FUNCTION_EXISTS(void);
+  ^
+<command line>:1:31: note: expanded from here
+#define CHECK_FUNCTION_EXISTS strtold
+                              ^
+/usr/local/Cellar/cmake/3.16.5/share/cmake/Modules/CheckFunctionExists.c:7:3: note: 'strtold' is a builtin with type 'long double (const char *, char **)'
+<command line>:1:31: note: expanded from here
+#define CHECK_FUNCTION_EXISTS strtold
+                              ^
+1 warning generated.
+Linking C executable cmTC_44f0d
+/usr/local/Cellar/cmake/3.16.5/bin/cmake -E cmake_link_script CMakeFiles/cmTC_44f0d.dir/link.txt --verbose=1
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc  -DCHECK_FUNCTION_EXISTS=strtold -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk -Wl,-search_paths_first -Wl,-headerpad_max_install_names   CMakeFiles/cmTC_44f0d.dir/CheckFunctionExists.c.o  -o cmTC_44f0d 
+
+
+
+Determining if the function strtol exists passed with the following output:
+Change Dir: /Users/tanxiaohui/mygit/mysql-connector-cpp/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_6a346/fast && /Applications/Xcode.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTC_6a346.dir/build.make CMakeFiles/cmTC_6a346.dir/build
+Building C object CMakeFiles/cmTC_6a346.dir/CheckFunctionExists.c.o
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=strtol -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk   -o CMakeFiles/cmTC_6a346.dir/CheckFunctionExists.c.o   -c /usr/local/Cellar/cmake/3.16.5/share/cmake/Modules/CheckFunctionExists.c
+/usr/local/Cellar/cmake/3.16.5/share/cmake/Modules/CheckFunctionExists.c:7:3: warning: incompatible redeclaration of library function 'strtol' [-Wincompatible-library-redeclaration]
+  CHECK_FUNCTION_EXISTS(void);
+  ^
+<command line>:1:31: note: expanded from here
+#define CHECK_FUNCTION_EXISTS strtol
+                              ^
+/usr/local/Cellar/cmake/3.16.5/share/cmake/Modules/CheckFunctionExists.c:7:3: note: 'strtol' is a builtin with type 'long (const char *, char **, int)'
+<command line>:1:31: note: expanded from here
+#define CHECK_FUNCTION_EXISTS strtol
+                              ^
+1 warning generated.
+Linking C executable cmTC_6a346
+/usr/local/Cellar/cmake/3.16.5/bin/cmake -E cmake_link_script CMakeFiles/cmTC_6a346.dir/link.txt --verbose=1
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc  -DCHECK_FUNCTION_EXISTS=strtol -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk -Wl,-search_paths_first -Wl,-headerpad_max_install_names   CMakeFiles/cmTC_6a346.dir/CheckFunctionExists.c.o  -o cmTC_6a346 
+
+
+
+Determining if the function strtoll exists passed with the following output:
+Change Dir: /Users/tanxiaohui/mygit/mysql-connector-cpp/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_37541/fast && /Applications/Xcode.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTC_37541.dir/build.make CMakeFiles/cmTC_37541.dir/build
+Building C object CMakeFiles/cmTC_37541.dir/CheckFunctionExists.c.o
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=strtoll -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk   -o CMakeFiles/cmTC_37541.dir/CheckFunctionExists.c.o   -c /usr/local/Cellar/cmake/3.16.5/share/cmake/Modules/CheckFunctionExists.c
+/usr/local/Cellar/cmake/3.16.5/share/cmake/Modules/CheckFunctionExists.c:7:3: warning: incompatible redeclaration of library function 'strtoll' [-Wincompatible-library-redeclaration]
+  CHECK_FUNCTION_EXISTS(void);
+  ^
+<command line>:1:31: note: expanded from here
+#define CHECK_FUNCTION_EXISTS strtoll
+                              ^
+/usr/local/Cellar/cmake/3.16.5/share/cmake/Modules/CheckFunctionExists.c:7:3: note: 'strtoll' is a builtin with type 'long long (const char *, char **, int)'
+<command line>:1:31: note: expanded from here
+#define CHECK_FUNCTION_EXISTS strtoll
+                              ^
+1 warning generated.
+Linking C executable cmTC_37541
+/usr/local/Cellar/cmake/3.16.5/bin/cmake -E cmake_link_script CMakeFiles/cmTC_37541.dir/link.txt --verbose=1
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc  -DCHECK_FUNCTION_EXISTS=strtoll -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk -Wl,-search_paths_first -Wl,-headerpad_max_install_names   CMakeFiles/cmTC_37541.dir/CheckFunctionExists.c.o  -o cmTC_37541 
+
+
+
+Determining if the function strtoul exists passed with the following output:
+Change Dir: /Users/tanxiaohui/mygit/mysql-connector-cpp/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_e450d/fast && /Applications/Xcode.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTC_e450d.dir/build.make CMakeFiles/cmTC_e450d.dir/build
+Building C object CMakeFiles/cmTC_e450d.dir/CheckFunctionExists.c.o
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=strtoul -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk   -o CMakeFiles/cmTC_e450d.dir/CheckFunctionExists.c.o   -c /usr/local/Cellar/cmake/3.16.5/share/cmake/Modules/CheckFunctionExists.c
+/usr/local/Cellar/cmake/3.16.5/share/cmake/Modules/CheckFunctionExists.c:7:3: warning: incompatible redeclaration of library function 'strtoul' [-Wincompatible-library-redeclaration]
+  CHECK_FUNCTION_EXISTS(void);
+  ^
+<command line>:1:31: note: expanded from here
+#define CHECK_FUNCTION_EXISTS strtoul
+                              ^
+/usr/local/Cellar/cmake/3.16.5/share/cmake/Modules/CheckFunctionExists.c:7:3: note: 'strtoul' is a builtin with type 'unsigned long (const char *, char **, int)'
+<command line>:1:31: note: expanded from here
+#define CHECK_FUNCTION_EXISTS strtoul
+                              ^
+1 warning generated.
+Linking C executable cmTC_e450d
+/usr/local/Cellar/cmake/3.16.5/bin/cmake -E cmake_link_script CMakeFiles/cmTC_e450d.dir/link.txt --verbose=1
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc  -DCHECK_FUNCTION_EXISTS=strtoul -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk -Wl,-search_paths_first -Wl,-headerpad_max_install_names   CMakeFiles/cmTC_e450d.dir/CheckFunctionExists.c.o  -o cmTC_e450d 
+
+
+
+Determining if the function strtoull exists passed with the following output:
+Change Dir: /Users/tanxiaohui/mygit/mysql-connector-cpp/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_d5291/fast && /Applications/Xcode.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTC_d5291.dir/build.make CMakeFiles/cmTC_d5291.dir/build
+Building C object CMakeFiles/cmTC_d5291.dir/CheckFunctionExists.c.o
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=strtoull -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk   -o CMakeFiles/cmTC_d5291.dir/CheckFunctionExists.c.o   -c /usr/local/Cellar/cmake/3.16.5/share/cmake/Modules/CheckFunctionExists.c
+/usr/local/Cellar/cmake/3.16.5/share/cmake/Modules/CheckFunctionExists.c:7:3: warning: incompatible redeclaration of library function 'strtoull' [-Wincompatible-library-redeclaration]
+  CHECK_FUNCTION_EXISTS(void);
+  ^
+<command line>:1:31: note: expanded from here
+#define CHECK_FUNCTION_EXISTS strtoull
+                              ^
+/usr/local/Cellar/cmake/3.16.5/share/cmake/Modules/CheckFunctionExists.c:7:3: note: 'strtoull' is a builtin with type 'unsigned long long (const char *, char **, int)'
+<command line>:1:31: note: expanded from here
+#define CHECK_FUNCTION_EXISTS strtoull
+                              ^
+1 warning generated.
+Linking C executable cmTC_d5291
+/usr/local/Cellar/cmake/3.16.5/bin/cmake -E cmake_link_script CMakeFiles/cmTC_d5291.dir/link.txt --verbose=1
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc  -DCHECK_FUNCTION_EXISTS=strtoull -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk -Wl,-search_paths_first -Wl,-headerpad_max_install_names   CMakeFiles/cmTC_d5291.dir/CheckFunctionExists.c.o  -o cmTC_d5291 
+
+
+
+Determining if the function strtoimax exists passed with the following output:
+Change Dir: /Users/tanxiaohui/mygit/mysql-connector-cpp/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_70bda/fast && /Applications/Xcode.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTC_70bda.dir/build.make CMakeFiles/cmTC_70bda.dir/build
+Building C object CMakeFiles/cmTC_70bda.dir/CheckFunctionExists.c.o
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=strtoimax -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk   -o CMakeFiles/cmTC_70bda.dir/CheckFunctionExists.c.o   -c /usr/local/Cellar/cmake/3.16.5/share/cmake/Modules/CheckFunctionExists.c
+Linking C executable cmTC_70bda
+/usr/local/Cellar/cmake/3.16.5/bin/cmake -E cmake_link_script CMakeFiles/cmTC_70bda.dir/link.txt --verbose=1
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc  -DCHECK_FUNCTION_EXISTS=strtoimax -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk -Wl,-search_paths_first -Wl,-headerpad_max_install_names   CMakeFiles/cmTC_70bda.dir/CheckFunctionExists.c.o  -o cmTC_70bda 
+
+
+
+Determining if the function strtoumax exists passed with the following output:
+Change Dir: /Users/tanxiaohui/mygit/mysql-connector-cpp/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_5a08a/fast && /Applications/Xcode.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTC_5a08a.dir/build.make CMakeFiles/cmTC_5a08a.dir/build
+Building C object CMakeFiles/cmTC_5a08a.dir/CheckFunctionExists.c.o
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=strtoumax -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk   -o CMakeFiles/cmTC_5a08a.dir/CheckFunctionExists.c.o   -c /usr/local/Cellar/cmake/3.16.5/share/cmake/Modules/CheckFunctionExists.c
+Linking C executable cmTC_5a08a
+/usr/local/Cellar/cmake/3.16.5/bin/cmake -E cmake_link_script CMakeFiles/cmTC_5a08a.dir/link.txt --verbose=1
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc  -DCHECK_FUNCTION_EXISTS=strtoumax -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk -Wl,-search_paths_first -Wl,-headerpad_max_install_names   CMakeFiles/cmTC_5a08a.dir/CheckFunctionExists.c.o  -o cmTC_5a08a 
+
+
+
