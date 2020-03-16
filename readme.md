@@ -58,133 +58,151 @@ create table user.t_user_login_manage(
 syntax = "proto3";
 
 option java_multiple_files = true;
-option java_package = "singleTerminaLoginSystem.protos.messageReceiver";
-option java_outer_classname = "messageReceiverProto";
+option java_package = "singleTerminaLoginSystem.protos.loginManageService";
+option java_outer_classname = "loginManageProto";
 option objc_class_prefix = "TXH";
 
-package proto.messageReceiver;
+package proto.userLoginManage;
 
-service messageReceiver {
+
+service userLoginManageService {
   // regist
-  rpc regist (RegistRequest) returns (RegistResponse) {}
+  rpc regist (stream RegistRequest) returns (stream RegistResponse) {}
 
   // login
-  rpc login (LoginRequest) returns (LoginResponse) {}
+  rpc login (stream LoginRequest) returns (stream LoginResponse) {}
 
   // logout
-  rpc logout (LogoutRequest) returns (LogoutResponse) {}
+  rpc logout (stream LogoutRequest) returns (stream LogoutResponse) {}
 
-	// noticeClientLogout
-  rpc noticeClientLogout (NoticeClientLogoutRequest) returns (NoticeClientLogoutResponse) {}
+  // heart beat
+  rpc heartBeat (stream HeartBeatRequest) returns (stream HeartBeatResponse) {}
 
-  // syncClientInfo
-  rpc syncClientInfo (SyncClientInfoRequest) returns (SyncClientInfoResponse) {}
+  // kick out user
+  rpc kickOutUser (stream KickOutUserRequest) returns (stream KickOutUserResponse) {}
+}
+
+//***
+//@request  BasicRequest
+//@response BasicResponse
+//@remark   请求的基本信息
+//***
+message BasicRequest
+{
+	int64   timestamp = 1; //时间戳
+	string  uuid      = 2; //客户端的uuid
+}
+
+message BasicResponse
+{
+	int64   timestamp = 1; //时间戳
+	int32   code      = 2; //状态码
+	string  msg       = 3; //描述信息
 }
 
 
 //***
-//@request RegistRequest
+//@request  RegistRequest
 //@response RegistResponse
-//@remark  用户注册
+//@remark   用户注册
 //***
 message RegistRequest
 {
-	string user_name = 1;
-	string pass_word = 2;
+	BasicRequest  basic     = 1;
+	string        user_name = 2;
+	string        pass_word = 3;
 }
 
 message RegistResponse
 {
-	int32  code    = 1;
-	string message = 2;
+	BasicResponse basic     = 1;
 }
 
+
 //***
-//@request LoginRequest
+//@request  LoginRequest
 //@response LoginResponse
-//@remark  用户登录
+//@remark   用户登录
 //***
 message LoginRequest
 {
-	string user_name = 1;
-	string pass_word = 2;
+	BasicRequest  basic     = 1;
+	string        user_name = 2;
+	string        pass_word = 3;
 }
 
 message LoginResponse
 {
-	int32  code    = 1;
-	string message = 2;
+	BasicResponse basic     = 1;
 }
 
+
 //***
-//@request LogoutRequest
+//@request  LogoutRequest
 //@response LogoutResponse
-//@remark  退出登录
+//@remark   退出登录
 //***
 message LogoutRequest
 {
-	string user_name   = 1;
-	int32  logout_type = 2; //1:用户自己退出登录 2:管理员踢出用户退出登录
+	BasicRequest  basic     = 1;
+	string        user_name = 2;
 }
 
 message LogoutResponse
 {
-	int32  code    = 1;
-	string message = 2;
+	BasicResponse basic     = 1;
 }
 
 //***
-//@request NoticeClientLogoutRequest
-//@response NoticeClientLogoutResponse
-//@remark  通知客户端退出登录
+//@request  KickOutUserRequest
+//@response KickOutUserResponse
+//@remark   踢出用户
 //***
-message NoticeClientLogoutRequest
+message KickOutUserRequest
 {
-	string message = 1;
+	BasicRequest  basic     = 1;
+	string        user_name = 2;
 }
 
-message NoticeClientLogoutResponse
+message KickOutUserResponse
 {
-	int32  code    = 1;
-	string message = 2;
+	BasicResponse basic     = 1;
 }
 
+
 //***
-//@request  SyncClientInfoRequest
-//@response SyncClientInfoResponse
-//@remark  同步客户端信息
+//@request  HeartBeatRequest
+//@response HeartBeatResponse
+//@remark   心跳
 //***
-message SyncClientInfoRequest
+message HeartBeatRequest
 {
-	string user = 1;
-	string ip   = 2;
-	int32  port = 3; 
+	BasicRequest  basic     = 1;
+	string        user_name = 2;
 }
 
-message SyncClientInfoResponse
+message HeartBeatResponse
 {
-	int32  code    = 1;
-	string message = 2;
+	BasicResponse basic     = 1;
+	int32         operation = 2; //客户端应做的操作  0:无须做任何操作 1:当前用户已退出登录, 客户端可自定义操作 2:已在其它设备上登录，当前设备应退出登录 3:被管理员踢出，应退出登录
 }
 ```
 
 
 
+## 服务段框架图
+请查看链接:  https://www.processon.com/view/link/5e6fba8fe4b06b852fe028d9
 
 
-## 交互图
+## 时序图、缓存状态扭转图
+请查看链接：https://www.processon.com/view/link/5e6a6388e4b09b0f79e68073
 
-请查看链接：https://www.processon.com/view/link/5e4ffe99e4b0362764fbccf2
-
-
-
-## 时序图
-请查看链接：https://www.processon.com/view/link/5e53f53fe4b0c037b5fd4c9f
 
 
 ## 安全性
 - 敏感数据传输： 密码使用base64_code进行编码，并用grpc自带的ssl加密进行传输。
 - 敏感数据存储：使用加盐之后的bcrypt进行加密，设置加密一个密码的所需要的时间大概为1秒。
+- mysql安全: 使用实现了JDBC规范的 mysql Connector C++，使用prepareStatement执行sql语句
 
 
 
