@@ -4,12 +4,10 @@ cc_binary (
 	copts = [
 		"-Imylib/mylibLog/",
 		"-Iclient/commanLine/processCommandLine/",
-		"-Iclient/service/receiveLogoutNotice/",
 		"-Iclient/myToolLib",
 	],
 	deps = [
 		"//client/commanLine:commandLine",
-		"//client/service/receiveLogoutNotice:receiveLogoutNotice",
 		"//client/myToolLib:myTool",
 		"//mylib/mylibLog:myLibLog",
 		"//mylib/myLibIni:myLibIni",

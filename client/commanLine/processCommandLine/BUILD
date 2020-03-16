@@ -7,6 +7,7 @@ cc_library(
 		"Regist.h",
 		"Login.h",
 		"Logout.h",
+		"kickout.h",
 	],
 	copts = [
 		"-Imylib/myLibEncrypt/",
