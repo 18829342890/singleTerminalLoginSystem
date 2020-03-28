@@ -54,6 +54,7 @@ private:
     const redisContext* _redisConnect;
     int _saltWorkFactor;
     int _userLoginInfoCacheTtl;
+    int _count;
 };
 
 

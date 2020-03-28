@@ -26,8 +26,8 @@ static const char* userLoginManageService_method_names[] = {
   "/proto.userLoginManage.userLoginManageService/regist",
   "/proto.userLoginManage.userLoginManageService/login",
   "/proto.userLoginManage.userLoginManageService/logout",
-  "/proto.userLoginManage.userLoginManageService/heartBeat",
   "/proto.userLoginManage.userLoginManageService/kickOutUser",
+  "/proto.userLoginManage.userLoginManageService/queryLoginStatus",
 };
 
 std::unique_ptr< userLoginManageService::Stub> userLoginManageService::NewStub(const std::shared_ptr< ::grpc::ChannelInterface>& channel, const ::grpc::StubOptions& options) {
@@ -37,27 +37,39 @@ std::unique_ptr< userLoginManageService::Stub> userLoginManageService::NewStub(c
 }
 
 userLoginManageService::Stub::Stub(const std::shared_ptr< ::grpc::ChannelInterface>& channel)
-  : channel_(channel), rpcmethod_regist_(userLoginManageService_method_names[0], ::grpc::internal::RpcMethod::BIDI_STREAMING, channel)
+  : channel_(channel), rpcmethod_regist_(userLoginManageService_method_names[0], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
   , rpcmethod_login_(userLoginManageService_method_names[1], ::grpc::internal::RpcMethod::BIDI_STREAMING, channel)
-  , rpcmethod_logout_(userLoginManageService_method_names[2], ::grpc::internal::RpcMethod::BIDI_STREAMING, channel)
-  , rpcmethod_heartBeat_(userLoginManageService_method_names[3], ::grpc::internal::RpcMethod::BIDI_STREAMING, channel)
-  , rpcmethod_kickOutUser_(userLoginManageService_method_names[4], ::grpc::internal::RpcMethod::BIDI_STREAMING, channel)
+  , rpcmethod_logout_(userLoginManageService_method_names[2], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_kickOutUser_(userLoginManageService_method_names[3], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_queryLoginStatus_(userLoginManageService_method_names[4], ::grpc::internal::RpcMethod::BIDI_STREAMING, channel)
   {}
 
-::grpc::ClientReaderWriter< ::proto::userLoginManage::RegistRequest, ::proto::userLoginManage::RegistResponse>* userLoginManageService::Stub::registRaw(::grpc::ClientContext* context) {
-  return ::grpc_impl::internal::ClientReaderWriterFactory< ::proto::userLoginManage::RegistRequest, ::proto::userLoginManage::RegistResponse>::Create(channel_.get(), rpcmethod_regist_, context);
+::grpc::Status userLoginManageService::Stub::regist(::grpc::ClientContext* context, const ::proto::userLoginManage::RegistRequest& request, ::proto::userLoginManage::RegistResponse* response) {
+  return ::grpc::internal::BlockingUnaryCall(channel_.get(), rpcmethod_regist_, context, request, response);
 }
 
-void userLoginManageService::Stub::experimental_async::regist(::grpc::ClientContext* context, ::grpc::experimental::ClientBidiReactor< ::proto::userLoginManage::RegistRequest,::proto::userLoginManage::RegistResponse>* reactor) {
-  ::grpc_impl::internal::ClientCallbackReaderWriterFactory< ::proto::userLoginManage::RegistRequest,::proto::userLoginManage::RegistResponse>::Create(stub_->channel_.get(), stub_->rpcmethod_regist_, context, reactor);
+void userLoginManageService::Stub::experimental_async::regist(::grpc::ClientContext* context, const ::proto::userLoginManage::RegistRequest* request, ::proto::userLoginManage::RegistResponse* response, std::function<void(::grpc::Status)> f) {
+  ::grpc_impl::internal::CallbackUnaryCall(stub_->channel_.get(), stub_->rpcmethod_regist_, context, request, response, std::move(f));
 }
 
-::grpc::ClientAsyncReaderWriter< ::proto::userLoginManage::RegistRequest, ::proto::userLoginManage::RegistResponse>* userLoginManageService::Stub::AsyncregistRaw(::grpc::ClientContext* context, ::grpc::CompletionQueue* cq, void* tag) {
-  return ::grpc_impl::internal::ClientAsyncReaderWriterFactory< ::proto::userLoginManage::RegistRequest, ::proto::userLoginManage::RegistResponse>::Create(channel_.get(), cq, rpcmethod_regist_, context, true, tag);
+void userLoginManageService::Stub::experimental_async::regist(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::proto::userLoginManage::RegistResponse* response, std::function<void(::grpc::Status)> f) {
+  ::grpc_impl::internal::CallbackUnaryCall(stub_->channel_.get(), stub_->rpcmethod_regist_, context, request, response, std::move(f));
 }
 
-::grpc::ClientAsyncReaderWriter< ::proto::userLoginManage::RegistRequest, ::proto::userLoginManage::RegistResponse>* userLoginManageService::Stub::PrepareAsyncregistRaw(::grpc::ClientContext* context, ::grpc::CompletionQueue* cq) {
-  return ::grpc_impl::internal::ClientAsyncReaderWriterFactory< ::proto::userLoginManage::RegistRequest, ::proto::userLoginManage::RegistResponse>::Create(channel_.get(), cq, rpcmethod_regist_, context, false, nullptr);
+void userLoginManageService::Stub::experimental_async::regist(::grpc::ClientContext* context, const ::proto::userLoginManage::RegistRequest* request, ::proto::userLoginManage::RegistResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
+  ::grpc_impl::internal::ClientCallbackUnaryFactory::Create(stub_->channel_.get(), stub_->rpcmethod_regist_, context, request, response, reactor);
+}
+
+void userLoginManageService::Stub::experimental_async::regist(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::proto::userLoginManage::RegistResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
+  ::grpc_impl::internal::ClientCallbackUnaryFactory::Create(stub_->channel_.get(), stub_->rpcmethod_regist_, context, request, response, reactor);
+}
+
+::grpc::ClientAsyncResponseReader< ::proto::userLoginManage::RegistResponse>* userLoginManageService::Stub::AsyncregistRaw(::grpc::ClientContext* context, const ::proto::userLoginManage::RegistRequest& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc_impl::internal::ClientAsyncResponseReaderFactory< ::proto::userLoginManage::RegistResponse>::Create(channel_.get(), cq, rpcmethod_regist_, context, request, true);
+}
+
+::grpc::ClientAsyncResponseReader< ::proto::userLoginManage::RegistResponse>* userLoginManageService::Stub::PrepareAsyncregistRaw(::grpc::ClientContext* context, const ::proto::userLoginManage::RegistRequest& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc_impl::internal::ClientAsyncResponseReaderFactory< ::proto::userLoginManage::RegistResponse>::Create(channel_.get(), cq, rpcmethod_regist_, context, request, false);
 }
 
 ::grpc::ClientReaderWriter< ::proto::userLoginManage::LoginRequest, ::proto::userLoginManage::LoginResponse>* userLoginManageService::Stub::loginRaw(::grpc::ClientContext* context) {
@@ -76,59 +88,83 @@ void userLoginManageService::Stub::experimental_async::login(::grpc::ClientConte
   return ::grpc_impl::internal::ClientAsyncReaderWriterFactory< ::proto::userLoginManage::LoginRequest, ::proto::userLoginManage::LoginResponse>::Create(channel_.get(), cq, rpcmethod_login_, context, false, nullptr);
 }
 
-::grpc::ClientReaderWriter< ::proto::userLoginManage::LogoutRequest, ::proto::userLoginManage::LogoutResponse>* userLoginManageService::Stub::logoutRaw(::grpc::ClientContext* context) {
-  return ::grpc_impl::internal::ClientReaderWriterFactory< ::proto::userLoginManage::LogoutRequest, ::proto::userLoginManage::LogoutResponse>::Create(channel_.get(), rpcmethod_logout_, context);
+::grpc::Status userLoginManageService::Stub::logout(::grpc::ClientContext* context, const ::proto::userLoginManage::LogoutRequest& request, ::proto::userLoginManage::LogoutResponse* response) {
+  return ::grpc::internal::BlockingUnaryCall(channel_.get(), rpcmethod_logout_, context, request, response);
 }
 
-void userLoginManageService::Stub::experimental_async::logout(::grpc::ClientContext* context, ::grpc::experimental::ClientBidiReactor< ::proto::userLoginManage::LogoutRequest,::proto::userLoginManage::LogoutResponse>* reactor) {
-  ::grpc_impl::internal::ClientCallbackReaderWriterFactory< ::proto::userLoginManage::LogoutRequest,::proto::userLoginManage::LogoutResponse>::Create(stub_->channel_.get(), stub_->rpcmethod_logout_, context, reactor);
+void userLoginManageService::Stub::experimental_async::logout(::grpc::ClientContext* context, const ::proto::userLoginManage::LogoutRequest* request, ::proto::userLoginManage::LogoutResponse* response, std::function<void(::grpc::Status)> f) {
+  ::grpc_impl::internal::CallbackUnaryCall(stub_->channel_.get(), stub_->rpcmethod_logout_, context, request, response, std::move(f));
 }
 
-::grpc::ClientAsyncReaderWriter< ::proto::userLoginManage::LogoutRequest, ::proto::userLoginManage::LogoutResponse>* userLoginManageService::Stub::AsynclogoutRaw(::grpc::ClientContext* context, ::grpc::CompletionQueue* cq, void* tag) {
-  return ::grpc_impl::internal::ClientAsyncReaderWriterFactory< ::proto::userLoginManage::LogoutRequest, ::proto::userLoginManage::LogoutResponse>::Create(channel_.get(), cq, rpcmethod_logout_, context, true, tag);
+void userLoginManageService::Stub::experimental_async::logout(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::proto::userLoginManage::LogoutResponse* response, std::function<void(::grpc::Status)> f) {
+  ::grpc_impl::internal::CallbackUnaryCall(stub_->channel_.get(), stub_->rpcmethod_logout_, context, request, response, std::move(f));
 }
 
-::grpc::ClientAsyncReaderWriter< ::proto::userLoginManage::LogoutRequest, ::proto::userLoginManage::LogoutResponse>* userLoginManageService::Stub::PrepareAsynclogoutRaw(::grpc::ClientContext* context, ::grpc::CompletionQueue* cq) {
-  return ::grpc_impl::internal::ClientAsyncReaderWriterFactory< ::proto::userLoginManage::LogoutRequest, ::proto::userLoginManage::LogoutResponse>::Create(channel_.get(), cq, rpcmethod_logout_, context, false, nullptr);
+void userLoginManageService::Stub::experimental_async::logout(::grpc::ClientContext* context, const ::proto::userLoginManage::LogoutRequest* request, ::proto::userLoginManage::LogoutResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
+  ::grpc_impl::internal::ClientCallbackUnaryFactory::Create(stub_->channel_.get(), stub_->rpcmethod_logout_, context, request, response, reactor);
 }
 
-::grpc::ClientReaderWriter< ::proto::userLoginManage::HeartBeatRequest, ::proto::userLoginManage::HeartBeatResponse>* userLoginManageService::Stub::heartBeatRaw(::grpc::ClientContext* context) {
-  return ::grpc_impl::internal::ClientReaderWriterFactory< ::proto::userLoginManage::HeartBeatRequest, ::proto::userLoginManage::HeartBeatResponse>::Create(channel_.get(), rpcmethod_heartBeat_, context);
+void userLoginManageService::Stub::experimental_async::logout(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::proto::userLoginManage::LogoutResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
+  ::grpc_impl::internal::ClientCallbackUnaryFactory::Create(stub_->channel_.get(), stub_->rpcmethod_logout_, context, request, response, reactor);
 }
 
-void userLoginManageService::Stub::experimental_async::heartBeat(::grpc::ClientContext* context, ::grpc::experimental::ClientBidiReactor< ::proto::userLoginManage::HeartBeatRequest,::proto::userLoginManage::HeartBeatResponse>* reactor) {
-  ::grpc_impl::internal::ClientCallbackReaderWriterFactory< ::proto::userLoginManage::HeartBeatRequest,::proto::userLoginManage::HeartBeatResponse>::Create(stub_->channel_.get(), stub_->rpcmethod_heartBeat_, context, reactor);
+::grpc::ClientAsyncResponseReader< ::proto::userLoginManage::LogoutResponse>* userLoginManageService::Stub::AsynclogoutRaw(::grpc::ClientContext* context, const ::proto::userLoginManage::LogoutRequest& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc_impl::internal::ClientAsyncResponseReaderFactory< ::proto::userLoginManage::LogoutResponse>::Create(channel_.get(), cq, rpcmethod_logout_, context, request, true);
 }
 
-::grpc::ClientAsyncReaderWriter< ::proto::userLoginManage::HeartBeatRequest, ::proto::userLoginManage::HeartBeatResponse>* userLoginManageService::Stub::AsyncheartBeatRaw(::grpc::ClientContext* context, ::grpc::CompletionQueue* cq, void* tag) {
-  return ::grpc_impl::internal::ClientAsyncReaderWriterFactory< ::proto::userLoginManage::HeartBeatRequest, ::proto::userLoginManage::HeartBeatResponse>::Create(channel_.get(), cq, rpcmethod_heartBeat_, context, true, tag);
+::grpc::ClientAsyncResponseReader< ::proto::userLoginManage::LogoutResponse>* userLoginManageService::Stub::PrepareAsynclogoutRaw(::grpc::ClientContext* context, const ::proto::userLoginManage::LogoutRequest& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc_impl::internal::ClientAsyncResponseReaderFactory< ::proto::userLoginManage::LogoutResponse>::Create(channel_.get(), cq, rpcmethod_logout_, context, request, false);
 }
 
-::grpc::ClientAsyncReaderWriter< ::proto::userLoginManage::HeartBeatRequest, ::proto::userLoginManage::HeartBeatResponse>* userLoginManageService::Stub::PrepareAsyncheartBeatRaw(::grpc::ClientContext* context, ::grpc::CompletionQueue* cq) {
-  return ::grpc_impl::internal::ClientAsyncReaderWriterFactory< ::proto::userLoginManage::HeartBeatRequest, ::proto::userLoginManage::HeartBeatResponse>::Create(channel_.get(), cq, rpcmethod_heartBeat_, context, false, nullptr);
+::grpc::Status userLoginManageService::Stub::kickOutUser(::grpc::ClientContext* context, const ::proto::userLoginManage::KickOutUserRequest& request, ::proto::userLoginManage::KickOutUserResponse* response) {
+  return ::grpc::internal::BlockingUnaryCall(channel_.get(), rpcmethod_kickOutUser_, context, request, response);
 }
 
-::grpc::ClientReaderWriter< ::proto::userLoginManage::KickOutUserRequest, ::proto::userLoginManage::KickOutUserResponse>* userLoginManageService::Stub::kickOutUserRaw(::grpc::ClientContext* context) {
-  return ::grpc_impl::internal::ClientReaderWriterFactory< ::proto::userLoginManage::KickOutUserRequest, ::proto::userLoginManage::KickOutUserResponse>::Create(channel_.get(), rpcmethod_kickOutUser_, context);
+void userLoginManageService::Stub::experimental_async::kickOutUser(::grpc::ClientContext* context, const ::proto::userLoginManage::KickOutUserRequest* request, ::proto::userLoginManage::KickOutUserResponse* response, std::function<void(::grpc::Status)> f) {
+  ::grpc_impl::internal::CallbackUnaryCall(stub_->channel_.get(), stub_->rpcmethod_kickOutUser_, context, request, response, std::move(f));
 }
 
-void userLoginManageService::Stub::experimental_async::kickOutUser(::grpc::ClientContext* context, ::grpc::experimental::ClientBidiReactor< ::proto::userLoginManage::KickOutUserRequest,::proto::userLoginManage::KickOutUserResponse>* reactor) {
-  ::grpc_impl::internal::ClientCallbackReaderWriterFactory< ::proto::userLoginManage::KickOutUserRequest,::proto::userLoginManage::KickOutUserResponse>::Create(stub_->channel_.get(), stub_->rpcmethod_kickOutUser_, context, reactor);
+void userLoginManageService::Stub::experimental_async::kickOutUser(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::proto::userLoginManage::KickOutUserResponse* response, std::function<void(::grpc::Status)> f) {
+  ::grpc_impl::internal::CallbackUnaryCall(stub_->channel_.get(), stub_->rpcmethod_kickOutUser_, context, request, response, std::move(f));
 }
 
-::grpc::ClientAsyncReaderWriter< ::proto::userLoginManage::KickOutUserRequest, ::proto::userLoginManage::KickOutUserResponse>* userLoginManageService::Stub::AsynckickOutUserRaw(::grpc::ClientContext* context, ::grpc::CompletionQueue* cq, void* tag) {
-  return ::grpc_impl::internal::ClientAsyncReaderWriterFactory< ::proto::userLoginManage::KickOutUserRequest, ::proto::userLoginManage::KickOutUserResponse>::Create(channel_.get(), cq, rpcmethod_kickOutUser_, context, true, tag);
+void userLoginManageService::Stub::experimental_async::kickOutUser(::grpc::ClientContext* context, const ::proto::userLoginManage::KickOutUserRequest* request, ::proto::userLoginManage::KickOutUserResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
+  ::grpc_impl::internal::ClientCallbackUnaryFactory::Create(stub_->channel_.get(), stub_->rpcmethod_kickOutUser_, context, request, response, reactor);
 }
 
-::grpc::ClientAsyncReaderWriter< ::proto::userLoginManage::KickOutUserRequest, ::proto::userLoginManage::KickOutUserResponse>* userLoginManageService::Stub::PrepareAsynckickOutUserRaw(::grpc::ClientContext* context, ::grpc::CompletionQueue* cq) {
-  return ::grpc_impl::internal::ClientAsyncReaderWriterFactory< ::proto::userLoginManage::KickOutUserRequest, ::proto::userLoginManage::KickOutUserResponse>::Create(channel_.get(), cq, rpcmethod_kickOutUser_, context, false, nullptr);
+void userLoginManageService::Stub::experimental_async::kickOutUser(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::proto::userLoginManage::KickOutUserResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
+  ::grpc_impl::internal::ClientCallbackUnaryFactory::Create(stub_->channel_.get(), stub_->rpcmethod_kickOutUser_, context, request, response, reactor);
+}
+
+::grpc::ClientAsyncResponseReader< ::proto::userLoginManage::KickOutUserResponse>* userLoginManageService::Stub::AsynckickOutUserRaw(::grpc::ClientContext* context, const ::proto::userLoginManage::KickOutUserRequest& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc_impl::internal::ClientAsyncResponseReaderFactory< ::proto::userLoginManage::KickOutUserResponse>::Create(channel_.get(), cq, rpcmethod_kickOutUser_, context, request, true);
+}
+
+::grpc::ClientAsyncResponseReader< ::proto::userLoginManage::KickOutUserResponse>* userLoginManageService::Stub::PrepareAsynckickOutUserRaw(::grpc::ClientContext* context, const ::proto::userLoginManage::KickOutUserRequest& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc_impl::internal::ClientAsyncResponseReaderFactory< ::proto::userLoginManage::KickOutUserResponse>::Create(channel_.get(), cq, rpcmethod_kickOutUser_, context, request, false);
+}
+
+::grpc::ClientReaderWriter< ::proto::userLoginManage::QueryLoginStatusRequest, ::proto::userLoginManage::QueryLoginStatusResponse>* userLoginManageService::Stub::queryLoginStatusRaw(::grpc::ClientContext* context) {
+  return ::grpc_impl::internal::ClientReaderWriterFactory< ::proto::userLoginManage::QueryLoginStatusRequest, ::proto::userLoginManage::QueryLoginStatusResponse>::Create(channel_.get(), rpcmethod_queryLoginStatus_, context);
+}
+
+void userLoginManageService::Stub::experimental_async::queryLoginStatus(::grpc::ClientContext* context, ::grpc::experimental::ClientBidiReactor< ::proto::userLoginManage::QueryLoginStatusRequest,::proto::userLoginManage::QueryLoginStatusResponse>* reactor) {
+  ::grpc_impl::internal::ClientCallbackReaderWriterFactory< ::proto::userLoginManage::QueryLoginStatusRequest,::proto::userLoginManage::QueryLoginStatusResponse>::Create(stub_->channel_.get(), stub_->rpcmethod_queryLoginStatus_, context, reactor);
+}
+
+::grpc::ClientAsyncReaderWriter< ::proto::userLoginManage::QueryLoginStatusRequest, ::proto::userLoginManage::QueryLoginStatusResponse>* userLoginManageService::Stub::AsyncqueryLoginStatusRaw(::grpc::ClientContext* context, ::grpc::CompletionQueue* cq, void* tag) {
+  return ::grpc_impl::internal::ClientAsyncReaderWriterFactory< ::proto::userLoginManage::QueryLoginStatusRequest, ::proto::userLoginManage::QueryLoginStatusResponse>::Create(channel_.get(), cq, rpcmethod_queryLoginStatus_, context, true, tag);
+}
+
+::grpc::ClientAsyncReaderWriter< ::proto::userLoginManage::QueryLoginStatusRequest, ::proto::userLoginManage::QueryLoginStatusResponse>* userLoginManageService::Stub::PrepareAsyncqueryLoginStatusRaw(::grpc::ClientContext* context, ::grpc::CompletionQueue* cq) {
+  return ::grpc_impl::internal::ClientAsyncReaderWriterFactory< ::proto::userLoginManage::QueryLoginStatusRequest, ::proto::userLoginManage::QueryLoginStatusResponse>::Create(channel_.get(), cq, rpcmethod_queryLoginStatus_, context, false, nullptr);
 }
 
 userLoginManageService::Service::Service() {
   AddMethod(new ::grpc::internal::RpcServiceMethod(
       userLoginManageService_method_names[0],
-      ::grpc::internal::RpcMethod::BIDI_STREAMING,
-      new ::grpc::internal::BidiStreamingHandler< userLoginManageService::Service, ::proto::userLoginManage::RegistRequest, ::proto::userLoginManage::RegistResponse>(
+      ::grpc::internal::RpcMethod::NORMAL_RPC,
+      new ::grpc::internal::RpcMethodHandler< userLoginManageService::Service, ::proto::userLoginManage::RegistRequest, ::proto::userLoginManage::RegistResponse>(
           std::mem_fn(&userLoginManageService::Service::regist), this)));
   AddMethod(new ::grpc::internal::RpcServiceMethod(
       userLoginManageService_method_names[1],
@@ -137,27 +173,28 @@ userLoginManageService::Service::Service() {
           std::mem_fn(&userLoginManageService::Service::login), this)));
   AddMethod(new ::grpc::internal::RpcServiceMethod(
       userLoginManageService_method_names[2],
-      ::grpc::internal::RpcMethod::BIDI_STREAMING,
-      new ::grpc::internal::BidiStreamingHandler< userLoginManageService::Service, ::proto::userLoginManage::LogoutRequest, ::proto::userLoginManage::LogoutResponse>(
+      ::grpc::internal::RpcMethod::NORMAL_RPC,
+      new ::grpc::internal::RpcMethodHandler< userLoginManageService::Service, ::proto::userLoginManage::LogoutRequest, ::proto::userLoginManage::LogoutResponse>(
           std::mem_fn(&userLoginManageService::Service::logout), this)));
   AddMethod(new ::grpc::internal::RpcServiceMethod(
       userLoginManageService_method_names[3],
-      ::grpc::internal::RpcMethod::BIDI_STREAMING,
-      new ::grpc::internal::BidiStreamingHandler< userLoginManageService::Service, ::proto::userLoginManage::HeartBeatRequest, ::proto::userLoginManage::HeartBeatResponse>(
-          std::mem_fn(&userLoginManageService::Service::heartBeat), this)));
+      ::grpc::internal::RpcMethod::NORMAL_RPC,
+      new ::grpc::internal::RpcMethodHandler< userLoginManageService::Service, ::proto::userLoginManage::KickOutUserRequest, ::proto::userLoginManage::KickOutUserResponse>(
+          std::mem_fn(&userLoginManageService::Service::kickOutUser), this)));
   AddMethod(new ::grpc::internal::RpcServiceMethod(
       userLoginManageService_method_names[4],
       ::grpc::internal::RpcMethod::BIDI_STREAMING,
-      new ::grpc::internal::BidiStreamingHandler< userLoginManageService::Service, ::proto::userLoginManage::KickOutUserRequest, ::proto::userLoginManage::KickOutUserResponse>(
-          std::mem_fn(&userLoginManageService::Service::kickOutUser), this)));
+      new ::grpc::internal::BidiStreamingHandler< userLoginManageService::Service, ::proto::userLoginManage::QueryLoginStatusRequest, ::proto::userLoginManage::QueryLoginStatusResponse>(
+          std::mem_fn(&userLoginManageService::Service::queryLoginStatus), this)));
 }
 
 userLoginManageService::Service::~Service() {
 }
 
-::grpc::Status userLoginManageService::Service::regist(::grpc::ServerContext* context, ::grpc::ServerReaderWriter< ::proto::userLoginManage::RegistResponse, ::proto::userLoginManage::RegistRequest>* stream) {
+::grpc::Status userLoginManageService::Service::regist(::grpc::ServerContext* context, const ::proto::userLoginManage::RegistRequest* request, ::proto::userLoginManage::RegistResponse* response) {
   (void) context;
-  (void) stream;
+  (void) request;
+  (void) response;
   return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
 }
 
@@ -167,19 +204,21 @@ userLoginManageService::Service::~Service() {
   return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
 }
 
-::grpc::Status userLoginManageService::Service::logout(::grpc::ServerContext* context, ::grpc::ServerReaderWriter< ::proto::userLoginManage::LogoutResponse, ::proto::userLoginManage::LogoutRequest>* stream) {
+::grpc::Status userLoginManageService::Service::logout(::grpc::ServerContext* context, const ::proto::userLoginManage::LogoutRequest* request, ::proto::userLoginManage::LogoutResponse* response) {
   (void) context;
-  (void) stream;
+  (void) request;
+  (void) response;
   return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
 }
 
-::grpc::Status userLoginManageService::Service::heartBeat(::grpc::ServerContext* context, ::grpc::ServerReaderWriter< ::proto::userLoginManage::HeartBeatResponse, ::proto::userLoginManage::HeartBeatRequest>* stream) {
+::grpc::Status userLoginManageService::Service::kickOutUser(::grpc::ServerContext* context, const ::proto::userLoginManage::KickOutUserRequest* request, ::proto::userLoginManage::KickOutUserResponse* response) {
   (void) context;
-  (void) stream;
+  (void) request;
+  (void) response;
   return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
 }
 
-::grpc::Status userLoginManageService::Service::kickOutUser(::grpc::ServerContext* context, ::grpc::ServerReaderWriter< ::proto::userLoginManage::KickOutUserResponse, ::proto::userLoginManage::KickOutUserRequest>* stream) {
+::grpc::Status userLoginManageService::Service::queryLoginStatus(::grpc::ServerContext* context, ::grpc::ServerReaderWriter< ::proto::userLoginManage::QueryLoginStatusResponse, ::proto::userLoginManage::QueryLoginStatusRequest>* stream) {
   (void) context;
   (void) stream;
   return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");

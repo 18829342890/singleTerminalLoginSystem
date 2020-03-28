@@ -55,5 +55,7 @@ int LoginManageServiceBase::getUserLoginInfo(const string& userName, UserLoginCa
 	userLoginCacheBO.setUserName(userLoginManage.getUserName());
 	userLoginCacheBO.setClientUid(userLoginManage.getClientUid());
 	userLoginCacheBO.setStatus(userLoginManage.getStatus());
+
+	//如果是从db中获取数据，获取成功之后更新缓存 TODO
 	return 0;
 }

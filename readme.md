@@ -52,6 +52,9 @@ create table user.t_user_login_manage(
 
 
 
+
+
+
 ## 协议
 
 ```
@@ -67,20 +70,21 @@ package proto.userLoginManage;
 
 service userLoginManageService {
   // regist
-  rpc regist (stream RegistRequest) returns (stream RegistResponse) {}
+  rpc regist (RegistRequest) returns (RegistResponse) {}
 
   // login
-  rpc login (stream LoginRequest) returns (stream LoginResponse) {}
+  rpc login (LoginRequest) returns (LoginResponse) {}
 
   // logout
-  rpc logout (stream LogoutRequest) returns (stream LogoutResponse) {}
-
-  // heart beat
-  rpc heartBeat (stream HeartBeatRequest) returns (stream HeartBeatResponse) {}
+  rpc logout (LogoutRequest) returns (LogoutResponse) {}
 
   // kick out user
-  rpc kickOutUser (stream KickOutUserRequest) returns (stream KickOutUserResponse) {}
+  rpc kickOutUser (KickOutUserRequest) returns (KickOutUserResponse) {}
+  
+  // query login status
+  rpc queryLoginStatus (stream QueryLoginStatusRequest) returns (stream QueryLoginStatusResponse) {}
 }
+
 
 //***
 //@request  BasicRequest
@@ -89,15 +93,14 @@ service userLoginManageService {
 //***
 message BasicRequest
 {
-	int64   timestamp = 1; //时间戳
-	string  uuid      = 2; //客户端的uuid
+	int64   timestamp     = 1; //发送消息的当前时间戳
 }
 
 message BasicResponse
 {
-	int64   timestamp = 1; //时间戳
-	int32   code      = 2; //状态码
-	string  msg       = 3; //描述信息
+	int64   timestamp     = 1; //时间戳
+	int32   code          = 2; //状态码
+	string  msg           = 3; //描述信息
 }
 
 
@@ -108,14 +111,14 @@ message BasicResponse
 //***
 message RegistRequest
 {
-	BasicRequest  basic     = 1;
-	string        user_name = 2;
-	string        pass_word = 3;
+	BasicRequest             basic     = 1;
+	string                   user_name = 2;
+	string                   pass_word = 3;
 }
 
 message RegistResponse
 {
-	BasicResponse basic     = 1;
+	BasicResponse            basic     = 1;
 }
 
 
@@ -126,14 +129,14 @@ message RegistResponse
 //***
 message LoginRequest
 {
-	BasicRequest  basic     = 1;
-	string        user_name = 2;
-	string        pass_word = 3;
+	BasicRequest             basic     = 1;
+	string                   user_name = 2;
+	string                   pass_word = 3;
 }
 
 message LoginResponse
 {
-	BasicResponse basic     = 1;
+	BasicResponse            basic     = 1;
 }
 
 
@@ -144,13 +147,13 @@ message LoginResponse
 //***
 message LogoutRequest
 {
-	BasicRequest  basic     = 1;
-	string        user_name = 2;
+	BasicRequest             basic     = 1;
+	string                   user_name = 2;
 }
 
 message LogoutResponse
 {
-	BasicResponse basic     = 1;
+	BasicResponse            basic     = 1;
 }
 
 //***
@@ -160,49 +163,59 @@ message LogoutResponse
 //***
 message KickOutUserRequest
 {
-	BasicRequest  basic     = 1;
-	string        user_name = 2;
+	BasicRequest             basic     = 1;
+	string                   user_name = 2;
 }
 
 message KickOutUserResponse
 {
-	BasicResponse basic     = 1;
+	BasicResponse basic                = 1;
 }
 
 
 //***
-//@request  HeartBeatRequest
-//@response HeartBeatResponse
-//@remark   心跳
+//@request  QueryLoginStatusRequest
+//@response QueryLoginStatusResponse
+//@remark   询问登录状态
 //***
-message HeartBeatRequest
+message QueryLoginStatusRequest
 {
-	BasicRequest  basic     = 1;
-	string        user_name = 2;
+	BasicRequest             basic     = 1;
 }
 
-message HeartBeatResponse
+message QueryLoginStatusResponse
 {
-	BasicResponse basic     = 1;
-	int32         operation = 2; //客户端应做的操作  0:无须做任何操作 1:当前用户已退出登录, 客户端可自定义操作 2:已在其它设备上登录，当前设备应退出登录 3:被管理员踢出，应退出登录
+	BasicResponse            basic     = 1;
+	int32                    operation = 2; //应处理的动作 1.无须处理  2. 有新设备登录，此设备需退出登录
 }
+
 ```
 
 
 
-## 服务段框架图
+
+
+
+
+
+
+## 服务端框架图
 请查看链接:  https://www.processon.com/view/link/5e6fba8fe4b06b852fe028d9
 
 
-## 时序图、缓存状态扭转图
-请查看链接：https://www.processon.com/view/link/5e6a6388e4b09b0f79e68073
+
+
+
+
+## 时序图、异常场景分析
+请查看链接：https://www.processon.com/view/link/5e7b5241e4b08b615739828f
 
 
 
 ## 安全性
-- 敏感数据传输： 密码使用base64_code进行编码，并用grpc自带的ssl加密进行传输。
+- 敏感数据传输： 账户、密码使用base64_code进行编码，并用grpc自带的ssl加密进行传输。
 - 敏感数据存储：使用加盐之后的bcrypt进行加密，设置加密一个密码的所需要的时间大概为1秒。
-- mysql安全: 使用实现了JDBC规范的 mysql Connector C++，使用prepareStatement执行sql语句
+- mysql安全: 使用实现了JDBC规范的 mysql Connector C++，使用prepareStatement执行sql语句。
 
 
 

@@ -62,12 +62,6 @@ extern BasicRequestDefaultTypeInternal _BasicRequest_default_instance_;
 class BasicResponse;
 class BasicResponseDefaultTypeInternal;
 extern BasicResponseDefaultTypeInternal _BasicResponse_default_instance_;
-class HeartBeatRequest;
-class HeartBeatRequestDefaultTypeInternal;
-extern HeartBeatRequestDefaultTypeInternal _HeartBeatRequest_default_instance_;
-class HeartBeatResponse;
-class HeartBeatResponseDefaultTypeInternal;
-extern HeartBeatResponseDefaultTypeInternal _HeartBeatResponse_default_instance_;
 class KickOutUserRequest;
 class KickOutUserRequestDefaultTypeInternal;
 extern KickOutUserRequestDefaultTypeInternal _KickOutUserRequest_default_instance_;
@@ -86,6 +80,12 @@ extern LogoutRequestDefaultTypeInternal _LogoutRequest_default_instance_;
 class LogoutResponse;
 class LogoutResponseDefaultTypeInternal;
 extern LogoutResponseDefaultTypeInternal _LogoutResponse_default_instance_;
+class QueryLoginStatusRequest;
+class QueryLoginStatusRequestDefaultTypeInternal;
+extern QueryLoginStatusRequestDefaultTypeInternal _QueryLoginStatusRequest_default_instance_;
+class QueryLoginStatusResponse;
+class QueryLoginStatusResponseDefaultTypeInternal;
+extern QueryLoginStatusResponseDefaultTypeInternal _QueryLoginStatusResponse_default_instance_;
 class RegistRequest;
 class RegistRequestDefaultTypeInternal;
 extern RegistRequestDefaultTypeInternal _RegistRequest_default_instance_;
@@ -97,14 +97,14 @@ extern RegistResponseDefaultTypeInternal _RegistResponse_default_instance_;
 PROTOBUF_NAMESPACE_OPEN
 template<> ::proto::userLoginManage::BasicRequest* Arena::CreateMaybeMessage<::proto::userLoginManage::BasicRequest>(Arena*);
 template<> ::proto::userLoginManage::BasicResponse* Arena::CreateMaybeMessage<::proto::userLoginManage::BasicResponse>(Arena*);
-template<> ::proto::userLoginManage::HeartBeatRequest* Arena::CreateMaybeMessage<::proto::userLoginManage::HeartBeatRequest>(Arena*);
-template<> ::proto::userLoginManage::HeartBeatResponse* Arena::CreateMaybeMessage<::proto::userLoginManage::HeartBeatResponse>(Arena*);
 template<> ::proto::userLoginManage::KickOutUserRequest* Arena::CreateMaybeMessage<::proto::userLoginManage::KickOutUserRequest>(Arena*);
 template<> ::proto::userLoginManage::KickOutUserResponse* Arena::CreateMaybeMessage<::proto::userLoginManage::KickOutUserResponse>(Arena*);
 template<> ::proto::userLoginManage::LoginRequest* Arena::CreateMaybeMessage<::proto::userLoginManage::LoginRequest>(Arena*);
 template<> ::proto::userLoginManage::LoginResponse* Arena::CreateMaybeMessage<::proto::userLoginManage::LoginResponse>(Arena*);
 template<> ::proto::userLoginManage::LogoutRequest* Arena::CreateMaybeMessage<::proto::userLoginManage::LogoutRequest>(Arena*);
 template<> ::proto::userLoginManage::LogoutResponse* Arena::CreateMaybeMessage<::proto::userLoginManage::LogoutResponse>(Arena*);
+template<> ::proto::userLoginManage::QueryLoginStatusRequest* Arena::CreateMaybeMessage<::proto::userLoginManage::QueryLoginStatusRequest>(Arena*);
+template<> ::proto::userLoginManage::QueryLoginStatusResponse* Arena::CreateMaybeMessage<::proto::userLoginManage::QueryLoginStatusResponse>(Arena*);
 template<> ::proto::userLoginManage::RegistRequest* Arena::CreateMaybeMessage<::proto::userLoginManage::RegistRequest>(Arena*);
 template<> ::proto::userLoginManage::RegistResponse* Arena::CreateMaybeMessage<::proto::userLoginManage::RegistResponse>(Arena*);
 PROTOBUF_NAMESPACE_CLOSE
@@ -1596,23 +1596,23 @@ class KickOutUserResponse :
 };
 // -------------------------------------------------------------------
 
-class HeartBeatRequest :
-    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:proto.userLoginManage.HeartBeatRequest) */ {
+class QueryLoginStatusRequest :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:proto.userLoginManage.QueryLoginStatusRequest) */ {
  public:
-  HeartBeatRequest();
-  virtual ~HeartBeatRequest();
+  QueryLoginStatusRequest();
+  virtual ~QueryLoginStatusRequest();
 
-  HeartBeatRequest(const HeartBeatRequest& from);
-  HeartBeatRequest(HeartBeatRequest&& from) noexcept
-    : HeartBeatRequest() {
+  QueryLoginStatusRequest(const QueryLoginStatusRequest& from);
+  QueryLoginStatusRequest(QueryLoginStatusRequest&& from) noexcept
+    : QueryLoginStatusRequest() {
     *this = ::std::move(from);
   }
 
-  inline HeartBeatRequest& operator=(const HeartBeatRequest& from) {
+  inline QueryLoginStatusRequest& operator=(const QueryLoginStatusRequest& from) {
     CopyFrom(from);
     return *this;
   }
-  inline HeartBeatRequest& operator=(HeartBeatRequest&& from) noexcept {
+  inline QueryLoginStatusRequest& operator=(QueryLoginStatusRequest&& from) noexcept {
     if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
       if (this != &from) InternalSwap(&from);
     } else {
@@ -1630,37 +1630,37 @@ class HeartBeatRequest :
   static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
     return GetMetadataStatic().reflection;
   }
-  static const HeartBeatRequest& default_instance();
+  static const QueryLoginStatusRequest& default_instance();
 
   static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
-  static inline const HeartBeatRequest* internal_default_instance() {
-    return reinterpret_cast<const HeartBeatRequest*>(
-               &_HeartBeatRequest_default_instance_);
+  static inline const QueryLoginStatusRequest* internal_default_instance() {
+    return reinterpret_cast<const QueryLoginStatusRequest*>(
+               &_QueryLoginStatusRequest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
     10;
 
-  friend void swap(HeartBeatRequest& a, HeartBeatRequest& b) {
+  friend void swap(QueryLoginStatusRequest& a, QueryLoginStatusRequest& b) {
     a.Swap(&b);
   }
-  inline void Swap(HeartBeatRequest* other) {
+  inline void Swap(QueryLoginStatusRequest* other) {
     if (other == this) return;
     InternalSwap(other);
   }
 
   // implements Message ----------------------------------------------
 
-  inline HeartBeatRequest* New() const final {
-    return CreateMaybeMessage<HeartBeatRequest>(nullptr);
+  inline QueryLoginStatusRequest* New() const final {
+    return CreateMaybeMessage<QueryLoginStatusRequest>(nullptr);
   }
 
-  HeartBeatRequest* New(::PROTOBUF_NAMESPACE_ID::Arena* arena) const final {
-    return CreateMaybeMessage<HeartBeatRequest>(arena);
+  QueryLoginStatusRequest* New(::PROTOBUF_NAMESPACE_ID::Arena* arena) const final {
+    return CreateMaybeMessage<QueryLoginStatusRequest>(arena);
   }
   void CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) final;
   void MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) final;
-  void CopyFrom(const HeartBeatRequest& from);
-  void MergeFrom(const HeartBeatRequest& from);
+  void CopyFrom(const QueryLoginStatusRequest& from);
+  void MergeFrom(const QueryLoginStatusRequest& from);
   PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
   bool IsInitialized() const final;
 
@@ -1674,10 +1674,10 @@ class HeartBeatRequest :
   inline void SharedCtor();
   inline void SharedDtor();
   void SetCachedSize(int size) const final;
-  void InternalSwap(HeartBeatRequest* other);
+  void InternalSwap(QueryLoginStatusRequest* other);
   friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
   static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
-    return "proto.userLoginManage.HeartBeatRequest";
+    return "proto.userLoginManage.QueryLoginStatusRequest";
   }
   private:
   inline ::PROTOBUF_NAMESPACE_ID::Arena* GetArenaNoVirtual() const {
@@ -1702,25 +1702,8 @@ class HeartBeatRequest :
   // accessors -------------------------------------------------------
 
   enum : int {
-    kUserNameFieldNumber = 2,
     kBasicFieldNumber = 1,
   };
-  // string user_name = 2;
-  void clear_user_name();
-  const std::string& user_name() const;
-  void set_user_name(const std::string& value);
-  void set_user_name(std::string&& value);
-  void set_user_name(const char* value);
-  void set_user_name(const char* value, size_t size);
-  std::string* mutable_user_name();
-  std::string* release_user_name();
-  void set_allocated_user_name(std::string* user_name);
-  private:
-  const std::string& _internal_user_name() const;
-  void _internal_set_user_name(const std::string& value);
-  std::string* _internal_mutable_user_name();
-  public:
-
   // .proto.userLoginManage.BasicRequest basic = 1;
   bool has_basic() const;
   private:
@@ -1736,35 +1719,34 @@ class HeartBeatRequest :
   ::proto::userLoginManage::BasicRequest* _internal_mutable_basic();
   public:
 
-  // @@protoc_insertion_point(class_scope:proto.userLoginManage.HeartBeatRequest)
+  // @@protoc_insertion_point(class_scope:proto.userLoginManage.QueryLoginStatusRequest)
  private:
   class _Internal;
 
   ::PROTOBUF_NAMESPACE_ID::internal::InternalMetadataWithArena _internal_metadata_;
-  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr user_name_;
   ::proto::userLoginManage::BasicRequest* basic_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_userLoginManage_2eproto;
 };
 // -------------------------------------------------------------------
 
-class HeartBeatResponse :
-    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:proto.userLoginManage.HeartBeatResponse) */ {
+class QueryLoginStatusResponse :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:proto.userLoginManage.QueryLoginStatusResponse) */ {
  public:
-  HeartBeatResponse();
-  virtual ~HeartBeatResponse();
+  QueryLoginStatusResponse();
+  virtual ~QueryLoginStatusResponse();
 
-  HeartBeatResponse(const HeartBeatResponse& from);
-  HeartBeatResponse(HeartBeatResponse&& from) noexcept
-    : HeartBeatResponse() {
+  QueryLoginStatusResponse(const QueryLoginStatusResponse& from);
+  QueryLoginStatusResponse(QueryLoginStatusResponse&& from) noexcept
+    : QueryLoginStatusResponse() {
     *this = ::std::move(from);
   }
 
-  inline HeartBeatResponse& operator=(const HeartBeatResponse& from) {
+  inline QueryLoginStatusResponse& operator=(const QueryLoginStatusResponse& from) {
     CopyFrom(from);
     return *this;
   }
-  inline HeartBeatResponse& operator=(HeartBeatResponse&& from) noexcept {
+  inline QueryLoginStatusResponse& operator=(QueryLoginStatusResponse&& from) noexcept {
     if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
       if (this != &from) InternalSwap(&from);
     } else {
@@ -1782,37 +1764,37 @@ class HeartBeatResponse :
   static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
     return GetMetadataStatic().reflection;
   }
-  static const HeartBeatResponse& default_instance();
+  static const QueryLoginStatusResponse& default_instance();
 
   static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
-  static inline const HeartBeatResponse* internal_default_instance() {
-    return reinterpret_cast<const HeartBeatResponse*>(
-               &_HeartBeatResponse_default_instance_);
+  static inline const QueryLoginStatusResponse* internal_default_instance() {
+    return reinterpret_cast<const QueryLoginStatusResponse*>(
+               &_QueryLoginStatusResponse_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
     11;
 
-  friend void swap(HeartBeatResponse& a, HeartBeatResponse& b) {
+  friend void swap(QueryLoginStatusResponse& a, QueryLoginStatusResponse& b) {
     a.Swap(&b);
   }
-  inline void Swap(HeartBeatResponse* other) {
+  inline void Swap(QueryLoginStatusResponse* other) {
     if (other == this) return;
     InternalSwap(other);
   }
 
   // implements Message ----------------------------------------------
 
-  inline HeartBeatResponse* New() const final {
-    return CreateMaybeMessage<HeartBeatResponse>(nullptr);
+  inline QueryLoginStatusResponse* New() const final {
+    return CreateMaybeMessage<QueryLoginStatusResponse>(nullptr);
   }
 
-  HeartBeatResponse* New(::PROTOBUF_NAMESPACE_ID::Arena* arena) const final {
-    return CreateMaybeMessage<HeartBeatResponse>(arena);
+  QueryLoginStatusResponse* New(::PROTOBUF_NAMESPACE_ID::Arena* arena) const final {
+    return CreateMaybeMessage<QueryLoginStatusResponse>(arena);
   }
   void CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) final;
   void MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) final;
-  void CopyFrom(const HeartBeatResponse& from);
-  void MergeFrom(const HeartBeatResponse& from);
+  void CopyFrom(const QueryLoginStatusResponse& from);
+  void MergeFrom(const QueryLoginStatusResponse& from);
   PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
   bool IsInitialized() const final;
 
@@ -1826,10 +1808,10 @@ class HeartBeatResponse :
   inline void SharedCtor();
   inline void SharedDtor();
   void SetCachedSize(int size) const final;
-  void InternalSwap(HeartBeatResponse* other);
+  void InternalSwap(QueryLoginStatusResponse* other);
   friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
   static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
-    return "proto.userLoginManage.HeartBeatResponse";
+    return "proto.userLoginManage.QueryLoginStatusResponse";
   }
   private:
   inline ::PROTOBUF_NAMESPACE_ID::Arena* GetArenaNoVirtual() const {
@@ -1881,7 +1863,7 @@ class HeartBeatResponse :
   void _internal_set_operation(::PROTOBUF_NAMESPACE_ID::int32 value);
   public:
 
-  // @@protoc_insertion_point(class_scope:proto.userLoginManage.HeartBeatResponse)
+  // @@protoc_insertion_point(class_scope:proto.userLoginManage.QueryLoginStatusResponse)
  private:
   class _Internal;
 
@@ -2960,38 +2942,38 @@ inline void KickOutUserResponse::set_allocated_basic(::proto::userLoginManage::B
 
 // -------------------------------------------------------------------
 
-// HeartBeatRequest
+// QueryLoginStatusRequest
 
 // .proto.userLoginManage.BasicRequest basic = 1;
-inline bool HeartBeatRequest::_internal_has_basic() const {
+inline bool QueryLoginStatusRequest::_internal_has_basic() const {
   return this != internal_default_instance() && basic_ != nullptr;
 }
-inline bool HeartBeatRequest::has_basic() const {
+inline bool QueryLoginStatusRequest::has_basic() const {
   return _internal_has_basic();
 }
-inline void HeartBeatRequest::clear_basic() {
+inline void QueryLoginStatusRequest::clear_basic() {
   if (GetArenaNoVirtual() == nullptr && basic_ != nullptr) {
     delete basic_;
   }
   basic_ = nullptr;
 }
-inline const ::proto::userLoginManage::BasicRequest& HeartBeatRequest::_internal_basic() const {
+inline const ::proto::userLoginManage::BasicRequest& QueryLoginStatusRequest::_internal_basic() const {
   const ::proto::userLoginManage::BasicRequest* p = basic_;
   return p != nullptr ? *p : *reinterpret_cast<const ::proto::userLoginManage::BasicRequest*>(
       &::proto::userLoginManage::_BasicRequest_default_instance_);
 }
-inline const ::proto::userLoginManage::BasicRequest& HeartBeatRequest::basic() const {
-  // @@protoc_insertion_point(field_get:proto.userLoginManage.HeartBeatRequest.basic)
+inline const ::proto::userLoginManage::BasicRequest& QueryLoginStatusRequest::basic() const {
+  // @@protoc_insertion_point(field_get:proto.userLoginManage.QueryLoginStatusRequest.basic)
   return _internal_basic();
 }
-inline ::proto::userLoginManage::BasicRequest* HeartBeatRequest::release_basic() {
-  // @@protoc_insertion_point(field_release:proto.userLoginManage.HeartBeatRequest.basic)
+inline ::proto::userLoginManage::BasicRequest* QueryLoginStatusRequest::release_basic() {
+  // @@protoc_insertion_point(field_release:proto.userLoginManage.QueryLoginStatusRequest.basic)
   
   ::proto::userLoginManage::BasicRequest* temp = basic_;
   basic_ = nullptr;
   return temp;
 }
-inline ::proto::userLoginManage::BasicRequest* HeartBeatRequest::_internal_mutable_basic() {
+inline ::proto::userLoginManage::BasicRequest* QueryLoginStatusRequest::_internal_mutable_basic() {
   
   if (basic_ == nullptr) {
     auto* p = CreateMaybeMessage<::proto::userLoginManage::BasicRequest>(GetArenaNoVirtual());
@@ -2999,11 +2981,11 @@ inline ::proto::userLoginManage::BasicRequest* HeartBeatRequest::_internal_mutab
   }
   return basic_;
 }
-inline ::proto::userLoginManage::BasicRequest* HeartBeatRequest::mutable_basic() {
-  // @@protoc_insertion_point(field_mutable:proto.userLoginManage.HeartBeatRequest.basic)
+inline ::proto::userLoginManage::BasicRequest* QueryLoginStatusRequest::mutable_basic() {
+  // @@protoc_insertion_point(field_mutable:proto.userLoginManage.QueryLoginStatusRequest.basic)
   return _internal_mutable_basic();
 }
-inline void HeartBeatRequest::set_allocated_basic(::proto::userLoginManage::BasicRequest* basic) {
+inline void QueryLoginStatusRequest::set_allocated_basic(::proto::userLoginManage::BasicRequest* basic) {
   ::PROTOBUF_NAMESPACE_ID::Arena* message_arena = GetArenaNoVirtual();
   if (message_arena == nullptr) {
     delete basic_;
@@ -3019,103 +3001,43 @@ inline void HeartBeatRequest::set_allocated_basic(::proto::userLoginManage::Basi
     
   }
   basic_ = basic;
-  // @@protoc_insertion_point(field_set_allocated:proto.userLoginManage.HeartBeatRequest.basic)
-}
-
-// string user_name = 2;
-inline void HeartBeatRequest::clear_user_name() {
-  user_name_.ClearToEmptyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-}
-inline const std::string& HeartBeatRequest::user_name() const {
-  // @@protoc_insertion_point(field_get:proto.userLoginManage.HeartBeatRequest.user_name)
-  return _internal_user_name();
-}
-inline void HeartBeatRequest::set_user_name(const std::string& value) {
-  _internal_set_user_name(value);
-  // @@protoc_insertion_point(field_set:proto.userLoginManage.HeartBeatRequest.user_name)
-}
-inline std::string* HeartBeatRequest::mutable_user_name() {
-  // @@protoc_insertion_point(field_mutable:proto.userLoginManage.HeartBeatRequest.user_name)
-  return _internal_mutable_user_name();
-}
-inline const std::string& HeartBeatRequest::_internal_user_name() const {
-  return user_name_.GetNoArena();
-}
-inline void HeartBeatRequest::_internal_set_user_name(const std::string& value) {
-  
-  user_name_.SetNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), value);
-}
-inline void HeartBeatRequest::set_user_name(std::string&& value) {
-  
-  user_name_.SetNoArena(
-    &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
-  // @@protoc_insertion_point(field_set_rvalue:proto.userLoginManage.HeartBeatRequest.user_name)
-}
-inline void HeartBeatRequest::set_user_name(const char* value) {
-  GOOGLE_DCHECK(value != nullptr);
-  
-  user_name_.SetNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
-  // @@protoc_insertion_point(field_set_char:proto.userLoginManage.HeartBeatRequest.user_name)
-}
-inline void HeartBeatRequest::set_user_name(const char* value, size_t size) {
-  
-  user_name_.SetNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
-      ::std::string(reinterpret_cast<const char*>(value), size));
-  // @@protoc_insertion_point(field_set_pointer:proto.userLoginManage.HeartBeatRequest.user_name)
-}
-inline std::string* HeartBeatRequest::_internal_mutable_user_name() {
-  
-  return user_name_.MutableNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-}
-inline std::string* HeartBeatRequest::release_user_name() {
-  // @@protoc_insertion_point(field_release:proto.userLoginManage.HeartBeatRequest.user_name)
-  
-  return user_name_.ReleaseNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-}
-inline void HeartBeatRequest::set_allocated_user_name(std::string* user_name) {
-  if (user_name != nullptr) {
-    
-  } else {
-    
-  }
-  user_name_.SetAllocatedNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), user_name);
-  // @@protoc_insertion_point(field_set_allocated:proto.userLoginManage.HeartBeatRequest.user_name)
+  // @@protoc_insertion_point(field_set_allocated:proto.userLoginManage.QueryLoginStatusRequest.basic)
 }
 
 // -------------------------------------------------------------------
 
-// HeartBeatResponse
+// QueryLoginStatusResponse
 
 // .proto.userLoginManage.BasicResponse basic = 1;
-inline bool HeartBeatResponse::_internal_has_basic() const {
+inline bool QueryLoginStatusResponse::_internal_has_basic() const {
   return this != internal_default_instance() && basic_ != nullptr;
 }
-inline bool HeartBeatResponse::has_basic() const {
+inline bool QueryLoginStatusResponse::has_basic() const {
   return _internal_has_basic();
 }
-inline void HeartBeatResponse::clear_basic() {
+inline void QueryLoginStatusResponse::clear_basic() {
   if (GetArenaNoVirtual() == nullptr && basic_ != nullptr) {
     delete basic_;
   }
   basic_ = nullptr;
 }
-inline const ::proto::userLoginManage::BasicResponse& HeartBeatResponse::_internal_basic() const {
+inline const ::proto::userLoginManage::BasicResponse& QueryLoginStatusResponse::_internal_basic() const {
   const ::proto::userLoginManage::BasicResponse* p = basic_;
   return p != nullptr ? *p : *reinterpret_cast<const ::proto::userLoginManage::BasicResponse*>(
       &::proto::userLoginManage::_BasicResponse_default_instance_);
 }
-inline const ::proto::userLoginManage::BasicResponse& HeartBeatResponse::basic() const {
-  // @@protoc_insertion_point(field_get:proto.userLoginManage.HeartBeatResponse.basic)
+inline const ::proto::userLoginManage::BasicResponse& QueryLoginStatusResponse::basic() const {
+  // @@protoc_insertion_point(field_get:proto.userLoginManage.QueryLoginStatusResponse.basic)
   return _internal_basic();
 }
-inline ::proto::userLoginManage::BasicResponse* HeartBeatResponse::release_basic() {
-  // @@protoc_insertion_point(field_release:proto.userLoginManage.HeartBeatResponse.basic)
+inline ::proto::userLoginManage::BasicResponse* QueryLoginStatusResponse::release_basic() {
+  // @@protoc_insertion_point(field_release:proto.userLoginManage.QueryLoginStatusResponse.basic)
   
   ::proto::userLoginManage::BasicResponse* temp = basic_;
   basic_ = nullptr;
   return temp;
 }
-inline ::proto::userLoginManage::BasicResponse* HeartBeatResponse::_internal_mutable_basic() {
+inline ::proto::userLoginManage::BasicResponse* QueryLoginStatusResponse::_internal_mutable_basic() {
   
   if (basic_ == nullptr) {
     auto* p = CreateMaybeMessage<::proto::userLoginManage::BasicResponse>(GetArenaNoVirtual());
@@ -3123,11 +3045,11 @@ inline ::proto::userLoginManage::BasicResponse* HeartBeatResponse::_internal_mut
   }
   return basic_;
 }
-inline ::proto::userLoginManage::BasicResponse* HeartBeatResponse::mutable_basic() {
-  // @@protoc_insertion_point(field_mutable:proto.userLoginManage.HeartBeatResponse.basic)
+inline ::proto::userLoginManage::BasicResponse* QueryLoginStatusResponse::mutable_basic() {
+  // @@protoc_insertion_point(field_mutable:proto.userLoginManage.QueryLoginStatusResponse.basic)
   return _internal_mutable_basic();
 }
-inline void HeartBeatResponse::set_allocated_basic(::proto::userLoginManage::BasicResponse* basic) {
+inline void QueryLoginStatusResponse::set_allocated_basic(::proto::userLoginManage::BasicResponse* basic) {
   ::PROTOBUF_NAMESPACE_ID::Arena* message_arena = GetArenaNoVirtual();
   if (message_arena == nullptr) {
     delete basic_;
@@ -3143,27 +3065,27 @@ inline void HeartBeatResponse::set_allocated_basic(::proto::userLoginManage::Bas
     
   }
   basic_ = basic;
-  // @@protoc_insertion_point(field_set_allocated:proto.userLoginManage.HeartBeatResponse.basic)
+  // @@protoc_insertion_point(field_set_allocated:proto.userLoginManage.QueryLoginStatusResponse.basic)
 }
 
 // int32 operation = 2;
-inline void HeartBeatResponse::clear_operation() {
+inline void QueryLoginStatusResponse::clear_operation() {
   operation_ = 0;
 }
-inline ::PROTOBUF_NAMESPACE_ID::int32 HeartBeatResponse::_internal_operation() const {
+inline ::PROTOBUF_NAMESPACE_ID::int32 QueryLoginStatusResponse::_internal_operation() const {
   return operation_;
 }
-inline ::PROTOBUF_NAMESPACE_ID::int32 HeartBeatResponse::operation() const {
-  // @@protoc_insertion_point(field_get:proto.userLoginManage.HeartBeatResponse.operation)
+inline ::PROTOBUF_NAMESPACE_ID::int32 QueryLoginStatusResponse::operation() const {
+  // @@protoc_insertion_point(field_get:proto.userLoginManage.QueryLoginStatusResponse.operation)
   return _internal_operation();
 }
-inline void HeartBeatResponse::_internal_set_operation(::PROTOBUF_NAMESPACE_ID::int32 value) {
+inline void QueryLoginStatusResponse::_internal_set_operation(::PROTOBUF_NAMESPACE_ID::int32 value) {
   
   operation_ = value;
 }
-inline void HeartBeatResponse::set_operation(::PROTOBUF_NAMESPACE_ID::int32 value) {
+inline void QueryLoginStatusResponse::set_operation(::PROTOBUF_NAMESPACE_ID::int32 value) {
   _internal_set_operation(value);
-  // @@protoc_insertion_point(field_set:proto.userLoginManage.HeartBeatResponse.operation)
+  // @@protoc_insertion_point(field_set:proto.userLoginManage.QueryLoginStatusResponse.operation)
 }
 
 #ifdef __GNUC__

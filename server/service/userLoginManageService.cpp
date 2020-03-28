@@ -18,7 +18,8 @@ UserLoginManageService::UserLoginManageService(const sql::Connection* mysqlConne
 	:_mysqlConnect(mysqlConnect),
 	 _redisConnect(redisConnect),
 	 _saltWorkFactor(saltWorkFactor),
-	 _userLoginInfoCacheTtl(userLoginInfoCacheTtl)
+	 _userLoginInfoCacheTtl(userLoginInfoCacheTtl),
+	 _count(0)
 {}
 
 UserLoginManageService::~UserLoginManageService()
@@ -86,14 +87,14 @@ Status UserLoginManageService::login(ServerContext* context, ServerReaderWriter<
     stream->Write(response);
 
     //再缓存用户登录信息,并设置过期时间
-    if(ret != 0)
-	{
-		LOG_ERROR("processLogin failed! errcode:%d, errmsg:%s", loginer.getCode(), loginer.getMsg().c_str());
-	}
-	else
-	{
-		loginer.cacheUserLoginInfo(userNameDecoded, clientUid);
-	}
+    ++_count;
+    if(_count == 2)
+    {
+    	LOG_INFO("_count:%d", _count);
+    	response.mutable_basic()->set_code(2);
+   		response.mutable_basic()->set_msg("please logout");
+    	writer->Write(response);
+    }
     
     return Status::OK;
  }

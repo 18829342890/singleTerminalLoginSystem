@@ -23,7 +23,9 @@ service userLoginManageService {
 
   // kick out user
   rpc kickOutUser (stream KickOutUserRequest) returns (stream KickOutUserResponse) {}
+  rpc queryLoginStatus (stream QueryLoginStatusRequest) returns (stream QueryLoginStatusResponse) {}
 }
+
 
 //***
 //@request  BasicRequest
@@ -32,15 +34,15 @@ service userLoginManageService {
 //***
 message BasicRequest
 {
-	int64   timestamp = 1; //时间戳
-	string  uuid      = 2; //客户端的uuid
+	int64   timestamp     = 1; //发送消息的当前时间戳
+	string  uuid          = 2; //客户端的uuid
 }
 
 message BasicResponse
 {
-	int64   timestamp = 1; //时间戳
-	int32   code      = 2; //状态码
-	string  msg       = 3; //描述信息
+	int64   timestamp     = 1; //时间戳
+	int32   code          = 2; //状态码
+	string  msg           = 3; //描述信息
 }
 
 
@@ -51,14 +53,14 @@ message BasicResponse
 //***
 message RegistRequest
 {
-	BasicRequest  basic     = 1;
-	string        user_name = 2;
-	string        pass_word = 3;
+	BasicRequest             basic     = 1;
+	string                   user_name = 2;
+	string                   pass_word = 3;
 }
 
 message RegistResponse
 {
-	BasicResponse basic     = 1;
+	BasicResponse            basic     = 1;
 }
 
 
@@ -69,14 +71,14 @@ message RegistResponse
 //***
 message LoginRequest
 {
-	BasicRequest  basic     = 1;
-	string        user_name = 2;
-	string        pass_word = 3;
+	BasicRequest             basic     = 1;
+	string                   user_name = 2;
+	string                   pass_word = 3;
 }
 
 message LoginResponse
 {
-	BasicResponse basic     = 1;
+	BasicResponse            basic     = 1;
 }
 
 
@@ -87,13 +89,13 @@ message LoginResponse
 //***
 message LogoutRequest
 {
-	BasicRequest  basic     = 1;
-	string        user_name = 2;
+	BasicRequest             basic     = 1;
+	string                   user_name = 2;
 }
 
 message LogoutResponse
 {
-	BasicResponse basic     = 1;
+	BasicResponse            basic     = 1;
 }
 
 //***
@@ -103,44 +105,29 @@ message LogoutResponse
 //***
 message KickOutUserRequest
 {
-	BasicRequest  basic     = 1;
-	string        user_name = 2;
+	BasicRequest             basic     = 1;
+	string                   user_name = 2;
 }
 
 message KickOutUserResponse
 {
-	BasicResponse basic     = 1;
+	BasicResponse basic                = 1;
 }
 
 
 //***
-//@request  HeartBeatRequest
-//@response HeartBeatResponse
-//@remark   心跳
+//@request  QueryLoginStatusRequest
+//@response QueryLoginStatusResponse
+//@remark   询问登录状态
 //***
-message HeartBeatRequest
+message QueryLoginStatusRequest
 {
-	BasicRequest  basic     = 1;
-	string        user_name = 2;
+	BasicRequest             basic     = 1;
 }
 
-message HeartBeatResponse
+message QueryLoginStatusResponse
 {
-	BasicResponse basic     = 1;
-	int32         operation = 2; //客户端应做的操作  0:无须做任何操作 1:当前用户已退出登录, 客户端可自定义操作 2:已在其它设备上登录，当前设备应退出登录 3:被管理员踢出，应退出登录
+	BasicResponse            basic     = 1;
+	int32                    operation = 2; //应处理的动作 1.无须处理  2. 有新设备登录，此设备需退出登录
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
