@@ -1,0 +1,5 @@
+*.o
+*.log
+bazel*
+client/main/client
+server/main/userLoginManagerService
