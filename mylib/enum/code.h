@@ -17,6 +17,7 @@ enum REGIST_LOGIN_CODE
 	PASSWORD_FORMAT_ERROR     = -7,
 	GEN_SALT_FAILED           = -8,
 	ENCRYPT_FAILED            = -9,
+	PUBLISH_MSG_FAILED        = -10,
 
 	
 };

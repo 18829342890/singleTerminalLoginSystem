@@ -7,12 +7,13 @@
 #include<unistd.h>
 #include <grpcpp/grpcpp.h>
 #include <mysql_connection.h>
-#include <hiredis/hiredis.h>
-#include "mylib/mylibSql/sqlApi.h"
 #include "mylib/mylibLog/logrecord.h"
 #include "protos/proto/userLoginManage.grpc.pb.h"
+#include "server/infrastructure/include/rabbitmqClient.h"
 
 using namespace std;
+using namespace userLoginService::infrastructure;
+
 using grpc::Server;
 using grpc::ServerBuilder;
 using grpc::ServerContext;
@@ -35,7 +36,7 @@ using proto::userLoginManage::KickOutUserResponse;
 class UserLoginManageService final : public userLoginManageService::Service 
 {
 public:
-	UserLoginManageService(const sql::Connection* mysqlConnect,const redisContext* redisConnect, int saltWorkFactor, int userLoginInfoCacheTtl);
+	UserLoginManageService(const sql::Connection* mysqlConnect, RabbitmqClient& rabbitmqClient, const string& exchange, const string& routeKey, const string& queueName, int saltWorkFactor);
 	~UserLoginManageService();
 
 	//注册
@@ -44,16 +45,16 @@ public:
     Status login(ServerContext* context, ServerReaderWriter<LoginResponse, LoginRequest>* stream);
     //退出登录
     Status logout(ServerContext* context, ServerReaderWriter<LogoutResponse, LogoutRequest>* stream);
-    //心跳请求
-    Status heartBeat(ServerContext* context, ServerReaderWriter<HeartBeatResponse, HeartBeatRequest>* stream);
     //踢出用户请求
     Status kickOutUser(ServerContext* context, ServerReaderWriter<KickOutUserResponse, KickOutUserRequest>* stream);
 
 private:
     const sql::Connection* _mysqlConnect;
-    const redisContext* _redisConnect;
+    RabbitmqClient& _rabbitmqClient;
+    const string& _exchange;
+    const string& _routeKey;
+    const string& _queueName;
     int _saltWorkFactor;
-    int _userLoginInfoCacheTtl;
 };
 
 

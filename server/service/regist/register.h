@@ -9,7 +9,7 @@ class Register : public LoginManageServiceBase
 {
 
 public:
-	Register(const sql::Connection* mysqlConnect, const redisContext* redisConnect, int saltWorkFactor);
+	Register(const sql::Connection* mysqlConnect, int saltWorkFactor);
 	virtual ~Register();
 
 	int processRegist(const string& userName, const string& passWord);

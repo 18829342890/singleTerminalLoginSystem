@@ -27,7 +27,6 @@ int UserPasswordRepository::insert(UserPassWordBO userPassWord)
 		 prepStmt->setUInt(4, time(NULL));
 
 		 int insertCount = prepStmt->executeUpdate();
-		 LOG_INFO("insertCount:%d", insertCount);
 		 if(insertCount != 1)
 		 {
 		 	LOG_ERROR("insert failed! insertCount:%d", insertCount);
@@ -102,7 +101,7 @@ int UserPasswordRepository::selectSaltByUserName(const string& userName, char sa
 	}
 }
 
-int UserPasswordRepository::isValidAndPassWordByUserName(const string& userName, const string& passWordHash, bool& isValid)
+int UserPasswordRepository::isValidPassWordByUserName(const string& userName, const string& passWordHash, bool& isValid)
 {
 	try{
 		boost::scoped_ptr< sql::PreparedStatement > prepStmt(const_cast<sql::Connection*>(_mysqlConnect)->prepareStatement(

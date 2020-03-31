@@ -18,9 +18,6 @@ service userLoginManageService {
   // logout
   rpc logout (stream LogoutRequest) returns (stream LogoutResponse) {}
 
-  // heart beat
-  rpc heartBeat (stream HeartBeatRequest) returns (stream HeartBeatResponse) {}
-
   // kick out user
   rpc kickOutUser (stream KickOutUserRequest) returns (stream KickOutUserResponse) {}
 }
@@ -112,23 +109,6 @@ message KickOutUserResponse
 	BasicResponse basic     = 1;
 }
 
-
-//***
-//@request  HeartBeatRequest
-//@response HeartBeatResponse
-//@remark   心跳
-//***
-message HeartBeatRequest
-{
-	BasicRequest  basic     = 1;
-	string        user_name = 2;
-}
-
-message HeartBeatResponse
-{
-	BasicResponse basic     = 1;
-	int32         operation = 2; //客户端应做的操作  0:无须做任何操作 1:当前用户已退出登录, 客户端可自定义操作 2:已在其它设备上登录，当前设备应退出登录 3:被管理员踢出，应退出登录
-}
 
 
 

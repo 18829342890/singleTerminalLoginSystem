@@ -7,18 +7,19 @@
 #include "server/service/regist/register.h"
 #include "server/service/login/loginer.h"
 #include "server/service/logout/logout.h"
-#include "server/service/heartBeat/heartBeat.h"
 #include "server/service/kickout/kickoutUser.h"
 
 
 using namespace std;
 
 
-UserLoginManageService::UserLoginManageService(const sql::Connection* mysqlConnect, const redisContext* redisConnect, int saltWorkFactor, int userLoginInfoCacheTtl)
+UserLoginManageService::UserLoginManageService(const sql::Connection* mysqlConnect, RabbitmqClient& rabbitmqClient, const string& exchange, const string& routeKey, const string& queueName, int saltWorkFactor)
 	:_mysqlConnect(mysqlConnect),
-	 _redisConnect(redisConnect),
-	 _saltWorkFactor(saltWorkFactor),
-	 _userLoginInfoCacheTtl(userLoginInfoCacheTtl)
+	 _rabbitmqClient(rabbitmqClient),
+	 _exchange(exchange),
+	 _routeKey(routeKey),
+	 _queueName(queueName),
+	 _saltWorkFactor(saltWorkFactor)
 {}
 
 UserLoginManageService::~UserLoginManageService()
@@ -42,7 +43,7 @@ Status UserLoginManageService::regist(ServerContext* context, ServerReaderWriter
 	base64_decode(passWord.c_str(), passWord.length(), passWordDecoded);
 	
 	//处理注册请求
-	Register myRegister(_mysqlConnect, _redisConnect, _saltWorkFactor);
+	Register myRegister(_mysqlConnect, _saltWorkFactor);
 	int ret = myRegister.processRegist(userNameDecoded, passWordDecoded);
 	if(ret != 0)
 	{
@@ -73,10 +74,9 @@ Status UserLoginManageService::login(ServerContext* context, ServerReaderWriter<
 	char passWordDecoded[1024];
 	base64_decode(userName.c_str(), userName.length(), userNameDecoded);
 	base64_decode(passWord.c_str(), passWord.length(), passWordDecoded);
-	LOG_INFO("login %s %s", userNameDecoded, passWordDecoded);
 
 	//处理登录请求
-	Loginer loginer(_mysqlConnect, _redisConnect, _userLoginInfoCacheTtl);
+	Loginer loginer(_mysqlConnect, _rabbitmqClient, _exchange, _routeKey, _queueName);
 	int ret = loginer.processLogin(userNameDecoded, passWordDecoded, clientUid);
 	
 	//先返回登录处理结果
@@ -85,16 +85,17 @@ Status UserLoginManageService::login(ServerContext* context, ServerReaderWriter<
     response.mutable_basic()->set_msg(loginer.getMsg());
     stream->Write(response);
 
-    //再缓存用户登录信息,并设置过期时间
-    if(ret != 0)
-	{
-		LOG_ERROR("processLogin failed! errcode:%d, errmsg:%s", loginer.getCode(), loginer.getMsg().c_str());
-	}
-	else
-	{
-		loginer.cacheUserLoginInfo(userNameDecoded, clientUid);
-	}
-    
+    //监控退出登录消息, 如果通知该clientUid退出登录，则通知该设备退出登录
+    bool isNeedLogout = false;
+    ret = loginer.monitorUserLogoutEvent(userName, clientUid, isNeedLogout);
+
+    if(isNeedLogout)
+    {
+    	response.mutable_basic()->set_code(-2);
+	    response.mutable_basic()->set_msg("please logout");
+	    stream->Write(response);
+    }
+
     return Status::OK;
  }
 
@@ -115,7 +116,7 @@ Status UserLoginManageService::login(ServerContext* context, ServerReaderWriter<
 
 
 	//处理退出登录请求
-	Logout logout(_mysqlConnect, _redisConnect, _userLoginInfoCacheTtl);
+	Logout logout(_mysqlConnect);
 	int ret = logout.processLogout(userNameDecoded, clientUid);
 
 	//先返回处理结果
@@ -123,52 +124,9 @@ Status UserLoginManageService::login(ServerContext* context, ServerReaderWriter<
 	response.mutable_basic()->set_code(logout.getCode());
     response.mutable_basic()->set_msg(logout.getMsg());
     stream->Write(response);
-
-    //再缓存用户退出登录信息,并设置过期时间
-    if(ret != 0)
-	{
-		LOG_ERROR("processLogin failed! errcode:%d, errmsg:%s", logout.getCode(), logout.getMsg().c_str());
-	}
-	else
-	{
-		logout.cacheUserLogoutInfo(userNameDecoded, clientUid);
-	}
     
     return Status::OK;
- }
-
-
- Status UserLoginManageService::heartBeat(ServerContext* context, ServerReaderWriter<HeartBeatResponse, HeartBeatRequest>* stream)
- {
- 	//获取用户名和客户端uuid
- 	HeartBeatRequest request;
-	stream->Read(&request);
-
-	string userName = request.user_name();
-	string clientUid = request.basic().uuid();
-	char userNameDecoded[1024];
-	base64_decode(userName.c_str(), userName.length(), userNameDecoded);
-
-	//处理心跳请求
-	int clientOperation = 0;
-	HeartBeat heartBeat(_mysqlConnect, _redisConnect, _userLoginInfoCacheTtl);
-	int ret = heartBeat.processHeartBeat(userNameDecoded, clientUid, clientOperation);
-
-	//先返回处理结果
-	HeartBeatResponse response;
-	response.mutable_basic()->set_code(heartBeat.getCode());
-    response.mutable_basic()->set_msg(heartBeat.getMsg());
-    response.set_operation(clientOperation);
-    stream->Write(response);
-
-    //再更新缓存的生存时间
-    if(ret == 0)
-	{
-		heartBeat.updateUserLoginInfoCacheTtl(userNameDecoded);
-	}
-
-    return Status::OK;
- }
+}
 
 
 Status UserLoginManageService::kickOutUser(ServerContext* context, ServerReaderWriter<KickOutUserResponse, KickOutUserRequest>* stream)
@@ -182,10 +140,9 @@ Status UserLoginManageService::kickOutUser(ServerContext* context, ServerReaderW
 
 	char userNameDecoded[1024];
 	base64_decode(userName.c_str(), userName.length(), userNameDecoded);
-	LOG_INFO("kickOut %s", userNameDecoded);
 
 	//处理踢出用户请求
-	KickoutUser kickoutUser(_mysqlConnect, _redisConnect, _userLoginInfoCacheTtl);
+	KickoutUser kickoutUser(_mysqlConnect);
 	int ret = kickoutUser.processkickout(userNameDecoded);
 	
 	//先返回处理结果
@@ -193,16 +150,6 @@ Status UserLoginManageService::kickOutUser(ServerContext* context, ServerReaderW
 	response.mutable_basic()->set_code(kickoutUser.getCode());
     response.mutable_basic()->set_msg(kickoutUser.getMsg());
     stream->Write(response);
-
-    //再缓存用户退出登录信息,并设置过期时间
-    if(ret != 0)
-	{
-		LOG_ERROR("processkickout failed! errcode:%d, errmsg:%s", kickoutUser.getCode(), kickoutUser.getMsg().c_str());
-	}
-	else
-	{
-		kickoutUser.cacheUserLogoutInfo(userNameDecoded);
-	}
     
     return Status::OK;
 }

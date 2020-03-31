@@ -12,8 +12,8 @@ using namespace userLoginService::repository;
 
 
 
-Register::Register(const sql::Connection* mysqlConnect, const redisContext* redisConnect, int saltWorkFactor) 
-		:LoginManageServiceBase(mysqlConnect, redisConnect),
+Register::Register(const sql::Connection* mysqlConnect, int saltWorkFactor) 
+		:LoginManageServiceBase(mysqlConnect),
 		 _saltWorkFactor(saltWorkFactor)
 {}
 

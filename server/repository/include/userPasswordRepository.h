@@ -27,7 +27,7 @@ public:
 	//获取用户加密所用的盐
 	int selectSaltByUserName(const string& userName, char salt[BCRYPT_HASHSIZE]);
 	//用户名密码是否正确
-	int isValidAndPassWordByUserName(const string& userName, const string& passWordHash, bool& isValid);
+	int isValidPassWordByUserName(const string& userName, const string& passWordHash, bool& isValid);
 
 private:
 	const sql::Connection* _mysqlConnect;

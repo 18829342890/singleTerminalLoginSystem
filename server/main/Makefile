@@ -23,10 +23,10 @@ INCLUDE += -I/usr/local/mysql/include \
 		   -I${work_path}/../../protos/protoCode \
 		   -I${work_path}/../domain \
 		   -I${work_path}/../repository/include \
+		   -I${work_path}/../infrastructure/include \
 		   -I${work_path}/../service \
 		   -I${work_path}/../service/login \
-		   -I${work_path}/../service/regist \
-		   -I${work_path}/../service/syncClientInfo
+		   -I${work_path}/../service/regist 
 
 
 CFLAGS = $(INCLUDE)
@@ -36,7 +36,7 @@ LDFLAGS =  -L/usr/local/lib `pkg-config --libs protobuf grpc++ grpc` -lmysqlcppc
            -lgrpc++_reflection \
            -L/usr/local/mysql/lib -lmysqlclient \
            -L/usr/local/opt/openssl/lib -lssl -lcrypto \
-           -L/usr/local/redis/deps/hiredis -lhiredis
+           -L/usr/local/Cellar/rabbitmq-c/0.10.0/include -lrabbitmq
 
 $(warning  $(c_src))
 $(warning  $(cpp_src))
