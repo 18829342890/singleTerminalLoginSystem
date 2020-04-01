@@ -47,6 +47,13 @@ int RabbitmqClient::connect(const string &strHostname, int iPort, const string &
         return -4;
     }
     
+    amqp_channel_open(m_pConn, m_iChannel);
+    if(0 != ErrorMsg(amqp_get_rpc_reply(m_pConn), "open channel")) 
+    {
+        amqp_channel_close(m_pConn, m_iChannel, AMQP_REPLY_SUCCESS);
+        return -5;
+    }
+
     return 0;
 }
  
@@ -54,6 +61,8 @@ int RabbitmqClient::disconnect()
 {
     if (NULL != m_pConn) 
     {
+        amqp_channel_close(m_pConn, m_iChannel, AMQP_REPLY_SUCCESS);
+
         if (0 != ErrorMsg(amqp_connection_close(m_pConn, AMQP_REPLY_SUCCESS), "Closing connection"))
             return -1;
  
@@ -68,20 +77,16 @@ int RabbitmqClient::disconnect()
  
 int RabbitmqClient::exchangeDeclare(const string &strExchange, const string &strType) 
 {
-    amqp_channel_open(m_pConn, m_iChannel);
- 
     amqp_bytes_t _exchange = amqp_cstring_bytes(strExchange.c_str());
     amqp_bytes_t _type = amqp_cstring_bytes(strType.c_str());
     int _passive= 0;
-    int _durable= 0;      // 交换机是否持久化
+    int _durable= 0;
     amqp_exchange_declare(m_pConn, m_iChannel, _exchange, _type, _passive, _durable, 0, 0, amqp_empty_table);
     if (0 != ErrorMsg(amqp_get_rpc_reply(m_pConn), "exchange_declare")) 
     {
-        amqp_channel_close(m_pConn, m_iChannel, AMQP_REPLY_SUCCESS);
         return -1;
     }
- 
-    amqp_channel_close(m_pConn, m_iChannel, AMQP_REPLY_SUCCESS);
+
     return 0;
 }
  
@@ -93,7 +98,6 @@ int RabbitmqClient::queueDeclare(const string &strQueueName)
         return -1;
     }
  
-    amqp_channel_open(m_pConn, m_iChannel);
     amqp_bytes_t _queue = amqp_cstring_bytes(strQueueName.c_str());
     int32_t _passive = 0;
     int32_t _durable = 0; 
@@ -102,11 +106,9 @@ int RabbitmqClient::queueDeclare(const string &strQueueName)
     amqp_queue_declare(m_pConn, m_iChannel, _queue, _passive, _durable, _exclusive, _auto_delete, amqp_empty_table);
     if (0 != ErrorMsg(amqp_get_rpc_reply(m_pConn), "queue_declare")) 
     {
-        amqp_channel_close(m_pConn, m_iChannel, AMQP_REPLY_SUCCESS);
-        return -1;
+        return -2;
     }
- 
-    amqp_channel_close(m_pConn, m_iChannel, AMQP_REPLY_SUCCESS);
+
     return 0;
 }
  
@@ -118,18 +120,15 @@ int RabbitmqClient::queueBind(const string &strQueueName, const string &strExcha
         return -1;
     }
  
-    amqp_channel_open(m_pConn, m_iChannel);
     amqp_bytes_t _queue = amqp_cstring_bytes(strQueueName.c_str());
     amqp_bytes_t _exchange = amqp_cstring_bytes(strExchange.c_str());
     amqp_bytes_t _routkey  = amqp_cstring_bytes(strBindKey.c_str());
     amqp_queue_bind(m_pConn, m_iChannel, _queue, _exchange, _routkey, amqp_empty_table);
     if(0 != ErrorMsg(amqp_get_rpc_reply(m_pConn), "queue_bind")) 
     {
-        amqp_channel_close(m_pConn, m_iChannel, AMQP_REPLY_SUCCESS);
-        return -1;
+        return -2;
     }
  
-    amqp_channel_close(m_pConn, m_iChannel, AMQP_REPLY_SUCCESS);
     return 0;
 }
  
@@ -141,18 +140,15 @@ int RabbitmqClient::queueUnbind(const string &strQueueName, const string &strExc
         return -1;
     }
  
-    amqp_channel_open(m_pConn, m_iChannel);
     amqp_bytes_t _queue = amqp_cstring_bytes(strQueueName.c_str());
     amqp_bytes_t _exchange = amqp_cstring_bytes(strExchange.c_str());
     amqp_bytes_t _routkey  = amqp_cstring_bytes(strBindKey.c_str());
     amqp_queue_unbind(m_pConn, m_iChannel, _queue, _exchange, _routkey, amqp_empty_table);
     if(0 != ErrorMsg(amqp_get_rpc_reply(m_pConn), "queue_unbind")) 
     {
-        amqp_channel_close(m_pConn, m_iChannel, AMQP_REPLY_SUCCESS);
-        return -1;
+        return -2;
     }
- 
-    amqp_channel_close(m_pConn, m_iChannel, AMQP_REPLY_SUCCESS);
+
     return 0;
 }
  
@@ -163,22 +159,13 @@ int RabbitmqClient::queueDelete(const string &strQueueName, int iIfUnused)
         LOG_ERROR("QueueDelete m_pConn is null");
         return -1;
     }
- 
-    amqp_channel_open(m_pConn, m_iChannel);
-    if(0 != ErrorMsg(amqp_get_rpc_reply(m_pConn), "open channel")) 
-    {
-        amqp_channel_close(m_pConn, m_iChannel, AMQP_REPLY_SUCCESS);
-        return -2;
-    }
- 
+
     amqp_queue_delete(m_pConn, m_iChannel, amqp_cstring_bytes(strQueueName.c_str()), iIfUnused, 0);
     if(0 != ErrorMsg(amqp_get_rpc_reply(m_pConn), "delete queue")) 
     {
-        amqp_channel_close(m_pConn, m_iChannel, AMQP_REPLY_SUCCESS);
-        return -3;
+        return -2;
     }
- 
-    amqp_channel_close(m_pConn, m_iChannel, AMQP_REPLY_SUCCESS);
+
     return 0;
 }
  
@@ -188,15 +175,7 @@ int RabbitmqClient::publish(const string &strMessage, const string &strExchange,
         LOG_ERROR("publish m_pConn is null, publish failed");
         return -1;
     }
- 
-    LOG_INFO("publish open channel begin!");
-    amqp_channel_open(m_pConn, 2);
-    if(0 != ErrorMsg(amqp_get_rpc_reply(m_pConn), "open channel")) 
-    {
-        amqp_channel_close(m_pConn, 2, AMQP_REPLY_SUCCESS);
-        return -2;
-    }
- 
+
     amqp_bytes_t message_bytes;
     message_bytes.len = strMessage.length();
     message_bytes.bytes = (void *)(strMessage.c_str());
@@ -204,20 +183,15 @@ int RabbitmqClient::publish(const string &strMessage, const string &strExchange,
     amqp_bytes_t exchange = amqp_cstring_bytes(strExchange.c_str());
     amqp_bytes_t routekey = amqp_cstring_bytes(strRoutekey.c_str());
  
-    LOG_INFO("amqp_basic_publish begin!");
-    if (0 != amqp_basic_publish(m_pConn, 2, exchange, routekey, 0, 0, NULL, message_bytes)) 
+    if (0 != amqp_basic_publish(m_pConn, m_iChannel, exchange, routekey, 0, 0, NULL, message_bytes)) 
     {
         LOG_ERROR("publish amqp_basic_publish failed");
         if (0 != ErrorMsg(amqp_get_rpc_reply(m_pConn), "amqp_basic_publish")) 
         {
-            amqp_channel_close(m_pConn, 2, AMQP_REPLY_SUCCESS);
-            return -3;
+            return -2;
         }
     }
 
-    LOG_INFO("publish end!");
- 
-    amqp_channel_close(m_pConn, 2, AMQP_REPLY_SUCCESS);
     return 0;
 }
  
@@ -228,40 +202,25 @@ int RabbitmqClient::consumer(const string &strQueueName, vector<string> &message
         LOG_ERROR("Consumer m_pConn is null, Consumer failed");
         return -1;
     }
- 
-     LOG_INFO("consumer open channel begin!");
-    amqp_channel_open(m_pConn, m_iChannel);
-    if (0 != ErrorMsg(amqp_get_rpc_reply(m_pConn), "open channel")) 
-    {
-        amqp_channel_close(m_pConn, m_iChannel, AMQP_REPLY_SUCCESS);
-        return -2;
-    }
- 
-    amqp_basic_qos(m_pConn, m_iChannel, 0, getNum, 0);
+
     int ack = 0; // no_ack    是否需要确认消息后再从队列中删除消息
     amqp_bytes_t queuename= amqp_cstring_bytes(strQueueName.c_str());
     amqp_basic_consume(m_pConn, m_iChannel, queuename, amqp_empty_bytes, 0, ack, 0, amqp_empty_table);
- 
     if (0 != ErrorMsg(amqp_get_rpc_reply(m_pConn), "Consuming")) 
     {
-        amqp_channel_close(m_pConn, m_iChannel, AMQP_REPLY_SUCCESS);
-        return -3;
+        return -2;
     }
-
-     LOG_INFO("amqp_basic_consume end!");
  
     int hasget = 0;
     amqp_rpc_reply_t res;
     amqp_envelope_t envelope;
     while (getNum > 0) {
-        LOG_INFO("amqp_consume_message begin!");
+        LOG_INFO("amqp_consume_message begin...");
         amqp_maybe_release_buffers(m_pConn);
         res = amqp_consume_message(m_pConn, &envelope, timeout, 0);
         if (AMQP_RESPONSE_NORMAL != res.reply_type) 
         {
             ErrorMsg(res, "amqp_consume_message");
-            amqp_channel_close(m_pConn, m_iChannel, AMQP_REPLY_SUCCESS);
- 
             if (0 == hasget)
                 return -res.reply_type;
             else
@@ -275,7 +234,6 @@ int RabbitmqClient::consumer(const string &strQueueName, vector<string> &message
         if (rtn != 0) 
         {
             LOG_ERROR("Consumer amqp_basic_ack failed");
-            amqp_channel_close(m_pConn, m_iChannel, AMQP_REPLY_SUCCESS);
             return -4;
         }
  
@@ -285,9 +243,6 @@ int RabbitmqClient::consumer(const string &strQueueName, vector<string> &message
     }
 
     LOG_INFO("consume end!");
-
-
-    amqp_channel_close(m_pConn, m_iChannel, AMQP_REPLY_SUCCESS);
     return 0;
 }
  

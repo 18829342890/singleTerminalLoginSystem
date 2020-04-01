@@ -1,7 +1,12 @@
 #ifndef __LOGIN_H__
 #define __LOGIN_H__
 
-
+#include <iostream>
+#include <memory>
+#include <random>
+#include <thread>
+#include <stdlib.h>
+#include <pthread.h>
 #include "ProcessCommandLineBase.h"
 #include "mylib/myLibEncrypt/base64.h"
 #include "mylib/enum/code.h"
@@ -33,7 +38,7 @@ public:
 		stream->Write(loginRequest);
 		stream->WritesDone();
 
-		//获取响应
+		//获取登录响应
 		LoginResponse loginResponse;
 		stream->Read(&loginResponse);
 		if(loginResponse.basic().code() == SUCCESS)
@@ -44,15 +49,20 @@ public:
 			char userNameDecoded[1024];
 			base64_decode(loginRequest.user_name().c_str(), loginRequest.user_name().length(), userNameDecoded);
 			userName = userNameDecoded;
-			return 0;
 		}
 		else
 		{
-			cout << "server occur error. please try again! server errmsg:" << loginResponse.basic().msg();
-			return -1;
+			cout << loginResponse.basic().msg() << endl;
 		}
-	}
 
+		//获取服务器推送的消息
+		while(stream->Read(&loginResponse))
+		{
+			cout << loginResponse.basic().msg() << endl;
+		}
+
+		return 0;
+	}
 
 private:
 	int getLoginRequestFromParams(const char* params[], const string& clientUuid, LoginRequest& loginRequest)
@@ -82,6 +92,13 @@ private:
 		loginRequest.set_pass_word(passWordEncrypted);
 		return 0;
 	}
+
+
+
+
+	
+
+
 
 };
 

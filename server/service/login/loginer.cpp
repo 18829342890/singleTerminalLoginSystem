@@ -73,7 +73,8 @@ int Loginer::monitorUserLogoutEvent(const string& userName, const string& client
 {
 	isNeedLogout = false;
 	std::vector<std::string> vecRecvMsg;
-	LOG_INFO("_queueName:%s", _queueName.c_str());
+
+	LOG_INFO("begin consumer...  queueName:%s", _queueName.c_str());
     int ret = _rabbitmqClient.consumer(_queueName, vecRecvMsg, 1);
     if(ret != 0)
     {
@@ -153,7 +154,7 @@ int Loginer::processLoginedDevice(const string& userName)
 
 int Loginer::noticeUserLogout(const string& userName, const string& clientUid)
 {
-	LOG_INFO("_exchange:%s, _routeKey:%s", _exchange.c_str(), _routeKey.c_str());
+	LOG_INFO("exchange:%s, routeKey:%s", _exchange.c_str(), _routeKey.c_str());
 	int ret = _rabbitmqClient.publish(clientUid, _exchange, _routeKey);
 	if(ret != 0)
 	{

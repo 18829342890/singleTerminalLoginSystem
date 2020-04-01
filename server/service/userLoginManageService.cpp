@@ -88,6 +88,7 @@ Status UserLoginManageService::login(ServerContext* context, ServerReaderWriter<
     //监控退出登录消息, 如果通知该clientUid退出登录，则通知该设备退出登录
     bool isNeedLogout = false;
     ret = loginer.monitorUserLogoutEvent(userName, clientUid, isNeedLogout);
+    LOG_INFO("clientUid:%s, isNeedLogout:%d", clientUid.c_str(), isNeedLogout);
 
     if(isNeedLogout)
     {
