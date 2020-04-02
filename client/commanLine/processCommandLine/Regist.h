@@ -28,13 +28,15 @@ public:
 
 		//发送注册请求
 		ClientContext context;
-		std::shared_ptr<ClientReaderWriter<RegistRequest, RegistResponse> > stream(stub->regist(&context));
-		stream->Write(registRequest);
-		stream->WritesDone();
-
-		//获取响应
 		RegistResponse registResponse;
-		stream->Read(&registResponse);
+		Status status = stub->regist(&context, registRequest, &registResponse);
+		if(!status.ok())
+		{
+			cout << "rpc failed! " << status.error_code() << ": " << status.error_message() << endl;
+			return -1;
+		}
+
+		//判断响应
 		if(registResponse.basic().code() == SUCCESS)
 		{
 			cout << registResponse.basic().msg() << endl;

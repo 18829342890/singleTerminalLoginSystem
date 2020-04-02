@@ -34,9 +34,8 @@ static string s_serverAddress;   //服务器的地址
 static int s_heartBeatInterval;  //发送心跳包的时间间隔
 static string s_clientUuid;        //客户端uuid
 
-int isLogined = 0;               //是否登录的标志
-string userName;                 //登录之后的用户名
-
+int isLogined;
+string userName;
 
 //处理ctrl + c 信号
 static void sigintHandler(int sig)

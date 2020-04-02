@@ -32,18 +32,19 @@ public:
 
 		//发送退出登录请求
 		ClientContext context;
-		std::shared_ptr<ClientReaderWriter<LogoutRequest, LogoutResponse> > stream(stub->logout(&context));
-		stream->Write(logoutRequest);
-		stream->WritesDone();
-
-		//获取响应
 		LogoutResponse logoutResponse;
-		stream->Read(&logoutResponse);
+		Status status = stub->logout(&context, logoutRequest, &logoutResponse);
+		if(!status.ok())
+		{
+			cout << "rpc failed! " << status.error_code() << ": " << status.error_message() << endl;
+			return -1;
+		}
+
+		//判断响应
 		if(logoutResponse.basic().code() == SUCCESS)
 		{
 			cout << logoutResponse.basic().msg() << endl;
 			isLogined = 0;
-			userName = "";
 			return 0;
 		}
 		else

@@ -21,7 +21,7 @@ private:
 	{
 		printf("###############################################################################################################\n");
 		printf("######### help/? : Show all legal commands                                        #############################\n");
-		printf("######### exit   : logout then exit client. for example:exit username             #############################\n");
+		printf("######### exit   : logout then exit client.                                       #############################\n");
 		printf("######### regist : user regist. for example: regist username password             #############################\n");
 		printf("######### login  : login server.for example: login username password              #############################\n");
 		printf("######### logout : logout.      for example: logout                               #############################\n");

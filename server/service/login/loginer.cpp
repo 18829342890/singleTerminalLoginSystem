@@ -4,6 +4,7 @@
 #include <grpcpp/grpcpp.h>
 #include "loginer.h"
 #include "mylib/enum/code.h"
+#include "mylib/cJSON/cJSON.h"
 #include "mylib/mylibLog/logrecord.h"
 #include "server/repository/include/userPasswordRepository.h"
 #include "server/repository/include/userLoginManageRepository.h"
@@ -69,12 +70,15 @@ int Loginer::processLogin(const string& userName, const string& passWord, const 
 	return 0;
 }
 
-int Loginer::monitorUserLogoutEvent(const string& userName, const string& clientUid, bool& isNeedLogout)
+int Loginer::monitorUserLogoutEvent(const string& userName, const string& clientUid, bool& isNeedSendMsg, int& code, string& msg)
 {
-	isNeedLogout = false;
-	std::vector<std::string> vecRecvMsg;
-
+	isNeedSendMsg = false;
+	code = SUCCESS;
+	msg = "";
+	
+	//获取消息
 	LOG_INFO("begin consumer...  queueName:%s", _queueName.c_str());
+	std::vector<std::string> vecRecvMsg;
     int ret = _rabbitmqClient.consumer(_queueName, vecRecvMsg, 1);
     if(ret != 0)
     {
@@ -83,12 +87,55 @@ int Loginer::monitorUserLogoutEvent(const string& userName, const string& client
     }
 
     LOG_INFO("consumer message:%s", vecRecvMsg[0].c_str());
-    if(vecRecvMsg[0].c_str() == clientUid)
+
+    //解析消息
+    cJSON* noticeMessageJson = cJSON_Parse(vecRecvMsg[0].c_str());
+    cJSON* userNameItem  = cJSON_GetObjectItem(noticeMessageJson, "userName");
+    cJSON* clinetUidItem  = cJSON_GetObjectItem(noticeMessageJson, "clinetUid");
+    cJSON* messageTypeItem  = cJSON_GetObjectItem(noticeMessageJson,  "messageType");
+    if(userNameItem == NULL || clinetUidItem == NULL || messageTypeItem == NULL ||
+       userNameItem->type != cJSON_String || clinetUidItem->type != cJSON_String || messageTypeItem->type != cJSON_Number)
     {
-    	isNeedLogout = true;
+    	LOG_ERROR("noticeMessage json is error! noticeMessage:%s", vecRecvMsg[0].c_str());
+    	return -1;
+    }
+
+    LOG_INFO("userName:%s, userNameItem:%s,", userName.c_str(), userNameItem->valuestring);
+    LOG_INFO("clientUid:%s, clinetUidItem:%s,", clientUid.c_str(), clinetUidItem->valuestring);
+    if(userName == userNameItem->valuestring)
+    {
+    	LOG_INFO("userName == userNameItem->valuestring");
+    }
+    if(clientUid == clinetUidItem->valuestring)
+    {
+    	LOG_INFO("clientUid == clinetUidItem->valuestring");
+    }
+
+    if(userName == userNameItem->valuestring && clientUid == clinetUidItem->valuestring)
+    {
+    	isNeedSendMsg = true;
+    	getNoticeUserMessage(messageTypeItem->valueint, code, msg);
     }
 
     return 0;
+}
+
+void Loginer::getNoticeUserMessage(int messageType, int& code, string& msg)
+{
+	code = messageType;
+
+	switch(code)
+	{
+		case OTHER_DEVICE_LOGINED_JUST_LOGOUT: 
+			msg = "您的账户已在另一台设备登录，退出当前登录!";
+			break;
+		case KICKOUT_BY_MANAGER_JUST_LOGOUT:
+			msg = "您的账户已被管理员踢出登录，退出当前登录!";
+			break;
+		default:
+			msg = "";
+			break;
+	}
 }
 
 int Loginer::isValidPassWordByUserName(const string& userName, const string& passWord, bool& isValid)
@@ -154,17 +201,20 @@ int Loginer::processLoginedDevice(const string& userName)
 
 int Loginer::noticeUserLogout(const string& userName, const string& clientUid)
 {
-	LOG_INFO("exchange:%s, routeKey:%s", _exchange.c_str(), _routeKey.c_str());
-	int ret = _rabbitmqClient.publish(clientUid, _exchange, _routeKey);
+	//获取通知的消息
+	string noticeMessage = getNoticeLogoutMsg(userName, clientUid, OTHER_DEVICE_LOGINED_JUST_LOGOUT);
+
+	//发出通知
+	int ret = _rabbitmqClient.publish(noticeMessage, _exchange, _routeKey);
 	if(ret != 0)
 	{
-		LOG_ERROR("publish message failed! clientUid:%s", clientUid.c_str());
+		LOG_ERROR("publish message failed! userName:%s, clientUid:%s, noticeMessage:%s", userName.c_str(), clientUid.c_str(), noticeMessage.c_str());
 		_code = PUBLISH_MSG_FAILED;
 		_msg = "system error: publish message failed!";
 		return -1;
 	}
 
-	LOG_INFO("publish nessage success!");
+	LOG_INFO("publish message success! noticeMessage:%s", noticeMessage.c_str());
 	return 0;
 }
 

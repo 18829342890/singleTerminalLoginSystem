@@ -38,14 +38,12 @@ class userLoginManageService final {
    public:
     virtual ~StubInterface() {}
     // regist
-    std::unique_ptr< ::grpc::ClientReaderWriterInterface< ::proto::userLoginManage::RegistRequest, ::proto::userLoginManage::RegistResponse>> regist(::grpc::ClientContext* context) {
-      return std::unique_ptr< ::grpc::ClientReaderWriterInterface< ::proto::userLoginManage::RegistRequest, ::proto::userLoginManage::RegistResponse>>(registRaw(context));
+    virtual ::grpc::Status regist(::grpc::ClientContext* context, const ::proto::userLoginManage::RegistRequest& request, ::proto::userLoginManage::RegistResponse* response) = 0;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::proto::userLoginManage::RegistResponse>> Asyncregist(::grpc::ClientContext* context, const ::proto::userLoginManage::RegistRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::proto::userLoginManage::RegistResponse>>(AsyncregistRaw(context, request, cq));
     }
-    std::unique_ptr< ::grpc::ClientAsyncReaderWriterInterface< ::proto::userLoginManage::RegistRequest, ::proto::userLoginManage::RegistResponse>> Asyncregist(::grpc::ClientContext* context, ::grpc::CompletionQueue* cq, void* tag) {
-      return std::unique_ptr< ::grpc::ClientAsyncReaderWriterInterface< ::proto::userLoginManage::RegistRequest, ::proto::userLoginManage::RegistResponse>>(AsyncregistRaw(context, cq, tag));
-    }
-    std::unique_ptr< ::grpc::ClientAsyncReaderWriterInterface< ::proto::userLoginManage::RegistRequest, ::proto::userLoginManage::RegistResponse>> PrepareAsyncregist(::grpc::ClientContext* context, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncReaderWriterInterface< ::proto::userLoginManage::RegistRequest, ::proto::userLoginManage::RegistResponse>>(PrepareAsyncregistRaw(context, cq));
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::proto::userLoginManage::RegistResponse>> PrepareAsyncregist(::grpc::ClientContext* context, const ::proto::userLoginManage::RegistRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::proto::userLoginManage::RegistResponse>>(PrepareAsyncregistRaw(context, request, cq));
     }
     // login
     std::unique_ptr< ::grpc::ClientReaderWriterInterface< ::proto::userLoginManage::LoginRequest, ::proto::userLoginManage::LoginResponse>> login(::grpc::ClientContext* context) {
@@ -58,43 +56,36 @@ class userLoginManageService final {
       return std::unique_ptr< ::grpc::ClientAsyncReaderWriterInterface< ::proto::userLoginManage::LoginRequest, ::proto::userLoginManage::LoginResponse>>(PrepareAsyncloginRaw(context, cq));
     }
     // logout
-    std::unique_ptr< ::grpc::ClientReaderWriterInterface< ::proto::userLoginManage::LogoutRequest, ::proto::userLoginManage::LogoutResponse>> logout(::grpc::ClientContext* context) {
-      return std::unique_ptr< ::grpc::ClientReaderWriterInterface< ::proto::userLoginManage::LogoutRequest, ::proto::userLoginManage::LogoutResponse>>(logoutRaw(context));
+    virtual ::grpc::Status logout(::grpc::ClientContext* context, const ::proto::userLoginManage::LogoutRequest& request, ::proto::userLoginManage::LogoutResponse* response) = 0;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::proto::userLoginManage::LogoutResponse>> Asynclogout(::grpc::ClientContext* context, const ::proto::userLoginManage::LogoutRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::proto::userLoginManage::LogoutResponse>>(AsynclogoutRaw(context, request, cq));
     }
-    std::unique_ptr< ::grpc::ClientAsyncReaderWriterInterface< ::proto::userLoginManage::LogoutRequest, ::proto::userLoginManage::LogoutResponse>> Asynclogout(::grpc::ClientContext* context, ::grpc::CompletionQueue* cq, void* tag) {
-      return std::unique_ptr< ::grpc::ClientAsyncReaderWriterInterface< ::proto::userLoginManage::LogoutRequest, ::proto::userLoginManage::LogoutResponse>>(AsynclogoutRaw(context, cq, tag));
-    }
-    std::unique_ptr< ::grpc::ClientAsyncReaderWriterInterface< ::proto::userLoginManage::LogoutRequest, ::proto::userLoginManage::LogoutResponse>> PrepareAsynclogout(::grpc::ClientContext* context, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncReaderWriterInterface< ::proto::userLoginManage::LogoutRequest, ::proto::userLoginManage::LogoutResponse>>(PrepareAsynclogoutRaw(context, cq));
-    }
-    // heart beat
-    std::unique_ptr< ::grpc::ClientReaderWriterInterface< ::proto::userLoginManage::HeartBeatRequest, ::proto::userLoginManage::HeartBeatResponse>> heartBeat(::grpc::ClientContext* context) {
-      return std::unique_ptr< ::grpc::ClientReaderWriterInterface< ::proto::userLoginManage::HeartBeatRequest, ::proto::userLoginManage::HeartBeatResponse>>(heartBeatRaw(context));
-    }
-    std::unique_ptr< ::grpc::ClientAsyncReaderWriterInterface< ::proto::userLoginManage::HeartBeatRequest, ::proto::userLoginManage::HeartBeatResponse>> AsyncheartBeat(::grpc::ClientContext* context, ::grpc::CompletionQueue* cq, void* tag) {
-      return std::unique_ptr< ::grpc::ClientAsyncReaderWriterInterface< ::proto::userLoginManage::HeartBeatRequest, ::proto::userLoginManage::HeartBeatResponse>>(AsyncheartBeatRaw(context, cq, tag));
-    }
-    std::unique_ptr< ::grpc::ClientAsyncReaderWriterInterface< ::proto::userLoginManage::HeartBeatRequest, ::proto::userLoginManage::HeartBeatResponse>> PrepareAsyncheartBeat(::grpc::ClientContext* context, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncReaderWriterInterface< ::proto::userLoginManage::HeartBeatRequest, ::proto::userLoginManage::HeartBeatResponse>>(PrepareAsyncheartBeatRaw(context, cq));
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::proto::userLoginManage::LogoutResponse>> PrepareAsynclogout(::grpc::ClientContext* context, const ::proto::userLoginManage::LogoutRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::proto::userLoginManage::LogoutResponse>>(PrepareAsynclogoutRaw(context, request, cq));
     }
     // kick out user
-    std::unique_ptr< ::grpc::ClientReaderWriterInterface< ::proto::userLoginManage::KickOutUserRequest, ::proto::userLoginManage::KickOutUserResponse>> kickOutUser(::grpc::ClientContext* context) {
-      return std::unique_ptr< ::grpc::ClientReaderWriterInterface< ::proto::userLoginManage::KickOutUserRequest, ::proto::userLoginManage::KickOutUserResponse>>(kickOutUserRaw(context));
+    virtual ::grpc::Status kickOutUser(::grpc::ClientContext* context, const ::proto::userLoginManage::KickOutUserRequest& request, ::proto::userLoginManage::KickOutUserResponse* response) = 0;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::proto::userLoginManage::KickOutUserResponse>> AsynckickOutUser(::grpc::ClientContext* context, const ::proto::userLoginManage::KickOutUserRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::proto::userLoginManage::KickOutUserResponse>>(AsynckickOutUserRaw(context, request, cq));
     }
-    std::unique_ptr< ::grpc::ClientAsyncReaderWriterInterface< ::proto::userLoginManage::KickOutUserRequest, ::proto::userLoginManage::KickOutUserResponse>> AsynckickOutUser(::grpc::ClientContext* context, ::grpc::CompletionQueue* cq, void* tag) {
-      return std::unique_ptr< ::grpc::ClientAsyncReaderWriterInterface< ::proto::userLoginManage::KickOutUserRequest, ::proto::userLoginManage::KickOutUserResponse>>(AsynckickOutUserRaw(context, cq, tag));
-    }
-    std::unique_ptr< ::grpc::ClientAsyncReaderWriterInterface< ::proto::userLoginManage::KickOutUserRequest, ::proto::userLoginManage::KickOutUserResponse>> PrepareAsynckickOutUser(::grpc::ClientContext* context, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncReaderWriterInterface< ::proto::userLoginManage::KickOutUserRequest, ::proto::userLoginManage::KickOutUserResponse>>(PrepareAsynckickOutUserRaw(context, cq));
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::proto::userLoginManage::KickOutUserResponse>> PrepareAsynckickOutUser(::grpc::ClientContext* context, const ::proto::userLoginManage::KickOutUserRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::proto::userLoginManage::KickOutUserResponse>>(PrepareAsynckickOutUserRaw(context, request, cq));
     }
     class experimental_async_interface {
      public:
       virtual ~experimental_async_interface() {}
       // regist
+      virtual void regist(::grpc::ClientContext* context, const ::proto::userLoginManage::RegistRequest* request, ::proto::userLoginManage::RegistResponse* response, std::function<void(::grpc::Status)>) = 0;
+      virtual void regist(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::proto::userLoginManage::RegistResponse* response, std::function<void(::grpc::Status)>) = 0;
       #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      virtual void regist(::grpc::ClientContext* context, ::grpc::ClientBidiReactor< ::proto::userLoginManage::RegistRequest,::proto::userLoginManage::RegistResponse>* reactor) = 0;
+      virtual void regist(::grpc::ClientContext* context, const ::proto::userLoginManage::RegistRequest* request, ::proto::userLoginManage::RegistResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
       #else
-      virtual void regist(::grpc::ClientContext* context, ::grpc::experimental::ClientBidiReactor< ::proto::userLoginManage::RegistRequest,::proto::userLoginManage::RegistResponse>* reactor) = 0;
+      virtual void regist(::grpc::ClientContext* context, const ::proto::userLoginManage::RegistRequest* request, ::proto::userLoginManage::RegistResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
+      #endif
+      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+      virtual void regist(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::proto::userLoginManage::RegistResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
+      #else
+      virtual void regist(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::proto::userLoginManage::RegistResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
       #endif
       // login
       #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
@@ -103,22 +94,30 @@ class userLoginManageService final {
       virtual void login(::grpc::ClientContext* context, ::grpc::experimental::ClientBidiReactor< ::proto::userLoginManage::LoginRequest,::proto::userLoginManage::LoginResponse>* reactor) = 0;
       #endif
       // logout
+      virtual void logout(::grpc::ClientContext* context, const ::proto::userLoginManage::LogoutRequest* request, ::proto::userLoginManage::LogoutResponse* response, std::function<void(::grpc::Status)>) = 0;
+      virtual void logout(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::proto::userLoginManage::LogoutResponse* response, std::function<void(::grpc::Status)>) = 0;
       #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      virtual void logout(::grpc::ClientContext* context, ::grpc::ClientBidiReactor< ::proto::userLoginManage::LogoutRequest,::proto::userLoginManage::LogoutResponse>* reactor) = 0;
+      virtual void logout(::grpc::ClientContext* context, const ::proto::userLoginManage::LogoutRequest* request, ::proto::userLoginManage::LogoutResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
       #else
-      virtual void logout(::grpc::ClientContext* context, ::grpc::experimental::ClientBidiReactor< ::proto::userLoginManage::LogoutRequest,::proto::userLoginManage::LogoutResponse>* reactor) = 0;
+      virtual void logout(::grpc::ClientContext* context, const ::proto::userLoginManage::LogoutRequest* request, ::proto::userLoginManage::LogoutResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
       #endif
-      // heart beat
       #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      virtual void heartBeat(::grpc::ClientContext* context, ::grpc::ClientBidiReactor< ::proto::userLoginManage::HeartBeatRequest,::proto::userLoginManage::HeartBeatResponse>* reactor) = 0;
+      virtual void logout(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::proto::userLoginManage::LogoutResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
       #else
-      virtual void heartBeat(::grpc::ClientContext* context, ::grpc::experimental::ClientBidiReactor< ::proto::userLoginManage::HeartBeatRequest,::proto::userLoginManage::HeartBeatResponse>* reactor) = 0;
+      virtual void logout(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::proto::userLoginManage::LogoutResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
       #endif
       // kick out user
+      virtual void kickOutUser(::grpc::ClientContext* context, const ::proto::userLoginManage::KickOutUserRequest* request, ::proto::userLoginManage::KickOutUserResponse* response, std::function<void(::grpc::Status)>) = 0;
+      virtual void kickOutUser(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::proto::userLoginManage::KickOutUserResponse* response, std::function<void(::grpc::Status)>) = 0;
       #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      virtual void kickOutUser(::grpc::ClientContext* context, ::grpc::ClientBidiReactor< ::proto::userLoginManage::KickOutUserRequest,::proto::userLoginManage::KickOutUserResponse>* reactor) = 0;
+      virtual void kickOutUser(::grpc::ClientContext* context, const ::proto::userLoginManage::KickOutUserRequest* request, ::proto::userLoginManage::KickOutUserResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
       #else
-      virtual void kickOutUser(::grpc::ClientContext* context, ::grpc::experimental::ClientBidiReactor< ::proto::userLoginManage::KickOutUserRequest,::proto::userLoginManage::KickOutUserResponse>* reactor) = 0;
+      virtual void kickOutUser(::grpc::ClientContext* context, const ::proto::userLoginManage::KickOutUserRequest* request, ::proto::userLoginManage::KickOutUserResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
+      #endif
+      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+      virtual void kickOutUser(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::proto::userLoginManage::KickOutUserResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
+      #else
+      virtual void kickOutUser(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::proto::userLoginManage::KickOutUserResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
       #endif
     };
     #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
@@ -129,33 +128,25 @@ class userLoginManageService final {
     #endif
     virtual class experimental_async_interface* experimental_async() { return nullptr; }
   private:
-    virtual ::grpc::ClientReaderWriterInterface< ::proto::userLoginManage::RegistRequest, ::proto::userLoginManage::RegistResponse>* registRaw(::grpc::ClientContext* context) = 0;
-    virtual ::grpc::ClientAsyncReaderWriterInterface< ::proto::userLoginManage::RegistRequest, ::proto::userLoginManage::RegistResponse>* AsyncregistRaw(::grpc::ClientContext* context, ::grpc::CompletionQueue* cq, void* tag) = 0;
-    virtual ::grpc::ClientAsyncReaderWriterInterface< ::proto::userLoginManage::RegistRequest, ::proto::userLoginManage::RegistResponse>* PrepareAsyncregistRaw(::grpc::ClientContext* context, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::proto::userLoginManage::RegistResponse>* AsyncregistRaw(::grpc::ClientContext* context, const ::proto::userLoginManage::RegistRequest& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::proto::userLoginManage::RegistResponse>* PrepareAsyncregistRaw(::grpc::ClientContext* context, const ::proto::userLoginManage::RegistRequest& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientReaderWriterInterface< ::proto::userLoginManage::LoginRequest, ::proto::userLoginManage::LoginResponse>* loginRaw(::grpc::ClientContext* context) = 0;
     virtual ::grpc::ClientAsyncReaderWriterInterface< ::proto::userLoginManage::LoginRequest, ::proto::userLoginManage::LoginResponse>* AsyncloginRaw(::grpc::ClientContext* context, ::grpc::CompletionQueue* cq, void* tag) = 0;
     virtual ::grpc::ClientAsyncReaderWriterInterface< ::proto::userLoginManage::LoginRequest, ::proto::userLoginManage::LoginResponse>* PrepareAsyncloginRaw(::grpc::ClientContext* context, ::grpc::CompletionQueue* cq) = 0;
-    virtual ::grpc::ClientReaderWriterInterface< ::proto::userLoginManage::LogoutRequest, ::proto::userLoginManage::LogoutResponse>* logoutRaw(::grpc::ClientContext* context) = 0;
-    virtual ::grpc::ClientAsyncReaderWriterInterface< ::proto::userLoginManage::LogoutRequest, ::proto::userLoginManage::LogoutResponse>* AsynclogoutRaw(::grpc::ClientContext* context, ::grpc::CompletionQueue* cq, void* tag) = 0;
-    virtual ::grpc::ClientAsyncReaderWriterInterface< ::proto::userLoginManage::LogoutRequest, ::proto::userLoginManage::LogoutResponse>* PrepareAsynclogoutRaw(::grpc::ClientContext* context, ::grpc::CompletionQueue* cq) = 0;
-    virtual ::grpc::ClientReaderWriterInterface< ::proto::userLoginManage::HeartBeatRequest, ::proto::userLoginManage::HeartBeatResponse>* heartBeatRaw(::grpc::ClientContext* context) = 0;
-    virtual ::grpc::ClientAsyncReaderWriterInterface< ::proto::userLoginManage::HeartBeatRequest, ::proto::userLoginManage::HeartBeatResponse>* AsyncheartBeatRaw(::grpc::ClientContext* context, ::grpc::CompletionQueue* cq, void* tag) = 0;
-    virtual ::grpc::ClientAsyncReaderWriterInterface< ::proto::userLoginManage::HeartBeatRequest, ::proto::userLoginManage::HeartBeatResponse>* PrepareAsyncheartBeatRaw(::grpc::ClientContext* context, ::grpc::CompletionQueue* cq) = 0;
-    virtual ::grpc::ClientReaderWriterInterface< ::proto::userLoginManage::KickOutUserRequest, ::proto::userLoginManage::KickOutUserResponse>* kickOutUserRaw(::grpc::ClientContext* context) = 0;
-    virtual ::grpc::ClientAsyncReaderWriterInterface< ::proto::userLoginManage::KickOutUserRequest, ::proto::userLoginManage::KickOutUserResponse>* AsynckickOutUserRaw(::grpc::ClientContext* context, ::grpc::CompletionQueue* cq, void* tag) = 0;
-    virtual ::grpc::ClientAsyncReaderWriterInterface< ::proto::userLoginManage::KickOutUserRequest, ::proto::userLoginManage::KickOutUserResponse>* PrepareAsynckickOutUserRaw(::grpc::ClientContext* context, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::proto::userLoginManage::LogoutResponse>* AsynclogoutRaw(::grpc::ClientContext* context, const ::proto::userLoginManage::LogoutRequest& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::proto::userLoginManage::LogoutResponse>* PrepareAsynclogoutRaw(::grpc::ClientContext* context, const ::proto::userLoginManage::LogoutRequest& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::proto::userLoginManage::KickOutUserResponse>* AsynckickOutUserRaw(::grpc::ClientContext* context, const ::proto::userLoginManage::KickOutUserRequest& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::proto::userLoginManage::KickOutUserResponse>* PrepareAsynckickOutUserRaw(::grpc::ClientContext* context, const ::proto::userLoginManage::KickOutUserRequest& request, ::grpc::CompletionQueue* cq) = 0;
   };
   class Stub final : public StubInterface {
    public:
     Stub(const std::shared_ptr< ::grpc::ChannelInterface>& channel);
-    std::unique_ptr< ::grpc::ClientReaderWriter< ::proto::userLoginManage::RegistRequest, ::proto::userLoginManage::RegistResponse>> regist(::grpc::ClientContext* context) {
-      return std::unique_ptr< ::grpc::ClientReaderWriter< ::proto::userLoginManage::RegistRequest, ::proto::userLoginManage::RegistResponse>>(registRaw(context));
+    ::grpc::Status regist(::grpc::ClientContext* context, const ::proto::userLoginManage::RegistRequest& request, ::proto::userLoginManage::RegistResponse* response) override;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::proto::userLoginManage::RegistResponse>> Asyncregist(::grpc::ClientContext* context, const ::proto::userLoginManage::RegistRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::proto::userLoginManage::RegistResponse>>(AsyncregistRaw(context, request, cq));
     }
-    std::unique_ptr<  ::grpc::ClientAsyncReaderWriter< ::proto::userLoginManage::RegistRequest, ::proto::userLoginManage::RegistResponse>> Asyncregist(::grpc::ClientContext* context, ::grpc::CompletionQueue* cq, void* tag) {
-      return std::unique_ptr< ::grpc::ClientAsyncReaderWriter< ::proto::userLoginManage::RegistRequest, ::proto::userLoginManage::RegistResponse>>(AsyncregistRaw(context, cq, tag));
-    }
-    std::unique_ptr<  ::grpc::ClientAsyncReaderWriter< ::proto::userLoginManage::RegistRequest, ::proto::userLoginManage::RegistResponse>> PrepareAsyncregist(::grpc::ClientContext* context, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncReaderWriter< ::proto::userLoginManage::RegistRequest, ::proto::userLoginManage::RegistResponse>>(PrepareAsyncregistRaw(context, cq));
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::proto::userLoginManage::RegistResponse>> PrepareAsyncregist(::grpc::ClientContext* context, const ::proto::userLoginManage::RegistRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::proto::userLoginManage::RegistResponse>>(PrepareAsyncregistRaw(context, request, cq));
     }
     std::unique_ptr< ::grpc::ClientReaderWriter< ::proto::userLoginManage::LoginRequest, ::proto::userLoginManage::LoginResponse>> login(::grpc::ClientContext* context) {
       return std::unique_ptr< ::grpc::ClientReaderWriter< ::proto::userLoginManage::LoginRequest, ::proto::userLoginManage::LoginResponse>>(loginRaw(context));
@@ -166,60 +157,63 @@ class userLoginManageService final {
     std::unique_ptr<  ::grpc::ClientAsyncReaderWriter< ::proto::userLoginManage::LoginRequest, ::proto::userLoginManage::LoginResponse>> PrepareAsynclogin(::grpc::ClientContext* context, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncReaderWriter< ::proto::userLoginManage::LoginRequest, ::proto::userLoginManage::LoginResponse>>(PrepareAsyncloginRaw(context, cq));
     }
-    std::unique_ptr< ::grpc::ClientReaderWriter< ::proto::userLoginManage::LogoutRequest, ::proto::userLoginManage::LogoutResponse>> logout(::grpc::ClientContext* context) {
-      return std::unique_ptr< ::grpc::ClientReaderWriter< ::proto::userLoginManage::LogoutRequest, ::proto::userLoginManage::LogoutResponse>>(logoutRaw(context));
+    ::grpc::Status logout(::grpc::ClientContext* context, const ::proto::userLoginManage::LogoutRequest& request, ::proto::userLoginManage::LogoutResponse* response) override;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::proto::userLoginManage::LogoutResponse>> Asynclogout(::grpc::ClientContext* context, const ::proto::userLoginManage::LogoutRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::proto::userLoginManage::LogoutResponse>>(AsynclogoutRaw(context, request, cq));
     }
-    std::unique_ptr<  ::grpc::ClientAsyncReaderWriter< ::proto::userLoginManage::LogoutRequest, ::proto::userLoginManage::LogoutResponse>> Asynclogout(::grpc::ClientContext* context, ::grpc::CompletionQueue* cq, void* tag) {
-      return std::unique_ptr< ::grpc::ClientAsyncReaderWriter< ::proto::userLoginManage::LogoutRequest, ::proto::userLoginManage::LogoutResponse>>(AsynclogoutRaw(context, cq, tag));
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::proto::userLoginManage::LogoutResponse>> PrepareAsynclogout(::grpc::ClientContext* context, const ::proto::userLoginManage::LogoutRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::proto::userLoginManage::LogoutResponse>>(PrepareAsynclogoutRaw(context, request, cq));
     }
-    std::unique_ptr<  ::grpc::ClientAsyncReaderWriter< ::proto::userLoginManage::LogoutRequest, ::proto::userLoginManage::LogoutResponse>> PrepareAsynclogout(::grpc::ClientContext* context, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncReaderWriter< ::proto::userLoginManage::LogoutRequest, ::proto::userLoginManage::LogoutResponse>>(PrepareAsynclogoutRaw(context, cq));
+    ::grpc::Status kickOutUser(::grpc::ClientContext* context, const ::proto::userLoginManage::KickOutUserRequest& request, ::proto::userLoginManage::KickOutUserResponse* response) override;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::proto::userLoginManage::KickOutUserResponse>> AsynckickOutUser(::grpc::ClientContext* context, const ::proto::userLoginManage::KickOutUserRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::proto::userLoginManage::KickOutUserResponse>>(AsynckickOutUserRaw(context, request, cq));
     }
-    std::unique_ptr< ::grpc::ClientReaderWriter< ::proto::userLoginManage::HeartBeatRequest, ::proto::userLoginManage::HeartBeatResponse>> heartBeat(::grpc::ClientContext* context) {
-      return std::unique_ptr< ::grpc::ClientReaderWriter< ::proto::userLoginManage::HeartBeatRequest, ::proto::userLoginManage::HeartBeatResponse>>(heartBeatRaw(context));
-    }
-    std::unique_ptr<  ::grpc::ClientAsyncReaderWriter< ::proto::userLoginManage::HeartBeatRequest, ::proto::userLoginManage::HeartBeatResponse>> AsyncheartBeat(::grpc::ClientContext* context, ::grpc::CompletionQueue* cq, void* tag) {
-      return std::unique_ptr< ::grpc::ClientAsyncReaderWriter< ::proto::userLoginManage::HeartBeatRequest, ::proto::userLoginManage::HeartBeatResponse>>(AsyncheartBeatRaw(context, cq, tag));
-    }
-    std::unique_ptr<  ::grpc::ClientAsyncReaderWriter< ::proto::userLoginManage::HeartBeatRequest, ::proto::userLoginManage::HeartBeatResponse>> PrepareAsyncheartBeat(::grpc::ClientContext* context, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncReaderWriter< ::proto::userLoginManage::HeartBeatRequest, ::proto::userLoginManage::HeartBeatResponse>>(PrepareAsyncheartBeatRaw(context, cq));
-    }
-    std::unique_ptr< ::grpc::ClientReaderWriter< ::proto::userLoginManage::KickOutUserRequest, ::proto::userLoginManage::KickOutUserResponse>> kickOutUser(::grpc::ClientContext* context) {
-      return std::unique_ptr< ::grpc::ClientReaderWriter< ::proto::userLoginManage::KickOutUserRequest, ::proto::userLoginManage::KickOutUserResponse>>(kickOutUserRaw(context));
-    }
-    std::unique_ptr<  ::grpc::ClientAsyncReaderWriter< ::proto::userLoginManage::KickOutUserRequest, ::proto::userLoginManage::KickOutUserResponse>> AsynckickOutUser(::grpc::ClientContext* context, ::grpc::CompletionQueue* cq, void* tag) {
-      return std::unique_ptr< ::grpc::ClientAsyncReaderWriter< ::proto::userLoginManage::KickOutUserRequest, ::proto::userLoginManage::KickOutUserResponse>>(AsynckickOutUserRaw(context, cq, tag));
-    }
-    std::unique_ptr<  ::grpc::ClientAsyncReaderWriter< ::proto::userLoginManage::KickOutUserRequest, ::proto::userLoginManage::KickOutUserResponse>> PrepareAsynckickOutUser(::grpc::ClientContext* context, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncReaderWriter< ::proto::userLoginManage::KickOutUserRequest, ::proto::userLoginManage::KickOutUserResponse>>(PrepareAsynckickOutUserRaw(context, cq));
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::proto::userLoginManage::KickOutUserResponse>> PrepareAsynckickOutUser(::grpc::ClientContext* context, const ::proto::userLoginManage::KickOutUserRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::proto::userLoginManage::KickOutUserResponse>>(PrepareAsynckickOutUserRaw(context, request, cq));
     }
     class experimental_async final :
       public StubInterface::experimental_async_interface {
      public:
+      void regist(::grpc::ClientContext* context, const ::proto::userLoginManage::RegistRequest* request, ::proto::userLoginManage::RegistResponse* response, std::function<void(::grpc::Status)>) override;
+      void regist(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::proto::userLoginManage::RegistResponse* response, std::function<void(::grpc::Status)>) override;
       #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      void regist(::grpc::ClientContext* context, ::grpc::ClientBidiReactor< ::proto::userLoginManage::RegistRequest,::proto::userLoginManage::RegistResponse>* reactor) override;
+      void regist(::grpc::ClientContext* context, const ::proto::userLoginManage::RegistRequest* request, ::proto::userLoginManage::RegistResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
       #else
-      void regist(::grpc::ClientContext* context, ::grpc::experimental::ClientBidiReactor< ::proto::userLoginManage::RegistRequest,::proto::userLoginManage::RegistResponse>* reactor) override;
+      void regist(::grpc::ClientContext* context, const ::proto::userLoginManage::RegistRequest* request, ::proto::userLoginManage::RegistResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
+      #endif
+      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+      void regist(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::proto::userLoginManage::RegistResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
+      #else
+      void regist(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::proto::userLoginManage::RegistResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
       #endif
       #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
       void login(::grpc::ClientContext* context, ::grpc::ClientBidiReactor< ::proto::userLoginManage::LoginRequest,::proto::userLoginManage::LoginResponse>* reactor) override;
       #else
       void login(::grpc::ClientContext* context, ::grpc::experimental::ClientBidiReactor< ::proto::userLoginManage::LoginRequest,::proto::userLoginManage::LoginResponse>* reactor) override;
       #endif
+      void logout(::grpc::ClientContext* context, const ::proto::userLoginManage::LogoutRequest* request, ::proto::userLoginManage::LogoutResponse* response, std::function<void(::grpc::Status)>) override;
+      void logout(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::proto::userLoginManage::LogoutResponse* response, std::function<void(::grpc::Status)>) override;
       #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      void logout(::grpc::ClientContext* context, ::grpc::ClientBidiReactor< ::proto::userLoginManage::LogoutRequest,::proto::userLoginManage::LogoutResponse>* reactor) override;
+      void logout(::grpc::ClientContext* context, const ::proto::userLoginManage::LogoutRequest* request, ::proto::userLoginManage::LogoutResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
       #else
-      void logout(::grpc::ClientContext* context, ::grpc::experimental::ClientBidiReactor< ::proto::userLoginManage::LogoutRequest,::proto::userLoginManage::LogoutResponse>* reactor) override;
+      void logout(::grpc::ClientContext* context, const ::proto::userLoginManage::LogoutRequest* request, ::proto::userLoginManage::LogoutResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
       #endif
       #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      void heartBeat(::grpc::ClientContext* context, ::grpc::ClientBidiReactor< ::proto::userLoginManage::HeartBeatRequest,::proto::userLoginManage::HeartBeatResponse>* reactor) override;
+      void logout(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::proto::userLoginManage::LogoutResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
       #else
-      void heartBeat(::grpc::ClientContext* context, ::grpc::experimental::ClientBidiReactor< ::proto::userLoginManage::HeartBeatRequest,::proto::userLoginManage::HeartBeatResponse>* reactor) override;
+      void logout(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::proto::userLoginManage::LogoutResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
+      #endif
+      void kickOutUser(::grpc::ClientContext* context, const ::proto::userLoginManage::KickOutUserRequest* request, ::proto::userLoginManage::KickOutUserResponse* response, std::function<void(::grpc::Status)>) override;
+      void kickOutUser(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::proto::userLoginManage::KickOutUserResponse* response, std::function<void(::grpc::Status)>) override;
+      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+      void kickOutUser(::grpc::ClientContext* context, const ::proto::userLoginManage::KickOutUserRequest* request, ::proto::userLoginManage::KickOutUserResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
+      #else
+      void kickOutUser(::grpc::ClientContext* context, const ::proto::userLoginManage::KickOutUserRequest* request, ::proto::userLoginManage::KickOutUserResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
       #endif
       #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      void kickOutUser(::grpc::ClientContext* context, ::grpc::ClientBidiReactor< ::proto::userLoginManage::KickOutUserRequest,::proto::userLoginManage::KickOutUserResponse>* reactor) override;
+      void kickOutUser(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::proto::userLoginManage::KickOutUserResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
       #else
-      void kickOutUser(::grpc::ClientContext* context, ::grpc::experimental::ClientBidiReactor< ::proto::userLoginManage::KickOutUserRequest,::proto::userLoginManage::KickOutUserResponse>* reactor) override;
+      void kickOutUser(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::proto::userLoginManage::KickOutUserResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
       #endif
      private:
       friend class Stub;
@@ -232,25 +226,18 @@ class userLoginManageService final {
    private:
     std::shared_ptr< ::grpc::ChannelInterface> channel_;
     class experimental_async async_stub_{this};
-    ::grpc::ClientReaderWriter< ::proto::userLoginManage::RegistRequest, ::proto::userLoginManage::RegistResponse>* registRaw(::grpc::ClientContext* context) override;
-    ::grpc::ClientAsyncReaderWriter< ::proto::userLoginManage::RegistRequest, ::proto::userLoginManage::RegistResponse>* AsyncregistRaw(::grpc::ClientContext* context, ::grpc::CompletionQueue* cq, void* tag) override;
-    ::grpc::ClientAsyncReaderWriter< ::proto::userLoginManage::RegistRequest, ::proto::userLoginManage::RegistResponse>* PrepareAsyncregistRaw(::grpc::ClientContext* context, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::proto::userLoginManage::RegistResponse>* AsyncregistRaw(::grpc::ClientContext* context, const ::proto::userLoginManage::RegistRequest& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::proto::userLoginManage::RegistResponse>* PrepareAsyncregistRaw(::grpc::ClientContext* context, const ::proto::userLoginManage::RegistRequest& request, ::grpc::CompletionQueue* cq) override;
     ::grpc::ClientReaderWriter< ::proto::userLoginManage::LoginRequest, ::proto::userLoginManage::LoginResponse>* loginRaw(::grpc::ClientContext* context) override;
     ::grpc::ClientAsyncReaderWriter< ::proto::userLoginManage::LoginRequest, ::proto::userLoginManage::LoginResponse>* AsyncloginRaw(::grpc::ClientContext* context, ::grpc::CompletionQueue* cq, void* tag) override;
     ::grpc::ClientAsyncReaderWriter< ::proto::userLoginManage::LoginRequest, ::proto::userLoginManage::LoginResponse>* PrepareAsyncloginRaw(::grpc::ClientContext* context, ::grpc::CompletionQueue* cq) override;
-    ::grpc::ClientReaderWriter< ::proto::userLoginManage::LogoutRequest, ::proto::userLoginManage::LogoutResponse>* logoutRaw(::grpc::ClientContext* context) override;
-    ::grpc::ClientAsyncReaderWriter< ::proto::userLoginManage::LogoutRequest, ::proto::userLoginManage::LogoutResponse>* AsynclogoutRaw(::grpc::ClientContext* context, ::grpc::CompletionQueue* cq, void* tag) override;
-    ::grpc::ClientAsyncReaderWriter< ::proto::userLoginManage::LogoutRequest, ::proto::userLoginManage::LogoutResponse>* PrepareAsynclogoutRaw(::grpc::ClientContext* context, ::grpc::CompletionQueue* cq) override;
-    ::grpc::ClientReaderWriter< ::proto::userLoginManage::HeartBeatRequest, ::proto::userLoginManage::HeartBeatResponse>* heartBeatRaw(::grpc::ClientContext* context) override;
-    ::grpc::ClientAsyncReaderWriter< ::proto::userLoginManage::HeartBeatRequest, ::proto::userLoginManage::HeartBeatResponse>* AsyncheartBeatRaw(::grpc::ClientContext* context, ::grpc::CompletionQueue* cq, void* tag) override;
-    ::grpc::ClientAsyncReaderWriter< ::proto::userLoginManage::HeartBeatRequest, ::proto::userLoginManage::HeartBeatResponse>* PrepareAsyncheartBeatRaw(::grpc::ClientContext* context, ::grpc::CompletionQueue* cq) override;
-    ::grpc::ClientReaderWriter< ::proto::userLoginManage::KickOutUserRequest, ::proto::userLoginManage::KickOutUserResponse>* kickOutUserRaw(::grpc::ClientContext* context) override;
-    ::grpc::ClientAsyncReaderWriter< ::proto::userLoginManage::KickOutUserRequest, ::proto::userLoginManage::KickOutUserResponse>* AsynckickOutUserRaw(::grpc::ClientContext* context, ::grpc::CompletionQueue* cq, void* tag) override;
-    ::grpc::ClientAsyncReaderWriter< ::proto::userLoginManage::KickOutUserRequest, ::proto::userLoginManage::KickOutUserResponse>* PrepareAsynckickOutUserRaw(::grpc::ClientContext* context, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::proto::userLoginManage::LogoutResponse>* AsynclogoutRaw(::grpc::ClientContext* context, const ::proto::userLoginManage::LogoutRequest& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::proto::userLoginManage::LogoutResponse>* PrepareAsynclogoutRaw(::grpc::ClientContext* context, const ::proto::userLoginManage::LogoutRequest& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::proto::userLoginManage::KickOutUserResponse>* AsynckickOutUserRaw(::grpc::ClientContext* context, const ::proto::userLoginManage::KickOutUserRequest& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::proto::userLoginManage::KickOutUserResponse>* PrepareAsynckickOutUserRaw(::grpc::ClientContext* context, const ::proto::userLoginManage::KickOutUserRequest& request, ::grpc::CompletionQueue* cq) override;
     const ::grpc::internal::RpcMethod rpcmethod_regist_;
     const ::grpc::internal::RpcMethod rpcmethod_login_;
     const ::grpc::internal::RpcMethod rpcmethod_logout_;
-    const ::grpc::internal::RpcMethod rpcmethod_heartBeat_;
     const ::grpc::internal::RpcMethod rpcmethod_kickOutUser_;
   };
   static std::unique_ptr<Stub> NewStub(const std::shared_ptr< ::grpc::ChannelInterface>& channel, const ::grpc::StubOptions& options = ::grpc::StubOptions());
@@ -260,15 +247,13 @@ class userLoginManageService final {
     Service();
     virtual ~Service();
     // regist
-    virtual ::grpc::Status regist(::grpc::ServerContext* context, ::grpc::ServerReaderWriter< ::proto::userLoginManage::RegistResponse, ::proto::userLoginManage::RegistRequest>* stream);
+    virtual ::grpc::Status regist(::grpc::ServerContext* context, const ::proto::userLoginManage::RegistRequest* request, ::proto::userLoginManage::RegistResponse* response);
     // login
     virtual ::grpc::Status login(::grpc::ServerContext* context, ::grpc::ServerReaderWriter< ::proto::userLoginManage::LoginResponse, ::proto::userLoginManage::LoginRequest>* stream);
     // logout
-    virtual ::grpc::Status logout(::grpc::ServerContext* context, ::grpc::ServerReaderWriter< ::proto::userLoginManage::LogoutResponse, ::proto::userLoginManage::LogoutRequest>* stream);
-    // heart beat
-    virtual ::grpc::Status heartBeat(::grpc::ServerContext* context, ::grpc::ServerReaderWriter< ::proto::userLoginManage::HeartBeatResponse, ::proto::userLoginManage::HeartBeatRequest>* stream);
+    virtual ::grpc::Status logout(::grpc::ServerContext* context, const ::proto::userLoginManage::LogoutRequest* request, ::proto::userLoginManage::LogoutResponse* response);
     // kick out user
-    virtual ::grpc::Status kickOutUser(::grpc::ServerContext* context, ::grpc::ServerReaderWriter< ::proto::userLoginManage::KickOutUserResponse, ::proto::userLoginManage::KickOutUserRequest>* stream);
+    virtual ::grpc::Status kickOutUser(::grpc::ServerContext* context, const ::proto::userLoginManage::KickOutUserRequest* request, ::proto::userLoginManage::KickOutUserResponse* response);
   };
   template <class BaseClass>
   class WithAsyncMethod_regist : public BaseClass {
@@ -282,12 +267,12 @@ class userLoginManageService final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status regist(::grpc::ServerContext* /*context*/, ::grpc::ServerReaderWriter< ::proto::userLoginManage::RegistResponse, ::proto::userLoginManage::RegistRequest>* /*stream*/)  override {
+    ::grpc::Status regist(::grpc::ServerContext* /*context*/, const ::proto::userLoginManage::RegistRequest* /*request*/, ::proto::userLoginManage::RegistResponse* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    void Requestregist(::grpc::ServerContext* context, ::grpc::ServerAsyncReaderWriter< ::proto::userLoginManage::RegistResponse, ::proto::userLoginManage::RegistRequest>* stream, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncBidiStreaming(0, context, stream, new_call_cq, notification_cq, tag);
+    void Requestregist(::grpc::ServerContext* context, ::proto::userLoginManage::RegistRequest* request, ::grpc::ServerAsyncResponseWriter< ::proto::userLoginManage::RegistResponse>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(0, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -322,32 +307,12 @@ class userLoginManageService final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status logout(::grpc::ServerContext* /*context*/, ::grpc::ServerReaderWriter< ::proto::userLoginManage::LogoutResponse, ::proto::userLoginManage::LogoutRequest>* /*stream*/)  override {
+    ::grpc::Status logout(::grpc::ServerContext* /*context*/, const ::proto::userLoginManage::LogoutRequest* /*request*/, ::proto::userLoginManage::LogoutResponse* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    void Requestlogout(::grpc::ServerContext* context, ::grpc::ServerAsyncReaderWriter< ::proto::userLoginManage::LogoutResponse, ::proto::userLoginManage::LogoutRequest>* stream, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncBidiStreaming(2, context, stream, new_call_cq, notification_cq, tag);
-    }
-  };
-  template <class BaseClass>
-  class WithAsyncMethod_heartBeat : public BaseClass {
-   private:
-    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
-   public:
-    WithAsyncMethod_heartBeat() {
-      ::grpc::Service::MarkMethodAsync(3);
-    }
-    ~WithAsyncMethod_heartBeat() override {
-      BaseClassMustBeDerivedFromService(this);
-    }
-    // disable synchronous version of this method
-    ::grpc::Status heartBeat(::grpc::ServerContext* /*context*/, ::grpc::ServerReaderWriter< ::proto::userLoginManage::HeartBeatResponse, ::proto::userLoginManage::HeartBeatRequest>* /*stream*/)  override {
-      abort();
-      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
-    }
-    void RequestheartBeat(::grpc::ServerContext* context, ::grpc::ServerAsyncReaderWriter< ::proto::userLoginManage::HeartBeatResponse, ::proto::userLoginManage::HeartBeatRequest>* stream, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncBidiStreaming(3, context, stream, new_call_cq, notification_cq, tag);
+    void Requestlogout(::grpc::ServerContext* context, ::proto::userLoginManage::LogoutRequest* request, ::grpc::ServerAsyncResponseWriter< ::proto::userLoginManage::LogoutResponse>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(2, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -356,21 +321,21 @@ class userLoginManageService final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithAsyncMethod_kickOutUser() {
-      ::grpc::Service::MarkMethodAsync(4);
+      ::grpc::Service::MarkMethodAsync(3);
     }
     ~WithAsyncMethod_kickOutUser() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status kickOutUser(::grpc::ServerContext* /*context*/, ::grpc::ServerReaderWriter< ::proto::userLoginManage::KickOutUserResponse, ::proto::userLoginManage::KickOutUserRequest>* /*stream*/)  override {
+    ::grpc::Status kickOutUser(::grpc::ServerContext* /*context*/, const ::proto::userLoginManage::KickOutUserRequest* /*request*/, ::proto::userLoginManage::KickOutUserResponse* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    void RequestkickOutUser(::grpc::ServerContext* context, ::grpc::ServerAsyncReaderWriter< ::proto::userLoginManage::KickOutUserResponse, ::proto::userLoginManage::KickOutUserRequest>* stream, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncBidiStreaming(4, context, stream, new_call_cq, notification_cq, tag);
+    void RequestkickOutUser(::grpc::ServerContext* context, ::proto::userLoginManage::KickOutUserRequest* request, ::grpc::ServerAsyncResponseWriter< ::proto::userLoginManage::KickOutUserResponse>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(3, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
-  typedef WithAsyncMethod_regist<WithAsyncMethod_login<WithAsyncMethod_logout<WithAsyncMethod_heartBeat<WithAsyncMethod_kickOutUser<Service > > > > > AsyncService;
+  typedef WithAsyncMethod_regist<WithAsyncMethod_login<WithAsyncMethod_logout<WithAsyncMethod_kickOutUser<Service > > > > AsyncService;
   template <class BaseClass>
   class ExperimentalWithCallbackMethod_regist : public BaseClass {
    private:
@@ -383,29 +348,38 @@ class userLoginManageService final {
       ::grpc::Service::experimental().
     #endif
         MarkMethodCallback(0,
-          new ::grpc_impl::internal::CallbackBidiHandler< ::proto::userLoginManage::RegistRequest, ::proto::userLoginManage::RegistResponse>(
+          new ::grpc_impl::internal::CallbackUnaryHandler< ::proto::userLoginManage::RegistRequest, ::proto::userLoginManage::RegistResponse>(
             [this](
     #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
                    ::grpc::CallbackServerContext*
     #else
                    ::grpc::experimental::CallbackServerContext*
     #endif
-                     context) { return this->regist(context); }));
+                     context, const ::proto::userLoginManage::RegistRequest* request, ::proto::userLoginManage::RegistResponse* response) { return this->regist(context, request, response); }));}
+    void SetMessageAllocatorFor_regist(
+        ::grpc::experimental::MessageAllocator< ::proto::userLoginManage::RegistRequest, ::proto::userLoginManage::RegistResponse>* allocator) {
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(0);
+    #else
+      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::experimental().GetHandler(0);
+    #endif
+      static_cast<::grpc_impl::internal::CallbackUnaryHandler< ::proto::userLoginManage::RegistRequest, ::proto::userLoginManage::RegistResponse>*>(handler)
+              ->SetMessageAllocator(allocator);
     }
     ~ExperimentalWithCallbackMethod_regist() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status regist(::grpc::ServerContext* /*context*/, ::grpc::ServerReaderWriter< ::proto::userLoginManage::RegistResponse, ::proto::userLoginManage::RegistRequest>* /*stream*/)  override {
+    ::grpc::Status regist(::grpc::ServerContext* /*context*/, const ::proto::userLoginManage::RegistRequest* /*request*/, ::proto::userLoginManage::RegistResponse* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-    virtual ::grpc::ServerBidiReactor< ::proto::userLoginManage::RegistRequest, ::proto::userLoginManage::RegistResponse>* regist(
-      ::grpc::CallbackServerContext* /*context*/)
+    virtual ::grpc::ServerUnaryReactor* regist(
+      ::grpc::CallbackServerContext* /*context*/, const ::proto::userLoginManage::RegistRequest* /*request*/, ::proto::userLoginManage::RegistResponse* /*response*/)
     #else
-    virtual ::grpc::experimental::ServerBidiReactor< ::proto::userLoginManage::RegistRequest, ::proto::userLoginManage::RegistResponse>* regist(
-      ::grpc::experimental::CallbackServerContext* /*context*/)
+    virtual ::grpc::experimental::ServerUnaryReactor* regist(
+      ::grpc::experimental::CallbackServerContext* /*context*/, const ::proto::userLoginManage::RegistRequest* /*request*/, ::proto::userLoginManage::RegistResponse* /*response*/)
     #endif
       { return nullptr; }
   };
@@ -459,67 +433,38 @@ class userLoginManageService final {
       ::grpc::Service::experimental().
     #endif
         MarkMethodCallback(2,
-          new ::grpc_impl::internal::CallbackBidiHandler< ::proto::userLoginManage::LogoutRequest, ::proto::userLoginManage::LogoutResponse>(
+          new ::grpc_impl::internal::CallbackUnaryHandler< ::proto::userLoginManage::LogoutRequest, ::proto::userLoginManage::LogoutResponse>(
             [this](
     #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
                    ::grpc::CallbackServerContext*
     #else
                    ::grpc::experimental::CallbackServerContext*
     #endif
-                     context) { return this->logout(context); }));
+                     context, const ::proto::userLoginManage::LogoutRequest* request, ::proto::userLoginManage::LogoutResponse* response) { return this->logout(context, request, response); }));}
+    void SetMessageAllocatorFor_logout(
+        ::grpc::experimental::MessageAllocator< ::proto::userLoginManage::LogoutRequest, ::proto::userLoginManage::LogoutResponse>* allocator) {
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(2);
+    #else
+      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::experimental().GetHandler(2);
+    #endif
+      static_cast<::grpc_impl::internal::CallbackUnaryHandler< ::proto::userLoginManage::LogoutRequest, ::proto::userLoginManage::LogoutResponse>*>(handler)
+              ->SetMessageAllocator(allocator);
     }
     ~ExperimentalWithCallbackMethod_logout() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status logout(::grpc::ServerContext* /*context*/, ::grpc::ServerReaderWriter< ::proto::userLoginManage::LogoutResponse, ::proto::userLoginManage::LogoutRequest>* /*stream*/)  override {
+    ::grpc::Status logout(::grpc::ServerContext* /*context*/, const ::proto::userLoginManage::LogoutRequest* /*request*/, ::proto::userLoginManage::LogoutResponse* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-    virtual ::grpc::ServerBidiReactor< ::proto::userLoginManage::LogoutRequest, ::proto::userLoginManage::LogoutResponse>* logout(
-      ::grpc::CallbackServerContext* /*context*/)
+    virtual ::grpc::ServerUnaryReactor* logout(
+      ::grpc::CallbackServerContext* /*context*/, const ::proto::userLoginManage::LogoutRequest* /*request*/, ::proto::userLoginManage::LogoutResponse* /*response*/)
     #else
-    virtual ::grpc::experimental::ServerBidiReactor< ::proto::userLoginManage::LogoutRequest, ::proto::userLoginManage::LogoutResponse>* logout(
-      ::grpc::experimental::CallbackServerContext* /*context*/)
-    #endif
-      { return nullptr; }
-  };
-  template <class BaseClass>
-  class ExperimentalWithCallbackMethod_heartBeat : public BaseClass {
-   private:
-    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
-   public:
-    ExperimentalWithCallbackMethod_heartBeat() {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      ::grpc::Service::
-    #else
-      ::grpc::Service::experimental().
-    #endif
-        MarkMethodCallback(3,
-          new ::grpc_impl::internal::CallbackBidiHandler< ::proto::userLoginManage::HeartBeatRequest, ::proto::userLoginManage::HeartBeatResponse>(
-            [this](
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-                   ::grpc::CallbackServerContext*
-    #else
-                   ::grpc::experimental::CallbackServerContext*
-    #endif
-                     context) { return this->heartBeat(context); }));
-    }
-    ~ExperimentalWithCallbackMethod_heartBeat() override {
-      BaseClassMustBeDerivedFromService(this);
-    }
-    // disable synchronous version of this method
-    ::grpc::Status heartBeat(::grpc::ServerContext* /*context*/, ::grpc::ServerReaderWriter< ::proto::userLoginManage::HeartBeatResponse, ::proto::userLoginManage::HeartBeatRequest>* /*stream*/)  override {
-      abort();
-      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
-    }
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-    virtual ::grpc::ServerBidiReactor< ::proto::userLoginManage::HeartBeatRequest, ::proto::userLoginManage::HeartBeatResponse>* heartBeat(
-      ::grpc::CallbackServerContext* /*context*/)
-    #else
-    virtual ::grpc::experimental::ServerBidiReactor< ::proto::userLoginManage::HeartBeatRequest, ::proto::userLoginManage::HeartBeatResponse>* heartBeat(
-      ::grpc::experimental::CallbackServerContext* /*context*/)
+    virtual ::grpc::experimental::ServerUnaryReactor* logout(
+      ::grpc::experimental::CallbackServerContext* /*context*/, const ::proto::userLoginManage::LogoutRequest* /*request*/, ::proto::userLoginManage::LogoutResponse* /*response*/)
     #endif
       { return nullptr; }
   };
@@ -534,38 +479,47 @@ class userLoginManageService final {
     #else
       ::grpc::Service::experimental().
     #endif
-        MarkMethodCallback(4,
-          new ::grpc_impl::internal::CallbackBidiHandler< ::proto::userLoginManage::KickOutUserRequest, ::proto::userLoginManage::KickOutUserResponse>(
+        MarkMethodCallback(3,
+          new ::grpc_impl::internal::CallbackUnaryHandler< ::proto::userLoginManage::KickOutUserRequest, ::proto::userLoginManage::KickOutUserResponse>(
             [this](
     #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
                    ::grpc::CallbackServerContext*
     #else
                    ::grpc::experimental::CallbackServerContext*
     #endif
-                     context) { return this->kickOutUser(context); }));
+                     context, const ::proto::userLoginManage::KickOutUserRequest* request, ::proto::userLoginManage::KickOutUserResponse* response) { return this->kickOutUser(context, request, response); }));}
+    void SetMessageAllocatorFor_kickOutUser(
+        ::grpc::experimental::MessageAllocator< ::proto::userLoginManage::KickOutUserRequest, ::proto::userLoginManage::KickOutUserResponse>* allocator) {
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(3);
+    #else
+      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::experimental().GetHandler(3);
+    #endif
+      static_cast<::grpc_impl::internal::CallbackUnaryHandler< ::proto::userLoginManage::KickOutUserRequest, ::proto::userLoginManage::KickOutUserResponse>*>(handler)
+              ->SetMessageAllocator(allocator);
     }
     ~ExperimentalWithCallbackMethod_kickOutUser() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status kickOutUser(::grpc::ServerContext* /*context*/, ::grpc::ServerReaderWriter< ::proto::userLoginManage::KickOutUserResponse, ::proto::userLoginManage::KickOutUserRequest>* /*stream*/)  override {
+    ::grpc::Status kickOutUser(::grpc::ServerContext* /*context*/, const ::proto::userLoginManage::KickOutUserRequest* /*request*/, ::proto::userLoginManage::KickOutUserResponse* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-    virtual ::grpc::ServerBidiReactor< ::proto::userLoginManage::KickOutUserRequest, ::proto::userLoginManage::KickOutUserResponse>* kickOutUser(
-      ::grpc::CallbackServerContext* /*context*/)
+    virtual ::grpc::ServerUnaryReactor* kickOutUser(
+      ::grpc::CallbackServerContext* /*context*/, const ::proto::userLoginManage::KickOutUserRequest* /*request*/, ::proto::userLoginManage::KickOutUserResponse* /*response*/)
     #else
-    virtual ::grpc::experimental::ServerBidiReactor< ::proto::userLoginManage::KickOutUserRequest, ::proto::userLoginManage::KickOutUserResponse>* kickOutUser(
-      ::grpc::experimental::CallbackServerContext* /*context*/)
+    virtual ::grpc::experimental::ServerUnaryReactor* kickOutUser(
+      ::grpc::experimental::CallbackServerContext* /*context*/, const ::proto::userLoginManage::KickOutUserRequest* /*request*/, ::proto::userLoginManage::KickOutUserResponse* /*response*/)
     #endif
       { return nullptr; }
   };
   #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-  typedef ExperimentalWithCallbackMethod_regist<ExperimentalWithCallbackMethod_login<ExperimentalWithCallbackMethod_logout<ExperimentalWithCallbackMethod_heartBeat<ExperimentalWithCallbackMethod_kickOutUser<Service > > > > > CallbackService;
+  typedef ExperimentalWithCallbackMethod_regist<ExperimentalWithCallbackMethod_login<ExperimentalWithCallbackMethod_logout<ExperimentalWithCallbackMethod_kickOutUser<Service > > > > CallbackService;
   #endif
 
-  typedef ExperimentalWithCallbackMethod_regist<ExperimentalWithCallbackMethod_login<ExperimentalWithCallbackMethod_logout<ExperimentalWithCallbackMethod_heartBeat<ExperimentalWithCallbackMethod_kickOutUser<Service > > > > > ExperimentalCallbackService;
+  typedef ExperimentalWithCallbackMethod_regist<ExperimentalWithCallbackMethod_login<ExperimentalWithCallbackMethod_logout<ExperimentalWithCallbackMethod_kickOutUser<Service > > > > ExperimentalCallbackService;
   template <class BaseClass>
   class WithGenericMethod_regist : public BaseClass {
    private:
@@ -578,7 +532,7 @@ class userLoginManageService final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status regist(::grpc::ServerContext* /*context*/, ::grpc::ServerReaderWriter< ::proto::userLoginManage::RegistResponse, ::proto::userLoginManage::RegistRequest>* /*stream*/)  override {
+    ::grpc::Status regist(::grpc::ServerContext* /*context*/, const ::proto::userLoginManage::RegistRequest* /*request*/, ::proto::userLoginManage::RegistResponse* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
@@ -612,24 +566,7 @@ class userLoginManageService final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status logout(::grpc::ServerContext* /*context*/, ::grpc::ServerReaderWriter< ::proto::userLoginManage::LogoutResponse, ::proto::userLoginManage::LogoutRequest>* /*stream*/)  override {
-      abort();
-      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
-    }
-  };
-  template <class BaseClass>
-  class WithGenericMethod_heartBeat : public BaseClass {
-   private:
-    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
-   public:
-    WithGenericMethod_heartBeat() {
-      ::grpc::Service::MarkMethodGeneric(3);
-    }
-    ~WithGenericMethod_heartBeat() override {
-      BaseClassMustBeDerivedFromService(this);
-    }
-    // disable synchronous version of this method
-    ::grpc::Status heartBeat(::grpc::ServerContext* /*context*/, ::grpc::ServerReaderWriter< ::proto::userLoginManage::HeartBeatResponse, ::proto::userLoginManage::HeartBeatRequest>* /*stream*/)  override {
+    ::grpc::Status logout(::grpc::ServerContext* /*context*/, const ::proto::userLoginManage::LogoutRequest* /*request*/, ::proto::userLoginManage::LogoutResponse* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
@@ -640,13 +577,13 @@ class userLoginManageService final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithGenericMethod_kickOutUser() {
-      ::grpc::Service::MarkMethodGeneric(4);
+      ::grpc::Service::MarkMethodGeneric(3);
     }
     ~WithGenericMethod_kickOutUser() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status kickOutUser(::grpc::ServerContext* /*context*/, ::grpc::ServerReaderWriter< ::proto::userLoginManage::KickOutUserResponse, ::proto::userLoginManage::KickOutUserRequest>* /*stream*/)  override {
+    ::grpc::Status kickOutUser(::grpc::ServerContext* /*context*/, const ::proto::userLoginManage::KickOutUserRequest* /*request*/, ::proto::userLoginManage::KickOutUserResponse* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
@@ -663,12 +600,12 @@ class userLoginManageService final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status regist(::grpc::ServerContext* /*context*/, ::grpc::ServerReaderWriter< ::proto::userLoginManage::RegistResponse, ::proto::userLoginManage::RegistRequest>* /*stream*/)  override {
+    ::grpc::Status regist(::grpc::ServerContext* /*context*/, const ::proto::userLoginManage::RegistRequest* /*request*/, ::proto::userLoginManage::RegistResponse* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    void Requestregist(::grpc::ServerContext* context, ::grpc::ServerAsyncReaderWriter< ::grpc::ByteBuffer, ::grpc::ByteBuffer>* stream, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncBidiStreaming(0, context, stream, new_call_cq, notification_cq, tag);
+    void Requestregist(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(0, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -703,32 +640,12 @@ class userLoginManageService final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status logout(::grpc::ServerContext* /*context*/, ::grpc::ServerReaderWriter< ::proto::userLoginManage::LogoutResponse, ::proto::userLoginManage::LogoutRequest>* /*stream*/)  override {
+    ::grpc::Status logout(::grpc::ServerContext* /*context*/, const ::proto::userLoginManage::LogoutRequest* /*request*/, ::proto::userLoginManage::LogoutResponse* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    void Requestlogout(::grpc::ServerContext* context, ::grpc::ServerAsyncReaderWriter< ::grpc::ByteBuffer, ::grpc::ByteBuffer>* stream, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncBidiStreaming(2, context, stream, new_call_cq, notification_cq, tag);
-    }
-  };
-  template <class BaseClass>
-  class WithRawMethod_heartBeat : public BaseClass {
-   private:
-    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
-   public:
-    WithRawMethod_heartBeat() {
-      ::grpc::Service::MarkMethodRaw(3);
-    }
-    ~WithRawMethod_heartBeat() override {
-      BaseClassMustBeDerivedFromService(this);
-    }
-    // disable synchronous version of this method
-    ::grpc::Status heartBeat(::grpc::ServerContext* /*context*/, ::grpc::ServerReaderWriter< ::proto::userLoginManage::HeartBeatResponse, ::proto::userLoginManage::HeartBeatRequest>* /*stream*/)  override {
-      abort();
-      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
-    }
-    void RequestheartBeat(::grpc::ServerContext* context, ::grpc::ServerAsyncReaderWriter< ::grpc::ByteBuffer, ::grpc::ByteBuffer>* stream, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncBidiStreaming(3, context, stream, new_call_cq, notification_cq, tag);
+    void Requestlogout(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(2, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -737,18 +654,18 @@ class userLoginManageService final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithRawMethod_kickOutUser() {
-      ::grpc::Service::MarkMethodRaw(4);
+      ::grpc::Service::MarkMethodRaw(3);
     }
     ~WithRawMethod_kickOutUser() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status kickOutUser(::grpc::ServerContext* /*context*/, ::grpc::ServerReaderWriter< ::proto::userLoginManage::KickOutUserResponse, ::proto::userLoginManage::KickOutUserRequest>* /*stream*/)  override {
+    ::grpc::Status kickOutUser(::grpc::ServerContext* /*context*/, const ::proto::userLoginManage::KickOutUserRequest* /*request*/, ::proto::userLoginManage::KickOutUserResponse* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    void RequestkickOutUser(::grpc::ServerContext* context, ::grpc::ServerAsyncReaderWriter< ::grpc::ByteBuffer, ::grpc::ByteBuffer>* stream, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncBidiStreaming(4, context, stream, new_call_cq, notification_cq, tag);
+    void RequestkickOutUser(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(3, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -763,29 +680,29 @@ class userLoginManageService final {
       ::grpc::Service::experimental().
     #endif
         MarkMethodRawCallback(0,
-          new ::grpc_impl::internal::CallbackBidiHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
+          new ::grpc_impl::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
             [this](
     #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
                    ::grpc::CallbackServerContext*
     #else
                    ::grpc::experimental::CallbackServerContext*
     #endif
-                     context) { return this->regist(context); }));
+                     context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->regist(context, request, response); }));
     }
     ~ExperimentalWithRawCallbackMethod_regist() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status regist(::grpc::ServerContext* /*context*/, ::grpc::ServerReaderWriter< ::proto::userLoginManage::RegistResponse, ::proto::userLoginManage::RegistRequest>* /*stream*/)  override {
+    ::grpc::Status regist(::grpc::ServerContext* /*context*/, const ::proto::userLoginManage::RegistRequest* /*request*/, ::proto::userLoginManage::RegistResponse* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-    virtual ::grpc::ServerBidiReactor< ::grpc::ByteBuffer, ::grpc::ByteBuffer>* regist(
-      ::grpc::CallbackServerContext* /*context*/)
+    virtual ::grpc::ServerUnaryReactor* regist(
+      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
     #else
-    virtual ::grpc::experimental::ServerBidiReactor< ::grpc::ByteBuffer, ::grpc::ByteBuffer>* regist(
-      ::grpc::experimental::CallbackServerContext* /*context*/)
+    virtual ::grpc::experimental::ServerUnaryReactor* regist(
+      ::grpc::experimental::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
     #endif
       { return nullptr; }
   };
@@ -839,67 +756,29 @@ class userLoginManageService final {
       ::grpc::Service::experimental().
     #endif
         MarkMethodRawCallback(2,
-          new ::grpc_impl::internal::CallbackBidiHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
+          new ::grpc_impl::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
             [this](
     #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
                    ::grpc::CallbackServerContext*
     #else
                    ::grpc::experimental::CallbackServerContext*
     #endif
-                     context) { return this->logout(context); }));
+                     context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->logout(context, request, response); }));
     }
     ~ExperimentalWithRawCallbackMethod_logout() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status logout(::grpc::ServerContext* /*context*/, ::grpc::ServerReaderWriter< ::proto::userLoginManage::LogoutResponse, ::proto::userLoginManage::LogoutRequest>* /*stream*/)  override {
+    ::grpc::Status logout(::grpc::ServerContext* /*context*/, const ::proto::userLoginManage::LogoutRequest* /*request*/, ::proto::userLoginManage::LogoutResponse* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-    virtual ::grpc::ServerBidiReactor< ::grpc::ByteBuffer, ::grpc::ByteBuffer>* logout(
-      ::grpc::CallbackServerContext* /*context*/)
+    virtual ::grpc::ServerUnaryReactor* logout(
+      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
     #else
-    virtual ::grpc::experimental::ServerBidiReactor< ::grpc::ByteBuffer, ::grpc::ByteBuffer>* logout(
-      ::grpc::experimental::CallbackServerContext* /*context*/)
-    #endif
-      { return nullptr; }
-  };
-  template <class BaseClass>
-  class ExperimentalWithRawCallbackMethod_heartBeat : public BaseClass {
-   private:
-    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
-   public:
-    ExperimentalWithRawCallbackMethod_heartBeat() {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      ::grpc::Service::
-    #else
-      ::grpc::Service::experimental().
-    #endif
-        MarkMethodRawCallback(3,
-          new ::grpc_impl::internal::CallbackBidiHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
-            [this](
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-                   ::grpc::CallbackServerContext*
-    #else
-                   ::grpc::experimental::CallbackServerContext*
-    #endif
-                     context) { return this->heartBeat(context); }));
-    }
-    ~ExperimentalWithRawCallbackMethod_heartBeat() override {
-      BaseClassMustBeDerivedFromService(this);
-    }
-    // disable synchronous version of this method
-    ::grpc::Status heartBeat(::grpc::ServerContext* /*context*/, ::grpc::ServerReaderWriter< ::proto::userLoginManage::HeartBeatResponse, ::proto::userLoginManage::HeartBeatRequest>* /*stream*/)  override {
-      abort();
-      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
-    }
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-    virtual ::grpc::ServerBidiReactor< ::grpc::ByteBuffer, ::grpc::ByteBuffer>* heartBeat(
-      ::grpc::CallbackServerContext* /*context*/)
-    #else
-    virtual ::grpc::experimental::ServerBidiReactor< ::grpc::ByteBuffer, ::grpc::ByteBuffer>* heartBeat(
-      ::grpc::experimental::CallbackServerContext* /*context*/)
+    virtual ::grpc::experimental::ServerUnaryReactor* logout(
+      ::grpc::experimental::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
     #endif
       { return nullptr; }
   };
@@ -914,36 +793,96 @@ class userLoginManageService final {
     #else
       ::grpc::Service::experimental().
     #endif
-        MarkMethodRawCallback(4,
-          new ::grpc_impl::internal::CallbackBidiHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
+        MarkMethodRawCallback(3,
+          new ::grpc_impl::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
             [this](
     #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
                    ::grpc::CallbackServerContext*
     #else
                    ::grpc::experimental::CallbackServerContext*
     #endif
-                     context) { return this->kickOutUser(context); }));
+                     context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->kickOutUser(context, request, response); }));
     }
     ~ExperimentalWithRawCallbackMethod_kickOutUser() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status kickOutUser(::grpc::ServerContext* /*context*/, ::grpc::ServerReaderWriter< ::proto::userLoginManage::KickOutUserResponse, ::proto::userLoginManage::KickOutUserRequest>* /*stream*/)  override {
+    ::grpc::Status kickOutUser(::grpc::ServerContext* /*context*/, const ::proto::userLoginManage::KickOutUserRequest* /*request*/, ::proto::userLoginManage::KickOutUserResponse* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-    virtual ::grpc::ServerBidiReactor< ::grpc::ByteBuffer, ::grpc::ByteBuffer>* kickOutUser(
-      ::grpc::CallbackServerContext* /*context*/)
+    virtual ::grpc::ServerUnaryReactor* kickOutUser(
+      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
     #else
-    virtual ::grpc::experimental::ServerBidiReactor< ::grpc::ByteBuffer, ::grpc::ByteBuffer>* kickOutUser(
-      ::grpc::experimental::CallbackServerContext* /*context*/)
+    virtual ::grpc::experimental::ServerUnaryReactor* kickOutUser(
+      ::grpc::experimental::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
     #endif
       { return nullptr; }
   };
-  typedef Service StreamedUnaryService;
+  template <class BaseClass>
+  class WithStreamedUnaryMethod_regist : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithStreamedUnaryMethod_regist() {
+      ::grpc::Service::MarkMethodStreamed(0,
+        new ::grpc::internal::StreamedUnaryHandler< ::proto::userLoginManage::RegistRequest, ::proto::userLoginManage::RegistResponse>(std::bind(&WithStreamedUnaryMethod_regist<BaseClass>::Streamedregist, this, std::placeholders::_1, std::placeholders::_2)));
+    }
+    ~WithStreamedUnaryMethod_regist() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable regular version of this method
+    ::grpc::Status regist(::grpc::ServerContext* /*context*/, const ::proto::userLoginManage::RegistRequest* /*request*/, ::proto::userLoginManage::RegistResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    // replace default version of method with streamed unary
+    virtual ::grpc::Status Streamedregist(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::proto::userLoginManage::RegistRequest,::proto::userLoginManage::RegistResponse>* server_unary_streamer) = 0;
+  };
+  template <class BaseClass>
+  class WithStreamedUnaryMethod_logout : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithStreamedUnaryMethod_logout() {
+      ::grpc::Service::MarkMethodStreamed(2,
+        new ::grpc::internal::StreamedUnaryHandler< ::proto::userLoginManage::LogoutRequest, ::proto::userLoginManage::LogoutResponse>(std::bind(&WithStreamedUnaryMethod_logout<BaseClass>::Streamedlogout, this, std::placeholders::_1, std::placeholders::_2)));
+    }
+    ~WithStreamedUnaryMethod_logout() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable regular version of this method
+    ::grpc::Status logout(::grpc::ServerContext* /*context*/, const ::proto::userLoginManage::LogoutRequest* /*request*/, ::proto::userLoginManage::LogoutResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    // replace default version of method with streamed unary
+    virtual ::grpc::Status Streamedlogout(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::proto::userLoginManage::LogoutRequest,::proto::userLoginManage::LogoutResponse>* server_unary_streamer) = 0;
+  };
+  template <class BaseClass>
+  class WithStreamedUnaryMethod_kickOutUser : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithStreamedUnaryMethod_kickOutUser() {
+      ::grpc::Service::MarkMethodStreamed(3,
+        new ::grpc::internal::StreamedUnaryHandler< ::proto::userLoginManage::KickOutUserRequest, ::proto::userLoginManage::KickOutUserResponse>(std::bind(&WithStreamedUnaryMethod_kickOutUser<BaseClass>::StreamedkickOutUser, this, std::placeholders::_1, std::placeholders::_2)));
+    }
+    ~WithStreamedUnaryMethod_kickOutUser() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable regular version of this method
+    ::grpc::Status kickOutUser(::grpc::ServerContext* /*context*/, const ::proto::userLoginManage::KickOutUserRequest* /*request*/, ::proto::userLoginManage::KickOutUserResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    // replace default version of method with streamed unary
+    virtual ::grpc::Status StreamedkickOutUser(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::proto::userLoginManage::KickOutUserRequest,::proto::userLoginManage::KickOutUserResponse>* server_unary_streamer) = 0;
+  };
+  typedef WithStreamedUnaryMethod_regist<WithStreamedUnaryMethod_logout<WithStreamedUnaryMethod_kickOutUser<Service > > > StreamedUnaryService;
   typedef Service SplitStreamedService;
-  typedef Service StreamedService;
+  typedef WithStreamedUnaryMethod_regist<WithStreamedUnaryMethod_logout<WithStreamedUnaryMethod_kickOutUser<Service > > > StreamedService;
 };
 
 }  // namespace userLoginManage

@@ -28,8 +28,6 @@ using proto::userLoginManage::LoginRequest;
 using proto::userLoginManage::LoginResponse;
 using proto::userLoginManage::LogoutRequest;
 using proto::userLoginManage::LogoutResponse;
-using proto::userLoginManage::HeartBeatRequest;
-using proto::userLoginManage::HeartBeatResponse;
 using proto::userLoginManage::KickOutUserRequest;
 using proto::userLoginManage::KickOutUserResponse;
 
@@ -40,13 +38,13 @@ public:
 	~UserLoginManageService();
 
 	//注册
-    Status regist(ServerContext* context, ServerReaderWriter<RegistResponse, RegistRequest>* stream);
+    Status regist(ServerContext* context, const RegistRequest* request, RegistResponse* response);
     //登录
     Status login(ServerContext* context, ServerReaderWriter<LoginResponse, LoginRequest>* stream);
     //退出登录
-    Status logout(ServerContext* context, ServerReaderWriter<LogoutResponse, LogoutRequest>* stream);
+    Status logout(ServerContext* context, const LogoutRequest* request, LogoutResponse* response);
     //踢出用户请求
-    Status kickOutUser(ServerContext* context, ServerReaderWriter<KickOutUserResponse, KickOutUserRequest>* stream);
+    Status kickOutUser(ServerContext* context, const KickOutUserRequest* request, KickOutUserResponse* response);
 
 private:
     const sql::Connection* _mysqlConnect;

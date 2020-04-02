@@ -26,13 +26,15 @@ public:
 
 		//发送踢出用户请求
 		ClientContext context;
-		std::shared_ptr<ClientReaderWriter<KickOutUserRequest, KickOutUserResponse> > stream(stub->kickOutUser(&context));
-		stream->Write(kickoutUserRequest);
-		stream->WritesDone();
-
-		//获取响应
 		KickOutUserResponse kickOutUserResponse;
-		stream->Read(&kickOutUserResponse);
+		Status status = stub->kickOutUser(&context, kickoutUserRequest, &kickOutUserResponse);
+		if(!status.ok())
+		{
+			cout << "rpc failed! " << status.error_code() << ": " << status.error_message() << endl;
+			return -1;
+		}
+
+		//判断响应
 		if(kickOutUserResponse.basic().code() == SUCCESS)
 		{
 			cout << kickOutUserResponse.basic().msg() << endl;

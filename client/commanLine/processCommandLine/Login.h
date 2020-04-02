@@ -7,6 +7,7 @@
 #include <thread>
 #include <stdlib.h>
 #include <pthread.h>
+#include "mylib/mylibLog/logrecord.h"
 #include "ProcessCommandLineBase.h"
 #include "mylib/myLibEncrypt/base64.h"
 #include "mylib/enum/code.h"
@@ -24,6 +25,13 @@ class Login : public ProcessCommandLineBase
 public:
 	virtual int processCommandLine(std::shared_ptr<userLoginManageService::Stub> stub, const string& clientUuid, const char* params[])
 	{
+		//幂等校验
+		if(isLogined)
+		{
+			cout << "alread login!" << endl;
+			return 0;
+		}
+
 		//获取请求
 		LoginRequest loginRequest;
 		int ret = getLoginRequestFromParams(params, clientUuid, loginRequest);
@@ -45,20 +53,24 @@ public:
 		{
 			cout << loginResponse.basic().msg() << endl;
 			isLogined = 1;
-
-			char userNameDecoded[1024];
-			base64_decode(loginRequest.user_name().c_str(), loginRequest.user_name().length(), userNameDecoded);
-			userName = userNameDecoded;
+			userName = loginRequest.user_name();
 		}
 		else
 		{
-			cout << loginResponse.basic().msg() << endl;
+			cout << "server error! errmsg:" << loginResponse.basic().msg() << endl;
 		}
 
 		//获取服务器推送的消息
 		while(stream->Read(&loginResponse))
 		{
 			cout << loginResponse.basic().msg() << endl;
+			if(loginResponse.basic().code() == OTHER_DEVICE_LOGINED_JUST_LOGOUT ||
+			   loginResponse.basic().code() == KICKOUT_BY_MANAGER_JUST_LOGOUT)
+			{
+				LOG_INFO("server notice logout! message type:%d", loginResponse.basic().code());
+				isLogined = 0;
+				userName = "";
+			}
 		}
 
 		return 0;

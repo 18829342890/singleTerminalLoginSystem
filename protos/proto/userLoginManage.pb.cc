@@ -58,14 +58,6 @@ class KickOutUserResponseDefaultTypeInternal {
  public:
   ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<KickOutUserResponse> _instance;
 } _KickOutUserResponse_default_instance_;
-class HeartBeatRequestDefaultTypeInternal {
- public:
-  ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<HeartBeatRequest> _instance;
-} _HeartBeatRequest_default_instance_;
-class HeartBeatResponseDefaultTypeInternal {
- public:
-  ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<HeartBeatResponse> _instance;
-} _HeartBeatResponse_default_instance_;
 }  // namespace userLoginManage
 }  // namespace proto
 static void InitDefaultsscc_info_BasicRequest_userLoginManage_2eproto() {
@@ -95,36 +87,6 @@ static void InitDefaultsscc_info_BasicResponse_userLoginManage_2eproto() {
 
 ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_BasicResponse_userLoginManage_2eproto =
     {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 0, 0, InitDefaultsscc_info_BasicResponse_userLoginManage_2eproto}, {}};
-
-static void InitDefaultsscc_info_HeartBeatRequest_userLoginManage_2eproto() {
-  GOOGLE_PROTOBUF_VERIFY_VERSION;
-
-  {
-    void* ptr = &::proto::userLoginManage::_HeartBeatRequest_default_instance_;
-    new (ptr) ::proto::userLoginManage::HeartBeatRequest();
-    ::PROTOBUF_NAMESPACE_ID::internal::OnShutdownDestroyMessage(ptr);
-  }
-  ::proto::userLoginManage::HeartBeatRequest::InitAsDefaultInstance();
-}
-
-::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<1> scc_info_HeartBeatRequest_userLoginManage_2eproto =
-    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 1, 0, InitDefaultsscc_info_HeartBeatRequest_userLoginManage_2eproto}, {
-      &scc_info_BasicRequest_userLoginManage_2eproto.base,}};
-
-static void InitDefaultsscc_info_HeartBeatResponse_userLoginManage_2eproto() {
-  GOOGLE_PROTOBUF_VERIFY_VERSION;
-
-  {
-    void* ptr = &::proto::userLoginManage::_HeartBeatResponse_default_instance_;
-    new (ptr) ::proto::userLoginManage::HeartBeatResponse();
-    ::PROTOBUF_NAMESPACE_ID::internal::OnShutdownDestroyMessage(ptr);
-  }
-  ::proto::userLoginManage::HeartBeatResponse::InitAsDefaultInstance();
-}
-
-::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<1> scc_info_HeartBeatResponse_userLoginManage_2eproto =
-    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 1, 0, InitDefaultsscc_info_HeartBeatResponse_userLoginManage_2eproto}, {
-      &scc_info_BasicResponse_userLoginManage_2eproto.base,}};
 
 static void InitDefaultsscc_info_KickOutUserRequest_userLoginManage_2eproto() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
@@ -246,7 +208,7 @@ static void InitDefaultsscc_info_RegistResponse_userLoginManage_2eproto() {
     {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 1, 0, InitDefaultsscc_info_RegistResponse_userLoginManage_2eproto}, {
       &scc_info_BasicResponse_userLoginManage_2eproto.base,}};
 
-static ::PROTOBUF_NAMESPACE_ID::Metadata file_level_metadata_userLoginManage_2eproto[12];
+static ::PROTOBUF_NAMESPACE_ID::Metadata file_level_metadata_userLoginManage_2eproto[10];
 static constexpr ::PROTOBUF_NAMESPACE_ID::EnumDescriptor const** file_level_enum_descriptors_userLoginManage_2eproto = nullptr;
 static constexpr ::PROTOBUF_NAMESPACE_ID::ServiceDescriptor const** file_level_service_descriptors_userLoginManage_2eproto = nullptr;
 
@@ -320,20 +282,6 @@ const ::PROTOBUF_NAMESPACE_ID::uint32 TableStruct_userLoginManage_2eproto::offse
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   PROTOBUF_FIELD_OFFSET(::proto::userLoginManage::KickOutUserResponse, basic_),
-  ~0u,  // no _has_bits_
-  PROTOBUF_FIELD_OFFSET(::proto::userLoginManage::HeartBeatRequest, _internal_metadata_),
-  ~0u,  // no _extensions_
-  ~0u,  // no _oneof_case_
-  ~0u,  // no _weak_field_map_
-  PROTOBUF_FIELD_OFFSET(::proto::userLoginManage::HeartBeatRequest, basic_),
-  PROTOBUF_FIELD_OFFSET(::proto::userLoginManage::HeartBeatRequest, user_name_),
-  ~0u,  // no _has_bits_
-  PROTOBUF_FIELD_OFFSET(::proto::userLoginManage::HeartBeatResponse, _internal_metadata_),
-  ~0u,  // no _extensions_
-  ~0u,  // no _oneof_case_
-  ~0u,  // no _weak_field_map_
-  PROTOBUF_FIELD_OFFSET(::proto::userLoginManage::HeartBeatResponse, basic_),
-  PROTOBUF_FIELD_OFFSET(::proto::userLoginManage::HeartBeatResponse, operation_),
 };
 static const ::PROTOBUF_NAMESPACE_ID::internal::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
   { 0, -1, sizeof(::proto::userLoginManage::BasicRequest)},
@@ -346,8 +294,6 @@ static const ::PROTOBUF_NAMESPACE_ID::internal::MigrationSchema schemas[] PROTOB
   { 50, -1, sizeof(::proto::userLoginManage::LogoutResponse)},
   { 56, -1, sizeof(::proto::userLoginManage::KickOutUserRequest)},
   { 63, -1, sizeof(::proto::userLoginManage::KickOutUserResponse)},
-  { 69, -1, sizeof(::proto::userLoginManage::HeartBeatRequest)},
-  { 76, -1, sizeof(::proto::userLoginManage::HeartBeatResponse)},
 };
 
 static ::PROTOBUF_NAMESPACE_ID::Message const * const file_default_instances[] = {
@@ -361,8 +307,6 @@ static ::PROTOBUF_NAMESPACE_ID::Message const * const file_default_instances[] =
   reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::proto::userLoginManage::_LogoutResponse_default_instance_),
   reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::proto::userLoginManage::_KickOutUserRequest_default_instance_),
   reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::proto::userLoginManage::_KickOutUserResponse_default_instance_),
-  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::proto::userLoginManage::_HeartBeatRequest_default_instance_),
-  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::proto::userLoginManage::_HeartBeatResponse_default_instance_),
 };
 
 const char descriptor_table_protodef_userLoginManage_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) =
@@ -387,34 +331,25 @@ const char descriptor_table_protodef_userLoginManage_2eproto[] PROTOBUF_SECTION_
   "rLoginManage.BasicRequest\022\021\n\tuser_name\030\002"
   " \001(\t\"J\n\023KickOutUserResponse\0223\n\005basic\030\001 \001"
   "(\0132$.proto.userLoginManage.BasicResponse"
-  "\"Y\n\020HeartBeatRequest\0222\n\005basic\030\001 \001(\0132#.pr"
-  "oto.userLoginManage.BasicRequest\022\021\n\tuser"
-  "_name\030\002 \001(\t\"[\n\021HeartBeatResponse\0223\n\005basi"
-  "c\030\001 \001(\0132$.proto.userLoginManage.BasicRes"
-  "ponse\022\021\n\toperation\030\002 \001(\0052\376\003\n\026userLoginMa"
-  "nageService\022[\n\006regist\022$.proto.userLoginM"
-  "anage.RegistRequest\032%.proto.userLoginMan"
-  "age.RegistResponse\"\000(\0010\001\022X\n\005login\022#.prot"
-  "o.userLoginManage.LoginRequest\032$.proto.u"
-  "serLoginManage.LoginResponse\"\000(\0010\001\022[\n\006lo"
-  "gout\022$.proto.userLoginManage.LogoutReque"
-  "st\032%.proto.userLoginManage.LogoutRespons"
-  "e\"\000(\0010\001\022d\n\theartBeat\022\'.proto.userLoginMa"
-  "nage.HeartBeatRequest\032(.proto.userLoginM"
-  "anage.HeartBeatResponse\"\000(\0010\001\022j\n\013kickOut"
-  "User\022).proto.userLoginManage.KickOutUser"
-  "Request\032*.proto.userLoginManage.KickOutU"
-  "serResponse\"\000(\0010\001BN\n2singleTerminaLoginS"
-  "ystem.protos.loginManageServiceB\020loginMa"
-  "nageProtoP\001\242\002\003TXHb\006proto3"
+  "2\214\003\n\026userLoginManageService\022W\n\006regist\022$."
+  "proto.userLoginManage.RegistRequest\032%.pr"
+  "oto.userLoginManage.RegistResponse\"\000\022X\n\005"
+  "login\022#.proto.userLoginManage.LoginReque"
+  "st\032$.proto.userLoginManage.LoginResponse"
+  "\"\000(\0010\001\022W\n\006logout\022$.proto.userLoginManage"
+  ".LogoutRequest\032%.proto.userLoginManage.L"
+  "ogoutResponse\"\000\022f\n\013kickOutUser\022).proto.u"
+  "serLoginManage.KickOutUserRequest\032*.prot"
+  "o.userLoginManage.KickOutUserResponse\"\000B"
+  "N\n2singleTerminaLoginSystem.protos.login"
+  "ManageServiceB\020loginManageProtoP\001\242\002\003TXHb"
+  "\006proto3"
   ;
 static const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable*const descriptor_table_userLoginManage_2eproto_deps[1] = {
 };
-static ::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase*const descriptor_table_userLoginManage_2eproto_sccs[12] = {
+static ::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase*const descriptor_table_userLoginManage_2eproto_sccs[10] = {
   &scc_info_BasicRequest_userLoginManage_2eproto.base,
   &scc_info_BasicResponse_userLoginManage_2eproto.base,
-  &scc_info_HeartBeatRequest_userLoginManage_2eproto.base,
-  &scc_info_HeartBeatResponse_userLoginManage_2eproto.base,
   &scc_info_KickOutUserRequest_userLoginManage_2eproto.base,
   &scc_info_KickOutUserResponse_userLoginManage_2eproto.base,
   &scc_info_LoginRequest_userLoginManage_2eproto.base,
@@ -427,10 +362,10 @@ static ::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase*const descriptor_table_use
 static ::PROTOBUF_NAMESPACE_ID::internal::once_flag descriptor_table_userLoginManage_2eproto_once;
 static bool descriptor_table_userLoginManage_2eproto_initialized = false;
 const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_userLoginManage_2eproto = {
-  &descriptor_table_userLoginManage_2eproto_initialized, descriptor_table_protodef_userLoginManage_2eproto, "userLoginManage.proto", 1625,
-  &descriptor_table_userLoginManage_2eproto_once, descriptor_table_userLoginManage_2eproto_sccs, descriptor_table_userLoginManage_2eproto_deps, 12, 0,
+  &descriptor_table_userLoginManage_2eproto_initialized, descriptor_table_protodef_userLoginManage_2eproto, "userLoginManage.proto", 1327,
+  &descriptor_table_userLoginManage_2eproto_once, descriptor_table_userLoginManage_2eproto_sccs, descriptor_table_userLoginManage_2eproto_deps, 10, 0,
   schemas, file_default_instances, TableStruct_userLoginManage_2eproto::offsets,
-  file_level_metadata_userLoginManage_2eproto, 12, file_level_enum_descriptors_userLoginManage_2eproto, file_level_service_descriptors_userLoginManage_2eproto,
+  file_level_metadata_userLoginManage_2eproto, 10, file_level_enum_descriptors_userLoginManage_2eproto, file_level_service_descriptors_userLoginManage_2eproto,
 };
 
 // Force running AddDescriptors() at dynamic initialization time.
@@ -2786,481 +2721,6 @@ void KickOutUserResponse::InternalSwap(KickOutUserResponse* other) {
 }
 
 
-// ===================================================================
-
-void HeartBeatRequest::InitAsDefaultInstance() {
-  ::proto::userLoginManage::_HeartBeatRequest_default_instance_._instance.get_mutable()->basic_ = const_cast< ::proto::userLoginManage::BasicRequest*>(
-      ::proto::userLoginManage::BasicRequest::internal_default_instance());
-}
-class HeartBeatRequest::_Internal {
- public:
-  static const ::proto::userLoginManage::BasicRequest& basic(const HeartBeatRequest* msg);
-};
-
-const ::proto::userLoginManage::BasicRequest&
-HeartBeatRequest::_Internal::basic(const HeartBeatRequest* msg) {
-  return *msg->basic_;
-}
-HeartBeatRequest::HeartBeatRequest()
-  : ::PROTOBUF_NAMESPACE_ID::Message(), _internal_metadata_(nullptr) {
-  SharedCtor();
-  // @@protoc_insertion_point(constructor:proto.userLoginManage.HeartBeatRequest)
-}
-HeartBeatRequest::HeartBeatRequest(const HeartBeatRequest& from)
-  : ::PROTOBUF_NAMESPACE_ID::Message(),
-      _internal_metadata_(nullptr) {
-  _internal_metadata_.MergeFrom(from._internal_metadata_);
-  user_name_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-  if (!from._internal_user_name().empty()) {
-    user_name_.AssignWithDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from.user_name_);
-  }
-  if (from._internal_has_basic()) {
-    basic_ = new ::proto::userLoginManage::BasicRequest(*from.basic_);
-  } else {
-    basic_ = nullptr;
-  }
-  // @@protoc_insertion_point(copy_constructor:proto.userLoginManage.HeartBeatRequest)
-}
-
-void HeartBeatRequest::SharedCtor() {
-  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&scc_info_HeartBeatRequest_userLoginManage_2eproto.base);
-  user_name_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-  basic_ = nullptr;
-}
-
-HeartBeatRequest::~HeartBeatRequest() {
-  // @@protoc_insertion_point(destructor:proto.userLoginManage.HeartBeatRequest)
-  SharedDtor();
-}
-
-void HeartBeatRequest::SharedDtor() {
-  user_name_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-  if (this != internal_default_instance()) delete basic_;
-}
-
-void HeartBeatRequest::SetCachedSize(int size) const {
-  _cached_size_.Set(size);
-}
-const HeartBeatRequest& HeartBeatRequest::default_instance() {
-  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&::scc_info_HeartBeatRequest_userLoginManage_2eproto.base);
-  return *internal_default_instance();
-}
-
-
-void HeartBeatRequest::Clear() {
-// @@protoc_insertion_point(message_clear_start:proto.userLoginManage.HeartBeatRequest)
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
-  // Prevent compiler warnings about cached_has_bits being unused
-  (void) cached_has_bits;
-
-  user_name_.ClearToEmptyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-  if (GetArenaNoVirtual() == nullptr && basic_ != nullptr) {
-    delete basic_;
-  }
-  basic_ = nullptr;
-  _internal_metadata_.Clear();
-}
-
-const char* HeartBeatRequest::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
-#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
-  while (!ctx->Done(&ptr)) {
-    ::PROTOBUF_NAMESPACE_ID::uint32 tag;
-    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
-    CHK_(ptr);
-    switch (tag >> 3) {
-      // .proto.userLoginManage.BasicRequest basic = 1;
-      case 1:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 10)) {
-          ptr = ctx->ParseMessage(_internal_mutable_basic(), ptr);
-          CHK_(ptr);
-        } else goto handle_unusual;
-        continue;
-      // string user_name = 2;
-      case 2:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 18)) {
-          auto str = _internal_mutable_user_name();
-          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
-          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "proto.userLoginManage.HeartBeatRequest.user_name"));
-          CHK_(ptr);
-        } else goto handle_unusual;
-        continue;
-      default: {
-      handle_unusual:
-        if ((tag & 7) == 4 || tag == 0) {
-          ctx->SetLastTag(tag);
-          goto success;
-        }
-        ptr = UnknownFieldParse(tag, &_internal_metadata_, ptr, ctx);
-        CHK_(ptr != nullptr);
-        continue;
-      }
-    }  // switch
-  }  // while
-success:
-  return ptr;
-failure:
-  ptr = nullptr;
-  goto success;
-#undef CHK_
-}
-
-::PROTOBUF_NAMESPACE_ID::uint8* HeartBeatRequest::_InternalSerialize(
-    ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
-  // @@protoc_insertion_point(serialize_to_array_start:proto.userLoginManage.HeartBeatRequest)
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
-  (void) cached_has_bits;
-
-  // .proto.userLoginManage.BasicRequest basic = 1;
-  if (this->has_basic()) {
-    target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
-      InternalWriteMessage(
-        1, _Internal::basic(this), target, stream);
-  }
-
-  // string user_name = 2;
-  if (this->user_name().size() > 0) {
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
-      this->_internal_user_name().data(), static_cast<int>(this->_internal_user_name().length()),
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
-      "proto.userLoginManage.HeartBeatRequest.user_name");
-    target = stream->WriteStringMaybeAliased(
-        2, this->_internal_user_name(), target);
-  }
-
-  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
-        _internal_metadata_.unknown_fields(), target, stream);
-  }
-  // @@protoc_insertion_point(serialize_to_array_end:proto.userLoginManage.HeartBeatRequest)
-  return target;
-}
-
-size_t HeartBeatRequest::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:proto.userLoginManage.HeartBeatRequest)
-  size_t total_size = 0;
-
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
-  // Prevent compiler warnings about cached_has_bits being unused
-  (void) cached_has_bits;
-
-  // string user_name = 2;
-  if (this->user_name().size() > 0) {
-    total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
-        this->_internal_user_name());
-  }
-
-  // .proto.userLoginManage.BasicRequest basic = 1;
-  if (this->has_basic()) {
-    total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
-        *basic_);
-  }
-
-  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    return ::PROTOBUF_NAMESPACE_ID::internal::ComputeUnknownFieldsSize(
-        _internal_metadata_, total_size, &_cached_size_);
-  }
-  int cached_size = ::PROTOBUF_NAMESPACE_ID::internal::ToCachedSize(total_size);
-  SetCachedSize(cached_size);
-  return total_size;
-}
-
-void HeartBeatRequest::MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
-// @@protoc_insertion_point(generalized_merge_from_start:proto.userLoginManage.HeartBeatRequest)
-  GOOGLE_DCHECK_NE(&from, this);
-  const HeartBeatRequest* source =
-      ::PROTOBUF_NAMESPACE_ID::DynamicCastToGenerated<HeartBeatRequest>(
-          &from);
-  if (source == nullptr) {
-  // @@protoc_insertion_point(generalized_merge_from_cast_fail:proto.userLoginManage.HeartBeatRequest)
-    ::PROTOBUF_NAMESPACE_ID::internal::ReflectionOps::Merge(from, this);
-  } else {
-  // @@protoc_insertion_point(generalized_merge_from_cast_success:proto.userLoginManage.HeartBeatRequest)
-    MergeFrom(*source);
-  }
-}
-
-void HeartBeatRequest::MergeFrom(const HeartBeatRequest& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:proto.userLoginManage.HeartBeatRequest)
-  GOOGLE_DCHECK_NE(&from, this);
-  _internal_metadata_.MergeFrom(from._internal_metadata_);
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
-  (void) cached_has_bits;
-
-  if (from.user_name().size() > 0) {
-
-    user_name_.AssignWithDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from.user_name_);
-  }
-  if (from.has_basic()) {
-    _internal_mutable_basic()->::proto::userLoginManage::BasicRequest::MergeFrom(from._internal_basic());
-  }
-}
-
-void HeartBeatRequest::CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
-// @@protoc_insertion_point(generalized_copy_from_start:proto.userLoginManage.HeartBeatRequest)
-  if (&from == this) return;
-  Clear();
-  MergeFrom(from);
-}
-
-void HeartBeatRequest::CopyFrom(const HeartBeatRequest& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:proto.userLoginManage.HeartBeatRequest)
-  if (&from == this) return;
-  Clear();
-  MergeFrom(from);
-}
-
-bool HeartBeatRequest::IsInitialized() const {
-  return true;
-}
-
-void HeartBeatRequest::InternalSwap(HeartBeatRequest* other) {
-  using std::swap;
-  _internal_metadata_.Swap(&other->_internal_metadata_);
-  user_name_.Swap(&other->user_name_, &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
-    GetArenaNoVirtual());
-  swap(basic_, other->basic_);
-}
-
-::PROTOBUF_NAMESPACE_ID::Metadata HeartBeatRequest::GetMetadata() const {
-  return GetMetadataStatic();
-}
-
-
-// ===================================================================
-
-void HeartBeatResponse::InitAsDefaultInstance() {
-  ::proto::userLoginManage::_HeartBeatResponse_default_instance_._instance.get_mutable()->basic_ = const_cast< ::proto::userLoginManage::BasicResponse*>(
-      ::proto::userLoginManage::BasicResponse::internal_default_instance());
-}
-class HeartBeatResponse::_Internal {
- public:
-  static const ::proto::userLoginManage::BasicResponse& basic(const HeartBeatResponse* msg);
-};
-
-const ::proto::userLoginManage::BasicResponse&
-HeartBeatResponse::_Internal::basic(const HeartBeatResponse* msg) {
-  return *msg->basic_;
-}
-HeartBeatResponse::HeartBeatResponse()
-  : ::PROTOBUF_NAMESPACE_ID::Message(), _internal_metadata_(nullptr) {
-  SharedCtor();
-  // @@protoc_insertion_point(constructor:proto.userLoginManage.HeartBeatResponse)
-}
-HeartBeatResponse::HeartBeatResponse(const HeartBeatResponse& from)
-  : ::PROTOBUF_NAMESPACE_ID::Message(),
-      _internal_metadata_(nullptr) {
-  _internal_metadata_.MergeFrom(from._internal_metadata_);
-  if (from._internal_has_basic()) {
-    basic_ = new ::proto::userLoginManage::BasicResponse(*from.basic_);
-  } else {
-    basic_ = nullptr;
-  }
-  operation_ = from.operation_;
-  // @@protoc_insertion_point(copy_constructor:proto.userLoginManage.HeartBeatResponse)
-}
-
-void HeartBeatResponse::SharedCtor() {
-  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&scc_info_HeartBeatResponse_userLoginManage_2eproto.base);
-  ::memset(&basic_, 0, static_cast<size_t>(
-      reinterpret_cast<char*>(&operation_) -
-      reinterpret_cast<char*>(&basic_)) + sizeof(operation_));
-}
-
-HeartBeatResponse::~HeartBeatResponse() {
-  // @@protoc_insertion_point(destructor:proto.userLoginManage.HeartBeatResponse)
-  SharedDtor();
-}
-
-void HeartBeatResponse::SharedDtor() {
-  if (this != internal_default_instance()) delete basic_;
-}
-
-void HeartBeatResponse::SetCachedSize(int size) const {
-  _cached_size_.Set(size);
-}
-const HeartBeatResponse& HeartBeatResponse::default_instance() {
-  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&::scc_info_HeartBeatResponse_userLoginManage_2eproto.base);
-  return *internal_default_instance();
-}
-
-
-void HeartBeatResponse::Clear() {
-// @@protoc_insertion_point(message_clear_start:proto.userLoginManage.HeartBeatResponse)
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
-  // Prevent compiler warnings about cached_has_bits being unused
-  (void) cached_has_bits;
-
-  if (GetArenaNoVirtual() == nullptr && basic_ != nullptr) {
-    delete basic_;
-  }
-  basic_ = nullptr;
-  operation_ = 0;
-  _internal_metadata_.Clear();
-}
-
-const char* HeartBeatResponse::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
-#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
-  while (!ctx->Done(&ptr)) {
-    ::PROTOBUF_NAMESPACE_ID::uint32 tag;
-    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
-    CHK_(ptr);
-    switch (tag >> 3) {
-      // .proto.userLoginManage.BasicResponse basic = 1;
-      case 1:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 10)) {
-          ptr = ctx->ParseMessage(_internal_mutable_basic(), ptr);
-          CHK_(ptr);
-        } else goto handle_unusual;
-        continue;
-      // int32 operation = 2;
-      case 2:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 16)) {
-          operation_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint(&ptr);
-          CHK_(ptr);
-        } else goto handle_unusual;
-        continue;
-      default: {
-      handle_unusual:
-        if ((tag & 7) == 4 || tag == 0) {
-          ctx->SetLastTag(tag);
-          goto success;
-        }
-        ptr = UnknownFieldParse(tag, &_internal_metadata_, ptr, ctx);
-        CHK_(ptr != nullptr);
-        continue;
-      }
-    }  // switch
-  }  // while
-success:
-  return ptr;
-failure:
-  ptr = nullptr;
-  goto success;
-#undef CHK_
-}
-
-::PROTOBUF_NAMESPACE_ID::uint8* HeartBeatResponse::_InternalSerialize(
-    ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
-  // @@protoc_insertion_point(serialize_to_array_start:proto.userLoginManage.HeartBeatResponse)
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
-  (void) cached_has_bits;
-
-  // .proto.userLoginManage.BasicResponse basic = 1;
-  if (this->has_basic()) {
-    target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
-      InternalWriteMessage(
-        1, _Internal::basic(this), target, stream);
-  }
-
-  // int32 operation = 2;
-  if (this->operation() != 0) {
-    target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(2, this->_internal_operation(), target);
-  }
-
-  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
-        _internal_metadata_.unknown_fields(), target, stream);
-  }
-  // @@protoc_insertion_point(serialize_to_array_end:proto.userLoginManage.HeartBeatResponse)
-  return target;
-}
-
-size_t HeartBeatResponse::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:proto.userLoginManage.HeartBeatResponse)
-  size_t total_size = 0;
-
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
-  // Prevent compiler warnings about cached_has_bits being unused
-  (void) cached_has_bits;
-
-  // .proto.userLoginManage.BasicResponse basic = 1;
-  if (this->has_basic()) {
-    total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
-        *basic_);
-  }
-
-  // int32 operation = 2;
-  if (this->operation() != 0) {
-    total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
-        this->_internal_operation());
-  }
-
-  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    return ::PROTOBUF_NAMESPACE_ID::internal::ComputeUnknownFieldsSize(
-        _internal_metadata_, total_size, &_cached_size_);
-  }
-  int cached_size = ::PROTOBUF_NAMESPACE_ID::internal::ToCachedSize(total_size);
-  SetCachedSize(cached_size);
-  return total_size;
-}
-
-void HeartBeatResponse::MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
-// @@protoc_insertion_point(generalized_merge_from_start:proto.userLoginManage.HeartBeatResponse)
-  GOOGLE_DCHECK_NE(&from, this);
-  const HeartBeatResponse* source =
-      ::PROTOBUF_NAMESPACE_ID::DynamicCastToGenerated<HeartBeatResponse>(
-          &from);
-  if (source == nullptr) {
-  // @@protoc_insertion_point(generalized_merge_from_cast_fail:proto.userLoginManage.HeartBeatResponse)
-    ::PROTOBUF_NAMESPACE_ID::internal::ReflectionOps::Merge(from, this);
-  } else {
-  // @@protoc_insertion_point(generalized_merge_from_cast_success:proto.userLoginManage.HeartBeatResponse)
-    MergeFrom(*source);
-  }
-}
-
-void HeartBeatResponse::MergeFrom(const HeartBeatResponse& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:proto.userLoginManage.HeartBeatResponse)
-  GOOGLE_DCHECK_NE(&from, this);
-  _internal_metadata_.MergeFrom(from._internal_metadata_);
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
-  (void) cached_has_bits;
-
-  if (from.has_basic()) {
-    _internal_mutable_basic()->::proto::userLoginManage::BasicResponse::MergeFrom(from._internal_basic());
-  }
-  if (from.operation() != 0) {
-    _internal_set_operation(from._internal_operation());
-  }
-}
-
-void HeartBeatResponse::CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
-// @@protoc_insertion_point(generalized_copy_from_start:proto.userLoginManage.HeartBeatResponse)
-  if (&from == this) return;
-  Clear();
-  MergeFrom(from);
-}
-
-void HeartBeatResponse::CopyFrom(const HeartBeatResponse& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:proto.userLoginManage.HeartBeatResponse)
-  if (&from == this) return;
-  Clear();
-  MergeFrom(from);
-}
-
-bool HeartBeatResponse::IsInitialized() const {
-  return true;
-}
-
-void HeartBeatResponse::InternalSwap(HeartBeatResponse* other) {
-  using std::swap;
-  _internal_metadata_.Swap(&other->_internal_metadata_);
-  swap(basic_, other->basic_);
-  swap(operation_, other->operation_);
-}
-
-::PROTOBUF_NAMESPACE_ID::Metadata HeartBeatResponse::GetMetadata() const {
-  return GetMetadataStatic();
-}
-
-
 // @@protoc_insertion_point(namespace_scope)
 }  // namespace userLoginManage
 }  // namespace proto
@@ -3294,12 +2754,6 @@ template<> PROTOBUF_NOINLINE ::proto::userLoginManage::KickOutUserRequest* Arena
 }
 template<> PROTOBUF_NOINLINE ::proto::userLoginManage::KickOutUserResponse* Arena::CreateMaybeMessage< ::proto::userLoginManage::KickOutUserResponse >(Arena* arena) {
   return Arena::CreateInternal< ::proto::userLoginManage::KickOutUserResponse >(arena);
-}
-template<> PROTOBUF_NOINLINE ::proto::userLoginManage::HeartBeatRequest* Arena::CreateMaybeMessage< ::proto::userLoginManage::HeartBeatRequest >(Arena* arena) {
-  return Arena::CreateInternal< ::proto::userLoginManage::HeartBeatRequest >(arena);
-}
-template<> PROTOBUF_NOINLINE ::proto::userLoginManage::HeartBeatResponse* Arena::CreateMaybeMessage< ::proto::userLoginManage::HeartBeatResponse >(Arena* arena) {
-  return Arena::CreateInternal< ::proto::userLoginManage::HeartBeatResponse >(arena);
 }
 PROTOBUF_NAMESPACE_CLOSE
 

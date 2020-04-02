@@ -10,16 +10,16 @@ package proto.userLoginManage;
 
 service userLoginManageService {
   // regist
-  rpc regist (stream RegistRequest) returns (stream RegistResponse) {}
+  rpc regist (RegistRequest) returns (RegistResponse) {}
 
   // login
   rpc login (stream LoginRequest) returns (stream LoginResponse) {}
 
   // logout
-  rpc logout (stream LogoutRequest) returns (stream LogoutResponse) {}
+  rpc logout (LogoutRequest) returns (LogoutResponse) {}
 
   // kick out user
-  rpc kickOutUser (stream KickOutUserRequest) returns (stream KickOutUserResponse) {}
+  rpc kickOutUser (KickOutUserRequest) returns (KickOutUserResponse) {}
 }
 
 //***

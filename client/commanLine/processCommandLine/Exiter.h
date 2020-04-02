@@ -26,20 +26,22 @@ public:
 		if(!isLogined) exit(0);
 
 		//如果已经登录，则发送退出登录请求
-		ClientContext context;
 		LogoutRequest logoutRequest;
 		char userNameEncrypted[1024] = {0};
 		base64_encode(userName.c_str(), userName.length(), userNameEncrypted);
 		logoutRequest.mutable_basic()->set_uuid(clientUuid);
 		logoutRequest.set_user_name(userNameEncrypted);
 
-		std::shared_ptr<ClientReaderWriter<LogoutRequest, LogoutResponse> > stream(stub->logout(&context));
-		stream->Write(logoutRequest);
-		stream->WritesDone();
-
-		//获取响应
+		ClientContext context;
 		LogoutResponse logoutResponse;
-		stream->Read(&logoutResponse);
+		Status status = stub->logout(&context, logoutRequest, &logoutResponse);
+		if(!status.ok())
+		{
+			cout << "rpc failed! " << status.error_code() << ": " << status.error_message() << endl;
+			return -1;
+		}
+
+		//判断响应
 		if(logoutResponse.basic().code() == SUCCESS)
 		{
 			cout << logoutResponse.basic().msg() << endl;

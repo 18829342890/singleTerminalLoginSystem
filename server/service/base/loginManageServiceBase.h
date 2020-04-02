@@ -15,6 +15,9 @@ public:
 	string getMsg();
 
 protected:
+	string getNoticeLogoutMsg(const string& userName, const string& clientUid, int msgType);
+
+protected:
 	int _code;
 	string _msg;
 	const sql::Connection* _mysqlConnect;

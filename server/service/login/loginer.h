@@ -17,7 +17,7 @@ public:
 	virtual ~Loginer();
 
 	int processLogin(const string& userName, const string& passWord, const string& clientUid);
-	int monitorUserLogoutEvent(const string& userName, const string& clientUid, bool& isNeedLogout);
+	int monitorUserLogoutEvent(const string& userName, const string& clientUid, bool& isNeedSendMsg, int& code, string& msg);
 
 private:
 	//用户名和密码是否有效
@@ -25,6 +25,7 @@ private:
 	//处理已登录设备
 	int processLoginedDevice(const string& userName);
 	int noticeUserLogout(const string& userName, const string& clientUid);
+	void getNoticeUserMessage(int messageType, int& code, string& msg);
 	//登录
 	int login(const string& userName, const string&  clientUid);
 
