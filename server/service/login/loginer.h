@@ -24,7 +24,9 @@ private:
 	int isValidPassWordByUserName(const string& userName, const string& passWord, bool& isValid);
 	//处理已登录设备
 	int processLoginedDevice(const string& userName);
+	//通知用户退出登录
 	int noticeUserLogout(const string& userName, const string& clientUid);
+	//根据消息类型获取通知用户的信息
 	void getNoticeUserMessage(int messageType, int& code, string& msg);
 	//登录
 	int login(const string& userName, const string&  clientUid);

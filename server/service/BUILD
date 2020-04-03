@@ -8,7 +8,6 @@ cc_library(
     	"-Iservice/login",
     	"-Iservice/regist",
 		"-Iservice/logout",
-		"-Iservice/heartBeat",
 		"-Iservice/kickout",
 	],
 	deps = [
@@ -17,7 +16,6 @@ cc_library(
 		"//server/service/login:loginer",
 		"//server/service/regist:register",
 		"//server/service/logout:logout",
-		"//server/service/heartBeat:heartBeat",
 		"//server/service/kickout:kickout",
 		"//protos/proto:message_receiver_cc_grpc",
 		"@com_github_grpc_grpc//:grpc++",

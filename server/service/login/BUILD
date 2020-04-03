@@ -21,7 +21,7 @@ cc_library(
 		"//mylib/myLibEncrypt:myLibEncrypt",
 		"//server/service/base:loginManageServiceBase",
 		"//server/repository/src:serverRespositorySrc",
-		"//server/infrastructure/src:userLoginInfoCacheSrc",
+		"//server/infrastructure/src:rabbitmqClientSrc",
 	],
 	visibility = ["//visibility:public"],
 )

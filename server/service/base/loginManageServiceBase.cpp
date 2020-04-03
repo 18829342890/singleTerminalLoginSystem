@@ -1,11 +1,9 @@
 #include <sstream>
 #include "loginManageServiceBase.h"
-#include "mylib/enum/code.h"
 #include "mylib/cJSON/cJSON.h"
-#include "server/repository/include/userLoginManageRepository.h"
+#include "mylib/enum/code.h"
 
 using namespace userLoginSystem::myEnum;
-using namespace userLoginService::repository;
 
 LoginManageServiceBase::LoginManageServiceBase(const sql::Connection* mysqlConnect)
 	:_code(SUCCESS),

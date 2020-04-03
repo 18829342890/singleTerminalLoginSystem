@@ -16,8 +16,6 @@ using namespace userLoginService::repository;
 
 
 
-
-
 Loginer::Loginer(const sql::Connection* mysqlConnect, RabbitmqClient& rabbitmqClient, const string& exchange, const string& routeKey, const string& queueName)
 		: LoginManageServiceBase(mysqlConnect),
 		  _rabbitmqClient(rabbitmqClient),
@@ -77,7 +75,7 @@ int Loginer::monitorUserLogoutEvent(const string& userName, const string& client
 	msg = "";
 	
 	//获取消息
-	LOG_INFO("begin consumer...  queueName:%s", _queueName.c_str());
+	LOG_INFO("queueName:%s, begin consumer...", _queueName.c_str());
 	std::vector<std::string> vecRecvMsg;
     int ret = _rabbitmqClient.consumer(_queueName, vecRecvMsg, 1);
     if(ret != 0)
@@ -100,17 +98,7 @@ int Loginer::monitorUserLogoutEvent(const string& userName, const string& client
     	return -1;
     }
 
-    LOG_INFO("userName:%s, userNameItem:%s,", userName.c_str(), userNameItem->valuestring);
-    LOG_INFO("clientUid:%s, clinetUidItem:%s,", clientUid.c_str(), clinetUidItem->valuestring);
-    if(userName == userNameItem->valuestring)
-    {
-    	LOG_INFO("userName == userNameItem->valuestring");
-    }
-    if(clientUid == clinetUidItem->valuestring)
-    {
-    	LOG_INFO("clientUid == clinetUidItem->valuestring");
-    }
-
+    //如果用户名和clientuid相同，则需要推送消息给用户
     if(userName == userNameItem->valuestring && clientUid == clinetUidItem->valuestring)
     {
     	isNeedSendMsg = true;

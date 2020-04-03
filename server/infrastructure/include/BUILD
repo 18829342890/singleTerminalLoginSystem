@@ -1,20 +1,17 @@
 cc_library(
-	name = "userLoginInfoCache",
+	name = "rabbitmqClient",
 	hdrs = [
-		"userLoginCache.h",
+		"rabbitmqClient.h",
 	],
 	copts = [
 		"-Imylib/mylibLog",
-		"-Iserver/domain",
 	],
 	linkopts = [
-		"-L/usr/local/redis/deps/hiredis",
-		"-lhiredis",
+		"-L/usr/local/Cellar/rabbitmq-c/0.10.0/include",
+		"-lrabbitmq",
 	],
 	deps = [
 		"//mylib/mylibLog:myLibLog",
-		"//server/domain:serverDomain",
-
 	],
 	visibility = ["//visibility:public"],
 )

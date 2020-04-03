@@ -8,14 +8,12 @@ cc_library(
 	],
 	copts = [
 		"-Imylib/mylibLog/",
-		"-Iserver/repository/include",
-		"-Iserver/infrastructure/include",
-
+		"-Imylib/cJSON/",
+		"-Iexternal/usr/local/include",
 	],
 	deps = [
 		"//mylib/mylibLog:myLibLog",
-		"//server/repository/src:serverRespositorySrc",
-		"//server/infrastructure/src:userLoginInfoCacheSrc",
+		"//mylib/cJSON:myLibJson",
 	],
 	visibility = ["//visibility:public"],
 )

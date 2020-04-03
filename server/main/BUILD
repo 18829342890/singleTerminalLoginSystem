@@ -4,6 +4,12 @@ cc_binary (
 	copts = [
 		"-Imylib/myLibIni",
 		"-Iserver/service",
+		"-Iexternal/usr/local/include",
+		"-Iexternal/usr/local/mysql/include",
+	],
+	linkopts = [
+		"-L/usr/local/lib",
+		"-lmysqlcppconn",
 	],
 	deps = [
 		"//mylib/myLibIni:myLibIni",

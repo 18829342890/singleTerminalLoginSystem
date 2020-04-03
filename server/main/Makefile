@@ -10,9 +10,8 @@ objs += $(c_objs) $(cpp_objs) $(cc_objs)
 CC = gcc
 CXX = g++
 target=userLoginManagerService
-##mysql 用 mysql_config --include 命令给出
-INCLUDE += -I/usr/local/mysql/include \
-		   -I/usr/local/opt/openssl/include \
+
+INCLUDE += -I/usr/local/opt/openssl/include \
 		   -I/usr/local/redis/deps \
  		   -I${work_path}/../../ \
 		   -I${work_path}/../../mylib/mylibLog \
@@ -34,7 +33,6 @@ CXXFLAGS += -std=c++11 $(INCLUDE)
 CPPFLAGS += `pkg-config --cflags protobuf grpc` $(INCLUDE)
 LDFLAGS =  -L/usr/local/lib `pkg-config --libs protobuf grpc++ grpc` -lmysqlcppconn \
            -lgrpc++_reflection \
-           -L/usr/local/mysql/lib -lmysqlclient \
            -L/usr/local/opt/openssl/lib -lssl -lcrypto \
            -L/usr/local/Cellar/rabbitmq-c/0.10.0/include -lrabbitmq
 
