@@ -67,19 +67,16 @@ package proto.userLoginManage;
 
 service userLoginManageService {
   // regist
-  rpc regist (stream RegistRequest) returns (stream RegistResponse) {}
+  rpc regist (RegistRequest) returns (RegistResponse) {}
 
   // login
-  rpc login (stream LoginRequest) returns (stream LoginResponse) {}
+  rpc login (LoginRequest) returns (stream LoginResponse) {}
 
   // logout
-  rpc logout (stream LogoutRequest) returns (stream LogoutResponse) {}
-
-  // heart beat
-  rpc heartBeat (stream HeartBeatRequest) returns (stream HeartBeatResponse) {}
+  rpc logout (LogoutRequest) returns (LogoutResponse) {}
 
   // kick out user
-  rpc kickOutUser (stream KickOutUserRequest) returns (stream KickOutUserResponse) {}
+  rpc kickOutUser (KickOutUserRequest) returns (KickOutUserResponse) {}
 }
 
 //***
@@ -168,24 +165,6 @@ message KickOutUserResponse
 {
 	BasicResponse basic     = 1;
 }
-
-
-//***
-//@request  HeartBeatRequest
-//@response HeartBeatResponse
-//@remark   心跳
-//***
-message HeartBeatRequest
-{
-	BasicRequest  basic     = 1;
-	string        user_name = 2;
-}
-
-message HeartBeatResponse
-{
-	BasicResponse basic     = 1;
-	int32         operation = 2; //客户端应做的操作  0:无须做任何操作 1:当前用户已退出登录, 客户端可自定义操作 2:已在其它设备上登录，当前设备应退出登录 3:被管理员踢出，应退出登录
-}
 ```
 
 
@@ -194,8 +173,8 @@ message HeartBeatResponse
 请查看链接:  https://www.processon.com/view/link/5e6fba8fe4b06b852fe028d9
 
 
-## 时序图、缓存状态扭转图
-请查看链接：https://www.processon.com/view/link/5e6a6388e4b09b0f79e68073
+## 时序图、异常场景分析
+请查看链接：https://www.processon.com/view/link/5e7b5241e4b08b615739828f
 
 
 
